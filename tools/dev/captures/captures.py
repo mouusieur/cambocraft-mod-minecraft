@@ -46,118 +46,124 @@ def cube(x0, y0, z0, x1, y1, z1, nom):
     return [f"fill {x0} {y0} {z0} {x1} {y1} {z1} cambocraft:{nom}"]
 
 
+# Altitude du studio flottant : au-dessus du terrain naturel de cambodia (le monde
+# monte jusqu'a y=319), ce qui supprime les parois de terre qui encombraient le fond.
+Y = 200
+
+
 def scene_portail():
     c = []
-    c += cube(-9, 59, -9, 9, 59, 9, "pierre_du_lotus_polie")
-    for cote in (
-        f"fill -10 59 -10 10 59 -10 cambocraft:pierre_du_lotus_sculptee",
-        f"fill -10 59 10 10 59 10 cambocraft:pierre_du_lotus_sculptee",
-        f"fill -10 59 -10 -10 59 10 cambocraft:pierre_du_lotus_sculptee",
-        f"fill 10 59 -10 10 59 10 cambocraft:pierre_du_lotus_sculptee",
-    ):
-        c += [cote]
-    # Cadre 3x3 en anneau : le coeur occupe le centre, donc on ne pose pas de cadre
-    # sous lui (sinon il le masque completement).
+    # Terrasse : 19x19 de pierre de lotus polie, bordee de pierre sculptee.
+    c += cube(-9, Y, -9, 9, Y, 9, "pierre_du_lotus_polie")
+    c += [f"fill -10 {Y} -10 10 {Y} -10 cambocraft:pierre_du_lotus_sculptee",
+          f"fill -10 {Y} 10 10 {Y} 10 cambocraft:pierre_du_lotus_sculptee",
+          f"fill -10 {Y} -10 -10 {Y} 10 cambocraft:pierre_du_lotus_sculptee",
+          f"fill 10 {Y} -10 10 {Y} 10 cambocraft:pierre_du_lotus_sculptee"]
+    # Portail : cadre 3x3 en anneau (le coeur occupe le centre) surmonte de montants.
     for dx in (-1, 0, 1):
         for dz in (-1, 0, 1):
-            if (dx, dz) == (0, 0):
-                continue
-            c += [bloc(dx, 60, dz, "cadre_du_portail")]
-    c += [bloc(0, 60, 0, "coeur_du_portail")]
-    # Murets de cadre sur les cotes : signale le portail de loin.
+            if (dx, dz) != (0, 0):
+                c += [bloc(dx, Y + 1, dz, "cadre_du_portail")]
+    c += [bloc(0, Y + 1, 0, "coeur_du_portail")]
     for dx, dz in ((-2, -2), (2, -2), (-2, 2), (2, 2)):
-        c += [f"fill {dx} 60 {dz} {dx} 62 {dz} cambocraft:cadre_du_portail"]
+        c += [f"fill {dx} {Y+1} {dz} {dx} {Y+3} {dz} cambocraft:cadre_du_portail"]
+    # Piliers d'angle de lotus couronnes de cristaux.
     for dx, dz in ((-3, -3), (3, -3), (-3, 3), (3, 3)):
-        c += [f"fill {dx} 60 {dz} {dx} 63 {dz} cambocraft:pilier_de_lotus"]
-        c += [bloc(dx, 64, dz, "cristal_de_lotus")]
+        c += [f"fill {dx} {Y+1} {dz} {dx} {Y+4} {dz} cambocraft:pilier_de_lotus"]
+        c += [bloc(dx, Y + 5, dz, "cristal_de_lotus")]
+    # Parterre de lotus, rangee d'hibiscus, lanternes, autel et teleporteur.
     for dx, dz in ((0, -4), (0, 4), (-4, 0), (4, 0), (-5, -5), (5, 5), (-5, 5), (5, -5)):
-        c += [bloc(dx, 60, dz, "lotus_rose" if (dx + dz) % 2 == 0 else "lotus_blanc")]
+        c += [bloc(dx, Y + 1, dz, "lotus_rose" if (dx + dz) % 2 == 0 else "lotus_blanc")]
     for dx in range(-7, 8, 2):
-        c += [bloc(dx, 60, 7, "fleur_d_hibiscus")]
-    c += [bloc(0, 64, -6, "lanterne_de_bambou"), bloc(0, 64, 6, "lanterne_de_bambou")]
-    c += [bloc(-6, 60, -6, "teleporteur_de_lotus"), bloc(6, 60, 6, "autel")]
+        c += [bloc(dx, Y + 1, 7, "fleur_d_hibiscus")]
+    c += [bloc(0, Y + 5, -6, "lanterne_de_bambou"), bloc(0, Y + 5, 6, "lanterne_de_bambou")]
+    c += [bloc(-6, Y + 1, -6, "teleporteur_de_lotus"), bloc(6, Y + 1, 6, "autel")]
     return c
 
 
 def scene_cite():
     c = []
-    c += cube(-14, 59, -14, 14, 59, 14, "pierre_du_lotus_polie")
-    c += cube(-15, 59, -15, 15, 59, -15, "gres_khmer_poli")
-    c += cube(-15, 59, 15, 15, 59, 15, "gres_khmer_poli")
-    c += cube(-15, 59, -15, -15, 59, 15, "gres_khmer_poli")
-    c += cube(15, 59, -15, 15, 59, 15, "gres_khmer_poli")
+    c += cube(-14, Y, -14, 14, Y, 14, "pierre_du_lotus_polie")
+    c += [f"fill -15 {Y} -15 15 {Y} -15 cambocraft:gres_khmer_poli",
+          f"fill -15 {Y} 15 15 {Y} 15 cambocraft:gres_khmer_poli",
+          f"fill -15 {Y} -15 -15 {Y} 15 cambocraft:gres_khmer_poli",
+          f"fill 15 {Y} -15 15 {Y} 15 cambocraft:gres_khmer_poli"]
+    # Prasat a 7 gradins, 2 blocs de haut chacun.
     for etage in range(7):
         d = 8 - etage
-        c += cube(-d, 60 + etage * 2, -d, d, 60 + etage * 2, d, "brique_de_temple")
-        c += cube(-d, 61 + etage * 2, -d, d, 61 + etage * 2, d, "brique_de_temple")
-    c += [bloc(0, 74, 0, "cristal_de_lotus"), bloc(0, 75, 0, "coeur_du_portail")]
+        c += cube(-d, Y + 1 + etage * 2, -d, d, Y + 2 + etage * 2, d, "brique_de_temple")
+    c += [bloc(0, Y + 15, 0, "cristal_de_lotus"), bloc(0, Y + 16, 0, "coeur_du_portail")]
     for dx, dz in ((-11, -11), (11, -11), (-11, 11), (11, 11)):
-        c += [f"fill {dx} 60 {dz} {dx} 66 {dz} cambocraft:pilier_de_lotus"]
-        c += [bloc(dx, 67, dz, "encens")]
-    c += [f"fill -9 66 9 -3 66 13 cambocraft:toit_de_chaume",
-          f"fill -9 65 9 -9 65 13 cambocraft:toit_de_chaume",
-          f"fill -3 65 9 -3 65 13 cambocraft:toit_de_chaume"]
-    c += [bloc(-7, 60, 11, "etal_de_marche"), bloc(-5, 60, 11, "jarre"),
-          bloc(-6, 60, 12, "panier"), bloc(-4, 60, 10, "marmite"),
-          bloc(4, 60, -9, "tambour"), bloc(6, 60, -9, "gong"),
-          bloc(-4, 60, -9, "lion_de_pierre"), bloc(4, 60, -11, "visage_de_pierre"),
-          bloc(0, 60, 12, "statue_de_pierre"), bloc(0, 60, -12, "bas_relief")]
+        c += [f"fill {dx} {Y+1} {dz} {dx} {Y+7} {dz} cambocraft:pilier_de_lotus"]
+        c += [bloc(dx, Y + 8, dz, "encens")]
+    # Halle de marche au toit de chaume.
+    c += [f"fill -9 {Y+7} 9 -3 {Y+7} 13 cambocraft:toit_de_chaume",
+          f"fill -9 {Y+6} 9 -9 {Y+6} 13 cambocraft:toit_de_chaume",
+          f"fill -3 {Y+6} 9 -3 {Y+6} 13 cambocraft:toit_de_chaume"]
+    c += [bloc(-7, Y + 1, 11, "etal_de_marche"), bloc(-5, Y + 1, 11, "jarre"),
+          bloc(-6, Y + 1, 12, "panier"), bloc(-4, Y + 1, 10, "marmite"),
+          bloc(4, Y + 1, -9, "tambour"), bloc(6, Y + 1, -9, "gong"),
+          bloc(-4, Y + 1, -9, "lion_de_pierre"), bloc(4, Y + 1, -11, "visage_de_pierre"),
+          bloc(0, Y + 1, 12, "statue_de_pierre"), bloc(0, Y + 1, -12, "bas_relief")]
     for i, b in enumerate(("banniere_rouge", "banniere_or", "banniere_bleue")):
-        c += [bloc(-9 + i * 6, 63, 14, b)]
-    c += [bloc(-2, 64, 12, "tissu_suspendu"), bloc(2, 64, 12, "tissu_suspendu")]
-    c += [f"fill -3 60 3 3 60 5 cambocraft:tapis_de_soie_krama",
-          f"fill -3 60 -5 3 60 -3 cambocraft:natte_de_jonc"]
+        c += [bloc(-9 + i * 6, Y + 4, 14, b)]
+    c += [bloc(-2, Y + 5, 12, "tissu_suspendu"), bloc(2, Y + 5, 12, "tissu_suspendu")]
+    c += [f"fill -3 {Y+1} 3 3 {Y+1} 5 cambocraft:tapis_de_soie_krama",
+          f"fill -3 {Y+1} -5 3 {Y+1} -3 cambocraft:natte_de_jonc"]
     return c
 
 
 def scene_interieur():
     c = []
-    c += cube(-8, 59, -8, 8, 59, 8, "teck_planks")
-    c += [f"fill -8 60 -8 8 64 -8 cambocraft:brique_de_temple",
-          f"fill -8 60 8 8 64 8 cambocraft:brique_de_temple",
-          f"fill -8 60 -8 -8 64 8 cambocraft:brique_de_temple",
-          f"fill 8 60 -8 8 64 8 cambocraft:brique_de_temple",
-          f"fill -8 65 -8 8 65 8 cambocraft:teck_planks"]
+    c += cube(-8, Y, -8, 8, Y, 8, "teck_planks")
+    c += [f"fill -8 {Y+1} -8 8 {Y+5} -8 cambocraft:brique_de_temple",
+          f"fill -8 {Y+1} 8 8 {Y+5} 8 cambocraft:brique_de_temple",
+          f"fill -8 {Y+1} -8 -8 {Y+5} 8 cambocraft:brique_de_temple",
+          f"fill 8 {Y+1} -8 8 {Y+5} 8 cambocraft:brique_de_temple",
+          f"fill -8 {Y+6} -8 8 {Y+6} 8 cambocraft:teck_planks"]
     for x in (-3, 3):
-        c += [f"fill {x} 61 -8 {x} 63 -8 cambocraft:vitrail_de_temple"]
-        c += [f"fill {x} 61 8 {x} 63 8 cambocraft:vitrail_de_temple"]
+        c += [f"fill {x} {Y+2} -8 {x} {Y+4} -8 cambocraft:vitrail_de_temple",
+              f"fill {x} {Y+2} 8 {x} {Y+4} 8 cambocraft:vitrail_de_temple"]
     for z in (-3, 3):
-        c += [f"fill 8 61 {z} 8 63 {z} cambocraft:vitrail_de_temple"]
-    c += [bloc(-5, 60, -5, "metier_a_tisser"), bloc(-5, 61, -5, "tissu_suspendu"),
-          bloc(-3, 60, -5, "cuve_de_soie"), bloc(-1, 60, -5, "tour_de_poterie"),
-          bloc(1, 60, -5, "table_de_forge"), bloc(3, 60, -5, "four_de_forge"),
-          bloc(5, 60, -5, "creuset_de_fusion"), bloc(3, 60, -3, "atelier_de_sculpture"),
-          bloc(-5, 60, 5, "jarre"), bloc(-4, 60, 5, "panier"),
-          bloc(5, 60, 5, "marmite"), bloc(5, 60, 3, "encens"),
-          bloc(0, 60, 6, "tapis_de_soie_krama"), bloc(2, 60, 6, "natte_de_jonc")]
+        c += [f"fill 8 {Y+2} {z} 8 {Y+4} {z} cambocraft:vitrail_de_temple"]
+    c += [bloc(-5, Y + 1, -5, "metier_a_tisser"), bloc(-5, Y + 2, -5, "tissu_suspendu"),
+          bloc(-3, Y + 1, -5, "cuve_de_soie"), bloc(-1, Y + 1, -5, "tour_de_poterie"),
+          bloc(1, Y + 1, -5, "table_de_forge"), bloc(3, Y + 1, -5, "four_de_forge"),
+          bloc(5, Y + 1, -5, "creuset_de_fusion"), bloc(3, Y + 1, -3, "atelier_de_sculpture"),
+          bloc(-5, Y + 1, 5, "jarre"), bloc(-4, Y + 1, 5, "panier"),
+          bloc(5, Y + 1, 5, "marmite"), bloc(5, Y + 1, 3, "encens"),
+          bloc(0, Y + 1, 6, "tapis_de_soie_krama"), bloc(2, Y + 1, 6, "natte_de_jonc")]
     for x in (-6, 0, 6):
-        c += [bloc(x, 63, 7, "lanterne_de_bambou")]
+        c += [bloc(x, Y + 4, 7, "lanterne_de_bambou")]
     return c
 
 
 def scene_vegetation():
     c = []
-    for i, niveau in enumerate((59, 61, 63)):
+    # Rizieres en terrasses : trois gradins de boue, riz sur les bords, eau devant.
+    for i, niveau in enumerate((Y, Y + 2, Y + 4)):
         z0 = i * 6 - 6
-        c += [f"fill -12 {niveau} {z0} 12 {niveau} {z0 + 4} cambocraft:boue_de_riziaire"]
-        c += [f"fill -12 {niveau + 1} {z0} 12 {niveau + 1} {z0} cambocraft:riz_sauvage"]
-        c += [f"fill -12 {niveau + 1} {z0 + 4} 12 {niveau + 1} {z0 + 4} cambocraft:riz_empile"]
-        c += [f"fill -12 {niveau} {z0 + 5} 12 {niveau} {z0 + 5} water"]
-    c += [bloc(-6, 65, 8, "lotus_rose"), bloc(-4, 65, 8, "lotus_blanc"),
-          bloc(2, 65, 8, "fleur_de_lotus"), bloc(4, 65, 8, "feuille_de_lotus")]
+        c += [f"fill -12 {niveau} {z0} 12 {niveau} {z0 + 4} cambocraft:boue_de_riziaire",
+              f"fill -12 {niveau+1} {z0} 12 {niveau+1} {z0} cambocraft:riz_sauvage",
+              f"fill -12 {niveau+1} {z0+4} 12 {niveau+1} {z0+4} cambocraft:riz_empile",
+              f"fill -12 {niveau} {z0+5} 12 {niveau} {z0+5} water"]
+    c += [bloc(-6, Y + 7, 8, "lotus_rose"), bloc(-4, Y + 7, 8, "lotus_blanc"),
+          bloc(2, Y + 7, 8, "fleur_de_lotus"), bloc(4, Y + 7, 8, "feuille_de_lotus")]
     for x in range(-12, 13, 3):
-        c += [bloc(x, 65, 12, "paille_de_riz" if x % 2 == 0 else "orchidee_khmer")]
-    c += [bloc(-10, 65, -8, "paletuvier_sapling"), bloc(10, 65, -8, "palmier_a_sucre_sapling")]
-    c += [f"fill -12 64 -9 12 64 -9 cambocraft:laterite"]
+        c += [bloc(x, Y + 7, 12, "paille_de_riz" if x % 2 == 0 else "orchidee_khmer")]
+    c += [bloc(-10, Y + 7, -8, "paletuvier_sapling"), bloc(10, Y + 7, -8, "palmier_a_sucre_sapling")]
+    c += [f"fill -12 {Y+6} -9 12 {Y+6} -9 cambocraft:laterite"]
     return c
 
 
 SCENES = {
     # nom : (constructeur, position du joueur, rotation (yaw, pitch), nom de fichier)
-    "portail": (scene_portail, (0.5, 64.0, 17.0), (180.0, 20.0), "portail-du-lotus"),
-    "cite": (scene_cite, (0.5, 68.0, 25.0), (180.0, 18.0), "cite-khmere"),
-    "interieur": (scene_interieur, (1.5, 62.5, 6.5), (194.0, 12.0), "atelier"),
-    "vegetation": (scene_vegetation, (0.5, 73.0, 22.0), (180.0, 30.0), "rizieres"),
+    # Les scenes sont baties sur le studio flottant a Y=200 : la camera se place
+    # a Y+4 environ, en spectateur (aucune chute possible).
+    "portail": (scene_portail, (0.5, Y + 4.0, 13.0), (180.0, 12.0), "portail-du-lotus"),
+    "cite": (scene_cite, (0.5, Y + 6.0, 20.0), (180.0, 10.0), "cite-khmere"),
+    "interieur": (scene_interieur, (0.5, Y + 4.0, 7.0), (180.0, 8.0), "atelier"),
+    "vegetation": (scene_vegetation, (0.5, Y + 9.0, 18.0), (180.0, 16.0), "rizieres"),
 }
 
 
@@ -424,13 +430,13 @@ def main() -> int:
     time.sleep(4)
     # Vol stationnaire : sans cela, le joueur tombe dans le vide pendant la construction
     # et la capture ne montre que du noir.
-    commande("execute in cambocraft:cambodia run tp @a 0 100 0 0 0")
+    commande(f"execute in cambocraft:cambodia run tp @a 0 {Y + 30} 0 0 0")
 
     # --- verification de sanite : un bloc d'or de 3x3, camera dessus, regard vers le bas ---
     print("== verification de sanite du rendu ==")
     avant = len(sortie_serveur.lignes)
-    commande("execute in cambocraft:cambodia run fill -2 70 -2 2 70 2 minecraft:gold_block")
-    commande("execute in cambocraft:cambodia run tp @a 0 76 0 0 85")
+    commande(f"execute in cambocraft:cambodia run fill -2 {Y+10} -2 2 {Y+10} 2 minecraft:gold_block")
+    commande(f"execute in cambocraft:cambodia run tp @a 0 {Y+16} 0 0 85")
     commande("execute in cambocraft:cambodia run data get entity Cambocraft Pos")
     time.sleep(5)
     with sortie_serveur.verrou:
@@ -456,19 +462,17 @@ def main() -> int:
             continue
         constructeur, position, rotation, fichier = SCENES[nom]
         print(f"== scene {nom} ({fichier}) ==")
-        # Studio aerien : on degage un volume bien plus large que la scene pour que
-        # les parois de terre du terrain naturel n'apparaissent pas dans le champ.
-        # /fill est limite a 32 768 blocs : 65x6x65 = 25 350 blocs par tranche.
-        for y0 in range(56, 152, 6):
+        # Nettoyage du studio : la scene precedente doit disparaitre. /fill est limite
+        # a 32 768 blocs par commande : 65x6x65 = 25 350 blocs par tranche.
+        for y0 in range(Y - 2, Y + 32, 6):
             commande(f"execute in cambocraft:cambodia run fill -32 {y0} -32 32 {y0 + 5} 32 air")
         time.sleep(3)
         for cmd in constructeur():
             commande(f"execute in cambocraft:cambodia run {cmd}")
         time.sleep(3)
         x, y, z = position
-        # Filet de securite : une plateforme sous la camera, pour ne jamais tomber.
-        commande(f"execute in cambocraft:cambodia run fill {int(x)-3} {int(y)-3} {int(z)-3} "
-                 f"{int(x)+3} {int(y)-3} {int(z)+3} cambocraft:pierre_du_lotus_polie")
+        # Aucune plateforme de secours : le joueur est en spectateur, il ne tombe pas,
+        # et une plateforme au premier plan gachait le cadrage.
         commande(f"execute in cambocraft:cambodia run tp @a {x} {y} {z} {rotation[0]} {rotation[1]}")
         # Vol en creatif maintenu : double saut simule par l'API de vol.
         commande(f"execute in cambocraft:cambodia run tp @a {x} {y} {z} {rotation[0]} {rotation[1]}")
