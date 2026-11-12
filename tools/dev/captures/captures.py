@@ -456,8 +456,8 @@ def main() -> int:
     # --- verification de sanite : un bloc d'or de 3x3, camera dessus, regard vers le bas ---
     print("== verification de sanite du rendu ==")
     avant = len(sortie_serveur.lignes)
-    commande(f"execute in cambocraft:cambodia run fill -2 {Y+10} -2 2 {Y+10} 2 minecraft:gold_block")
-    commande(f"execute in cambocraft:cambodia run tp @a 0 {Y+16} 0 0 85")
+    commande(f"execute in cambocraft:cambodia run fill -2 {Y} -2 2 {Y} 2 minecraft:gold_block")
+    commande(f"execute in cambocraft:cambodia run tp @a 0 {Y+3} 0 0 80")
     commande("execute in cambocraft:cambodia run data get entity Cambocraft Pos")
     time.sleep(5)
     with sortie_serveur.verrou:
@@ -478,13 +478,16 @@ def main() -> int:
 
     # --- verification des systemes : entites et commande /cambocraft ---
     print("== verification des systemes (entites + commandes) ==")
-    commande("execute in cambocraft:cambodia run summon cambocraft:artisan 2 210 6")
-    commande("execute in cambocraft:cambodia run summon cambocraft:gardien -2 210 6")
+    commande(f"execute in cambocraft:cambodia run fill -5 {Y} 0 5 {Y} 10 cambocraft:pierre_du_lotus_polie")
+    # Les entites doivent naitre SUR le plateau (y = Y+1), pas en dessous : une entite
+    # apparue dans le vide tombe et sort du champ.
+    commande(f"execute in cambocraft:cambodia run summon cambocraft:artisan 2 {Y+1} 6")
+    commande(f"execute in cambocraft:cambodia run summon cambocraft:gardien -2 {Y+1} 6")
     for sous in ("statut", "boss", "carnet"):
         commande(f"cambocraft {sous}")
     time.sleep(3)
-    commande(f"execute in cambocraft:cambodia run tp @a 0 {Y+3} 14 180 6")
-    time.sleep(6)
+    commande(f"execute in cambocraft:cambodia run tp @a 0 {Y+4} 14 180 6")
+    time.sleep(8)
     for _ in range(20):
         with sortie_client.verrou:
             derniers = " ".join(sortie_client.lignes[-5:])
