@@ -277,6 +277,14 @@ def capture_ecran(destination):
     return os.path.exists(destination) and os.path.getsize(destination) > 0
 
 
+def cliquer(x, y, double=False):
+    """Clique a des coordonnees physiques de la fenetre X."""
+    subprocess.run(["xdotool", "mousemove", str(x), str(y)], capture_output=True, timeout=30)
+    time.sleep(0.3)
+    subprocess.run(["xdotool", "click", "--repeat", "2" if double else "1", "--delay", "120", "1"],
+                   capture_output=True, timeout=30)
+
+
 def appuyer(*touches):
     for combinaison in touches:
         subprocess.run(["xdotool", "key", "--clearmodifiers", combinaison],
@@ -354,19 +362,24 @@ def main() -> int:
     client = demarrer_client(args.client, args.largeur, args.hauteur, f"127.0.0.1:{PORT}")
     sortie_client = Flux(client, "client")
 
-    connecte = sortie_serveur.attendre(MOTIF_CONNEXION, 150, "arrivee du joueur (quickPlay)")
+    connecte = sortie_serveur.attendre(MOTIF_CONNEXION, 120, "arrivee du joueur (quickPlay)")
     if not connecte:
-        # Secours : navigation au clavier depuis l'ecran titre.
-        # Tab, Tab -> bouton « Multijoueur », Entree ; puis Entree sur le serveur
-        # deja present dans servers.dat.
-        print("   quickPlay sans effet : navigation clavier de secours")
-        for tentative in range(4):
-            appuyer("Tab", "Tab", "Return")
-            time.sleep(4)
-            appuyer("Return")
-            if sortie_serveur.attendre(MOTIF_CONNEXION, 25, f"joueur (tentative {tentative + 1})"):
-                connecte = True
-                break
+        # Secours par l'interface : on capture chaque etape pour diagnostic.
+        # Ecran titre 1280x720, guiScale 2 -> zone logique 640x360.
+        print("   quickPlay sans effet : connexion par l'interface")
+        appuyer("Escape", "Escape")
+        time.sleep(3)
+        capture_ecran(os.path.join(args.sortie, "00-ecran-titre.png"))
+        # Bouton « Multijoueur » : x = 320 logique, y = 90 + 48 + 24 = 162 logique.
+        cliquer(args.largeur // 2, int(args.hauteur * 162 / 360))
+        time.sleep(4)
+        capture_ecran(os.path.join(args.sortie, "01-multijoueur.png"))
+        # Premiere entree de la liste de serveurs, puis bouton « Rejoindre ».
+        cliquer(args.largeur // 2, int(args.hauteur * 60 / 360))
+        time.sleep(1)
+        capture_ecran(os.path.join(args.sortie, "02-serveur-selectionne.png"))
+        cliquer(int(args.largeur * 241 / 640), int(args.hauteur * 342 / 360))
+        connecte = bool(sortie_serveur.attendre(MOTIF_CONNEXION, 120, "joueur (interface)"))
     if not connecte:
         print("!! Le joueur ne s'est jamais connecte. Capture de l'ecran courant :")
         os.makedirs(args.sortie, exist_ok=True)
