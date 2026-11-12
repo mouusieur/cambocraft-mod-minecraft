@@ -83,12 +83,16 @@ jobs:
 
       - name: Préparer le client Minecraft
         run: |
-          python3 tools/dev/captures/client.py "$RUNNER_TEMP/client" 1.21.1
+          set -x
+          python3 tools/dev/captures/client.py "$RUNNER_TEMP/client" 1.21.1 || {
+            echo "::error title=client.py a echoue::code $?"; exit 1; }
           mkdir -p "$RUNNER_TEMP/client/mods"
-          cp build/libs/cambocraft-1.0.0.jar "$RUNNER_TEMP/client/mods/"
+          cp build/libs/cambocraft-1.0.0.jar "$RUNNER_TEMP/client/mods/" || {
+            echo "::error title=jar du mod absent::$(ls -la build/libs 2>&1 | tr '\n' '|')"; exit 1; }
           API=$(grep '^fabric_version=' gradle.properties | cut -d= -f2 | cut -d+ -f1)
           curl -fsSL -o "$RUNNER_TEMP/client/mods/fabric-api.jar" \
-            "https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/$API+1.21.1/fabric-api-$API+1.21.1.jar"
+            "https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/$API+1.21.1/fabric-api-$API+1.21.1.jar" || {
+            echo "::error title=fabric-api indisponible::$API+1.21.1"; exit 1; }
 
       - name: Installer Fabric Loader dans le client
         run: |
