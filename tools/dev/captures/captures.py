@@ -410,8 +410,10 @@ def main() -> int:
         print(f"== scene {nom} ({fichier}) ==")
         # Volume degage : le terrain naturel de cambodia monte au-dessus de la camera,
         # sans cela le joueur se retrouve dans la roche et la capture est noire.
-        commande("execute in cambocraft:cambodia run fill -24 56 -24 24 96 24 air")
-        time.sleep(2)
+        # /fill est limite a 32 768 blocs par commande : on decoupe en tranches de 8.
+        for y0 in range(56, 96, 8):
+            commande(f"execute in cambocraft:cambodia run fill -24 {y0} -24 24 {y0 + 7} 24 air")
+        time.sleep(3)
         for cmd in constructeur():
             commande(f"execute in cambocraft:cambodia run {cmd}")
         time.sleep(3)
