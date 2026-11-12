@@ -147,10 +147,10 @@ def scene_vegetation():
 
 SCENES = {
     # nom : (constructeur, position du joueur, rotation (yaw, pitch), nom de fichier)
-    "portail": (scene_portail, (0.5, 63.5, 15.0), (0.0, 18.0), "portail-du-lotus"),
-    "cite": (scene_cite, (0.5, 67.0, 26.0), (0.0, 16.0), "cite-khmere"),
-    "interieur": (scene_interieur, (1.5, 62.5, 6.5), (14.0, 12.0), "atelier"),
-    "vegetation": (scene_vegetation, (0.5, 73.0, 22.0), (0.0, 30.0), "rizieres"),
+    "portail": (scene_portail, (0.5, 63.5, 15.0), (180.0, 18.0), "portail-du-lotus"),
+    "cite": (scene_cite, (0.5, 67.0, 26.0), (180.0, 16.0), "cite-khmere"),
+    "interieur": (scene_interieur, (1.5, 62.5, 6.5), (194.0, 12.0), "atelier"),
+    "vegetation": (scene_vegetation, (0.5, 73.0, 22.0), (180.0, 30.0), "rizieres"),
 }
 
 
