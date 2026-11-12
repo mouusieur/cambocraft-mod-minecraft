@@ -1,6 +1,7 @@
 name: build
 
-# Compile le mod avec Gradle / Fabric Loom et publie le .jar en artefact.
+# Compile le mod avec Gradle / Fabric Loom, vérifie le contenu du .jar,
+# publie le .jar en artefact et l'attache à la release GitHub.
 # Les runners GitHub ont accès à maven.fabricmc.net et aux dépôts Mojang,
 # ce dont l'environnement de développement hors ligne ne dispose pas.
 on:
@@ -42,6 +43,47 @@ jobs:
           echo "code=$?" >> "$GITHUB_OUTPUT"
           exit 0
 
+      - name: Vérifier le contenu du .jar
+        id: verify
+        if: steps.gradle.outputs.code == '0'
+        run: |
+          python3 - <<'PY' > "$RUNNER_TEMP/verify.log" 2>&1
+          import glob, json, zipfile, os, sys
+          jars = [p for p in glob.glob("build/libs/*.jar") if "sources" not in p]
+          assert len(jars) == 1, f"jars trouvés : {jars}"
+          jar = jars[0]
+          print("Fichier :", jar, f"({os.path.getsize(jar)} octets)")
+          z = zipfile.ZipFile(jar)
+          bad = z.testzip()
+          print("Intégrité zip :", "OK" if bad is None else f"CORROMPU ({bad})")
+          names = z.namelist()
+          print("Entrées :", len(names))
+          classes = [n for n in names if n.endswith(".class")]
+          print("Classes .class :", len(classes))
+          print("  dont com/cambocraft :", len([c for c in classes if c.startswith("com/cambocraft/")]))
+          print("  dont net/minecraft (ne doit pas apparaître) :", len([c for c in classes if c.startswith("net/minecraft/")]))
+          print("Assets :", len([n for n in names if n.startswith("assets/")]))
+          print("Data   :", len([n for n in names if n.startswith("data/")]))
+          meta = json.loads(z.read("fabric.mod.json"))
+          print("fabric.mod.json : id =", meta["id"], "| version =", meta["version"])
+          print("  entrypoints :", ", ".join(f"{k}={v}" for k, v in meta["entrypoints"].items()))
+          print("  depends :", meta["depends"])
+          must = ["com/cambocraft/Cambocraft.class", "com/cambocraft/client/CambocraftClient.class",
+                  "assets/cambocraft/icon.png"]
+          for m in must:
+              print(("  présent  " if m in names else "  MANQUANT ") + m)
+          pngs = [n for n in names if n.endswith(".png")]
+          oggs = [n for n in names if n.endswith(".ogg")]
+          jsons = [n for n in names if n.endswith(".json")]
+          print(f"Bilan médias : {len(pngs)} PNG, {len(oggs)} OGG, {len(jsons)} JSON")
+          # Les textures attendues par chaque modèle d'objet doit exister.
+          modeles = [n for n in jsons if n.startswith("assets/cambocraft/models/")]
+          attributs = [n for n in jsons if n.startswith("assets/cambocraft/blockstates/")]
+          print(f"Modèles : {len(modeles)} | blockstates : {len(attributs)}")
+          print("RÉSULTAT :", "OK" if bad is None and len(classes) >= 100 else "ANOMALIE")
+          PY
+          cat "$RUNNER_TEMP/verify.log"
+
       - name: Publier le journal de compilation (check run)
         if: always()
         env:
@@ -50,8 +92,12 @@ jobs:
         run: |
           python3 - <<'PY'
           import json, os, subprocess
-          log = os.path.join(os.environ["RUNNER_TEMP"], "gradle.log")
-          text = open(log, encoding="utf-8", errors="replace").read() if os.path.exists(log) else "(aucun journal)"
+          parts = []
+          for nom in ("gradle.log", "verify.log"):
+              p = os.path.join(os.environ["RUNNER_TEMP"], nom)
+              if os.path.exists(p):
+                  parts.append("=== " + nom + " ===\n" + open(p, encoding="utf-8", errors="replace").read())
+          text = "\n".join(parts) or "(aucun journal)"
           text = text[-55000:]
           ok = os.environ.get("RESULT", "0") == "0"
           body = {
@@ -60,8 +106,8 @@ jobs:
               "status": "completed",
               "conclusion": "success" if ok else "failure",
               "output": {
-                  "title": "Journal Gradle" + ("" if ok else " — échec"),
-                  "summary": "Bras de compilation du mod Cambocraft.",
+                  "title": "Journal Gradle et vérification du jar" + ("" if ok else " — échec"),
+                  "summary": "Compilation du mod Cambocraft et contrôle du contenu du .jar.",
                   "text": "```\n" + text + "\n```",
               },
           }
@@ -71,12 +117,29 @@ jobs:
                           "--input", "body.json"], check=False)
           PY
 
-      - name: Publier le .jar
+      - name: Publier le .jar (artefact de build)
         if: steps.gradle.outputs.code == '0'
         uses: actions/upload-artifact@v4
         with:
           name: cambocraft-jar
           path: build/libs/*.jar
+
+      - name: Publier la release téléchargeable
+        if: steps.gradle.outputs.code == '0' && github.event_name == 'push'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.0
+          name: Cambocraft 1.0.0 — Minecraft 1.21.1 (Fabric)
+          body: |
+            **Cambocraft 1.0.0** pour Minecraft **1.21.1** (Fabric).
+
+            ### Installation
+            1. Installe **Fabric Loader 0.16.14** (ou plus récent) pour Minecraft 1.21.1.
+            2. Télécharge le `.jar` ci-dessous et place-le dans le dossier `mods/` de ton instance.
+            3. Installe **Fabric API 0.116.18+1.21.1** dans le même dossier `mods/`.
+            4. Lance le jeu ; la dimension `cambocraft:cambodia` s'ouvre via le **Portail du Lotus**.
+          files: build/libs/cambocraft-1.0.0.jar
+          fail_on_unmatched_files: true
 
       - name: Liste des fichiers produits
         if: always()
