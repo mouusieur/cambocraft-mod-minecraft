@@ -154,8 +154,8 @@ def scene_vegetation():
 
 SCENES = {
     # nom : (constructeur, position du joueur, rotation (yaw, pitch), nom de fichier)
-    "portail": (scene_portail, (0.5, 63.5, 15.0), (180.0, 18.0), "portail-du-lotus"),
-    "cite": (scene_cite, (0.5, 67.0, 26.0), (180.0, 16.0), "cite-khmere"),
+    "portail": (scene_portail, (0.5, 64.0, 17.0), (180.0, 20.0), "portail-du-lotus"),
+    "cite": (scene_cite, (0.5, 68.0, 25.0), (180.0, 18.0), "cite-khmere"),
     "interieur": (scene_interieur, (1.5, 62.5, 6.5), (194.0, 12.0), "atelier"),
     "vegetation": (scene_vegetation, (0.5, 73.0, 22.0), (180.0, 30.0), "rizieres"),
 }
@@ -318,6 +318,12 @@ def ecrire_options(repertoire):
         "narrator": "0",
         "pauseOnLostFocus": "false",
         "fullscreen": "false",
+        # Le tutoriel vanilla affiche un encart « Move with WASD » pendant les
+        # premieres minutes : on le desactive pour des captures propres.
+        "tutorialStep": "none",
+        "skipMultiplayerWarning": "true",
+        "joinedFirstServer": "true",
+        "onboardAccessibility": "false",
     }
     with open(os.path.join(repertoire, "options.txt"), "w", encoding="utf-8") as fichier:
         for cle, valeur in options.items():
@@ -408,7 +414,12 @@ def main() -> int:
     print("== joueur connecte ==")
     time.sleep(10)
 
-    commande("gamemode creative @a")
+    # Mode spectateur : en creatif, le bras du joueur (texture de peau orange)
+    # occupe le coin bas-droit de chaque capture. En spectateur il disparait.
+    commande("gamemode spectator @a")
+    # On masque le message de tutoriel vanilla (« Move with WASD »), qui reste
+    # affiche plusieurs minutes apres la connexion et pollue les captures.
+    commande("gamerule doDaylightCycle false")
     commande("execute in cambocraft:cambodia run forceload add -64 -64 64 64")
     time.sleep(4)
     # Vol stationnaire : sans cela, le joueur tombe dans le vide pendant la construction
@@ -445,10 +456,10 @@ def main() -> int:
             continue
         constructeur, position, rotation, fichier = SCENES[nom]
         print(f"== scene {nom} ({fichier}) ==")
-        # Volume degage : le terrain naturel de cambodia monte au-dessus de la camera,
-        # sans cela le joueur se retrouve dans la roche et la capture est noire.
-        # /fill est limite a 32 768 blocs par commande : on decoupe en tranches de 8.
-        for y0 in range(56, 140, 6):
+        # Studio aerien : on degage un volume bien plus large que la scene pour que
+        # les parois de terre du terrain naturel n'apparaissent pas dans le champ.
+        # /fill est limite a 32 768 blocs : 65x6x65 = 25 350 blocs par tranche.
+        for y0 in range(56, 152, 6):
             commande(f"execute in cambocraft:cambodia run fill -32 {y0} -32 32 {y0 + 5} 32 air")
         time.sleep(3)
         for cmd in constructeur():
