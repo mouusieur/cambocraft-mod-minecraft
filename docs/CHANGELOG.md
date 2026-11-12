@@ -65,3 +65,22 @@ Toutes les évolutions notables du mod sont consignées par phase de développem
 
 
 
+
+---
+
+## Phase 8 — Compilation réelle et jar jouable (2026-11-12)
+
+- **Build Fabric/Loom effectif** : `./gradlew build` produit `build/libs/cambocraft-1.0.0.jar`
+  (1 219 725 octets), remappé en intermédiaire, vérifié automatiquement (2 592 entrées,
+  128 classes `com/cambocraft`, 0 référence Yarn résiduelle, version de classe Java 21).
+- **Correction du classpath de test** : `sourceSets.test` hérite du classpath Minecraft, ce qui
+  corrige `class file for net.minecraft.world.World not found` ; la campagne maison `TestMain`
+  est exposée par le task Gradle `camboTest` et `test` (JUnit absent du dépôt) est désactivé.
+- **Tests d'intégration en conditions réelles** : un job CI installe Minecraft 1.21.1 +
+  Fabric Loader, dépose le jar et Fabric API dans `mods/`, démarre un serveur et vérifie
+  `Cambocraft : initialisation du contenu de base`, `Cambocraft : 220 blocs, 199 objets et
+  15 biomes initialisés` puis `Done (…)` — serveur prêt en 10,3 s, sans crash.
+- **Publication** : release GitHub `v1.0.0` avec le jar téléchargeable, README mis à jour avec
+  le lien direct et la procédure d'installation (Fabric Loader 0.16.14+, Fabric API 0.116.18).
+- **Documentation** : `docs/TECHNIQUE.md` gagne la section « Chaîne de compilation
+  Fabric/Loom (production) » décrivant commands, contenu du jar et jobs CI.

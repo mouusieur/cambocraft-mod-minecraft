@@ -42,3 +42,53 @@ Version : `1.0.0` · Minecraft `1.21.1` · Yarn `1.21.1+build.3` · Fabric Loade
 - `python3 tools/sim_gacha.py` : exécute `5 000 000` de tirages sans pity + `5 000 000` de tirages avec pity et génère `docs/EQUILIBRAGE.md`.
 - `python3 tools/validate.py` : contrôle l'intégralité des **1 889 fichiers JSON**, **128 fichiers NBT**, **360 PNG** et **12 fichiers OGG** (**0 erreur**).
 - `bash tools/dev/apicheck/check.sh` : auto-amorce la chaîne Java 21 / JDT + stubs Yarn `1.21.1+build.3`, compile les **124 classes** du mod et exécute les **10 suites de tests unitaires** (**0 échec**).
+
+---
+
+## 3. Chaîne de compilation Fabric/Loom (production)
+
+Le contrôle hors ligne (`check.sh`) valide les noms et les types contre des stubs Yarn ; il ne
+produit pas d'artefact exécutable. Le jar réel est construit par **Gradle + Fabric Loom**, qui
+télécharge Minecraft 1.21.1, applique les mappings Yarn puis remappe en intermédiaire.
+
+### Commandes locales
+
+```bash
+./gradlew build        # -> build/libs/cambocraft-1.0.0.jar (jar jouable, remappé)
+./gradlew camboTest    # -> exécute com.cambocraft.test.TestMain (noyau de règles, sans JUnit)
+./gradlew runServer    # -> serveur de développement avec le mod chargé
+```
+
+`./gradlew test` est volontairement désactivé : le dépôt ne contient pas de tests JUnit, la
+campagne de tests est pilotée par `TestMain` et exposée sous le nom `camboTest`.
+
+### Contenu du jar produit
+
+| Élément | Valeur |
+| --- | --- |
+| Taille | 1 219 725 octets (~1,2 Mo) |
+| Entrées totales | 2 592 |
+| Classes `com/cambocraft` | 128 (124 fichiers sources + 4 classes internes générées par le compilateur, toutes remappées en intermédiaire) |
+| Assets | 1 393 (360 PNG, 12 OGG, 779 modèles, 220 blockstates) |
+| Données | 1 047 (recipes, loot tables, tags, worldgen, structures `.nbt`) |
+| `fabric.mod.json` | `id = cambocraft`, `version = 1.0.0` (variable `${version}` expansée par Loom) |
+| Version de classe Java | 65 (Java 21) |
+
+### Intégration continue (`.github/workflows/build.yml`)
+
+Deux jobs s'exécutent à chaque `push` :
+
+1. **`build`** — `./gradlew build`, puis vérification programmatique du jar : intégrité zip,
+   nombre de classes, présence des points d'entrée, **absence de référence Yarn résiduelle**
+   (contrôle sur les constantes `CONSTANT_Class` et les descripteurs de linkage uniquement, en
+   excluant les 14 classes non obfusquées de Minecraft comme `MinecraftServer`), version de
+   classe Java 21. Le jar est publié en artefact et attaché à la release `v1.0.0`.
+2. **`serveur`** — installe Minecraft 1.21.1 + Fabric Loader via l'installeur officiel, dépose
+   le jar et Fabric API dans `mods/`, démarre le serveur 4 minutes et vérifie dans le journal
+   la présence de `Cambocraft : initialisation du contenu de base`, de la ligne
+   `Cambocraft : 220 blocs, 199 objets et 15 biomes initialisés` et de `Done (…)`, sans
+   `ModResolutionException`.
+
+Le journal complet de chaque job est republié dans un *check run* (`cambocraft-build-log`,
+`cambocraft-serveur-test`), lisible via l'API GitHub même quand les artefacts de logs sont
+inaccessibles.
