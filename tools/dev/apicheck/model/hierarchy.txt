@@ -130,3 +130,19 @@ super Registry : -, java.lang.Iterable<T>
 enum ResourceType
 enum ActionResult
 super BlockPos : Vec3i
+
+# --- IA : sans ces liens, GoalSelector.add(int, Goal) n'accepte aucune sous-classe ---
+super Goal : -
+super MeleeAttackGoal : Goal
+super WanderAroundFarGoal : Goal
+super LookAtEntityGoal : Goal
+super LookAroundGoal : Goal
+super ActiveTargetGoal : Goal
+super TrackTargetGoal : Goal
+
+# --- rendus vanilla utilises comme base (le stub Yarn perd la super-classe) ---
+super VillagerEntityRenderer : EntityRenderer
+super ZombieEntityRenderer : EntityRenderer
+super LivingEntityRenderer : EntityRenderer
+super MobEntityRenderer : LivingEntityRenderer
+super EntityRenderer : -

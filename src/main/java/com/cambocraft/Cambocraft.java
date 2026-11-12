@@ -1,6 +1,8 @@
 package com.cambocraft;
 
 import com.cambocraft.combat.CombatRegistry;
+import com.cambocraft.command.CamboCommand;
+import com.cambocraft.entity.CamboEntities;
 import com.cambocraft.craft.CookingRegistry;
 import com.cambocraft.data.DataManager;
 import com.cambocraft.ecology.WorldAtmosphere;
@@ -17,6 +19,7 @@ import com.cambocraft.util.Log;
 import com.cambocraft.world.CambodiaDimension;
 import com.cambocraft.world.LotusPortal;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 
 /**
  * Point d'entrée commun (client et serveur) de Cambocraft.
@@ -48,6 +51,12 @@ public class Cambocraft implements ModInitializer {
         DataManager.init();
         LotusPortal.init();
         WorldAtmosphere.init();
+        // Entités : sans cet enregistrement, les 16 PNJ et les 12 boss du catalogue
+        // n'existaient que sous forme de fichiers JSON.
+        CamboEntities.register();
+        // Commandes : surface de jeu et de diagnostic de tous les sous-systèmes.
+        CommandRegistrationCallback.EVENT.register((dispatcher, registre, environnement) ->
+                CamboCommand.register(dispatcher));
         Log.info(
                 "Cambocraft : {} blocs, {} objets et {} biomes initialisés",
                 CamboBlocks.ALL.size(),

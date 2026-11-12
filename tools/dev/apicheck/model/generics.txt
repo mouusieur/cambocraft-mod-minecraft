@@ -14,6 +14,7 @@ generic TrackedData <T>
 generic RegistryWrapper <T>
 generic RegistryWrapper.Impl <T>
 generic RegistryWrapper.WrapperLookup <T>
+generic EntityType <T extends net.minecraft.entity.Entity>
 generic State <O, S>
 generic ComponentType <T>
 generic Component <T>
@@ -22,3 +23,4 @@ generic CustomPayload.Id <T>
 generic CustomPayload.Type <B, T>
 generic PacketCodec <B, V>
 generic ConfiguredFeature <FC, F>
+generic ActiveTargetGoal <T extends net.minecraft.entity.LivingEntity>

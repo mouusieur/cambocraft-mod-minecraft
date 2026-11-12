@@ -43,9 +43,34 @@ BLOCS_A_CONSTRUCTEUR = {
     'net/minecraft/block/Block',
 }
 
+# Constructeurs herites que Yarn n'enumere pas dans la classe fille (Enigma ne les copie pas).
+# Sans eux, une sous-classe du mod ne peut pas appeler `super(type, world)`.
+# Visibilite reelle des methodes : Yarn ne la donne pas (tout est emis `public`).
+VISIBILITE = {
+    ('net/minecraft/entity/mob/MobEntity', 'initGoals'): 'public',
+}
+
+CONSTRUCTEURS_HERITES = {
+    'net/minecraft/entity/mob/PathAwareEntity': [
+        '(net.minecraft.entity.EntityType p0, net.minecraft.world.World p1)',
+    ],
+    'net/minecraft/entity/mob/MobEntity': [
+        '(net.minecraft.entity.EntityType p0, net.minecraft.world.World p1)',
+    ],
+    'net/minecraft/entity/passive/PassiveEntity': [
+        '(net.minecraft.entity.EntityType p0, net.minecraft.world.World p1)',
+    ],
+}
+
 # Methodes statiques que Yarn ne marque pas `static` (il n'indique pas ce modificateur).
 # Sans cette table, le controle hors ligne rejette un appel correct.
 METHODES_STATIQUES = {
+    'net/minecraft/entity/mob/HostileEntity': {'createHostileAttributes'},
+    'net/minecraft/entity/mob/MobEntity': {'createMobAttributes'},
+    'net/minecraft/entity/passive/PassiveEntity': {'createPassiveAttributes'},
+    'net/minecraft/entity/animal/AnimalEntity': {'createAnimalAttributes'},
+    'net/minecraft/entity/attribute/DefaultAttributeContainer'
+    'net/minecraft/entity/EntityType': set(),
     'net/minecraft/client/render/RenderLayer': {
         'getSolid', 'getCutout', 'getCutoutMipped', 'getTranslucent', 'getTranslucentMovingBlock',
         'getTripwire', 'getEntitySolid', 'getEntityCutout', 'getEntityCutoutNoCull',
@@ -366,6 +391,9 @@ class Gen:
                     out.append('%spublic %s(net.minecraft.block.AbstractBlock.Settings p0) { }' % (ip, simple))
             if kind == 'class' and not has_noarg_ctor:
                 out.append('%spublic %s() { }' % (ip, simple))
+            if kind == 'class':
+                for signature in CONSTRUCTEURS_HERITES.get(name, ()):
+                    out.append('%spublic %s%s { }' % (ip, simple, signature))
             for (cn, mn), decls in m.sig.items():
                 if cn == name:
                     for d in decls: out.append(ip + d)

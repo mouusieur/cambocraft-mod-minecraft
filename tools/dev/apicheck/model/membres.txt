@@ -193,3 +193,57 @@ add Identifier :: public int hashCode() { return java.util.Objects.hash(this.nam
 sig RegistryKey of :: public static <T> RegistryKey<T> of(RegistryKey<? extends Registry<T>> reg, Identifier val) { RegistryKey<T> k = new RegistryKey<>(); k.value = val; return k; }
 sig RegistryKey ofRegistry :: public static <T> RegistryKey<Registry<T>> ofRegistry(Identifier id) { RegistryKey<Registry<T>> k = new RegistryKey<>(); k.value = id; return k; }
 sig RegistryKey getValue :: public Identifier getValue() { return this.value; }
+
+# --- SpawnGroup : constantes d'enumeration presentes dans les constantes statiques Yarn ---
+add SpawnGroup :: public static final SpawnGroup MONSTER = null;
+add SpawnGroup :: public static final SpawnGroup CREATURE = null;
+add SpawnGroup :: public static final SpawnGroup AMBIENT = null;
+add SpawnGroup :: public static final SpawnGroup WATER_CREATURE = null;
+add SpawnGroup :: public static final SpawnGroup MISC = null;
+
+# --- EntityType.EntityFactory : interface fonctionnelle (Yarn ne la marque pas comme telle) ---
+interface EntityType.EntityFactory
+add EntityType.EntityFactory :: net.minecraft.entity.Entity create(net.minecraft.entity.EntityType p0, net.minecraft.world.World p1);
+# Une methode `default` n'est pas une cible de lambda : on la rend abstraite.
+sig EntityType.EntityFactory create :: net.minecraft.entity.Entity create(net.minecraft.entity.EntityType p0, net.minecraft.world.World p1);
+
+# --- Formatting : constantes d'enumeration (Yarn ne mappe pas les constantes d'enum).
+# Note : la directive `const` est stockee par le parseur mais jamais emise ; on passe par `add`.
+add Formatting :: public static final Formatting GOLD = null;
+add Formatting :: public static final Formatting YELLOW = null;
+add Formatting :: public static final Formatting GREEN = null;
+add Formatting :: public static final Formatting RED = null;
+add Formatting :: public static final Formatting GRAY = null;
+add Formatting :: public static final Formatting WHITE = null;
+add Formatting :: public static final Formatting AQUA = null;
+add Formatting :: public static final Formatting LIGHT_PURPLE = null;
+add Formatting :: public static final Formatting DARK_GREEN = null;
+add Formatting :: public static final Formatting DARK_RED = null;
+add Formatting :: public static final Formatting BOLD = null;
+add Formatting :: public static final Formatting ITALIC = null;
+add Formatting :: public static final Formatting UNDERLINE = null;
+
+# --- ClickEvent.Action / HoverEvent.Action : constantes d'enumeration ---
+add ClickEvent.Action :: public static final ClickEvent.Action RUN_COMMAND = null;
+add ClickEvent.Action :: public static final ClickEvent.Action SUGGEST_COMMAND = null;
+add ClickEvent.Action :: public static final ClickEvent.Action OPEN_URL = null;
+add HoverEvent.Action :: public static final HoverEvent.Action SHOW_TEXT = null;
+add HoverEvent.Action :: public static final HoverEvent.Action SHOW_ITEM = null;
+
+# --- EntityType : `create(World)` renvoie le type generique, pas `Entity` ---
+sig EntityType create :: public T create(net.minecraft.world.World p0) { throw new RuntimeException(); }
+# --- World : l'apparition d'entite est declaree sur World ---
+add World :: public boolean spawnEntity(net.minecraft.entity.Entity p0) { throw new RuntimeException(); }
+
+# --- EntityRendererFactory : interface fonctionnelle (Yarn l'emet comme une classe) ---
+interface EntityRendererFactory
+sig EntityRendererFactory create :: public net.minecraft.client.render.entity.EntityRenderer create(net.minecraft.client.render.entity.EntityRendererFactory.Context p0);
+generic EntityRenderer <T extends net.minecraft.entity.Entity>
+
+# --- Rends d'entites vanilla reutilises : generiques comme dans Yarn ---
+generic LivingEntityRenderer <T extends net.minecraft.entity.LivingEntity>
+generic MobEntityRenderer <T extends net.minecraft.entity.mob.MobEntity>
+
+# --- Constructeurs des rendus vanilla (Context) : Yarn ne les enumere pas ---
+add VillagerEntityRenderer :: public VillagerEntityRenderer(net.minecraft.client.render.entity.EntityRendererFactory.Context p0) { }
+add ZombieEntityRenderer :: public ZombieEntityRenderer(net.minecraft.client.render.entity.EntityRendererFactory.Context p0) { }
