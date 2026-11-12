@@ -16,6 +16,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+import time
 import urllib.request
 import zipfile
 from concurrent.futures import ThreadPoolExecutor
@@ -24,20 +25,34 @@ MANIFESTE = "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json"
 VERSION_DEFAUT = "1.21.1"
 
 
-def telecharger(url: str, destination: str) -> str:
-    """Telecharge `url` vers `destination` (idempotent : ne refait rien si deja present)."""
+def telecharger(url: str, destination: str, essais: int = 5) -> str:
+    """Telecharge `url` vers `destination` (idempotent : ne refait rien si deja present).
+
+    Les serveurs de Mojang renvoient parfois des erreurs transitoires (5xx, coupure
+    au milieu du flux) : on reessaie avec un delai croissant avant d'abandonner.
+    """
     if os.path.exists(destination) and os.path.getsize(destination) > 0:
         return destination
     os.makedirs(os.path.dirname(destination) or ".", exist_ok=True)
     temporaire = destination + ".part"
-    with urllib.request.urlopen(url, timeout=60) as reponse, open(temporaire, "wb") as sortie:
-        while True:
-            bloc = reponse.read(1 << 20)
-            if not bloc:
-                break
-            sortie.write(bloc)
-    os.replace(temporaire, destination)
-    return destination
+    derniere = None
+    for essai in range(essais):
+        try:
+            with urllib.request.urlopen(url, timeout=120) as reponse, open(temporaire, "wb") as sortie:
+                while True:
+                    bloc = reponse.read(1 << 20)
+                    if not bloc:
+                        break
+                    sortie.write(bloc)
+            os.replace(temporaire, destination)
+            return destination
+        except Exception as erreur:  # noqa: BLE001 — on veut reessayer sur tout echec reseau
+            derniere = erreur
+            print(f"   echec du telechargement ({essai + 1}/{essais}) {url} : {erreur}", flush=True)
+            if os.path.exists(temporaire):
+                os.unlink(temporaire)
+            time.sleep(2 ** essai)
+    raise RuntimeError(f"telechargement impossible apres {essais} essais : {url} ({derniere})")
 
 
 def regles_acceptees(regles) -> bool:
