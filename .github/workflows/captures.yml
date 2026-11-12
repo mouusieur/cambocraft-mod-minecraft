@@ -49,7 +49,16 @@ jobs:
       - name: Compiler le mod
         run: |
           chmod +x gradlew
-          ./gradlew build --no-daemon --console=plain
+          # Les logs du runner ne sont pas toujours accessibles a l'agent : on
+          # capture la sortie de Gradle et on l'affiche en annotations de check run.
+          set +e
+          ./gradlew build --no-daemon --console=plain > gradle.log 2>&1
+          code=$?
+          if [ $code -ne 0 ]; then
+            echo "::error title=Gradle a echoue::$(grep -m 6 -E 'error:|error: |.java:[0-9]+' gradle.log | head -6 | tr '\n' '|')"
+            grep -m 40 -E 'error|FAILURE|What went wrong|cannot find symbol|symbol:|location:' gradle.log || true
+          fi
+          exit $code
 
       - name: Installer le rendu logiciel et Xvfb
         run: |
