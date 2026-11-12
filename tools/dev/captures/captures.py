@@ -56,10 +56,17 @@ def scene_portail():
         f"fill 10 59 -10 10 59 10 cambocraft:pierre_du_lotus_sculptee",
     ):
         c += [cote]
+    # Cadre 3x3 en anneau : le coeur occupe le centre, donc on ne pose pas de cadre
+    # sous lui (sinon il le masque completement).
     for dx in (-1, 0, 1):
         for dz in (-1, 0, 1):
+            if (dx, dz) == (0, 0):
+                continue
             c += [bloc(dx, 60, dz, "cadre_du_portail")]
     c += [bloc(0, 60, 0, "coeur_du_portail")]
+    # Murets de cadre sur les cotes : signale le portail de loin.
+    for dx, dz in ((-2, -2), (2, -2), (-2, 2), (2, 2)):
+        c += [f"fill {dx} 60 {dz} {dx} 62 {dz} cambocraft:cadre_du_portail"]
     for dx, dz in ((-3, -3), (3, -3), (-3, 3), (3, 3)):
         c += [f"fill {dx} 60 {dz} {dx} 63 {dz} cambocraft:pilier_de_lotus"]
         c += [bloc(dx, 64, dz, "cristal_de_lotus")]
