@@ -145,10 +145,10 @@ def scene_vegetation():
 
 SCENES = {
     # nom : (constructeur, position du joueur, rotation (yaw, pitch), nom de fichier)
-    "portail": (scene_portail, (0, 62.2, 15), (0.0, 14.0), "portail-du-lotus"),
-    "cite": (scene_cite, (0, 65.0, 24), (0.0, 16.0), "cite-khmere"),
-    "interieur": (scene_interieur, (0, 62.0, 6), (0.0, 6.0), "atelier"),
-    "vegetation": (scene_vegetation, (0, 67.0, 18), (0.0, 18.0), "rizieres"),
+    "portail": (scene_portail, (0.5, 64.0, 17.0), (0.0, 22.0), "portail-du-lotus"),
+    "cite": (scene_cite, (0.5, 68.0, 26.0), (0.0, 14.0), "cite-khmere"),
+    "interieur": (scene_interieur, (1.5, 62.5, 6.5), (14.0, 12.0), "atelier"),
+    "vegetation": (scene_vegetation, (0.5, 70.0, 20.0), (0.0, 24.0), "rizieres"),
 }
 
 
@@ -397,6 +397,9 @@ def main() -> int:
     commande("gamemode creative @a")
     commande("execute in cambocraft:cambodia run forceload add -64 -64 64 64")
     time.sleep(4)
+    # Vol stationnaire : sans cela, le joueur tombe dans le vide pendant la construction
+    # et la capture ne montre que du noir.
+    commande("execute in cambocraft:cambodia run tp @a 0 70 0 0 0")
 
     captures = []
     for nom in [s.strip() for s in args.scenes.split(",") if s.strip()]:
@@ -409,9 +412,23 @@ def main() -> int:
             commande(f"execute in cambocraft:cambodia run {cmd}")
         time.sleep(3)
         x, y, z = position
+        # Filet de securite : une plateforme sous la camera, pour ne jamais tomber.
+        commande(f"execute in cambocraft:cambodia run fill {int(x)-3} {int(y)-3} {int(z)-3} "
+                 f"{int(x)+3} {int(y)-3} {int(z)+3} cambocraft:pierre_du_lotus_polie")
+        commande(f"execute in cambocraft:cambodia run tp @a {x} {y} {z} {rotation[0]} {rotation[1]}")
+        # Vol en creatif maintenu : double saut simule par l'API de vol.
         commande(f"execute in cambocraft:cambodia run tp @a {x} {y} {z} {rotation[0]} {rotation[1]}")
         time.sleep(6)
 
+        # Diagnostic : position et dimension reelles du joueur.
+        avant_diag = len(sortie_serveur.lignes)
+        commande("execute in cambocraft:cambodia run data get entity @a Pos")
+        sortie_serveur.attendre(re.compile(r"has the following entity data"), 20, "position")
+        with sortie_serveur.verrou:
+            for ligne in sortie_serveur.lignes[avant_diag:]:
+                if "entity data" in ligne or "Pos" in ligne:
+                    print("   " + ligne)
+        time.sleep(2)
         cible = os.path.join(args.sortie, fichier + ".png")
         if capture_ecran(cible):
             captures.append(cible)
