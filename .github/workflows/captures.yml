@@ -11,9 +11,13 @@ on:
         required: false
         default: "portail,cite,interieur,vegetation"
   push:
+    # Declenchement large : permet de relancer une session de capture en poussant
+    # un commit ordinaire (le dispatch manuel n'est pas disponible pour l'agent).
     paths:
       - "tools/dev/captures/**"
       - ".github/workflows/captures.yml"
+      - "src/main/java/com/cambocraft/client/**"
+      - "src/main/resources/assets/cambocraft/models/**"
 
 permissions:
   contents: write
