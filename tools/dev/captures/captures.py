@@ -76,7 +76,9 @@ def scene_portail():
         c += [bloc(dx, Y + 1, dz, "lotus_rose" if (dx + dz) % 2 == 0 else "lotus_blanc")]
     for dx in range(-7, 8, 2):
         c += [bloc(dx, Y + 1, 7, "fleur_d_hibiscus")]
-    c += [bloc(0, Y + 5, -6, "lanterne_de_bambou"), bloc(0, Y + 5, 6, "lanterne_de_bambou")]
+    # Lanternes en fond de scene uniquement : placees cote camera (z positif), elles
+    # se retrouvaient au premier plan face a l'objectif.
+    c += [bloc(-3, Y + 5, -6, "lanterne_de_bambou"), bloc(3, Y + 5, -6, "lanterne_de_bambou")]
     c += [bloc(-6, Y + 1, -6, "teleporteur_de_lotus"), bloc(6, Y + 1, 6, "autel")]
     return c
 
@@ -133,8 +135,13 @@ def scene_interieur():
           bloc(-5, Y + 1, 5, "jarre"), bloc(-4, Y + 1, 5, "panier"),
           bloc(5, Y + 1, 5, "marmite"), bloc(5, Y + 1, 3, "encens"),
           bloc(0, Y + 1, 6, "tapis_de_soie_krama"), bloc(2, Y + 1, 6, "natte_de_jonc")]
-    for x in (-6, 0, 6):
-        c += [bloc(x, Y + 4, 7, "lanterne_de_bambou")]
+    # Eclairage : les lanternes sont au plafond, devant la camera, pour eclairer
+    # les etablis (sans elles, l'interieur est tres sombre).
+    for x in (-4, 0, 4):
+        c += [bloc(x, Y + 5, -3, "lanterne_de_bambou"), bloc(x, Y + 5, 3, "lanterne_de_bambou")]
+    # Deux etablis supplementaires pour remplir le champ.
+    c += [bloc(-2, Y + 1, 0, "marmite"), bloc(2, Y + 1, 0, "jarre"),
+          bloc(0, Y + 1, -2, "panier")]
     return c
 
 
@@ -176,8 +183,8 @@ SCENES = {
     "cite": (scene_cite, (0.5, Y + 6.0, 20.0), (180.0, 10.0), "cite-khmere"),
     # Camera a l'interieur de l'atelier (murs en z=+-8) : on cadre les etablis,
     # et non la facade depuis l'exterieur.
-    "interieur": (scene_interieur, (0.5, Y + 3.5, 6.0), (180.0, 8.0), "atelier"),
-    "vegetation": (scene_vegetation, (0.5, Y + 8.0, 24.0), (180.0, 14.0), "rizieres"),
+    "interieur": (scene_interieur, (0.5, Y + 3.0, 4.5), (180.0, 10.0), "atelier"),
+    "vegetation": (scene_vegetation, (0.5, Y + 12.0, 22.0), (180.0, 26.0), "rizieres"),
 }
 
 
