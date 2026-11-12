@@ -151,3 +151,8 @@ super EntityRenderer : -
 super FurnaceBlockEntity : LockableContainerBlockEntity, net.minecraft.screen.NamedScreenHandlerFactory
 super LockableContainerBlockEntity : BlockEntity
 super BlockEntity : -
+
+# --- blocs fonctionnels vanilla (le stub Yarn perd leurs super-classes) ---
+super AbstractFurnaceBlock : Block
+super Block : AbstractBlock
+super AbstractBlock : -

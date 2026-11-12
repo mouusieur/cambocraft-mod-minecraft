@@ -45,9 +45,23 @@ public final class Registrar {
      * les deux acceptent trois arguments, et le compilateur doit d'abord essayer la forme
      * générique — sinon {@code new PillarBlock(settings)} est rejeté.</p>
      */
+    /**
+     * Surcharge pour un bloc fonctionnel (sous-type de {@code Block}).
+     *
+     * <p>Le générateur de registre émet un type concret ; la surcharge générique ne s'applique pas
+     * quand Java ne peut pas inférer le paramètre de type à partir d'un sous-type.</p>
+     */
+    public static com.cambocraft.block.FourDeForgeBlock blockWithItem(
+            String path, com.cambocraft.block.FourDeForgeBlock block, Item.Settings itemSettings) {
+        Registry.register(Registries.BLOCK, Ids.id(path), (Block) block);
+        Registry.register(Registries.ITEM, Ids.id(path), new BlockItem(block, itemSettings));
+        return block;
+    }
+
+    /** Bloc associé à son objet d'inventaire (la très grande majorité des blocs). */
     public static <B extends Block> B blockWithItem(String path, B block, Item.Settings itemSettings) {
-        register(Registries.BLOCK, path, block);
-        register(Registries.ITEM, path, new BlockItem(block, itemSettings));
+        Registry.register(Registries.BLOCK, Ids.id(path), (Block) block);
+        Registry.register(Registries.ITEM, Ids.id(path), new BlockItem(block, itemSettings));
         return block;
     }
 
