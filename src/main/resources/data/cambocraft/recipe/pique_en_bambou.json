@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "BB",
+    "BB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:bamboo"
+    }
+  },
+  "result": {
+    "id": "cambocraft:pique_en_bambou",
+    "count": 1
+  }
+}

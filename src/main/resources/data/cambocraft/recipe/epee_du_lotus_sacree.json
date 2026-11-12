@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "  I",
+    " I ",
+    "S  "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "cambocraft:fil_de_soie",
+      "count": 1
+    }
+  },
+  "result": {
+    "id": "cambocraft:epee_du_lotus_sacree",
+    "count": 1
+  }
+}

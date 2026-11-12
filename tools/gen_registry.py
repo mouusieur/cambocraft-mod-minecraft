@@ -329,6 +329,12 @@ class Generateur:
         path = bloc.id
         m = bloc.modele
         ligne = []
+        # Bloc fonctionnel : le four de forge ouvre une interface de cuisson reelle.
+        if path == 'four_de_forge':
+            ligne.append('    public static final Block %s = Registrar.blockWithItem("%s", '
+                         'new com.cambocraft.block.FourDeForgeBlock(%s), new Item.Settings());'
+                         % (const, path, reglages))
+            return ''.join(ligne)
         if m == 'slab':
             ligne.append('    public static final Block %s = Registrar.blockWithItem("%s", new SlabBlock(%s), new Item.Settings());'
                          % (const, path, reglages))

@@ -247,3 +247,14 @@ generic MobEntityRenderer <T extends net.minecraft.entity.mob.MobEntity>
 # --- Constructeurs des rendus vanilla (Context) : Yarn ne les enumere pas ---
 add VillagerEntityRenderer :: public VillagerEntityRenderer(net.minecraft.client.render.entity.EntityRendererFactory.Context p0) { }
 add ZombieEntityRenderer :: public ZombieEntityRenderer(net.minecraft.client.render.entity.EntityRendererFactory.Context p0) { }
+
+# --- AbstractFurnaceBlock : constructeur et methode d'ouverture d'ecran ---
+add AbstractFurnaceBlock :: public AbstractFurnaceBlock(net.minecraft.block.AbstractBlock.Settings p0) { }
+add AbstractFurnaceBlock :: public void openScreen(net.minecraft.world.World p0, net.minecraft.util.math.BlockPos p1, net.minecraft.entity.player.PlayerEntity p2) { }
+add World :: public net.minecraft.block.entity.BlockEntity getBlockEntity(net.minecraft.util.math.BlockPos p0) { throw new RuntimeException(); }
+add Stats :: public static final net.minecraft.util.Identifier INTERACT_WITH_FURNACE = null;
+
+# --- NamedScreenHandlerFactory : interface (Yarn l'emet comme une classe) ---
+interface NamedScreenHandlerFactory
+add NamedScreenHandlerFactory :: default net.minecraft.screen.ScreenHandler createMenu(int p0, net.minecraft.entity.player.PlayerInventory p1, net.minecraft.entity.player.PlayerEntity p2) { throw new RuntimeException(); }
+add NamedScreenHandlerFactory :: default net.minecraft.text.Text getDisplayName() { throw new RuntimeException(); }

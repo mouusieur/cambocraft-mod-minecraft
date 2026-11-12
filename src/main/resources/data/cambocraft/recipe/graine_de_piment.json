@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cambocraft:graine_de_riz",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "cambocraft:graine_de_piment",
+    "count": 2
+  }
+}

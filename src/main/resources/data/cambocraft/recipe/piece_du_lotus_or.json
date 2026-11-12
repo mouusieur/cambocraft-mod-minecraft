@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "GGG",
+    "GLG",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "L": {
+      "item": "cambocraft:pierre_du_lotus_brute",
+      "count": 1
+    }
+  },
+  "result": {
+    "id": "cambocraft:piece_du_lotus_or",
+    "count": 4
+  }
+}

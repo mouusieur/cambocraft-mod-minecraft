@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": {
+    "item": "minecraft:clay_ball"
+  },
+  "result": {
+    "id": "cambocraft:brique_d_argile"
+  },
+  "experience": 0.3,
+  "cookingtime": 200
+}

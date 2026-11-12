@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "FF",
+    "FF"
+  ],
+  "key": {
+    "F": {
+      "item": "cambocraft:fil_de_soie",
+      "count": 1
+    }
+  },
+  "result": {
+    "id": "cambocraft:cocon_de_soie",
+    "count": 1
+  }
+}

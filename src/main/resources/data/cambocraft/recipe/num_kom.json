@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cambocraft:riz_cuit",
+      "count": 1
+    },
+    {
+      "item": "cambocraft:lotus_brut",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "cambocraft:num_kom",
+    "count": 1
+  }
+}

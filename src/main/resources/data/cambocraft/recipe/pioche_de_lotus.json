@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " L ",
+    "LRL",
+    " L "
+  ],
+  "key": {
+    "L": {
+      "item": "cambocraft:pierre_du_lotus_brute",
+      "count": 1
+    },
+    "R": {
+      "item": "cambocraft:poudre_de_lotus",
+      "count": 1
+    }
+  },
+  "result": {
+    "id": "cambocraft:pioche_de_lotus",
+    "count": 1
+  }
+}

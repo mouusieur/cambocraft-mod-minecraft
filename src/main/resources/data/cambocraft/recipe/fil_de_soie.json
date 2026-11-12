@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cambocraft:cocon_de_soie",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "cambocraft:fil_de_soie",
+    "count": 2
+  }
+}

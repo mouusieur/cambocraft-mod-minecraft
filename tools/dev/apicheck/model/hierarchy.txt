@@ -146,3 +146,8 @@ super ZombieEntityRenderer : EntityRenderer
 super LivingEntityRenderer : EntityRenderer
 super MobEntityRenderer : LivingEntityRenderer
 super EntityRenderer : -
+
+# --- block-entities vanilla ---
+super FurnaceBlockEntity : LockableContainerBlockEntity, net.minecraft.screen.NamedScreenHandlerFactory
+super LockableContainerBlockEntity : BlockEntity
+super BlockEntity : -
