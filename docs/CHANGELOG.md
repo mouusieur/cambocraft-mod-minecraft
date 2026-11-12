@@ -97,3 +97,67 @@ Toutes les évolutions notables du mod sont consignées par phase de développem
   (`forceload`), `setblock` de `cambocraft:pierre_du_lotus` et `cambocraft:lotus_rose`,
   `summon` d'un `cambocraft:bol_de_riz_beni` (affiché « Blessed Bowl of Rice »),
   `locate biome cambocraft:grand_lac`, puis arrêt propre avec sauvegarde de la dimension.
+
+## Phase 9 — Jouabilité réelle : entités, commandes, recettes, artères branchées (2026-11-12)
+
+Le mod était un **catalogue** : tout le contenu existait et était validé, mais presque rien n'était
+atteignable en jeu. Cette phase branche les artères manquantes.
+
+### Entités (le manque le plus visible)
+
+- `entity/CamboEntities` : deux types enregistrés — `cambocraft:artisan` et `cambocraft:gardien`.
+- `entity/ArtisanEntity` : PNJ pacifique (`PathAwareEntity`) portant l'un des **16 profils**
+  de `NpcRegistry` ; clic droit → dialogue.
+- `entity/BossGuardianEntity` : gardien hostile (`PathAwareEntity` + IA de poursuite) portant l'un
+  des **12 profils de boss** de `CombatRegistry`.
+- `entity/CamboEntitiesFabrique` : invocation contextualisée (PNJ sur les structures, gardiens
+  pour les rencontres).
+- Attributs enregistrés via `FabricDefaultAttributeRegistry` : sans eux l'entité apparaît puis
+  meurt instantanément (0 PV).
+
+### Commandes
+
+- `command/CamboCommand` : `/cambocraft` avec
+  `statut`, `gacha`, `carnet`, `quetes`, `pnjs`, `plats`, `boss`, `niveau <1-200>`,
+  `donner_pouvoir <id>`, `dialogue <arbre> <noeud>`.
+- `server/CamboPlayerData` : carnet du Nen et compteurs de *pity* par joueur, conservés en mémoire
+  serveur (survit aux reconnexions tant que le serveur tourne).
+
+### Dialogues
+
+- `npc/ArtisanDialogueService` : publie les nœuds et les choix dans le **chat natif** avec
+  `ClickEvent.RunCommand`. Aucun `ScreenHandler` ni paquet réseau personnalisé n'est nécessaire,
+  ce qui fonctionne identiquement en survie et en créatif.
+
+### Artisanat
+
+- `tools/gen_recipes.py` : **195 recettes** générées, classées par famille sémantique
+  (nourriture 51, composants 100, reliques 15, soie 14, armes 5, forge 5, monnaie 3, poterie 2).
+  Avant cette phase : **5 recettes** pour 419 objets.
+- `block/FourDeForgeBlock` : premier bloc fonctionnel du mod — un clic droit ouvre l'interface de
+  cuisson du four vanilla (block-entity vanilla réutilisée, aucune logique dupliquée).
+
+### Vérifié en jeu
+
+Le job `captures` exécute, dans un client relancé après les captures de scènes :
+
+```text
+Summoned new entity.cambocraft.artisan
+Summoned new entity.cambocraft.gardien
+  · gardien_de_pierre
+  · le_gardien_de_l_equilibre
+```
+
+`Invalid player data` au démarrage : `No data fixer registered for artisan/gardien` — bénin,
+c'est l'absence de `DataFixer` (facultatif pour une entité neuve).
+
+### Deux défauts réels trouvés par la vérification en jeu
+
+1. **Recettes pointant vers des objets inexistants** (`cambocraft:poisson`, `cambocraft:prahok`) :
+   au démarrage, le registre d'objets échouait à parser ces recettes
+   (`Input does not contain a key [fabric:type]`). Le validateur JSON ne pouvait pas le voir :
+   il ne résout pas les identifiants d'objets. `gen_recipes.py` ne produit plus que des
+   références existantes, vérifiées par script.
+2. **`ArtisanEntity` sur `VillagerEntity`** : `Unable to summon entity` à chaque invocation. Un
+   villageois exige un `VillagerType` et une initialisation de cerveau (Brain). Passage à
+   `PathAwareEntity`.
