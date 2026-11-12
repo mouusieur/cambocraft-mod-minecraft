@@ -80,7 +80,39 @@ jobs:
           modeles = [n for n in jsons if n.startswith("assets/cambocraft/models/")]
           attributs = [n for n in jsons if n.startswith("assets/cambocraft/blockstates/")]
           print(f"Modèles : {len(modeles)} | blockstates : {len(attributs)}")
-          print("RÉSULTAT :", "OK" if bad is None and len(classes) >= 100 else "ANOMALIE")
+
+          # Remapping : Loom doit avoir traduit les noms Yarn vers l'intermédiaire.
+          # En production le jeu tourne en intermédiaire : toute référence Yarn
+          # (net/minecraft/world/World, net/minecraft/item/Item...) ne serait pas résolue.
+          import re, struct
+          def pool(data):
+              n = struct.unpack(">H", data[8:10])[0]
+              pos, out, i = 10, [], 1
+              while i < n:
+                  tag = data[pos]; pos += 1
+                  if tag == 1:
+                      ln = struct.unpack(">H", data[pos:pos+2])[0]; pos += 2
+                      out.append(data[pos:pos+ln].decode("utf-8", "replace")); pos += ln
+                  elif tag in (7, 8, 16, 19, 20): pos += 2
+                  elif tag in (9, 10, 11, 12, 17, 18): pos += 4
+                  elif tag in (3, 4): pos += 4
+                  elif tag in (5, 6): pos += 8; i += 1
+                  elif tag == 15: pos += 3
+                  i += 1
+              return out
+          inter = named = 0
+          exemples = []
+          for c in classes:
+              txt = "\n".join(pool(z.read(c)))
+              for ref in re.findall(r"net/minecraft/[A-Za-z0-9_/$]+", txt):
+                  if "class_" in ref or "field_" in ref or "method_" in ref:
+                      inter += 1
+                  elif re.match(r"net/minecraft/[a-z]", ref):
+                      named += 1
+                      if len(exemples) < 5: exemples.append(ref)
+          print(f"Références intermédiaires : {inter} | références Yarn non remappées : {named}")
+          if exemples: print("  exemples non remappés :", exemples)
+          print("RÉSULTAT :", "OK" if bad is None and len(classes) >= 100 and named == 0 else "ANOMALIE")
           PY
           cat "$RUNNER_TEMP/verify.log"
 
