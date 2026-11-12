@@ -131,3 +131,35 @@ biome. Minecraft exige un ordre de features identique dans **tous** les biomes. 
 l'ordre de l'étape végétale est désormais dérivé d'une liste canonique dans
 `tools/gen_worldgen.py`, et `tools/validate.py` reconstruit le graphe d'ordre et échoue sur tout
 cycle. Sans ce test, le joueur aurait découvert un monde vide dès le premier chunk.
+
+## Captures d'écran automatiques
+
+Les images du README ne sont pas des rendus schématiques : elles proviennent d'un **vrai client
+Minecraft 1.21.1 + Fabric** lancé sans GPU, dans `.github/workflows/captures.yml`.
+
+| Étape | Moyen | Piège rencontré |
+| --- | --- | --- |
+| Rendu 3D sans carte graphique | `xvfb-run` + Mesa/llvmpipe (`LIBGL_ALWAYS_SOFTWARE=1`) | sans `libgl1-mesa-dri` + `libglx-mesa0`, LWJGL n'obtient aucun contexte OpenGL |
+| Connexion au serveur | clics souris (`xdotool`) sur l'interface Multijoueur | `--quickPlayMultiplayer` est inopérant ; il faut cliquer « Multijoueur » puis « Rejoindre » |
+| Attente avant capture | boucle sur la disparition de « Loading terrain… » | une capture trop tôt donne un écran noir (`sanite.png` sert de témoin) |
+| Construction des scènes | `fill x y z x y z cambocraft:<bloc>` | `setblock` ne s'applique pas dans une dimension personnalisée via `execute in … run` |
+| Dégagement du terrain | `fill` par tranches de 6 blocs | `/fill` est limité à 32 768 blocs : au-delà, la commande échoue **sans message** |
+| Studio aérien | base à `y=200`, nettoyage jusqu'à `y=319` | le terrain naturel de `cambodia` monte très haut : sans cela, des parois de terre et des blocs flottants entrent dans le champ |
+| Cadrage | `tp @a x y z yaw pitch` | `yaw=180` regarde vers −Z ; `yaw=0` tourne le dos à une scène construite en Z négatif |
+| Champ de vision | `fov:70.0` dans `options.txt` | `fov:0.5` est **écrêté à 30°** : rendu téléobjectif, scènes écrasées |
+| Caméra sans avant-bras | `gamemode spectator` | en créatif, le bras du joueur masque le coin bas-droit |
+| Interface masquée | `hideGui:true`, `tutorialStep:none` | l'encart « Move with WASD » reste affiché plusieurs minutes |
+| Récupération des PNG | check runs `capture-<fichier>-NNN` en base64 (morceaux de 60 000 car.) | les artefacts d'Actions sont inaccessibles à l'API ; le texte d'un check run est limité à 65 535 caractères |
+
+Régénération : `tools/dev/captures/` contient `captures.py` (scènes et prise de vue),
+`client.py` (client Fabric sans launcher), `illustrations.py` (bandeau et galerie) et un `Makefile`
+(`make recuperer SHA=…` puis `make illustrations`).
+
+### Deux défauts de rendu trouvés par ces captures
+
+1. **Végétaux sur fond noir** — les modèles `block/cross` n'étaient associés à aucune couche de
+   rendu. En Fabric, `render_type` dans le JSON du modèle est une propriété NeoForge : il faut
+   `BlockRenderLayerMap.INSTANCE.putBlock(bloc, RenderLayer.getCutout())` côté client.
+2. **Classe client dans le mauvais source set** — `splitEnvironmentSourceSets()` place le code
+   client dans `src/client/java` ; une classe de `src/main/java` ne voit ni `net.minecraft.client.*`
+   ni `fabric-blockrenderlayer-v1`, et `./gradlew build` échoue.
