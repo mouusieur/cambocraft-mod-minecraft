@@ -1,0 +1,26 @@
+{
+  "artisan": {
+    "dimensions": [
+      64,
+      64
+    ],
+    "fichier": "src/main/resources/assets/cambocraft/textures/entity/artisan.png",
+    "octets": 457
+  },
+  "gardien": {
+    "dimensions": [
+      128,
+      128
+    ],
+    "fichier": "src/main/resources/assets/cambocraft/textures/entity/gardien.png",
+    "octets": 1058
+  },
+  "neak_ta": {
+    "dimensions": [
+      64,
+      64
+    ],
+    "fichier": "src/main/resources/assets/cambocraft/textures/entity/neak_ta.png",
+    "octets": 186
+  }
+}

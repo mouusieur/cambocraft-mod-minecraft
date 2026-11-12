@@ -249,6 +249,8 @@ def demarrer_client(repertoire, largeur, hauteur, adresse):
         "-Djava.library.path=" + infos["natives"],
         "-Dorg.lwjgl.librarypath=" + infos["natives"],
         "-Dfile.encoding=UTF-8",
+        # Le rendu d'entite tombe sur llvmpipe (OpenGL logiciel) : desactive pour les captures.
+        "-Dcambocraft.rendu.entites=false",
         "-cp", classpath, infos["main_class"],
         "--username", "Cambocraft",
         "--uuid", "00000000000040008000000000000001",

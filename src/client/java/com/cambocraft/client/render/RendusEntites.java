@@ -17,17 +17,18 @@ public final class RendusEntites {
     private RendusEntites() {}
 
     /**
-     * Rendu des entités du mod.
+     * Rendu des entités du mod : modèles 3D dédiés ({@link ModelArtisan}, {@link ModelGardien}).
      *
-     * <p>Désactivé par défaut : sur un rendu OpenGL <b>logiciel</b> (llvmpipe, utilisé par la CI de
-     * captures), le modèle villageois/zombie fait tomber le contexte GL dès la première invocation,
-     * ce qui noircit toutes les captures suivantes. Les entités restent pleinement fonctionnelles
-     * (invocation, dialogue, combat) : seule leur représentation visuelle est laissée à Minecraft.
-     * Activer avec {@code -Dcambocraft.rendu.entites=true} sur un client avec carte graphique.</p>
+     * <p>Activé par défaut. Sur un rendu OpenGL <b>logiciel</b> (llvmpipe, utilisé par la CI de
+     * captures), le contexte GL tombe dès la première invocation d'entité et toutes les captures
+     * suivantes sont noires : la CI désactive donc ce rendu avec
+     * {@code -Dcambocraft.rendu.entites=false}, et les captures d'entités sont prises dans un
+     * client relancé, en dernier. Sur un client normal, rien à faire : les modèles s'affichent.</p>
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
     public static void enregistrer() {
-        if (!Boolean.getBoolean("cambocraft.rendu.entites")) {
+        String forcer = System.getProperty("cambocraft.rendu.entites");
+        if ("false".equalsIgnoreCase(forcer)) {
             return;
         }
         EntityRendererRegistry.register(CamboEntities.ARTISAN, new EntityRendererFactory() {
