@@ -202,7 +202,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cambocraft-jar
-          path: build/libs/*.jar
+          path: |
+            build/libs/cambocraft-1.0.0.jar
+          if-no-files-found: error
 
       - name: Publier la release téléchargeable
         if: steps.gradle.outputs.code == '0' && github.event_name == 'push'
@@ -264,7 +266,9 @@ jobs:
           echo "Fabric API = $API"
           URL="https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/$API+1.21.1/fabric-api-$API+1.21.1.jar"
           curl -fsSL -o mods/fabric-api.jar "$URL" || exit 1
-          cp ../mods/*.jar mods/ || true
+          # Uniquement le jar du mod (pas le -sources.jar, dont le fabric.mod.json
+          # garde la variable ${version} non expansée et déclenche un avertissement).
+          cp ../mods/cambocraft-*-[0-9]*.jar mods/ 2>/dev/null || cp ../mods/cambocraft-1.0.0.jar mods/
           ls -la mods/
           sed -i 's/^online-mode=.*/online-mode=false/' server.properties 2>/dev/null || true
           printf 'online-mode=false\nlevel-type=minecraft\\:normal\nmax-world-size=1000\nspawn-protection=0\n' > server.properties
