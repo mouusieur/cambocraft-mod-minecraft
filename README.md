@@ -45,6 +45,32 @@ avec le mod chargé, rendu par un serveur dédié (`tools/dev/captures/`). Aucun
 
 ---
 
+## Jouer : commandes de test
+
+Le contenu est atteignable en jeu par les mécaniques normales (portail, PNJ, artisanat) ; ces
+commandes servent à **vérifier immédiatement** chaque système.
+
+| Commande | Effet |
+| --- | --- |
+| `/cambocraft statut` | compte les PNJ, quêtes, pouvoirs, ennemis et plats chargés |
+| `/cambocraft gacha` | tirage au Bol de Riz Béni, avec *pity* réel par joueur |
+| `/cambocraft carnet` | affiche le Carnet du Nen (pouvoirs, éclats, énergie) |
+| `/cambocraft quetes` / `pnjs` / `plats` / `boss` | liste le catalogue correspondant |
+| `/cambocraft niveau <1-200>` | XP cumulés requis (courbe `round(120·n^1.8)`) |
+| `/cambocraft donner_pouvoir <id>` | ajoute un pouvoir au carnet |
+| `/cambocraft dialogue <arbre> <nœud>` | affiche un nœud de dialogue cliquable |
+
+Entités : `/summon cambocraft:artisan` (PNJ, clic droit = dialogue) et
+`/summon cambocraft:gardien` (boss, IA de poursuite).
+
+> **État de jouabilité.** Les systèmes de *données* (85 quêtes, 84 pouvoirs, 16 PNJ, 12 boss,
+> 16 plats, 195 recettes) sont chargés, branchés sur des commandes et une entité existe pour les
+> PNJ comme pour les boss. Les interfaces graphiques dédiées (écran de Carnet, table d'artisanat
+> khmère, journal de quêtes plein écran) restent à écrire : elles passent aujourd'hui par le chat
+> natif et les commandes.
+
+---
+
 ## Compiler depuis les sources
 
 ```bash
