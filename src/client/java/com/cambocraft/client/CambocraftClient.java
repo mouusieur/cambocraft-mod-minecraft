@@ -29,6 +29,10 @@ public final class CambocraftClient implements ClientModInitializer {
         // Rendu des entités : le PNJ reprend le modèle villageois vanilla, le boss celui
         // d'un grand mob hostile. Aucun modèle 3D dédié n'est nécessaire.
         enregistrerRendus();
+        // Réseau client : miroir de l'état serveur, puis raccourcis clavier des trois écrans.
+        ClientNetworking.enregistrerRecepteurs();
+        CambocraftKeys.enregistrer();
+        com.cambocraft.client.hud.HudCambocraft.enregistrer();
         Log.info("Cambocraft Client : HUD du Nen, Carnet, suivi de quêtes et accessibilité initialisés");
     }
 

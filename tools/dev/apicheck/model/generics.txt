@@ -24,3 +24,4 @@ generic CustomPayload.Type <B, T>
 generic PacketCodec <B, V>
 generic ConfiguredFeature <FC, F>
 generic ActiveTargetGoal <T extends net.minecraft.entity.LivingEntity>
+generic PersistentState.Type <T extends net.minecraft.world.PersistentState>

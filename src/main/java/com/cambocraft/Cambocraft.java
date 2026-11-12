@@ -3,13 +3,18 @@ package com.cambocraft;
 import com.cambocraft.combat.CombatRegistry;
 import com.cambocraft.command.CamboCommand;
 import com.cambocraft.entity.CamboEntities;
+import com.cambocraft.game.GachaService;
+import com.cambocraft.game.ProgressionService;
+import com.cambocraft.game.SpawnNaturel;
 import com.cambocraft.craft.CookingRegistry;
 import com.cambocraft.data.DataManager;
 import com.cambocraft.ecology.WorldAtmosphere;
 import com.cambocraft.event.ShadowNightManager;
 import com.cambocraft.fishing.FishingRegistry;
 import com.cambocraft.npc.NpcRegistry;
+import com.cambocraft.server.CamboServerEvents;
 import com.cambocraft.power.PowerRegistry;
+import com.cambocraft.network.CamboNetworking;
 import com.cambocraft.progression.ZoneRegistry;
 import com.cambocraft.quest.QuestRegistry;
 import com.cambocraft.registry.CamboBlocks;
@@ -54,6 +59,14 @@ public class Cambocraft implements ModInitializer {
         // Entités : sans cet enregistrement, les 16 PNJ et les 12 boss du catalogue
         // n'existaient que sous forme de fichiers JSON.
         CamboEntities.register();
+        // Réseau : codecs des paquets puis récepteurs serveur (C2S) et évènements de persistance.
+        CamboNetworking.enregistrerTypes();
+        CamboNetworking.enregistrerRecepteurs();
+        CamboServerEvents.enregistrer();
+        // Déclencheurs de jeu : gacha au Bol de Riz Béni, progression de combat, apparition des PNJ.
+        GachaService.init();
+        ProgressionService.init();
+        SpawnNaturel.init();
         // Commandes : surface de jeu et de diagnostic de tous les sous-systèmes.
         CommandRegistrationCallback.EVENT.register((dispatcher, registre, environnement) ->
                 CamboCommand.register(dispatcher));

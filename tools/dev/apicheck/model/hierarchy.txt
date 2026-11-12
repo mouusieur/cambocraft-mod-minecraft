@@ -73,6 +73,7 @@ super WorldChunk : Chunk
 # --- réseau et texte ---
 super CustomPayload : -
 super PacketByteBuf : -
+super RegistryByteBuf : PacketByteBuf
 super Text : -
 super MutableText : Text
 super Identifier : -
@@ -107,6 +108,9 @@ interface Inventory
 interface ScreenHandlerFactory
 interface Nameable
 interface DataTracked
+interface PacketDecoder
+interface PacketEncoder
+interface ValueFirstEncoder
 interface ModifiableWorld
 interface StructureWorldAccess
 interface TestableWorld
@@ -156,3 +160,26 @@ super BlockEntity : -
 super AbstractFurnaceBlock : Block
 super Block : AbstractBlock
 super AbstractBlock : -
+
+# --- NBT ---
+super NbtCompound : NbtElement
+super NbtList : NbtElement
+super NbtString : NbtElement
+super NbtElement : -
+
+super PersistentState.Type : -
+
+# --- GUI : chaine d'heritage des widgets et du cycle de vie des ecrans ---
+super ClickableWidget : -, Drawable, Element
+super ButtonWidget : ClickableWidget
+interface Drawable
+interface Element
+super Drawable : -
+super Element : -
+interface ButtonWidget.PressAction
+interface ButtonWidget.NarrationSupplier
+super EntityModel : net/minecraft/client/model/Model
+super SinglePartEntityModel : EntityModel
+super net/minecraft/client/model/Model : -
+generic EntityModel <T extends net.minecraft.entity.Entity>
+generic SinglePartEntityModel <T extends net.minecraft.entity.Entity>

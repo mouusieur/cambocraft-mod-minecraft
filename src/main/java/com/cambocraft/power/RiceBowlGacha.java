@@ -40,6 +40,14 @@ public final class RiceBowlGacha {
             this.totalTirages = Math.max(0, totalTirages);
         }
 
+        /** Restaure les compteurs depuis une sauvegarde (NBT ou paquet de synchronisation). */
+        public void restaurer(int sansEpique, int sansLegendaire, int sansMythique, int total) {
+            this.tiragesSansEpique = Math.max(0, sansEpique);
+            this.tiragesSansLegendaire = Math.max(0, sansLegendaire);
+            this.tiragesSansMythique = Math.max(0, sansMythique);
+            this.totalTirages = Math.max(0, total);
+        }
+
         public int tiragesSansEpique() { return tiragesSansEpique; }
         public int tiragesSansLegendaire() { return tiragesSansLegendaire; }
         public int tiragesSansMythique() { return tiragesSansMythique; }

@@ -29,6 +29,24 @@ public final class QuestEngine {
         return Set.copyOf(terminees);
     }
 
+    /**
+     * Restaure une quête terminée depuis une sauvegarde.
+     *
+     * <p>Utilisé au chargement de l'état joueur ; ne vérifie volontairement aucune condition de
+     * déblocage, l'état sauvegardé faisant foi.</p>
+     */
+    public void restaurerTerminee(String queteId) {
+        terminees.add(queteId);
+    }
+
+    /** Restaure une quête en cours depuis une sauvegarde (étape, avancement, branche). */
+    public void restaurerActive(String queteId, int indexEtape, int avancement, String branche) {
+        actives.put(queteId, new ProgressionActive(queteId, indexEtape, avancement, branche));
+        if (branche != null) {
+            branchesFinales.put(queteId, branche);
+        }
+    }
+
     public String brancheChoisie(String queteId) {
         return branchesFinales.get(queteId);
     }

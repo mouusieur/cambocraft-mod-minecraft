@@ -217,7 +217,6 @@ add Formatting :: public static final Formatting GRAY = null;
 add Formatting :: public static final Formatting WHITE = null;
 add Formatting :: public static final Formatting AQUA = null;
 add Formatting :: public static final Formatting LIGHT_PURPLE = null;
-add Formatting :: public static final Formatting DARK_GREEN = null;
 add Formatting :: public static final Formatting DARK_RED = null;
 add Formatting :: public static final Formatting BOLD = null;
 add Formatting :: public static final Formatting ITALIC = null;
@@ -261,3 +260,114 @@ add NamedScreenHandlerFactory :: default net.minecraft.text.Text getDisplayName(
 
 # --- AbstractFurnaceBlock : codec et fabrique de block-entity (abstracts depuis 1.20.5) ---
 add AbstractFurnaceBlock :: public net.minecraft.block.entity.BlockEntity createBlockEntity(net.minecraft.util.math.BlockPos p0, net.minecraft.block.BlockState p1) { throw new RuntimeException(); }
+
+# --- NBT : les surcharges put existent mais Yarn ne les enumere pas toutes ---
+add NbtCompound :: public net.minecraft.nbt.NbtElement put(java.lang.String p0, net.minecraft.nbt.NbtElement p1) { throw new RuntimeException(); }
+add NbtCompound :: public void putString(java.lang.String p0, java.lang.String p1) { }
+add NbtCompound :: public void putInt(java.lang.String p0, int p1) { }
+add NbtCompound :: public void putLong(java.lang.String p0, long p1) { }
+add NbtCompound :: public void putBoolean(java.lang.String p0, boolean p1) { }
+add NbtCompound :: public java.lang.String getString(java.lang.String p0) { throw new RuntimeException(); }
+add NbtCompound :: public int getInt(java.lang.String p0) { throw new RuntimeException(); }
+add NbtCompound :: public long getLong(java.lang.String p0) { throw new RuntimeException(); }
+add NbtCompound :: public net.minecraft.nbt.NbtCompound getCompound(java.lang.String p0) { throw new RuntimeException(); }
+add NbtCompound :: public net.minecraft.nbt.NbtList getList(java.lang.String p0, int p1) { throw new RuntimeException(); }
+add NbtCompound :: public boolean contains(java.lang.String p0) { throw new RuntimeException(); }
+add NbtList :: public boolean add(net.minecraft.nbt.NbtElement p0) { throw new RuntimeException(); }
+add NbtList :: public int size() { throw new RuntimeException(); }
+add NbtList :: public net.minecraft.nbt.NbtCompound getCompound(int p0) { throw new RuntimeException(); }
+add NbtList :: public java.lang.String getString(int p0) { throw new RuntimeException(); }
+add NbtString :: public static net.minecraft.nbt.NbtString of(java.lang.String p0) { throw new RuntimeException(); }
+add PersistentState :: public net.minecraft.nbt.NbtCompound writeNbt(net.minecraft.nbt.NbtCompound p0, net.minecraft.registry.RegistryWrapper.WrapperLookup p1) { throw new RuntimeException(); }
+add PersistentState.Type :: public Type(java.util.function.Supplier<net.minecraft.world.PersistentState> p0, java.util.function.BiFunction<net.minecraft.nbt.NbtCompound, net.minecraft.registry.RegistryWrapper.WrapperLookup, net.minecraft.world.PersistentState> p1, java.util.function.Supplier p2) { }
+
+add MinecraftServer :: public net.minecraft.server.world.ServerWorld getOverworld() { throw new RuntimeException(); }
+
+# --- noms d'affichage et liste de joueurs typée ---
+add ServerPlayerEntity :: public net.minecraft.text.Text getName() { throw new RuntimeException(); }
+sig PlayerManager getPlayerList :: public java.util.List<net.minecraft.server.network.ServerPlayerEntity> getPlayerList() { throw new RuntimeException(); }
+
+# --- Text : accesseur de chaine (present dans Yarn, absent de la liste des surcharges) ---
+add Text :: public java.lang.String getString() { throw new RuntimeException(); }
+
+# --- paquets personnalises : CustomPayload.Id constructeur reel et interface ---
+add CustomPayload.Id :: public Id(net.minecraft.util.Identifier id) { }
+interface CustomPayload
+add CustomPayload :: public net.minecraft.network.packet.CustomPayload.Id getId() { throw new RuntimeException(); }
+
+# --- codecs reseau : les interfaces fonctionnelles de Yarn ---
+interface ValueFirstEncoder
+generic ValueFirstEncoder V
+interface PacketEncoder
+generic PacketEncoder V
+interface PacketDecoder
+generic PacketDecoder V
+
+# --- PacketCodec.valueOf / of : signatures generiques reelles ---
+sig PacketCodec of :: public static <B, V> net.minecraft.network.codec.PacketCodec<B, V> of(net.minecraft.network.codec.ValueFirstEncoder<V> p0, net.minecraft.network.codec.PacketDecoder<? extends V> p1) { return null; }
+
+# --- codecs reseau : methodes abstraites (Yarn emet `default` sur les interfaces) ---
+drop ValueFirstEncoder encode
+add ValueFirstEncoder :: public abstract void encode(V p0, net.minecraft.network.PacketByteBuf p1);
+drop PacketEncoder encode
+add PacketEncoder :: public abstract void encode(net.minecraft.network.PacketByteBuf p0, V p1);
+drop PacketDecoder decode
+add PacketDecoder :: public abstract V decode(net.minecraft.network.PacketByteBuf p0);
+
+# --- PacketByteBuf : accesseurs primitifs herites de ByteBuf (absents du mapping Yarn) ---
+add PacketByteBuf :: public int readInt() { throw new RuntimeException(); }
+add PacketByteBuf :: public long readLong() { throw new RuntimeException(); }
+add PacketByteBuf :: public boolean readBoolean() { throw new RuntimeException(); }
+add PacketByteBuf :: public double readDouble() { throw new RuntimeException(); }
+add PacketByteBuf :: public float readFloat() { throw new RuntimeException(); }
+
+# --- Screen : cycle de rendu (Yarn declare ces methodes dans les classes filles) ---
+add Screen :: public void render(net.minecraft.client.gui.DrawContext p0, int p1, int p2, float p3) { throw new RuntimeException(); }
+add Screen :: public boolean mouseScrolled(double p0, double p1, double p2, double p3) { throw new RuntimeException(); }
+add Screen :: public boolean keyPressed(int p0, int p1, int p2) { throw new RuntimeException(); }
+add Screen :: public boolean charTyped(char p0, int p1) { throw new RuntimeException(); }
+
+# --- MinecraftClient : singleton statique ---
+static MinecraftClient getInstance
+add MinecraftClient :: public static net.minecraft.client.MinecraftClient getInstance() { throw new RuntimeException(); }
+
+# --- PressAction / NarrationSupplier : methodes abstraites ---
+drop ButtonWidget.PressAction onPress
+add ButtonWidget.PressAction :: public abstract void onPress(net.minecraft.client.gui.widget.ButtonWidget p0);
+drop ButtonWidget.NarrationSupplier createNarrationMessage
+add ButtonWidget.NarrationSupplier :: public abstract net.minecraft.text.MutableText createNarrationMessage(java.util.function.Supplier p0);
+
+# --- InputUtil.Type : constantes d'enumeration non mappees ---
+add InputUtil.Type :: public static final net.minecraft.client.util.InputUtil.Type KEYSYM = null;
+add InputUtil.Type :: public static final net.minecraft.client.util.InputUtil.Type SCANCODE = null;
+add InputUtil.Type :: public static final net.minecraft.client.util.InputUtil.Type MOUSE = null;
+
+# --- Heightmap.Type : constantes non mappees ---
+add Heightmap.Type :: public static final net.minecraft.world.Heightmap.Type WORLD_SURFACE_WG = null;
+add Heightmap.Type :: public static final net.minecraft.world.Heightmap.Type WORLD_SURFACE = null;
+add Heightmap.Type :: public static final net.minecraft.world.Heightmap.Type OCEAN_FLOOR_WG = null;
+add Heightmap.Type :: public static final net.minecraft.world.Heightmap.Type OCEAN_FLOOR = null;
+add Heightmap.Type :: public static final net.minecraft.world.Heightmap.Type MOTION_BLOCKING = null;
+add Heightmap.Type :: public static final net.minecraft.world.Heightmap.Type MOTION_BLOCKING_NO_LEAVES = null;
+add World :: public int getBottomY() { throw new RuntimeException(); }
+add World :: public int getTopY() { throw new RuntimeException(); }
+
+# --- World / EntityView : membres herites non listes sur la classe fille ---
+add Formatting :: public static final Formatting BLUE = null;
+add Formatting :: public static final Formatting DARK_AQUA = null;
+super EntityView : -
+sig EntityView getEntitiesByClass :: public java.util.List<net.minecraft.entity.Entity> getEntitiesByClass(java.lang.Class p0, net.minecraft.util.math.Box p1, java.util.function.Predicate p2) { throw new RuntimeException(); }
+
+# --- World : recherches d'entites et hauteur (methodes heritees de WorldView / EntityView) ---
+add World :: public java.util.List getEntitiesByClass(java.lang.Class p0, net.minecraft.util.math.Box p1, java.util.function.Predicate p2) { throw new RuntimeException(); }
+add World :: public int getTopY(net.minecraft.world.Heightmap.Type p0, int p1, int p2) { throw new RuntimeException(); }
+
+# --- Modeles 3D : construction de parties et chargement de donnees ---
+add ModelPartData :: public net.minecraft.client.model.ModelPartData addChild(java.lang.String p0, net.minecraft.client.model.ModelPartBuilder p1, net.minecraft.client.model.ModelTransform p2) { throw new RuntimeException(); }
+add ModelData :: public net.minecraft.client.model.ModelData() { }
+static ModelPartBuilder create
+add TexturedModelData :: public net.minecraft.client.model.TexturedModelData of(net.minecraft.client.model.ModelData p0, int p1, int p2) { throw new RuntimeException(); }
+add ModelTransform :: public static net.minecraft.client.model.ModelTransform of(float p0, float p1, float p2) { throw new RuntimeException(); }
+add ModelTransform :: public static net.minecraft.client.model.ModelTransform of(float p0, float p1, float p2, float p3, float p4, float p5) { throw new RuntimeException(); }
+add EntityModel :: public void setAngles(net.minecraft.entity.Entity p0, float p1, float p2, float p3, float p4, float p5) { throw new RuntimeException(); }
+add EntityModel :: public void render(net.minecraft.client.util.math.MatrixStack p0, net.minecraft.client.render.VertexConsumer p1, int p2, int p3, int p4) { throw new RuntimeException(); }

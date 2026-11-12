@@ -9,6 +9,7 @@ import com.cambocraft.power.PowerDefinition;
 import com.cambocraft.power.PowerRegistry;
 import com.cambocraft.power.RiceBowlGacha;
 import com.cambocraft.progression.ProgressionCurve;
+import com.cambocraft.quest.QuestDefinition;
 import com.cambocraft.quest.QuestRegistry;
 import com.cambocraft.server.CamboPlayerData;
 import com.mojang.brigadier.CommandDispatcher;
@@ -48,6 +49,17 @@ public final class CamboCommand {
                 .then(CommandManager.literal("donner_pouvoir")
                         .then(CommandManager.argument("id", StringArgumentType.word())
                                 .executes(CamboCommand::donnerPouvoir)))
+                .then(CommandManager.literal("persistance").executes(CamboCommand::persistance))
+                .then(CommandManager.literal("reputation").executes(CamboCommand::reputation))
+                .then(CommandManager.literal("journal").executes(CamboCommand::journal))
+                .then(CommandManager.literal("quete")
+                        .then(CommandManager.argument("id", StringArgumentType.word())
+                                .then(CommandManager.literal("demarrer").executes(CamboCommand::demarrerQuete))
+                                .then(CommandManager.literal("avancer").executes(CamboCommand::avancerQuete))))
+                .then(CommandManager.literal("boss_vaincu")
+                        .then(CommandManager.argument("id", StringArgumentType.word())
+                                .executes(CamboCommand::bossVaincu)))
+                .then(CommandManager.literal("renaissance").executes(CamboCommand::renaitre))
                 .then(CommandManager.literal("dialogue")
                         .then(CommandManager.argument("arbre", StringArgumentType.word())
                                 .then(CommandManager.argument("noeud", StringArgumentType.word())
@@ -149,6 +161,103 @@ public final class CamboCommand {
         var retour = CamboPlayerData.pour(joueur(ctx)).carnet().ajouterTirage(def);
         dire(ctx, "Pouvoir " + id + " → niveau " + retour.niveauActuel());
         return 1;
+    }
+
+    private static int persistance(CommandContext<ServerCommandSource> ctx) throws CommandSyntaxException {
+        ServerPlayerEntity p = joueur(ctx);
+        CamboPlayerData donnees = CamboPlayerData.pour(p);
+        donnees.sauvegarderSansPurger(p.getServer());
+        dire(ctx, "État sauvegardé dans world/data/" + com.cambocraft.server.CamboWorldState.ID + ".dat");
+        dire(ctx, "  joueur " + p.getUuid() + " · " + CamboPlayerData.tailleCache() + " en cache");
+        dire(ctx, "  niveau " + donnees.niveau() + " · XP " + donnees.xp()
+                + " · Renaissance " + donnees.renaissances());
+        dire(ctx, "  carnet " + donnees.carnet().nombrePouvoirsDebloques() + " pouvoirs · "
+                + donnees.carnet().eclatsDeNen() + " éclats");
+        dire(ctx, "  quêtes " + donnees.quetes().actives().size() + " actives · "
+                + donnees.quetes().terminees().size() + " terminées");
+        return 1;
+    }
+
+    private static int reputation(CommandContext<ServerCommandSource> ctx) throws CommandSyntaxException {
+        CamboPlayerData donnees = CamboPlayerData.pour(joueur(ctx));
+        for (var e : donnees.reputation().tout().entrySet()) {
+            dire(ctx, "  " + e.getKey().nomFr + " : " + e.getValue() + " ("
+                    + donnees.reputation().palier(e.getKey()).id + ")");
+        }
+        dire(ctx, "Boss vaincus : " + donnees.bossVaincus().size() + " · pierres : "
+                + donnees.pierresDecouvertes().size() + " · zones : " + donnees.zonesVisitees().size());
+        return 1;
+    }
+
+    private static int journal(CommandContext<ServerCommandSource> ctx) throws CommandSyntaxException {
+        ServerPlayerEntity p = joueur(ctx);
+        CamboPlayerData donnees = CamboPlayerData.pour(p);
+        dire(ctx, "Journal : " + donnees.quetes().actives().size() + " quête(s) en cours");
+        for (var e : donnees.quetes().actives().entrySet()) {
+            var q = QuestRegistry.quetes().get(e.getKey());
+            if (q == null) continue;
+            var prog = e.getValue();
+            String objectif = prog.indexEtape() < q.etapes().size()
+                    ? q.etapes().get(prog.indexEtape()).objectif() + " "
+                            + q.etapes().get(prog.indexEtape()).cible() + " "
+                            + prog.avancementEtape() + "/" + q.etapes().get(prog.indexEtape()).quantite()
+                    : "prête à clore";
+            dire(ctx, "  · " + q.titre().get("fr_fr") + " — " + objectif);
+        }
+        return 1;
+    }
+
+    private static int demarrerQuete(CommandContext<ServerCommandSource> ctx) throws CommandSyntaxException {
+        String id = StringArgumentType.getString(ctx, "id");
+        QuestDefinition q = QuestRegistry.quetes().get(id);
+        if (q == null) {
+            ctx.getSource().sendError(Text.literal("Quête inconnue : " + id));
+            return 0;
+        }
+        ServerPlayerEntity p = joueur(ctx);
+        CamboPlayerData donnees = CamboPlayerData.pour(p);
+        boolean ok = donnees.quetes().demarrer(q, donnees.niveau(),
+                com.cambocraft.game.ProgressionService.saisonCourante(p));
+        dire(ctx, ok ? "Quête démarrée : " + q.titre().get("fr_fr")
+                : "Démarrage refusé (niveau, prérequis, saison ou déjà en cours)");
+        return ok ? 1 : 0;
+    }
+
+    private static int avancerQuete(CommandContext<ServerCommandSource> ctx) throws CommandSyntaxException {
+        String id = StringArgumentType.getString(ctx, "id");
+        QuestDefinition q = QuestRegistry.quetes().get(id);
+        ServerPlayerEntity p = joueur(ctx);
+        CamboPlayerData donnees = CamboPlayerData.pour(p);
+        if (q == null || !donnees.quetes().actives().containsKey(id)) {
+            ctx.getSource().sendError(Text.literal("Quête non active : " + id));
+            return 0;
+        }
+        var prog = donnees.quetes().actives().get(id);
+        if (prog.indexEtape() < q.etapes().size()) {
+            var etape = q.etapes().get(prog.indexEtape());
+            com.cambocraft.game.ProgressionService.notifierQuetes(donnees, p,
+                    etape.objectif(), etape.cible());
+        }
+        dire(ctx, "Avancement notifié pour " + id);
+        return 1;
+    }
+
+    private static int bossVaincu(CommandContext<ServerCommandSource> ctx) throws CommandSyntaxException {
+        String id = StringArgumentType.getString(ctx, "id");
+        ServerPlayerEntity p = joueur(ctx);
+        CamboPlayerData donnees = CamboPlayerData.pour(p);
+        donnees.marquerBossVaincu(id);
+        dire(ctx, "Boss marqué vaincu : " + id + " (" + donnees.bossVaincus().size() + " au total)");
+        return 1;
+    }
+
+    private static int renaitre(CommandContext<ServerCommandSource> ctx) throws CommandSyntaxException {
+        ServerPlayerEntity p = joueur(ctx);
+        CamboPlayerData donnees = CamboPlayerData.pour(p);
+        boolean ok = donnees.renaitre();
+        dire(ctx, ok ? "Renaissance accordée : rang " + donnees.renaissances()
+                : "Conditions non remplies (niveau 200 + Gardien de l'Équilibre vaincu)");
+        return ok ? 1 : 0;
     }
 
     private static int dialogue(CommandContext<ServerCommandSource> ctx) throws CommandSyntaxException {

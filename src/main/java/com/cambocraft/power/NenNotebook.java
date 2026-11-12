@@ -208,4 +208,38 @@ public final class NenNotebook {
 
     public int energieActuelle() { return energieActuelle; }
     public int energieMax() { return energieMax; }
+
+    /** Fixe l'énergie courante en la bornant (utilisé par la sauvegarde et la synchronisation). */
+    public void definirEnergie(int energie) {
+        this.energieActuelle = Math.max(0, Math.min(this.energieMax, energie));
+    }
+
+    /** Crédite des éclats de Nen (doublons convertis, récompenses de quête). */
+    public void ajouterEclats(int montant) {
+        if (montant > 0) {
+            eclatsDeNen += montant;
+        }
+    }
+
+    /**
+     * Restaure un pouvoir depuis une sauvegarde, sans passer par un tirage : le niveau, les
+     * utilisations, la maîtrise et l'emplacement actif sont repris tels quels.
+     */
+    public void restaurerPouvoir(String powerId, int niveau, int utilisations, boolean maitrise) {
+        if (powerId == null || powerId.isEmpty()) {
+            return;
+        }
+        int nv = Math.max(1, Math.min(NIVEAU_MAX_POUVOIR, niveau));
+        collection.put(powerId, new PowerProgress(nv, Math.max(0, utilisations), maitrise));
+    }
+
+    /** Équipe un pouvoir lors d'une restauration, sans vérifier qu'il vient d'être débloqué. */
+    public void restaurerEmplacement(int slot, String powerId) {
+        if (slot < 0 || slot >= NB_EMPLACEMENTS_ACTIFS) {
+            return;
+        }
+        if (powerId != null && !powerId.isEmpty() && collection.containsKey(powerId)) {
+            emplacementsActifs[slot] = powerId;
+        }
+    }
 }
