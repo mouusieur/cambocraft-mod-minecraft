@@ -476,33 +476,6 @@ def main() -> int:
     commande("execute in cambocraft:cambodia run data get entity Cambocraft Pos")
     time.sleep(2)
 
-    # --- verification des systemes : entites et commande /cambocraft ---
-    # Le bloc d'or de la sanite doit disparaitre, sinon il reapparait dans les scenes.
-    commande(f"execute in cambocraft:cambodia run fill -2 {Y} -2 2 {Y} 2 air")
-
-    # --- verification des systemes : entites et commande /cambocraft ---
-    # ATTENTION : elle doit rester ENTOUREE d'une remise en etat de la camera et d'un
-    # delai, sinon les captures de scene qui suivent sont noires. Constat experimenté :
-    # sans ce bloc, 4 scenes sur 4 sont correctes ; avec lui sans remise en etat, 4 sur 4
-    # sont noires (250 octets, PNG d'une seule couleur).
-    print("== verification des systemes (entites + commandes) ==")
-    commande(f"execute in cambocraft:cambodia run fill -5 {Y} 0 5 {Y} 10 cambocraft:pierre_du_lotus_polie")
-    commande(f"execute in cambocraft:cambodia run summon cambocraft:artisan 2 {Y+1} 6")
-    commande(f"execute in cambocraft:cambodia run summon cambocraft:gardien -2 {Y+1} 6")
-    for sous in ("statut", "boss", "carnet"):
-        commande(f"cambocraft {sous}")
-    time.sleep(4)
-    commande(f"execute in cambocraft:cambodia run tp @a 0 {Y+4} 14 180 6")
-    time.sleep(10)
-    if capture_ecran(os.path.join(args.sortie, "entites.png")):
-        print("   capture : entites.png")
-    commande("execute in cambocraft:cambodia run kill @e[type=cambocraft:artisan]")
-    commande("execute in cambocraft:cambodia run kill @e[type=cambocraft:gardien]")
-    commande(f"execute in cambocraft:cambodia run fill -5 {Y} 0 5 {Y} 10 air")
-    # Remise en etat : la camera repart d'une position neutre avant la premiere scene.
-    commande(f"execute in cambocraft:cambodia run tp @a 0 {Y+30} 0 0 0")
-    time.sleep(6)
-
     captures = []
     for nom in [s.strip() for s in args.scenes.split(",") if s.strip()]:
         if nom not in SCENES:
@@ -544,6 +517,35 @@ def main() -> int:
         if capture_ecran(cible):
             captures.append(cible)
             print(f"   capture : {cible}")
+
+    # --- verification des systemes : entites et commandes, APRES les scenes ---
+    # L'invocation d'une entite fait tomber le contexte OpenGL logiciel de la CI : toutes
+    # les captures suivantes seraient noires. On la fait donc en dernier, dans un client
+    # fraichement relance, avant l'arret.
+    print("== verification des systemes (client relance) ==")
+    client.kill()
+    time.sleep(3)
+    client = demarrer_client(args.client, args.largeur, args.hauteur, f"127.0.0.1:{PORT}")
+    sortie_client = Flux(client, "client")
+    if not sortie_serveur.attendre(MOTIF_CONNEXION, 120, "reconnexion"):
+        print("   reconnexion impossible : verification des entites ignoree")
+    else:
+        time.sleep(25)
+        commande("gamemode spectator @a")
+        commande(f"execute in cambocraft:cambodia run forceload add -64 -64 64 64")
+        commande(f"execute in cambocraft:cambodia run fill -5 {Y} 0 5 {Y} 10 cambocraft:pierre_du_lotus_polie")
+        commande(f"execute in cambocraft:cambodia run summon cambocraft:artisan 2 {Y+1} 6")
+        commande(f"execute in cambocraft:cambodia run summon cambocraft:gardien -2 {Y+1} 6")
+        for sous in ("statut", "boss", "carnet"):
+            commande(f"cambocraft {sous}")
+        time.sleep(4)
+        commande(f"execute in cambocraft:cambodia run tp @a 0 {Y+4} 14 180 6")
+        time.sleep(10)
+        if capture_ecran(os.path.join(args.sortie, "entites.png")):
+            print("   capture : entites.png")
+        commande("execute in cambocraft:cambodia run kill @e[type=cambocraft:artisan]")
+        commande("execute in cambocraft:cambodia run kill @e[type=cambocraft:gardien]")
+    client.kill()
 
     print("== arret ==")
     commande("stop")
