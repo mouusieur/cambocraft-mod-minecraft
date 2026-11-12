@@ -84,35 +84,68 @@ jobs:
           # Remapping : Loom doit avoir traduit les noms Yarn vers l'intermédiaire.
           # En production le jeu tourne en intermédiaire : toute référence Yarn
           # (net/minecraft/world/World, net/minecraft/item/Item...) ne serait pas résolue.
+          # On ne regarde QUE les entrées CONSTANT_Class et les descripteurs réellement
+          # utilisés au linkage : les signatures et noms de variables locales peuvent
+          # légitimement contenir des noms Yarn sans conséquence à l'exécution.
           import re, struct
-          def pool(data):
+          def constantes(data):
+              """Retourne (noms de classes CONSTANT_Class, descripteurs NameAndType)."""
               n = struct.unpack(">H", data[8:10])[0]
-              pos, out, i = 10, [], 1
+              pos, utf8, classes, descs, i = 10, {}, [], [], 1
+              refs = {}
               while i < n:
                   tag = data[pos]; pos += 1
                   if tag == 1:
                       ln = struct.unpack(">H", data[pos:pos+2])[0]; pos += 2
-                      out.append(data[pos:pos+ln].decode("utf-8", "replace")); pos += ln
-                  elif tag in (7, 8, 16, 19, 20): pos += 2
-                  elif tag in (9, 10, 11, 12, 17, 18): pos += 4
-                  elif tag in (3, 4): pos += 4
-                  elif tag in (5, 6): pos += 8; i += 1
-                  elif tag == 15: pos += 3
+                      utf8[i] = data[pos:pos+ln].decode("utf-8", "replace"); pos += ln
+                  elif tag == 7:
+                      refs[i] = ("class", struct.unpack(">H", data[pos:pos+2])[0]); pos += 2
+                  elif tag in (8, 16, 19, 20):
+                      pos += 2
+                  elif tag == 12:
+                      refs[i] = ("nat", struct.unpack(">HH", data[pos:pos+4])); pos += 4
+                  elif tag in (9, 10, 11, 17, 18):
+                      pos += 4
+                  elif tag in (3, 4):
+                      pos += 4
+                  elif tag in (5, 6):
+                      pos += 8; i += 1
+                  elif tag == 15:
+                      pos += 3
                   i += 1
-              return out
+              for kind, val in refs.values():
+                  if kind == "class":
+                      classes.append(utf8.get(val, ""))
+                  else:
+                      name_i, desc_i = val
+                      descs.append(utf8.get(desc_i, ""))
+              return classes, descs
+
           inter = named = 0
           exemples = []
           for c in classes:
-              txt = "\n".join(pool(z.read(c)))
-              for ref in re.findall(r"net/minecraft/[A-Za-z0-9_/$]+", txt):
-                  if "class_" in ref or "field_" in ref or "method_" in ref:
+              noms, descs = constantes(z.read(c))
+              for ref in noms:
+                  if not ref.startswith("net/minecraft/"):
+                      continue
+                  if re.search(r"class_\d+|field_\d+|method_\d+", ref):
                       inter += 1
                   elif re.match(r"net/minecraft/[a-z]", ref):
                       named += 1
                       if len(exemples) < 5: exemples.append(ref)
+              for d in descs:
+                  for ref in re.findall(r"net/minecraft/[A-Za-z0-9_/$]+", d):
+                      if re.search(r"class_\d+", ref):
+                          inter += 1
+                      elif re.match(r"net/minecraft/[a-z]", ref):
+                          named += 1
+                          if len(exemples) < 5: exemples.append(ref)
           print(f"Références intermédiaires : {inter} | références Yarn non remappées : {named}")
           if exemples: print("  exemples non remappés :", exemples)
-          print("RÉSULTAT :", "OK" if bad is None and len(classes) >= 100 and named == 0 else "ANOMALIE")
+          version_majeure = struct.unpack(">H", z.read(classes[0])[6:8])[0]
+          print(f"Version de classe Java : {version_majeure} (65 = Java 21)")
+          print("RÉSULTAT :", "OK" if bad is None and len(classes) >= 100 and named == 0
+                and version_majeure == 65 else "ANOMALIE")
           PY
           cat "$RUNNER_TEMP/verify.log"
 
