@@ -273,41 +273,83 @@ jobs:
           sed -i 's/^online-mode=.*/online-mode=false/' server.properties 2>/dev/null || true
           printf 'online-mode=false\nlevel-type=minecraft\\:normal\nmax-world-size=1000\nspawn-protection=0\n' > server.properties
 
-      - name: Démarrer le serveur et lire les journaux
+      - name: Démarrer le serveur et executer des commandes en jeu
         id: serveur
         if: steps.prep.outcome == 'success'
         continue-on-error: true
         timeout-minutes: 12
         run: |
           cd serveur
-          # On laisse tourner 4 minutes : suffisant pour charger tous les registres du mod.
-          timeout 240 java -Xmx2G -jar fabric-server-launch.jar nogui > journal.txt 2>&1 || true
+          # Demarrage en arriere-plan, puis commandes envoyees sur stdin.
+          mkfifo entree 2>/dev/null || true
+          (tail -f entree | java -Xmx2G -jar fabric-server-launch.jar nogui > journal.txt 2>&1) &
+          SERVEUR=$!
+          exec 3> entree
+          echo "Attente du demarrage..."
+          for i in $(seq 1 90); do
+            grep -q "Done (" journal.txt 2>/dev/null && break
+            sleep 2
+          done
+          if grep -q "Done (" journal.txt; then
+            echo "Serveur pret, envoi des commandes de verification."
+            # La dimension du mod existe-t-elle, et genere-t-elle ?
+            echo "execute in cambocraft:cambodia run setworldspawn 0 100 0" >&3
+            sleep 4
+            echo "execute in cambocraft:cambodia run setblock 0 99 0 cambocraft:pierre_du_lotus" >&3
+            sleep 3
+            echo "execute in cambocraft:cambodia run locate biome cambocraft:rizieres_en_terrasses" >&3
+            sleep 4
+            # Les objets du mod sont-ils enregistres ?
+            echo "give @a cambocraft:bol_de_riz_beni" >&3
+            sleep 2
+            echo "data get entity @e[type=item,limit=1] Item" >&3
+            sleep 2
+            echo "stop" >&3
+            sleep 8
+          else
+            echo "Le serveur n'a pas demarre dans le delai imparti."
+            echo "stop" >&3
+            sleep 5
+          fi
+          exec 3>&-
+          wait $SERVEUR 2>/dev/null || true
           echo "===== extrait du journal ====="
-          tail -120 journal.txt
+          tail -150 journal.txt
 
-      - name: Vérifier le chargement du mod
+      - name: Verifier le chargement du mod et la dimension
         id: verif
         if: steps.prep.outcome == 'success'
         run: |
           cd serveur
           echo "=== Lignes Cambocraft ==="
           grep -i "cambocraft" journal.txt | head -40 || true
-          echo "=== Erreurs fatales ==="
-          grep -iE "Failed to (load|start)|Exception in thread \"main\"|Caused by|Incompatible mod set|ModResolutionException" journal.txt | head -20 || true
+          echo "=== Reponses des commandes ==="
+          grep -iE "Changed the world spawn|Changed the block|The nearest|Gave|has the following entity data|Unknown|error|incorrect" journal.txt | head -20 || true
           python3 - <<'PY'
           import re, sys
           t = open("journal.txt", encoding="utf-8", errors="replace").read()
           ok_init = "Cambocraft : initialisation du contenu de base" in t
-          ok_blocks = bool(re.search(r"Cambocraft : \d+ blocs, \d+ objets et \d+ biomes", t))
+          m = re.search(r"Cambocraft : (\d+) blocs, (\d+) objets et (\d+) biomes initialises|Cambocraft : (\d+) blocs, (\d+) objets et (\d+) biomes initialisés", t)
+          ok_blocks = bool(m)
           ok_done = "Done (" in t
           crash = bool(re.search(r"Incompatible mod set|ModResolutionException|Failed to start the minecraft server", t))
+          # La commande execute in ... setblock doit reussir : preuve que la dimension existe.
+          ok_dim = bool(re.search(r"(Changed the block at .*|Block placed)", t)) and "cambocraft:cambodia" not in re.findall(r"Unknown dimension[^\n]*", t)
+          dimension_inconnue = "Unknown dimension" in t
+          biome_ok = bool(re.search(r"nearest biome|The nearest", t))
+          bloc_inconnu = bool(re.search(r"Unknown block|unknown item|Unknown item", t))
           print("Initialisation du mod :", "OUI" if ok_init else "NON")
-          print("Compteurs de contenu :", "OUI" if ok_blocks else "NON")
-          print("Serveur prêt (Done) :", "OUI" if ok_done else "NON")
-          print("Crash au démarrage :", "OUI" if crash else "non")
+          print("Compteurs de contenu :", m.group(0) if m else "NON")
+          print("Serveur pret (Done) :", "OUI" if ok_done else "NON")
+          print("Dimension cambocraft:cambodia :", "INCONNUE" if dimension_inconnue else ("OK" if ok_dim else "non testee"))
+          print("Biome localise :", "OUI" if biome_ok else "non")
+          print("Bloc/objet inconnu :", "OUI" if bloc_inconnu else "non")
+          print("Crash au demarrage :", "OUI" if crash else "non")
           with open("../serveur_resultat.txt", "w") as f:
-              f.write(f"init={ok_init} compteurs={ok_blocks} done={ok_done} crash={crash}\n")
-          if crash or not ok_init:
+              f.write(f"init={ok_init} compteurs={ok_blocks} done={ok_done} "
+                      f"dim_inconnue={dimension_inconnue} biome={biome_ok} "
+                      f"inconnu={bloc_inconnu} crash={crash}\n")
+          if crash or not ok_init or dimension_inconnue:
               sys.exit(1)
           PY
 
