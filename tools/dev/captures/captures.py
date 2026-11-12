@@ -37,7 +37,9 @@ MOTIF_CONNEXION = re.compile(r'joined the game')
 
 
 def bloc(x, y, z, nom):
-    return f"setblock {x} {y} {z} cambocraft:{nom}"
+    # On passe par /fill (1x1x1) plutot que /setblock : fill est plus tolerant et
+    # s'execute de facon fiable dans une dimension personnalisee via /execute.
+    return f"fill {x} {y} {z} {x} {y} {z} cambocraft:{nom}"
 
 
 def cube(x0, y0, z0, x1, y1, z1, nom):
@@ -145,8 +147,8 @@ def scene_vegetation():
 
 SCENES = {
     # nom : (constructeur, position du joueur, rotation (yaw, pitch), nom de fichier)
-    "portail": (scene_portail, (0.5, 67.0, 20.0), (0.0, 32.0), "portail-du-lotus"),
-    "cite": (scene_cite, (0.5, 72.0, 30.0), (0.0, 24.0), "cite-khmere"),
+    "portail": (scene_portail, (0.5, 63.5, 15.0), (0.0, 18.0), "portail-du-lotus"),
+    "cite": (scene_cite, (0.5, 67.0, 26.0), (0.0, 16.0), "cite-khmere"),
     "interieur": (scene_interieur, (1.5, 62.5, 6.5), (14.0, 12.0), "atelier"),
     "vegetation": (scene_vegetation, (0.5, 73.0, 22.0), (0.0, 30.0), "rizieres"),
 }
