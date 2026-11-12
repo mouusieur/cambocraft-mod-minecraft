@@ -92,7 +92,7 @@ fi
 # 3. code du mod -----------------------------------------------------------
 step "Compilation du mod"
 rm -rf "$MOD_OUT" && mkdir -p "$MOD_OUT"
-find "$ROOT/src/main/java" -name "*.java" 2>/dev/null | sort > "$TC/build/mod.txt"
+find "$ROOT/src/main/java" "$ROOT/src/client/java" -name "*.java" 2>/dev/null | sort > "$TC/build/mod.txt"
 if [ -s "$TC/build/mod.txt" ]; then
   if ! "$JAVA" "${JOPTS[@]}" -Xmx2g -cp "$JDT" "$COMPILER" -source 21 -target 21 -nowarn -proc:none -encoding UTF-8 \
       -cp "$STUB_OUT:$HW_OUT:$CP_JARS" -d "$MOD_OUT" @"$TC/build/mod.txt" > "$TC/build/mod.log" 2>&1; then
