@@ -401,6 +401,16 @@ def main() -> int:
     # et la capture ne montre que du noir.
     commande("execute in cambocraft:cambodia run tp @a 0 100 0 0 0")
 
+    # --- verification de sanite : un bloc d'or de 3x3, camera dessus, regard vers le bas ---
+    print("== verification de sanite du rendu ==")
+    commande("execute in cambocraft:cambodia run fill -2 70 -2 2 70 2 minecraft:gold_block")
+    commande("execute in cambocraft:cambodia run tp @a 0 76 0 0 85")
+    time.sleep(6)
+    if capture_ecran(os.path.join(args.sortie, "sanite.png")):
+        print("   capture : sanite.png")
+    commande("execute in cambocraft:cambodia run data get entity Cambocraft Pos")
+    time.sleep(2)
+
     captures = []
     for nom in [s.strip() for s in args.scenes.split(",") if s.strip()]:
         if nom not in SCENES:
