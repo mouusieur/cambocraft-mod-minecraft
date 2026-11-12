@@ -1,7 +1,7 @@
 name: captures
 
 # Lance un VRAI client Minecraft 1.21.1 + Fabric avec le mod, construit des scenes
-# dans cambocraft:cambodia et prend de veritables captures d'ecran (F2).
+# dans cambocraft:cambodia et prend de veritables captures d'ecran (touche F2).
 # Le rendu est logiciel (Mesa/llvmpipe) sous Xvfb : aucun GPU n'est requis.
 on:
   workflow_dispatch:
@@ -10,6 +10,10 @@ on:
         description: "Scenes a capturer (portail,cite,interieur,vegetation)"
         required: false
         default: "portail,cite,interieur,vegetation"
+  push:
+    paths:
+      - "tools/dev/captures/**"
+      - ".github/workflows/captures.yml"
 
 permissions:
   contents: write
@@ -39,7 +43,9 @@ jobs:
           restore-keys: gradle-
 
       - name: Compiler le mod
-        run: ./gradlew build --no-daemon --console=plain
+        run: |
+          chmod +x gradlew
+          ./gradlew build --no-daemon --console=plain
 
       - name: Installer le rendu logiciel et Xvfb
         run: |
@@ -61,23 +67,20 @@ jobs:
           cd "$RUNNER_TEMP/client"
           curl -fsSL -o installer.jar https://maven.fabricmc.net/net/fabricmc/fabric-installer/1.0.1/fabric-installer-1.0.1.jar
           java -jar installer.jar client -mcversion 1.21.1 -dir . -noprofile
-          echo "--- classpath Fabric ---"
           python3 - <<'PY'
           import glob, json, os
           d = os.environ["RUNNER_TEMP"] + "/client"
           base = open(d + "/classpath.txt", encoding="utf-8").read().strip().split(":")
           fabric = glob.glob(d + "/libraries/net/fabricmc/**/*.jar", recursive=True)
-          # Loom/Fabric attend le loader et les libs Mixin/ASM avant le jar client.
-          libs = [p for p in fabric if os.path.basename(p).startswith(("fabric-loader", "sponge-mixin", "asm", "intermediary", "mixinextras"))]
+          libs = [p for p in fabric if os.path.basename(p).startswith(
+              ("fabric-loader", "sponge-mixin", "asm", "intermediary", "mixinextras", "tiny-mappings-parser"))]
           client_jar = d + "/client.jar"
           reste = [p for p in base if not p.endswith("client.jar")]
-          nouveau = libs + reste + [client_jar]
-          open(d + "/classpath.txt", "w", encoding="utf-8").write(":".join(nouveau))
+          open(d + "/classpath.txt", "w", encoding="utf-8").write(":".join(libs + reste + [client_jar]))
           infos = json.load(open(d + "/infos.json", encoding="utf-8"))
           infos["main_class"] = "net.fabricmc.loader.impl.launch.knot.KnotClient"
           json.dump(infos, open(d + "/infos.json", "w", encoding="utf-8"), indent=2)
           print("classes fabric :", [os.path.basename(p) for p in libs])
-          print("classe principale :", infos["main_class"])
           PY
 
       - name: Capturer les écrans
@@ -89,17 +92,15 @@ jobs:
           MESA_GL_VERSION_OVERRIDE: "4.6"
           __GL_SYNC_TO_VBLANK: "0"
         run: |
-          set -o pipefail
-          xvfb-run -a -s "-screen 0 1280x720x24 +extension GLX +render -noreset" \
-            java -version 2>&1 | head -2
-          # Le client Java est lance par le script ; Xvfb fournit l'affichage.
+          mkdir -p captures
           xvfb-run -a -s "-screen 0 1280x720x24 +extension GLX +render -noreset" \
             python3 tools/dev/captures/captures.py \
               --client "$RUNNER_TEMP/client" \
               --jar build/libs/cambocraft-1.0.0.jar \
               --sortie captures \
-              --scenes "${{ github.event.inputs.scenes || 'portail,cite,interieur,vegetation' }}" \
+              --scenes "${{ github.event.inputs.scenes || 'portail' }}" \
               --largeur 1280 --hauteur 720 2>&1 | tee captures/journal.txt
+          ls -la captures/
 
       - name: Publier les captures (check run)
         if: always()
@@ -109,7 +110,8 @@ jobs:
           python3 - <<'PY'
           import base64, glob, json, os, subprocess
           fichiers = sorted(glob.glob("captures/*.png"))
-          texte = open("captures/journal.txt", encoding="utf-8", errors="replace").read() if os.path.exists("captures/journal.txt") else "(pas de journal)"
+          journal = "captures/journal.txt"
+          texte = open(journal, encoding="utf-8", errors="replace").read() if os.path.exists(journal) else "(pas de journal)"
           corps = {
               "name": "cambocraft-captures",
               "head_sha": os.environ["GITHUB_SHA"],
@@ -125,7 +127,6 @@ jobs:
           subprocess.run(["gh", "api", "-X", "POST",
                           "repos/" + os.environ["GITHUB_REPOSITORY"] + "/check-runs",
                           "--input", "corps.json"], check=False)
-          # Les images elles-memes, encodees et decoupees, pour lecture par l'API.
           for i, f in enumerate(fichiers):
               donnees = base64.b64encode(open(f, "rb").read()).decode()
               json.dump({"fichier": os.path.basename(f), "base64": donnees},
