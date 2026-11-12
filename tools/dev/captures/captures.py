@@ -231,6 +231,58 @@ def demarrer_client(repertoire, largeur, hauteur, adresse):
     )
 
 
+def ecrire_servers_dat(repertoire):
+    """Ecrit servers.dat (NBT non compresse) avec le serveur local deja enregistre.
+
+    Le client affiche alors ce serveur dans sa liste et la touche Entree suffit a
+    le rejoindre : aucune saisie d'adresse n'est necessaire.
+    """
+    import struct
+
+    def texte(valeur):
+        donnees = valeur.encode("utf-8")
+        return struct.pack(">H", len(donnees)) + donnees
+
+    def chaine(nom, valeur):
+        return b"\x08" + texte(nom) + texte(valeur)
+
+    def octet(nom, valeur):
+        return b"\x01" + texte(nom) + struct.pack(">b", valeur)
+
+    serveur = (
+        chaine("name", "Cambocraft")
+        + chaine("ip", f"127.0.0.1:{PORT}")
+        + octet("hidden", 0)
+        + octet("acceptTextures", 1)
+        + b"\x00"
+    )
+    racine = (
+        b"\x0a" + texte("")
+        + b"\x09" + texte("servers") + b"\x0a" + struct.pack(">i", 1) + serveur
+        + b"\x00"
+    )
+    with open(os.path.join(repertoire, "servers.dat"), "wb") as fichier:
+        fichier.write(racine)
+
+
+def capture_ecran(destination):
+    """Capture l'ecran X courant (ce que le joueur voit reellement)."""
+    resultat = subprocess.run(
+        ["import", "-window", "root", destination],
+        capture_output=True, timeout=60,
+    )
+    if resultat.returncode != 0:
+        print("   echec de la capture X :", resultat.stderr.decode("utf-8", "replace")[:200])
+        return False
+    return os.path.exists(destination) and os.path.getsize(destination) > 0
+
+
+def appuyer(*touches):
+    for combinaison in touches:
+        subprocess.run(["xdotool", "key", "--clearmodifiers", combinaison],
+                       capture_output=True, timeout=30)
+
+
 def ecrire_options(repertoire):
     """Options ecrites avant le lancement : HUD masque, FOV large, qualite maximale."""
     options = {
@@ -272,6 +324,7 @@ def main() -> int:
     args = analyseur.parse_args()
     os.makedirs(args.sortie, exist_ok=True)
     ecrire_options(args.client)
+    ecrire_servers_dat(args.client)
 
     print("== demarrage du serveur dedie ==")
     serveur = demarrer_serveur(args.serveur)
@@ -300,15 +353,33 @@ def main() -> int:
     print("== demarrage du client (connexion automatique) ==")
     client = demarrer_client(args.client, args.largeur, args.hauteur, f"127.0.0.1:{PORT}")
     sortie_client = Flux(client, "client")
-    if not sortie_serveur.attendre(MOTIF_CONNEXION, 600, "arrivee du joueur"):
-        print("!! Le joueur ne s'est jamais connecte.")
-        for ligne in sortie_client.lignes[-60:]:
-            print("   " + ligne)
+
+    connecte = sortie_serveur.attendre(MOTIF_CONNEXION, 150, "arrivee du joueur (quickPlay)")
+    if not connecte:
+        # Secours : navigation au clavier depuis l'ecran titre.
+        # Tab, Tab -> bouton « Multijoueur », Entree ; puis Entree sur le serveur
+        # deja present dans servers.dat.
+        print("   quickPlay sans effet : navigation clavier de secours")
+        for tentative in range(4):
+            appuyer("Tab", "Tab", "Return")
+            time.sleep(4)
+            appuyer("Return")
+            if sortie_serveur.attendre(MOTIF_CONNEXION, 25, f"joueur (tentative {tentative + 1})"):
+                connecte = True
+                break
+    if not connecte:
+        print("!! Le joueur ne s'est jamais connecte. Capture de l'ecran courant :")
+        os.makedirs(args.sortie, exist_ok=True)
+        capture_ecran(os.path.join(args.sortie, "00-ecran-titre.png"))
+        with open(os.path.join(args.sortie, "journal-client.txt"), "w", encoding="utf-8") as f:
+            f.write("\n".join(sortie_client.lignes))
+        with open(os.path.join(args.sortie, "journal-serveur.txt"), "w", encoding="utf-8") as f:
+            f.write("\n".join(sortie_serveur.lignes))
         client.kill()
         serveur.kill()
         return 1
     print("== joueur connecte ==")
-    time.sleep(8)
+    time.sleep(10)
 
     commande("gamemode creative @a")
     commande("execute in cambocraft:cambodia run forceload add -64 -64 64 64")
@@ -328,20 +399,10 @@ def main() -> int:
         commande(f"execute in cambocraft:cambodia run tp @a {x} {y} {z} {rotation[0]} {rotation[1]}")
         time.sleep(6)
 
-        avant = len(sortie_client.lignes)
-        touche_f2()
-        ligne = sortie_client.attendre(MOTIF_CAPTURE, 90, f"capture {nom}")
-        if not ligne:
-            continue
-        chemin_relatif = MOTIF_CAPTURE.search(ligne).group(1)
-        source = os.path.join(args.client, "screenshots", os.path.basename(chemin_relatif))
-        if os.path.exists(source):
-            cible = os.path.join(args.sortie, fichier + ".png")
-            shutil.copy(source, cible)
+        cible = os.path.join(args.sortie, fichier + ".png")
+        if capture_ecran(cible):
             captures.append(cible)
             print(f"   capture : {cible}")
-        else:
-            print(f"   fichier introuvable : {source}")
 
     print("== arret ==")
     commande("stop")
