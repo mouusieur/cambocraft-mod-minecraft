@@ -494,8 +494,13 @@ public final class CamboBlocks {
             self.erreurs.ajouter('modèle inconnu « %s » pour %s' % (m, bloc.id))
             return []
         for nom, parent, textures in modeles:
-            self.ecrire_json(os.path.join(ASSETS, 'models', 'block', nom + '.json'),
-                             {'parent': parent, 'textures': textures})
+            modele = {'parent': parent, 'textures': textures}
+            # Les vegetaux (modele « cross ») et tout bloc decoupe doivent declarer
+            # un rendu `cutout` : sans cela, les pixels transparents de la texture
+            # sont rendus en NOIR (fleurs sur fond noir).
+            if bloc.cutout or parent.endswith('/cross'):
+                modele['render_type'] = 'minecraft:cutout'
+            self.ecrire_json(os.path.join(ASSETS, 'models', 'block', nom + '.json'), modele)
         return modeles
 
     def blockstate(self, bloc):
