@@ -145,10 +145,10 @@ def scene_vegetation():
 
 SCENES = {
     # nom : (constructeur, position du joueur, rotation (yaw, pitch), nom de fichier)
-    "portail": (scene_portail, (0.5, 64.0, 17.0), (0.0, 22.0), "portail-du-lotus"),
-    "cite": (scene_cite, (0.5, 68.0, 26.0), (0.0, 14.0), "cite-khmere"),
+    "portail": (scene_portail, (0.5, 67.0, 20.0), (0.0, 32.0), "portail-du-lotus"),
+    "cite": (scene_cite, (0.5, 72.0, 30.0), (0.0, 24.0), "cite-khmere"),
     "interieur": (scene_interieur, (1.5, 62.5, 6.5), (14.0, 12.0), "atelier"),
-    "vegetation": (scene_vegetation, (0.5, 70.0, 20.0), (0.0, 24.0), "rizieres"),
+    "vegetation": (scene_vegetation, (0.5, 73.0, 22.0), (0.0, 30.0), "rizieres"),
 }
 
 
@@ -399,7 +399,7 @@ def main() -> int:
     time.sleep(4)
     # Vol stationnaire : sans cela, le joueur tombe dans le vide pendant la construction
     # et la capture ne montre que du noir.
-    commande("execute in cambocraft:cambodia run tp @a 0 70 0 0 0")
+    commande("execute in cambocraft:cambodia run tp @a 0 100 0 0 0")
 
     captures = []
     for nom in [s.strip() for s in args.scenes.split(",") if s.strip()]:
@@ -411,8 +411,8 @@ def main() -> int:
         # Volume degage : le terrain naturel de cambodia monte au-dessus de la camera,
         # sans cela le joueur se retrouve dans la roche et la capture est noire.
         # /fill est limite a 32 768 blocs par commande : on decoupe en tranches de 8.
-        for y0 in range(56, 96, 8):
-            commande(f"execute in cambocraft:cambodia run fill -24 {y0} -24 24 {y0 + 7} 24 air")
+        for y0 in range(56, 140, 6):
+            commande(f"execute in cambocraft:cambodia run fill -32 {y0} -32 32 {y0 + 5} 32 air")
         time.sleep(3)
         for cmd in constructeur():
             commande(f"execute in cambocraft:cambodia run {cmd}")
