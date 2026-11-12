@@ -81,16 +81,29 @@ java {
 	targetCompatibility = JavaVersion.VERSION_21
 }
 
-test {
-	useJUnitPlatform()
-	// La simulation de gacha complète (5 000 000 de tirages) est activée par -Pcambocraft.simulation=full
-	systemProperty "cambocraft.simulation", project.findProperty("cambocraft.simulation") ?: "quick"
+// Le code de test s'appuie sur les mêmes classes Minecraft/Fabric que le mod :
+// sans cela, javac ne résout pas net.minecraft.world.World au moment de compiler les tests.
+sourceSets.test.compileClasspath += sourceSets.main.compileClasspath
+sourceSets.test.runtimeClasspath += sourceSets.main.runtimeClasspath
+
+// Les tests du noyau de règles n'utilisent pas JUnit : ils sont pilotés par
+// com.cambocraft.test.TestMain (voir docs/TECHNIQUE.md). Ce task lance la même
+// campagne que tools/dev/apicheck/check.sh, mais dans un vrai classpath Minecraft.
+tasks.register("camboTest", JavaExec) {
+	group = "verification"
+	description = "Exécute les tests du noyau de règles (sans JUnit)."
+	classpath = sourceSets.test.runtimeClasspath
+	mainClass = "com.cambocraft.test.TestMain"
 	// Les tests lisent les JSON du mod directement dans les sources.
 	systemProperty "cambocraft.data.dir", "${projectDir}/src/main/resources/data/cambocraft"
-	testLogging {
-		events "failed"
-		exceptionFormat "full"
-	}
+	systemProperty "cambocraft.simulation", project.findProperty("cambocraft.simulation") ?: "quick"
+	// Le test trie les erreurs : on renvoie le code de sortie de TestMain.
+	ignoreExitValue = false
+}
+
+test {
+	// Pas de tests JUnit dans ce dépôt : TestMain est exécuté par camboTest.
+	enabled = false
 }
 
 jar {
