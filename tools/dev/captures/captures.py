@@ -352,7 +352,7 @@ def main() -> int:
     commande("gamerule doDaylightCycle false")
     commande("gamerule doWeatherCycle false")
     commande("gamerule doMobSpawning false")
-    commande("gamerule sendCommandFeedback false")
+    commande("gamerule sendCommandFeedback true")
     commande("time set 6000")
     commande("weather clear")
     commande("difficulty peaceful")
@@ -408,6 +408,10 @@ def main() -> int:
             continue
         constructeur, position, rotation, fichier = SCENES[nom]
         print(f"== scene {nom} ({fichier}) ==")
+        # Volume degage : le terrain naturel de cambodia monte au-dessus de la camera,
+        # sans cela le joueur se retrouve dans la roche et la capture est noire.
+        commande("execute in cambocraft:cambodia run fill -24 56 -24 24 96 24 air")
+        time.sleep(2)
         for cmd in constructeur():
             commande(f"execute in cambocraft:cambodia run {cmd}")
         time.sleep(3)
@@ -422,7 +426,7 @@ def main() -> int:
 
         # Diagnostic : position et dimension reelles du joueur.
         avant_diag = len(sortie_serveur.lignes)
-        commande("execute in cambocraft:cambodia run data get entity @a Pos")
+        commande("execute in cambocraft:cambodia run data get entity Cambocraft Pos")
         sortie_serveur.attendre(re.compile(r"has the following entity data"), 20, "position")
         with sortie_serveur.verrou:
             for ligne in sortie_serveur.lignes[avant_diag:]:
