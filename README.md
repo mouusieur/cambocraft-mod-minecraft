@@ -1,5 +1,7 @@
 # Cambocraft — Mod Minecraft 1.21.1 (Fabric)
 
+![Cambocraft — dimension cambocraft:cambodia, Minecraft 1.21.1, Fabric](docs/captures/bandeau-titre.png)
+
 **Cambocraft** est un mod d'aventure, d'exploration et de maîtrise spirituelle pour **Minecraft 1.21.1 (Fabric, Java 21)** qui ouvre les portes de la dimension **`cambocraft:cambodia`**, un monde vivant inspiré des paysages, de l'architecture khmère et des traditions culturelles du Cambodge.
 
 > ### 📥 Télécharger et jouer
@@ -10,6 +12,24 @@
 > 3. Lance le jeu en profil Fabric, puis cherche un **Portail du Lotus** : il s'ouvre avec un *Bol de Riz Béni*.
 >
 > Le jar est reconstruit et vérifié automatiquement à chaque `push` par GitHub Actions, puis publié dans [Releases](https://github.com/mouusieur/cambocraft-mod-minecraft/releases).
+
+---
+
+## Aperçu en jeu
+
+Ces images sont de **véritables captures d'écran** prises dans un client Minecraft 1.21.1 + Fabric
+avec le mod chargé, rendu par un serveur dédié (`tools/dev/captures/`). Aucun rendu schématique.
+
+![Portail du Lotus](docs/captures/portail-du-lotus.png)
+
+![Galerie : cité khmère, rizières, atelier et chiffres clés](docs/captures/galerie.png)
+
+| Scène | Blocs du mod mis en avant |
+| --- | --- |
+| **Portail du Lotus** | `pierre_du_lotus_polie`, `cadre_du_portail`, `coeur_du_portail`, `pilier_de_lotus`, `cristal_de_lotus`, `fleur_d_hibiscus`, `lotus_rose`, `autel` |
+| **Cité khmère** | `brique_de_temple`, `gres_khmer_poli`, `toit_de_chaume`, `etal_de_marche`, `tambour`, `gong`, `banniere_*`, `bas_relief` |
+| **Rizières** | `boue_de_riziaire`, `riz_sauvage`, `riz_empile`, `laterite`, `lotus_blanc`, `feuille_de_lotus`, `paille_de_riz`, `paletuvier_sapling` |
+| **Atelier** | `teck_planks`, `metier_a_tisser`, `cuve_de_soie`, `tour_de_poterie`, `table_de_forge`, `four_de_forge`, `creuset_de_fusion`, `vitrail_de_temple` |
 
 ---
 
