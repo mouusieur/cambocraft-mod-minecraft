@@ -1,0 +1,20 @@
+{
+  "nom": {
+    "fr": "Lion sacré animé",
+    "en": "Animated Sacred Lion"
+  },
+  "categorie": "zone",
+  "rang": "ombre_silencieuse",
+  "element": "lumiere",
+  "pv_base": 470.0,
+  "attaque_base": 50.0,
+  "armure_base": 17.0,
+  "vitesse": 0.32,
+  "xp": 510,
+  "pieces": 84,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_lumiere"
+  ],
+  "phases": []
+}

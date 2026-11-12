@@ -1,0 +1,192 @@
+{
+  "generator": {
+    "biome_source": {
+      "biomes": [
+        {
+          "biome": "cambocraft:rizieres_en_terrasses",
+          "parameters": {
+            "continentalness": 0.15,
+            "depth": 0.0,
+            "erosion": 0.45,
+            "humidity": 0.4,
+            "offset": 0.0,
+            "temperature": 0.35,
+            "weirdness": 0.05
+          }
+        },
+        {
+          "biome": "cambocraft:foret_tropicale",
+          "parameters": {
+            "continentalness": 0.25,
+            "depth": 0.0,
+            "erosion": 0.2,
+            "humidity": 0.44999999999999996,
+            "offset": 0.0,
+            "temperature": 0.4,
+            "weirdness": 0.1
+          }
+        },
+        {
+          "biome": "cambocraft:bambouseraie",
+          "parameters": {
+            "continentalness": 0.3,
+            "depth": 0.0,
+            "erosion": 0.3,
+            "humidity": 0.38,
+            "offset": 0.0,
+            "temperature": 0.30000000000000004,
+            "weirdness": -0.15
+          }
+        },
+        {
+          "biome": "cambocraft:savane_claire",
+          "parameters": {
+            "continentalness": 0.35,
+            "depth": 0.0,
+            "erosion": 0.55,
+            "humidity": -0.2,
+            "offset": 0.0,
+            "temperature": 0.44999999999999996,
+            "weirdness": 0.2
+          }
+        },
+        {
+          "biome": "cambocraft:mangrove_et_marais",
+          "parameters": {
+            "continentalness": -0.25,
+            "depth": 0.0,
+            "erosion": 0.65,
+            "humidity": 0.48,
+            "offset": 0.0,
+            "temperature": 0.38,
+            "weirdness": -0.1
+          }
+        },
+        {
+          "biome": "cambocraft:riviere_du_tonle",
+          "parameters": {
+            "continentalness": -0.35,
+            "depth": 0.0,
+            "erosion": 0.7,
+            "humidity": 0.35,
+            "offset": 0.0,
+            "temperature": 0.35,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "cambocraft:grand_lac",
+          "parameters": {
+            "continentalness": -0.6,
+            "depth": 0.0,
+            "erosion": 0.75,
+            "humidity": 0.42000000000000004,
+            "offset": 0.0,
+            "temperature": 0.36,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "cambocraft:jungle_en_ruines",
+          "parameters": {
+            "continentalness": 0.4,
+            "depth": 0.0,
+            "erosion": 0.15,
+            "humidity": 0.42000000000000004,
+            "offset": 0.0,
+            "temperature": 0.4,
+            "weirdness": 0.25
+          }
+        },
+        {
+          "biome": "cambocraft:montagnes_karstiques",
+          "parameters": {
+            "continentalness": 0.7,
+            "depth": 0.0,
+            "erosion": -0.65,
+            "humidity": 0.25,
+            "offset": 0.0,
+            "temperature": 0.15000000000000002,
+            "weirdness": 0.6
+          }
+        },
+        {
+          "biome": "cambocraft:plateau_de_laterite",
+          "parameters": {
+            "continentalness": 0.55,
+            "depth": 0.0,
+            "erosion": -0.25,
+            "humidity": -0.04999999999999999,
+            "offset": 0.0,
+            "temperature": 0.42000000000000004,
+            "weirdness": 0.35
+          }
+        },
+        {
+          "biome": "cambocraft:sanctuaire_de_lotus",
+          "parameters": {
+            "continentalness": 0.05,
+            "depth": 0.0,
+            "erosion": 0.5,
+            "humidity": 0.4,
+            "offset": 0.0,
+            "temperature": 0.31999999999999995,
+            "weirdness": 0.45
+          }
+        },
+        {
+          "biome": "cambocraft:pinedes_seches",
+          "parameters": {
+            "continentalness": 0.6,
+            "depth": 0.0,
+            "erosion": -0.35,
+            "humidity": -0.15000000000000002,
+            "offset": 0.0,
+            "temperature": 0.09999999999999998,
+            "weirdness": -0.3
+          }
+        },
+        {
+          "biome": "cambocraft:plaine_inondable",
+          "parameters": {
+            "continentalness": -0.15,
+            "depth": 0.0,
+            "erosion": 0.6,
+            "humidity": 0.43999999999999995,
+            "offset": 0.0,
+            "temperature": 0.36,
+            "weirdness": -0.2
+          }
+        },
+        {
+          "biome": "cambocraft:foret_de_kapokiers",
+          "parameters": {
+            "continentalness": 0.35,
+            "depth": 0.0,
+            "erosion": 0.1,
+            "humidity": 0.36,
+            "offset": 0.0,
+            "temperature": 0.38,
+            "weirdness": -0.4
+          }
+        },
+        {
+          "biome": "cambocraft:iles_flottantes_des_garudas",
+          "parameters": {
+            "continentalness": 0.85,
+            "depth": 0.0,
+            "erosion": -0.8,
+            "humidity": 0.09999999999999998,
+            "offset": 0.0,
+            "temperature": 0.050000000000000044,
+            "weirdness": 0.8
+          }
+        }
+      ],
+      "type": "minecraft:multi_noise"
+    },
+    "settings": "cambocraft:cambodia_noise",
+    "type": "minecraft:noise"
+  },
+  "type": "cambocraft:cambodia"
+}

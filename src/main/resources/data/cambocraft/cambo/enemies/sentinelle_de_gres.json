@@ -1,0 +1,20 @@
+{
+  "nom": {
+    "fr": "Sentinelle de grès",
+    "en": "Sandstone Sentinel"
+  },
+  "categorie": "zone",
+  "rang": "maitre_shuriken",
+  "element": "terre",
+  "pv_base": 450.0,
+  "attaque_base": 48.0,
+  "armure_base": 18.0,
+  "vitesse": 0.32,
+  "xp": 510,
+  "pieces": 84,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_terre"
+  ],
+  "phases": []
+}

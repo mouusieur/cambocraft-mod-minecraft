@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Barattage de la Mer de Lait",
+    "en": "Churning of the Sea of Milk"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (eau, offensif) : Barattage de la Mer de Lait. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (eau, offensif): Churning of the Sea of Milk. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "mythique",
+  "element": "eau",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 40.0,
+      "soin": 12.0,
+      "portee": 14.0,
+      "duree_ticks": 120,
+      "recharge_ticks": 80,
+      "cout_energie": 50
+    },
+    {
+      "niveau": 2,
+      "degats": 48.8,
+      "soin": 14.64,
+      "portee": 15.12,
+      "duree_ticks": 134,
+      "recharge_ticks": 76,
+      "cout_energie": 50
+    },
+    {
+      "niveau": 3,
+      "degats": 57.6,
+      "soin": 17.28,
+      "portee": 16.24,
+      "duree_ticks": 149,
+      "recharge_ticks": 72,
+      "cout_energie": 50
+    },
+    {
+      "niveau": 4,
+      "degats": 66.4,
+      "soin": 19.92,
+      "portee": 17.36,
+      "duree_ticks": 163,
+      "recharge_ticks": 68,
+      "cout_energie": 50
+    },
+    {
+      "niveau": 5,
+      "degats": 75.2,
+      "soin": 22.56,
+      "portee": 18.48,
+      "duree_ticks": 178,
+      "recharge_ticks": 64,
+      "cout_energie": 50
+    }
+  ],
+  "maitrise": {
+    "seuil": 240,
+    "variante_fr": "Barattage de la Mer de Lait — Éveil du Maître",
+    "variante_en": "Churning of the Sea of Milk — Master Awakening",
+    "bonus": 0.35
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "nom": {
+    "fr": "Crevette de Rivière",
+    "en": "River Shrimp"
+  },
+  "item": "cambocraft:crevette_de_riviere",
+  "rarete": "commun",
+  "poids": 26,
+  "zones": [
+    "mangrove",
+    "riviere",
+    "grand_lac"
+  ],
+  "saisons": [
+    "*"
+  ],
+  "nocturne": false,
+  "min_cm": 3,
+  "max_cm": 11,
+  "difficulte": 0.18,
+  "prix": 2
+}

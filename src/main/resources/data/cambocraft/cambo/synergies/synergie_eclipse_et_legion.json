@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Nuit Sans Étoiles",
+    "en": "Starless Night"
+  },
+  "pouvoirs": [
+    "eclipse_du_generalissime",
+    "legion_des_ombres_silencieuses"
+  ],
+  "effet": "domination_nocturne",
+  "multiplicateur": 1.39,
+  "duree_ticks": 240,
+  "description": {
+    "fr": "Synergie active lorsque eclipse_du_generalissime et legion_des_ombres_silencieuses sont équipés ensemble : Nuit Sans Étoiles (×1.39).",
+    "en": "Active synergy when eclipse_du_generalissime and legion_des_ombres_silencieuses are equipped together: Starless Night (×1.39)."
+  }
+}

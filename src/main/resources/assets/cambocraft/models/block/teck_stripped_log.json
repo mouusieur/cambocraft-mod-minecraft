@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "cambocraft:block/teck_stripped_log_top",
+    "side": "cambocraft:block/teck_stripped_log_side"
+  }
+}

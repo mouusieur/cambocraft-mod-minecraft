@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Lame du Crépuscule",
+    "en": "Dusk Blade"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (ombre, offensif) : Lame du Crépuscule. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (ombre, offensif): Dusk Blade. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "rare",
+  "element": "ombre",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 12.2,
+      "soin": 0.0,
+      "portee": 5.0,
+      "duree_ticks": 30,
+      "recharge_ticks": 44,
+      "cout_energie": 20
+    },
+    {
+      "niveau": 2,
+      "degats": 14.88,
+      "soin": 0.0,
+      "portee": 5.4,
+      "duree_ticks": 34,
+      "recharge_ticks": 42,
+      "cout_energie": 20
+    },
+    {
+      "niveau": 3,
+      "degats": 17.57,
+      "soin": 0.0,
+      "portee": 5.8,
+      "duree_ticks": 37,
+      "recharge_ticks": 40,
+      "cout_energie": 20
+    },
+    {
+      "niveau": 4,
+      "degats": 20.25,
+      "soin": 0.0,
+      "portee": 6.2,
+      "duree_ticks": 41,
+      "recharge_ticks": 37,
+      "cout_energie": 20
+    },
+    {
+      "niveau": 5,
+      "degats": 22.94,
+      "soin": 0.0,
+      "portee": 6.6,
+      "duree_ticks": 44,
+      "recharge_ticks": 35,
+      "cout_energie": 20
+    }
+  ],
+  "maitrise": {
+    "seuil": 90,
+    "variante_fr": "Lame du Crépuscule — Éveil du Maître",
+    "variante_en": "Dusk Blade — Master Awakening",
+    "bonus": 0.22
+  }
+}

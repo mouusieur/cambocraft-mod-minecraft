@@ -1,0 +1,20 @@
+{
+  "nom": {
+    "fr": "Gardien de cristal",
+    "en": "Crystal Guardian"
+  },
+  "categorie": "zone",
+  "rang": "archonte",
+  "element": "lumiere",
+  "pv_base": 1220.0,
+  "attaque_base": 120.0,
+  "armure_base": 34.0,
+  "vitesse": 0.34,
+  "xp": 850,
+  "pieces": 140,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_lumiere"
+  ],
+  "phases": []
+}

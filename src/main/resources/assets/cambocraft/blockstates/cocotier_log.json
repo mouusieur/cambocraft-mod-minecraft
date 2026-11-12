@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "cambocraft:block/cocotier_log",
+      "x": 90,
+      "y": 0
+    },
+    "axis=y": {
+      "model": "cambocraft:block/cocotier_log",
+      "x": 0,
+      "y": 0
+    },
+    "axis=z": {
+      "model": "cambocraft:block/cocotier_log",
+      "x": 0,
+      "y": 90
+    }
+  }
+}

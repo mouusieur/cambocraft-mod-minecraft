@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042040,
+    "separation": 8,
+    "spacing": 24,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:pagode_montagne_karst",
+      "weight": 1
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "nom": {
+    "fr": "Exécuteur d'ardoise",
+    "en": "Slate Executioner"
+  },
+  "categorie": "ninja",
+  "rang": "ombre_silencieuse",
+  "element": "ombre",
+  "pv_base": 620.0,
+  "attaque_base": 66.0,
+  "armure_base": 21.0,
+  "vitesse": 0.33,
+  "xp": 595,
+  "pieces": 98,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_ombre",
+    "transformation_5_etapes",
+    "pas_de_l_ombre",
+    "salve_shuriken"
+  ],
+  "phases": []
+}

@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Abondance Éternelle du Cambodge",
+    "en": "Eternal Abundance of Cambodia"
+  },
+  "pouvoirs": [
+    "arbre_monde_du_tonle",
+    "souffle_primordial_des_rizieres"
+  ],
+  "effet": "vitalite_ancestrale",
+  "multiplicateur": 1.38,
+  "duree_ticks": 260,
+  "description": {
+    "fr": "Synergie active lorsque arbre_monde_du_tonle et souffle_primordial_des_rizieres sont équipés ensemble : Abondance Éternelle du Cambodge (×1.38).",
+    "en": "Active synergy when arbre_monde_du_tonle and souffle_primordial_des_rizieres are equipped together: Eternal Abundance of Cambodia (×1.38)."
+  }
+}

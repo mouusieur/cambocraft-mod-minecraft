@@ -1,0 +1,17 @@
+{
+  "buff_amplificateur": 0,
+  "buff_duree_ticks": 1200,
+  "buff_effet": "minecraft:saturation",
+  "faction": "tonle",
+  "ingredients": [
+    "cambocraft:farine_de_riz",
+    "cambocraft:papaye_verte",
+    "cambocraft:piment_rouge"
+  ],
+  "nom": {
+    "en": "Crispy Num Pang",
+    "fr": "Num Pang Croustillant"
+  },
+  "palier_min": "connu",
+  "resultat": "cambocraft:num_pang"
+}

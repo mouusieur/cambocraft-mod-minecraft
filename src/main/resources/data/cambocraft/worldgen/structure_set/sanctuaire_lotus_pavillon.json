@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042038,
+    "separation": 8,
+    "spacing": 24,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:sanctuaire_lotus_pavillon",
+      "weight": 1
+    }
+  ]
+}

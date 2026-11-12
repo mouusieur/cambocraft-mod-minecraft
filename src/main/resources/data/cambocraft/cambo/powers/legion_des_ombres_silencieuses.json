@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Légion des Ombres Silencieuses",
+    "en": "Silent Shadows Legion"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (ombre, invocation) : Légion des Ombres Silencieuses. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (ombre, invocation): Silent Shadows Legion. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "legendaire",
+  "element": "ombre",
+  "type": "invocation",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 24.0,
+      "soin": 0.0,
+      "portee": 10.0,
+      "duree_ticks": 140,
+      "recharge_ticks": 84,
+      "cout_energie": 42
+    },
+    {
+      "niveau": 2,
+      "degats": 29.28,
+      "soin": 0.0,
+      "portee": 10.8,
+      "duree_ticks": 157,
+      "recharge_ticks": 80,
+      "cout_energie": 42
+    },
+    {
+      "niveau": 3,
+      "degats": 34.56,
+      "soin": 0.0,
+      "portee": 11.6,
+      "duree_ticks": 174,
+      "recharge_ticks": 76,
+      "cout_energie": 42
+    },
+    {
+      "niveau": 4,
+      "degats": 39.84,
+      "soin": 0.0,
+      "portee": 12.4,
+      "duree_ticks": 190,
+      "recharge_ticks": 71,
+      "cout_energie": 42
+    },
+    {
+      "niveau": 5,
+      "degats": 45.12,
+      "soin": 0.0,
+      "portee": 13.2,
+      "duree_ticks": 207,
+      "recharge_ticks": 67,
+      "cout_energie": 42
+    }
+  ],
+  "maitrise": {
+    "seuil": 180,
+    "variante_fr": "Légion des Ombres Silencieuses — Éveil du Maître",
+    "variante_en": "Silent Shadows Legion — Master Awakening",
+    "bonus": 0.3
+  }
+}

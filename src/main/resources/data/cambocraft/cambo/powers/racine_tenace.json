@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Racine Tenace",
+    "en": "Tenacious Root"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (vie, controle) : Racine Tenace. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (vie, controle): Tenacious Root. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "commun",
+  "element": "vie",
+  "type": "controle",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 4.5,
+      "soin": 0.0,
+      "portee": 5.5,
+      "duree_ticks": 45,
+      "recharge_ticks": 60,
+      "cout_energie": 14
+    },
+    {
+      "niveau": 2,
+      "degats": 5.49,
+      "soin": 0.0,
+      "portee": 5.94,
+      "duree_ticks": 50,
+      "recharge_ticks": 57,
+      "cout_energie": 14
+    },
+    {
+      "niveau": 3,
+      "degats": 6.48,
+      "soin": 0.0,
+      "portee": 6.38,
+      "duree_ticks": 56,
+      "recharge_ticks": 54,
+      "cout_energie": 14
+    },
+    {
+      "niveau": 4,
+      "degats": 7.47,
+      "soin": 0.0,
+      "portee": 6.82,
+      "duree_ticks": 61,
+      "recharge_ticks": 51,
+      "cout_energie": 14
+    },
+    {
+      "niveau": 5,
+      "degats": 8.46,
+      "soin": 0.0,
+      "portee": 7.26,
+      "duree_ticks": 67,
+      "recharge_ticks": 48,
+      "cout_energie": 14
+    }
+  ],
+  "maitrise": {
+    "seuil": 60,
+    "variante_fr": "Racine Tenace — Éveil du Maître",
+    "variante_en": "Tenacious Root — Master Awakening",
+    "bonus": 0.18
+  }
+}

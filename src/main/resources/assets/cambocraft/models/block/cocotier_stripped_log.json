@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "cambocraft:block/cocotier_stripped_log_top",
+    "side": "cambocraft:block/cocotier_stripped_log_side"
+  }
+}

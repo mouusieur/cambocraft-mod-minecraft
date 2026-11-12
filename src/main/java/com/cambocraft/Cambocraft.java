@@ -1,0 +1,57 @@
+package com.cambocraft;
+
+import com.cambocraft.combat.CombatRegistry;
+import com.cambocraft.craft.CookingRegistry;
+import com.cambocraft.data.DataManager;
+import com.cambocraft.ecology.WorldAtmosphere;
+import com.cambocraft.event.ShadowNightManager;
+import com.cambocraft.fishing.FishingRegistry;
+import com.cambocraft.npc.NpcRegistry;
+import com.cambocraft.power.PowerRegistry;
+import com.cambocraft.progression.ZoneRegistry;
+import com.cambocraft.quest.QuestRegistry;
+import com.cambocraft.registry.CamboBlocks;
+import com.cambocraft.registry.CamboItemGroup;
+import com.cambocraft.registry.CamboItems;
+import com.cambocraft.util.Log;
+import com.cambocraft.world.CambodiaDimension;
+import com.cambocraft.world.LotusPortal;
+import net.fabricmc.api.ModInitializer;
+
+/**
+ * Point d'entrée commun (client et serveur) de Cambocraft.
+ *
+ * <p>L'ordre d'initialisation est important : les blocs d'abord (car les objets de bloc en
+ * dépendent), puis les objets, puis le groupe créatif, puis les sous-systèmes (monde, quêtes,
+ * pouvoirs…). Chaque sous-système s'enregistre lui-même dans son paquet ; cette classe ne fait
+ * que fixer l'ordre.</p>
+ */
+public class Cambocraft implements ModInitializer {
+    /** Espace de noms du mod. */
+    public static final String MOD_ID = "cambocraft";
+
+    @Override
+    public void onInitialize() {
+        Log.info("Cambocraft : initialisation du contenu de base");
+        // Toucher les classes force leur chargement, ce qui déclenche les enregistrements statiques.
+        CamboBlocks.class.getName();
+        CamboItems.class.getName();
+        CamboItemGroup.register();
+        FishingRegistry.init();
+        NpcRegistry.init();
+        CookingRegistry.init();
+        ZoneRegistry.init();
+        QuestRegistry.init();
+        PowerRegistry.init();
+        CombatRegistry.init();
+        ShadowNightManager.init();
+        DataManager.init();
+        LotusPortal.init();
+        WorldAtmosphere.init();
+        Log.info(
+                "Cambocraft : {} blocs, {} objets et {} biomes initialisés",
+                CamboBlocks.ALL.size(),
+                CamboItems.ALL.size(),
+                CambodiaDimension.BIOMES.size());
+    }
+}

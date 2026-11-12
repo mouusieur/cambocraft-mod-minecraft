@@ -1,0 +1,782 @@
+{
+  "aquifers_enabled": true,
+  "default_block": {
+    "Name": "cambocraft:gres_khmer"
+  },
+  "default_fluid": {
+    "Name": "minecraft:water",
+    "Properties": {
+      "level": "0"
+    }
+  },
+  "disable_mob_generation": false,
+  "legacy_random_source": false,
+  "noise": {
+    "height": 384,
+    "min_y": -64,
+    "size_horizontal": 1,
+    "size_vertical": 2
+  },
+  "noise_router": {
+    "barrier": 0.0,
+    "continents": "minecraft:overworld/continents",
+    "depth": "minecraft:overworld/depth",
+    "erosion": "minecraft:overworld/erosion",
+    "final_density": {
+      "from_value": 1.5,
+      "from_y": -64,
+      "to_value": -1.5,
+      "to_y": 256,
+      "type": "minecraft:y_clamped_gradient"
+    },
+    "fluid_level_floodedness": 0.0,
+    "fluid_level_spread": 0.0,
+    "initial_density_without_jaggedness": {
+      "from_value": 1.5,
+      "from_y": -64,
+      "to_value": -1.5,
+      "to_y": 256,
+      "type": "minecraft:y_clamped_gradient"
+    },
+    "lava": 0.0,
+    "ridges": "minecraft:overworld/ridges",
+    "temperature": {
+      "noise": "minecraft:temperature",
+      "shift_x": "minecraft:shift_x",
+      "shift_y": 0.0,
+      "shift_z": "minecraft:shift_z",
+      "type": "minecraft:shifted_noise",
+      "xz_scale": 0.25,
+      "y_scale": 0.0
+    },
+    "vegetation": {
+      "noise": "minecraft:vegetation",
+      "shift_x": "minecraft:shift_x",
+      "shift_y": 0.0,
+      "shift_z": "minecraft:shift_z",
+      "type": "minecraft:shifted_noise",
+      "xz_scale": 0.25,
+      "y_scale": 0.0
+    },
+    "vein_gap": 0.0,
+    "vein_ridged": 0.0,
+    "vein_toggle": 0.0
+  },
+  "ore_veins_enabled": true,
+  "sea_level": 63,
+  "spawn_target": [],
+  "surface_rule": {
+    "sequence": [
+      {
+        "if_true": {
+          "false_at_and_above": {
+            "above_bottom": 5
+          },
+          "random_name": "minecraft:bedrock_floor",
+          "true_at_and_below": {
+            "above_bottom": 0
+          },
+          "type": "minecraft:vertical_gradient"
+        },
+        "then_run": {
+          "result_state": {
+            "Name": "minecraft:bedrock"
+          },
+          "type": "minecraft:block"
+        },
+        "type": "minecraft:condition"
+      },
+      {
+        "if_true": {
+          "biome_is": [
+            "cambocraft:rizieres_en_terrasses"
+          ],
+          "type": "minecraft:biome"
+        },
+        "then_run": {
+          "sequence": [
+            {
+              "if_true": {
+                "add_surface_depth": false,
+                "offset": 0,
+                "secondary_depth_range": 0,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:boue_de_riziaire"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            },
+            {
+              "if_true": {
+                "add_surface_depth": true,
+                "offset": 0,
+                "secondary_depth_range": 3,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:terre_lateritique"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            }
+          ],
+          "type": "minecraft:sequence"
+        },
+        "type": "minecraft:condition"
+      },
+      {
+        "if_true": {
+          "biome_is": [
+            "cambocraft:foret_tropicale"
+          ],
+          "type": "minecraft:biome"
+        },
+        "then_run": {
+          "sequence": [
+            {
+              "if_true": {
+                "add_surface_depth": false,
+                "offset": 0,
+                "secondary_depth_range": 0,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "minecraft:grass_block"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            },
+            {
+              "if_true": {
+                "add_surface_depth": true,
+                "offset": 0,
+                "secondary_depth_range": 3,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:terre_lateritique"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            }
+          ],
+          "type": "minecraft:sequence"
+        },
+        "type": "minecraft:condition"
+      },
+      {
+        "if_true": {
+          "biome_is": [
+            "cambocraft:bambouseraie"
+          ],
+          "type": "minecraft:biome"
+        },
+        "then_run": {
+          "sequence": [
+            {
+              "if_true": {
+                "add_surface_depth": false,
+                "offset": 0,
+                "secondary_depth_range": 0,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "minecraft:grass_block"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            },
+            {
+              "if_true": {
+                "add_surface_depth": true,
+                "offset": 0,
+                "secondary_depth_range": 3,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:terre_lateritique"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            }
+          ],
+          "type": "minecraft:sequence"
+        },
+        "type": "minecraft:condition"
+      },
+      {
+        "if_true": {
+          "biome_is": [
+            "cambocraft:savane_claire"
+          ],
+          "type": "minecraft:biome"
+        },
+        "then_run": {
+          "sequence": [
+            {
+              "if_true": {
+                "add_surface_depth": false,
+                "offset": 0,
+                "secondary_depth_range": 0,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:terre_lateritique"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            },
+            {
+              "if_true": {
+                "add_surface_depth": true,
+                "offset": 0,
+                "secondary_depth_range": 3,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:laterite"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            }
+          ],
+          "type": "minecraft:sequence"
+        },
+        "type": "minecraft:condition"
+      },
+      {
+        "if_true": {
+          "biome_is": [
+            "cambocraft:mangrove_et_marais"
+          ],
+          "type": "minecraft:biome"
+        },
+        "then_run": {
+          "sequence": [
+            {
+              "if_true": {
+                "add_surface_depth": false,
+                "offset": 0,
+                "secondary_depth_range": 0,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:boue_de_riziaire"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            },
+            {
+              "if_true": {
+                "add_surface_depth": true,
+                "offset": 0,
+                "secondary_depth_range": 3,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:mousson_vase"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            }
+          ],
+          "type": "minecraft:sequence"
+        },
+        "type": "minecraft:condition"
+      },
+      {
+        "if_true": {
+          "biome_is": [
+            "cambocraft:riviere_du_tonle"
+          ],
+          "type": "minecraft:biome"
+        },
+        "then_run": {
+          "sequence": [
+            {
+              "if_true": {
+                "add_surface_depth": false,
+                "offset": 0,
+                "secondary_depth_range": 0,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:sable_de_riviere"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            },
+            {
+              "if_true": {
+                "add_surface_depth": true,
+                "offset": 0,
+                "secondary_depth_range": 3,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:gravier_de_riviere"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            }
+          ],
+          "type": "minecraft:sequence"
+        },
+        "type": "minecraft:condition"
+      },
+      {
+        "if_true": {
+          "biome_is": [
+            "cambocraft:grand_lac"
+          ],
+          "type": "minecraft:biome"
+        },
+        "then_run": {
+          "sequence": [
+            {
+              "if_true": {
+                "add_surface_depth": false,
+                "offset": 0,
+                "secondary_depth_range": 0,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:mousson_vase"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            },
+            {
+              "if_true": {
+                "add_surface_depth": true,
+                "offset": 0,
+                "secondary_depth_range": 3,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:sable_de_riviere"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            }
+          ],
+          "type": "minecraft:sequence"
+        },
+        "type": "minecraft:condition"
+      },
+      {
+        "if_true": {
+          "biome_is": [
+            "cambocraft:jungle_en_ruines"
+          ],
+          "type": "minecraft:biome"
+        },
+        "then_run": {
+          "sequence": [
+            {
+              "if_true": {
+                "add_surface_depth": false,
+                "offset": 0,
+                "secondary_depth_range": 0,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "minecraft:grass_block"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            },
+            {
+              "if_true": {
+                "add_surface_depth": true,
+                "offset": 0,
+                "secondary_depth_range": 3,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:pierre_erodee"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            }
+          ],
+          "type": "minecraft:sequence"
+        },
+        "type": "minecraft:condition"
+      },
+      {
+        "if_true": {
+          "biome_is": [
+            "cambocraft:montagnes_karstiques"
+          ],
+          "type": "minecraft:biome"
+        },
+        "then_run": {
+          "sequence": [
+            {
+              "if_true": {
+                "add_surface_depth": false,
+                "offset": 0,
+                "secondary_depth_range": 0,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:calcaire_karstique"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            },
+            {
+              "if_true": {
+                "add_surface_depth": true,
+                "offset": 0,
+                "secondary_depth_range": 3,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:calcaire_karstique"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            }
+          ],
+          "type": "minecraft:sequence"
+        },
+        "type": "minecraft:condition"
+      },
+      {
+        "if_true": {
+          "biome_is": [
+            "cambocraft:plateau_de_laterite"
+          ],
+          "type": "minecraft:biome"
+        },
+        "then_run": {
+          "sequence": [
+            {
+              "if_true": {
+                "add_surface_depth": false,
+                "offset": 0,
+                "secondary_depth_range": 0,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:terre_lateritique"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            },
+            {
+              "if_true": {
+                "add_surface_depth": true,
+                "offset": 0,
+                "secondary_depth_range": 3,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:laterite"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            }
+          ],
+          "type": "minecraft:sequence"
+        },
+        "type": "minecraft:condition"
+      },
+      {
+        "if_true": {
+          "biome_is": [
+            "cambocraft:sanctuaire_de_lotus"
+          ],
+          "type": "minecraft:biome"
+        },
+        "then_run": {
+          "sequence": [
+            {
+              "if_true": {
+                "add_surface_depth": false,
+                "offset": 0,
+                "secondary_depth_range": 0,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:pierre_du_lotus"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            },
+            {
+              "if_true": {
+                "add_surface_depth": true,
+                "offset": 0,
+                "secondary_depth_range": 3,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:pierre_du_lotus"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            }
+          ],
+          "type": "minecraft:sequence"
+        },
+        "type": "minecraft:condition"
+      },
+      {
+        "if_true": {
+          "biome_is": [
+            "cambocraft:pinedes_seches"
+          ],
+          "type": "minecraft:biome"
+        },
+        "then_run": {
+          "sequence": [
+            {
+              "if_true": {
+                "add_surface_depth": false,
+                "offset": 0,
+                "secondary_depth_range": 0,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:terre_lateritique"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            },
+            {
+              "if_true": {
+                "add_surface_depth": true,
+                "offset": 0,
+                "secondary_depth_range": 3,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:gres_khmer"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            }
+          ],
+          "type": "minecraft:sequence"
+        },
+        "type": "minecraft:condition"
+      },
+      {
+        "if_true": {
+          "biome_is": [
+            "cambocraft:plaine_inondable"
+          ],
+          "type": "minecraft:biome"
+        },
+        "then_run": {
+          "sequence": [
+            {
+              "if_true": {
+                "add_surface_depth": false,
+                "offset": 0,
+                "secondary_depth_range": 0,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:boue_de_riziaire"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            },
+            {
+              "if_true": {
+                "add_surface_depth": true,
+                "offset": 0,
+                "secondary_depth_range": 3,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:mousson_vase"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            }
+          ],
+          "type": "minecraft:sequence"
+        },
+        "type": "minecraft:condition"
+      },
+      {
+        "if_true": {
+          "biome_is": [
+            "cambocraft:foret_de_kapokiers"
+          ],
+          "type": "minecraft:biome"
+        },
+        "then_run": {
+          "sequence": [
+            {
+              "if_true": {
+                "add_surface_depth": false,
+                "offset": 0,
+                "secondary_depth_range": 0,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "minecraft:grass_block"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            },
+            {
+              "if_true": {
+                "add_surface_depth": true,
+                "offset": 0,
+                "secondary_depth_range": 3,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:gres_khmer"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            }
+          ],
+          "type": "minecraft:sequence"
+        },
+        "type": "minecraft:condition"
+      },
+      {
+        "if_true": {
+          "biome_is": [
+            "cambocraft:iles_flottantes_des_garudas"
+          ],
+          "type": "minecraft:biome"
+        },
+        "then_run": {
+          "sequence": [
+            {
+              "if_true": {
+                "add_surface_depth": false,
+                "offset": 0,
+                "secondary_depth_range": 0,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:gres_khmer_poli"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            },
+            {
+              "if_true": {
+                "add_surface_depth": true,
+                "offset": 0,
+                "secondary_depth_range": 3,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth"
+              },
+              "then_run": {
+                "result_state": {
+                  "Name": "cambocraft:pierre_du_lotus"
+                },
+                "type": "minecraft:block"
+              },
+              "type": "minecraft:condition"
+            }
+          ],
+          "type": "minecraft:sequence"
+        },
+        "type": "minecraft:condition"
+      }
+    ],
+    "type": "minecraft:sequence"
+  }
+}

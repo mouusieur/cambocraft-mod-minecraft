@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Halo de Sagesse",
+    "en": "Wisdom Halo"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (lumiere, utilitaire) : Halo de Sagesse. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (lumiere, utilitaire): Wisdom Halo. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "rare",
+  "element": "lumiere",
+  "type": "utilitaire",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 0.0,
+      "soin": 4.0,
+      "portee": 7.0,
+      "duree_ticks": 120,
+      "recharge_ticks": 75,
+      "cout_energie": 18
+    },
+    {
+      "niveau": 2,
+      "degats": 0.0,
+      "soin": 4.88,
+      "portee": 7.56,
+      "duree_ticks": 134,
+      "recharge_ticks": 71,
+      "cout_energie": 18
+    },
+    {
+      "niveau": 3,
+      "degats": 0.0,
+      "soin": 5.76,
+      "portee": 8.12,
+      "duree_ticks": 149,
+      "recharge_ticks": 68,
+      "cout_energie": 18
+    },
+    {
+      "niveau": 4,
+      "degats": 0.0,
+      "soin": 6.64,
+      "portee": 8.68,
+      "duree_ticks": 163,
+      "recharge_ticks": 64,
+      "cout_energie": 18
+    },
+    {
+      "niveau": 5,
+      "degats": 0.0,
+      "soin": 7.52,
+      "portee": 9.24,
+      "duree_ticks": 178,
+      "recharge_ticks": 60,
+      "cout_energie": 18
+    }
+  ],
+  "maitrise": {
+    "seuil": 90,
+    "variante_fr": "Halo de Sagesse — Éveil du Maître",
+    "variante_en": "Wisdom Halo — Master Awakening",
+    "bonus": 0.22
+  }
+}

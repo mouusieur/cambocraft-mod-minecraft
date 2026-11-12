@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "cambocraft:boue_de_riziaire",
+    "cambocraft:gravier_de_riviere",
+    "cambocraft:mousson_vase",
+    "cambocraft:sable_de_riviere",
+    "cambocraft:terre_lateritique"
+  ]
+}

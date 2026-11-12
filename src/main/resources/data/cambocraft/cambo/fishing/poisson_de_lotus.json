@@ -1,0 +1,21 @@
+{
+  "nom": {
+    "fr": "Poisson de Lotus",
+    "en": "Lotus Fish"
+  },
+  "item": "cambocraft:poisson_de_lotus",
+  "rarete": "rare",
+  "poids": 7,
+  "zones": [
+    "sanctuaire",
+    "grand_lac"
+  ],
+  "saisons": [
+    "*"
+  ],
+  "nocturne": false,
+  "min_cm": 12,
+  "max_cm": 28,
+  "difficulte": 0.68,
+  "prix": 20
+}

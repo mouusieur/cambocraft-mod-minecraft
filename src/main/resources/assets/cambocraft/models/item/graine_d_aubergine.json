@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cambocraft:item/graine_d_aubergine"
+  }
+}

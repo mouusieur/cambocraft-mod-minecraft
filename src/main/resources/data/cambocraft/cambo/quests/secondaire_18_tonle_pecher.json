@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "cambocraft:poisson_chat",
+      "description": {
+        "en": "Complete 6x pecher (cambocraft:poisson_chat).",
+        "fr": "Accomplir 6x pecher (cambocraft:poisson_chat)."
+      },
+      "id": "objectif_1",
+      "objectif": "pecher",
+      "quantite": 6
+    },
+    {
+      "cible": "pecheur_marchand",
+      "description": {
+        "en": "Report back to pecheur_marchand.",
+        "fr": "Rapporter le résultat à pecheur_marchand."
+      },
+      "id": "retour_pnj",
+      "objectif": "parler",
+      "quantite": 1
+    }
+  ],
+  "faction": "tonle",
+  "niveau_min": 49,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:appat_de_riz_fermente"
+    ],
+    "pieces": 30,
+    "pouvoir": "",
+    "reputation": 70,
+    "xp": 500
+  },
+  "resume": {
+    "en": "Assist pecheur_marchand in Tonle province (pecher: cambocraft:poisson_chat).",
+    "fr": "Aider pecheur_marchand dans la province de Tonle (pecher : cambocraft:poisson_chat)."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Shoreline Catch (II)",
+    "fr": "Prise des Berges (II)"
+  },
+  "type": "secondaire"
+}

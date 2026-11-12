@@ -1,0 +1,23 @@
+{
+  "nom": {
+    "fr": "Profanateur de relique",
+    "en": "Relic Defiler"
+  },
+  "categorie": "ninja",
+  "rang": "ombre_silencieuse",
+  "element": "ombre",
+  "pv_base": 430.0,
+  "attaque_base": 52.0,
+  "armure_base": 15.0,
+  "vitesse": 0.32,
+  "xp": 510,
+  "pieces": 84,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_ombre",
+    "transformation_5_etapes",
+    "pas_de_l_ombre",
+    "salve_shuriken"
+  ],
+  "phases": []
+}

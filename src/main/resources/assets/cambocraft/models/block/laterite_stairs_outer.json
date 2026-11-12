@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "cambocraft:block/laterite",
+    "side": "cambocraft:block/laterite",
+    "top": "cambocraft:block/laterite"
+  }
+}

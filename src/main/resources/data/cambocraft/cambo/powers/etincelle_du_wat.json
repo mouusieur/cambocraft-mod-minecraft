@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Étincelle du Wat",
+    "en": "Wat Spark"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (lumiere, offensif) : Étincelle du Wat. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (lumiere, offensif): Wat Spark. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "commun",
+  "element": "lumiere",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 7.2,
+      "soin": 0.0,
+      "portee": 6.5,
+      "duree_ticks": 20,
+      "recharge_ticks": 40,
+      "cout_energie": 14
+    },
+    {
+      "niveau": 2,
+      "degats": 8.78,
+      "soin": 0.0,
+      "portee": 7.02,
+      "duree_ticks": 22,
+      "recharge_ticks": 38,
+      "cout_energie": 14
+    },
+    {
+      "niveau": 3,
+      "degats": 10.37,
+      "soin": 0.0,
+      "portee": 7.54,
+      "duree_ticks": 25,
+      "recharge_ticks": 36,
+      "cout_energie": 14
+    },
+    {
+      "niveau": 4,
+      "degats": 11.95,
+      "soin": 0.0,
+      "portee": 8.06,
+      "duree_ticks": 27,
+      "recharge_ticks": 34,
+      "cout_energie": 14
+    },
+    {
+      "niveau": 5,
+      "degats": 13.54,
+      "soin": 0.0,
+      "portee": 8.58,
+      "duree_ticks": 30,
+      "recharge_ticks": 32,
+      "cout_energie": 14
+    }
+  ],
+  "maitrise": {
+    "seuil": 60,
+    "variante_fr": "Étincelle du Wat — Éveil du Maître",
+    "variante_en": "Wat Spark — Master Awakening",
+    "bonus": 0.18
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "cambocraft:block/paletuvier_log_top",
+    "side": "cambocraft:block/paletuvier_log_side"
+  }
+}

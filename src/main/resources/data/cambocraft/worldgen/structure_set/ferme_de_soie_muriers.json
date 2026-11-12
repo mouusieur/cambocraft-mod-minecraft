@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042027,
+    "separation": 6,
+    "spacing": 18,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:ferme_de_soie_muriers",
+      "weight": 1
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_inventory",
+  "textures": {
+    "texture": "cambocraft:block/pin_du_cambodge_planks"
+  }
+}

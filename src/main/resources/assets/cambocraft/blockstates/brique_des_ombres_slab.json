@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cambocraft:block/brique_des_ombres_slab"
+    },
+    "type=double": {
+      "model": "cambocraft:block/brique_des_ombres"
+    },
+    "type=top": {
+      "model": "cambocraft:block/brique_des_ombres_slab_top"
+    }
+  }
+}

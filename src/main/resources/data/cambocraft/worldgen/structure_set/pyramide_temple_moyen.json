@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042005,
+    "separation": 9,
+    "spacing": 28,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:pyramide_temple_moyen",
+      "weight": 1
+    }
+  ]
+}

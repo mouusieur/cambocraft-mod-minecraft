@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042032,
+    "separation": 7,
+    "spacing": 22,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:dojo_souterrain_ombre",
+      "weight": 1
+    }
+  ]
+}

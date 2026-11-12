@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Jugement Radieux du Lotus",
+    "en": "Radiant Lotus Judgment"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (lumiere, offensif) : Jugement Radieux du Lotus. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (lumiere, offensif): Radiant Lotus Judgment. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "mythique",
+  "element": "lumiere",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 41.0,
+      "soin": 10.0,
+      "portee": 14.0,
+      "duree_ticks": 110,
+      "recharge_ticks": 80,
+      "cout_energie": 50
+    },
+    {
+      "niveau": 2,
+      "degats": 50.02,
+      "soin": 12.2,
+      "portee": 15.12,
+      "duree_ticks": 123,
+      "recharge_ticks": 76,
+      "cout_energie": 50
+    },
+    {
+      "niveau": 3,
+      "degats": 59.04,
+      "soin": 14.4,
+      "portee": 16.24,
+      "duree_ticks": 136,
+      "recharge_ticks": 72,
+      "cout_energie": 50
+    },
+    {
+      "niveau": 4,
+      "degats": 68.06,
+      "soin": 16.6,
+      "portee": 17.36,
+      "duree_ticks": 150,
+      "recharge_ticks": 68,
+      "cout_energie": 50
+    },
+    {
+      "niveau": 5,
+      "degats": 77.08,
+      "soin": 18.8,
+      "portee": 18.48,
+      "duree_ticks": 163,
+      "recharge_ticks": 64,
+      "cout_energie": 50
+    }
+  ],
+  "maitrise": {
+    "seuil": 240,
+    "variante_fr": "Jugement Radieux du Lotus — Éveil du Maître",
+    "variante_en": "Radiant Lotus Judgment — Master Awakening",
+    "bonus": 0.35
+  }
+}

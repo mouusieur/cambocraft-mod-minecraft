@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Crépuscule et Aube Réconciliés",
+    "en": "Reconciled Dusk and Dawn"
+  },
+  "pouvoirs": [
+    "abime_de_l_ombre_premiere",
+    "aube_sacree_du_cambodge"
+  ],
+  "effet": "dualite_du_nen",
+  "multiplicateur": 1.46,
+  "duree_ticks": 280,
+  "description": {
+    "fr": "Synergie active lorsque abime_de_l_ombre_premiere et aube_sacree_du_cambodge sont équipés ensemble : Crépuscule et Aube Réconciliés (×1.46).",
+    "en": "Active synergy when abime_de_l_ombre_premiere and aube_sacree_du_cambodge are equipped together: Reconciled Dusk and Dawn (×1.46)."
+  }
+}

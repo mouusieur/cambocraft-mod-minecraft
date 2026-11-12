@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "cambocraft:block/brique_de_laterite",
+    "side": "cambocraft:block/brique_de_laterite",
+    "top": "cambocraft:block/brique_de_laterite"
+  }
+}

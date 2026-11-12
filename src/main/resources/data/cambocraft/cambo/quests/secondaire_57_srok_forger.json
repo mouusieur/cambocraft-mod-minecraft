@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "cambocraft:epee_khmer",
+      "description": {
+        "en": "Complete 4x forger (cambocraft:epee_khmer).",
+        "fr": "Accomplir 4x forger (cambocraft:epee_khmer)."
+      },
+      "id": "objectif_1",
+      "objectif": "forger",
+      "quantite": 4
+    },
+    {
+      "cible": "forgeron",
+      "description": {
+        "en": "Report back to forgeron.",
+        "fr": "Rapporter le résultat à forgeron."
+      },
+      "id": "retour_pnj",
+      "objectif": "parler",
+      "quantite": 1
+    }
+  ],
+  "faction": "srok",
+  "niveau_min": 153,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:cristal_de_forge_mineur"
+    ],
+    "pieces": 60,
+    "pouvoir": "",
+    "reputation": 140,
+    "xp": 1000
+  },
+  "resume": {
+    "en": "Assist forgeron in Srok province (forger: cambocraft:epee_khmer).",
+    "fr": "Aider forgeron dans la province de Srok (forger : cambocraft:epee_khmer)."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Srok Tempering (IV)",
+    "fr": "Trempe de Srok (IV)"
+  },
+  "type": "secondaire"
+}

@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Goutte Apaisante",
+    "en": "Soothing Droplet"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (eau, soin) : Goutte Apaisante. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (eau, soin): Soothing Droplet. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "commun",
+  "element": "eau",
+  "type": "soin",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 0.0,
+      "soin": 5.0,
+      "portee": 4.0,
+      "duree_ticks": 40,
+      "recharge_ticks": 60,
+      "cout_energie": 16
+    },
+    {
+      "niveau": 2,
+      "degats": 0.0,
+      "soin": 6.1,
+      "portee": 4.32,
+      "duree_ticks": 45,
+      "recharge_ticks": 57,
+      "cout_energie": 16
+    },
+    {
+      "niveau": 3,
+      "degats": 0.0,
+      "soin": 7.2,
+      "portee": 4.64,
+      "duree_ticks": 50,
+      "recharge_ticks": 54,
+      "cout_energie": 16
+    },
+    {
+      "niveau": 4,
+      "degats": 0.0,
+      "soin": 8.3,
+      "portee": 4.96,
+      "duree_ticks": 54,
+      "recharge_ticks": 51,
+      "cout_energie": 16
+    },
+    {
+      "niveau": 5,
+      "degats": 0.0,
+      "soin": 9.4,
+      "portee": 5.28,
+      "duree_ticks": 59,
+      "recharge_ticks": 48,
+      "cout_energie": 16
+    }
+  ],
+  "maitrise": {
+    "seuil": 60,
+    "variante_fr": "Goutte Apaisante — Éveil du Maître",
+    "variante_en": "Soothing Droplet — Master Awakening",
+    "bonus": 0.18
+  }
+}

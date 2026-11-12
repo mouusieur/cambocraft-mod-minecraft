@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 10,
+  "etapes": [
+    {
+      "cible": "maitre_de_quete",
+      "description": {
+        "en": "Gather accounts from the province.",
+        "fr": "Recueillir les témoignages de la province."
+      },
+      "id": "enquete_province",
+      "objectif": "parler",
+      "quantite": 1
+    },
+    {
+      "cible": "garuda_de_la_tempete",
+      "description": {
+        "en": "Overcome the zone trial (garuda_de_la_tempete).",
+        "fr": "Surmonter l'épreuve de fin de zone (garuda_de_la_tempete)."
+      },
+      "id": "epreuve_majeure",
+      "objectif": "vaincre",
+      "quantite": 1
+    }
+  ],
+  "faction": "srok",
+  "niveau_min": 165,
+  "quete_requise": "chapitre_09_le_silence_des_visages",
+  "recompenses": {
+    "objets": [
+      "cambocraft:serre_du_garuda_de_tempete"
+    ],
+    "pieces": 400,
+    "pouvoir": "",
+    "reputation": 120,
+    "xp": 50000
+  },
+  "resume": {
+    "en": "Reach the Floating Isles and test your spirit against the Storm Garuda.",
+    "fr": "Atteindre les Îles Flottantes et mesurer son souffle au Garuda de la Tempête."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Chapter X — Above the Monsoon",
+    "fr": "Chapitre X — Au-dessus de la Mousson"
+  },
+  "type": "principale"
+}

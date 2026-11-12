@@ -1,0 +1,67 @@
+{
+  "nom": {
+    "fr": "Le Serpent de la forêt",
+    "en": "Serpent of the Forest"
+  },
+  "categorie": "boss",
+  "rang": "seigneur_boss",
+  "element": "vie",
+  "pv_base": 3900.0,
+  "attaque_base": 68.0,
+  "armure_base": 20.0,
+  "vitesse": 0.32,
+  "xp": 28000,
+  "pieces": 1150,
+  "capacites": [
+    "presence_de_boss",
+    "transition_invulnerable",
+    "maitrise_vie"
+  ],
+  "phases": [
+    {
+      "phase": 1,
+      "seuil_pv": 1.0,
+      "nom": {
+        "fr": "Étreinte des racines de banyan",
+        "en": "Banyan Root Embrace"
+      },
+      "mult_attaque": 1.0,
+      "mult_vitesse": 1.04,
+      "mecanique_arene": "racines_vivantes",
+      "capacites": [
+        "morsure_sylvestre",
+        "constriction_de_lianes"
+      ]
+    },
+    {
+      "phase": 2,
+      "seuil_pv": 0.65,
+      "nom": {
+        "fr": "Venin des brumes d'émeraude",
+        "en": "Emerald Mist Venom"
+      },
+      "mult_attaque": 1.28,
+      "mult_vitesse": 1.16,
+      "mecanique_arene": "spores_ancestrales",
+      "capacites": [
+        "crachat_corrosif",
+        "appel_des_viperes"
+      ]
+    },
+    {
+      "phase": 3,
+      "seuil_pv": 0.3,
+      "nom": {
+        "fr": "Avatar du Naga sylvestre",
+        "en": "Sylvan Naga Avatar"
+      },
+      "mult_attaque": 1.58,
+      "mult_vitesse": 1.28,
+      "mecanique_arene": "foret_en_colere",
+      "capacites": [
+        "tempete_de_seve",
+        "jugement_de_kompong"
+      ]
+    }
+  ]
+}

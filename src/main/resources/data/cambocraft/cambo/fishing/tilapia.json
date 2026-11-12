@@ -1,0 +1,23 @@
+{
+  "nom": {
+    "fr": "Tilapia",
+    "en": "Tilapia"
+  },
+  "item": "cambocraft:poisson_tilapia",
+  "rarete": "commun",
+  "poids": 32,
+  "zones": [
+    "grand_lac",
+    "riviere",
+    "riziere",
+    "etang"
+  ],
+  "saisons": [
+    "*"
+  ],
+  "nocturne": false,
+  "min_cm": 16,
+  "max_cm": 38,
+  "difficulte": 0.22,
+  "prix": 3
+}

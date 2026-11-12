@@ -1,0 +1,20 @@
+{
+  "nom": {
+    "fr": "Reflet du Nen",
+    "en": "Nen Reflection"
+  },
+  "categorie": "zone",
+  "rang": "archonte",
+  "element": "lumiere",
+  "pv_base": 1900.0,
+  "attaque_base": 175.0,
+  "armure_base": 42.0,
+  "vitesse": 0.34,
+  "xp": 1020,
+  "pieces": 168,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_lumiere"
+  ],
+  "phases": []
+}

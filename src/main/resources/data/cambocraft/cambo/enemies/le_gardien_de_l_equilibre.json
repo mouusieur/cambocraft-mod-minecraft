@@ -1,0 +1,82 @@
+{
+  "nom": {
+    "fr": "Le Gardien de l'Équilibre",
+    "en": "Guardian of Balance"
+  },
+  "categorie": "boss",
+  "rang": "seigneur_boss",
+  "element": "vie",
+  "pv_base": 22000.0,
+  "attaque_base": 215.0,
+  "armure_base": 42.0,
+  "vitesse": 0.32,
+  "xp": 350000,
+  "pieces": 7500,
+  "capacites": [
+    "presence_de_boss",
+    "transition_invulnerable",
+    "maitrise_vie"
+  ],
+  "phases": [
+    {
+      "phase": 1,
+      "seuil_pv": 1.0,
+      "nom": {
+        "fr": "Épreuve de l'Eau et de la Terre",
+        "en": "Ordeal of Water and Earth"
+      },
+      "mult_attaque": 1.0,
+      "mult_vitesse": 1.05,
+      "mecanique_arene": "bassins_de_lotus",
+      "capacites": [
+        "onde_sacree",
+        "piliers_du_sanctuaire"
+      ]
+    },
+    {
+      "phase": 2,
+      "seuil_pv": 0.65,
+      "nom": {
+        "fr": "Épreuve du Feu et du Vent",
+        "en": "Ordeal of Fire and Wind"
+      },
+      "mult_attaque": 1.25,
+      "mult_vitesse": 1.15,
+      "mecanique_arene": "souffle_des_sept_elements",
+      "capacites": [
+        "flamme_du_lotus",
+        "tourbillon_celeste"
+      ]
+    },
+    {
+      "phase": 3,
+      "seuil_pv": 0.35,
+      "nom": {
+        "fr": "Confrontation de l'Ombre et de la Lumière",
+        "en": "Clash of Shadow and Light"
+      },
+      "mult_attaque": 1.5,
+      "mult_vitesse": 1.25,
+      "mecanique_arene": "dualite_du_bol",
+      "capacites": [
+        "eclipse_sacree",
+        "rayon_d_harmonie"
+      ]
+    },
+    {
+      "phase": 4,
+      "seuil_pv": 0.12,
+      "nom": {
+        "fr": "La Leçon du Bol Sacré",
+        "en": "Lesson of the Sacred Bowl"
+      },
+      "mult_attaque": 1.78,
+      "mult_vitesse": 1.35,
+      "mecanique_arene": "resonance_absolue_du_nen",
+      "capacites": [
+        "jugement_de_l_equilibre",
+        "plenitude_des_ancetres"
+      ]
+    }
+  ]
+}

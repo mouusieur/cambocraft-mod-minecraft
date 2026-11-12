@@ -1,0 +1,48 @@
+{
+  "faction": "tonle",
+  "offres": [
+    {
+      "item": "cambocraft:canne_a_pecher",
+      "palier_min": "connu",
+      "prix_base": 16,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:appat_de_riz_fermente",
+      "palier_min": "connu",
+      "prix_base": 6,
+      "quantite": 4,
+      "sensible_au_riz": true
+    },
+    {
+      "item": "cambocraft:filet_de_peche",
+      "palier_min": "respecte",
+      "prix_base": 20,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:canne_a_pecher_en_bambou_renforce",
+      "palier_min": "respecte",
+      "prix_base": 45,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:appat_de_crevette_doree",
+      "palier_min": "honore",
+      "prix_base": 18,
+      "quantite": 4,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:canne_a_pecher_du_maitre",
+      "palier_min": "legendaire",
+      "prix_base": 110,
+      "quantite": 1,
+      "sensible_au_riz": false
+    }
+  ],
+  "pnj": "pecheur_marchand"
+}

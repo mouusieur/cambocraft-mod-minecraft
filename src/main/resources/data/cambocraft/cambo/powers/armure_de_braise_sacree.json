@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Armure de Braise Sacrée",
+    "en": "Sacred Ember Armor"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (feu, defensif) : Armure de Braise Sacrée. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (feu, defensif): Sacred Ember Armor. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "epique",
+  "element": "feu",
+  "type": "defensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 6.0,
+      "soin": 10.0,
+      "portee": 4.0,
+      "duree_ticks": 120,
+      "recharge_ticks": 80,
+      "cout_energie": 30
+    },
+    {
+      "niveau": 2,
+      "degats": 7.32,
+      "soin": 12.2,
+      "portee": 4.32,
+      "duree_ticks": 134,
+      "recharge_ticks": 76,
+      "cout_energie": 30
+    },
+    {
+      "niveau": 3,
+      "degats": 8.64,
+      "soin": 14.4,
+      "portee": 4.64,
+      "duree_ticks": 149,
+      "recharge_ticks": 72,
+      "cout_energie": 30
+    },
+    {
+      "niveau": 4,
+      "degats": 9.96,
+      "soin": 16.6,
+      "portee": 4.96,
+      "duree_ticks": 163,
+      "recharge_ticks": 68,
+      "cout_energie": 30
+    },
+    {
+      "niveau": 5,
+      "degats": 11.28,
+      "soin": 18.8,
+      "portee": 5.28,
+      "duree_ticks": 178,
+      "recharge_ticks": 64,
+      "cout_energie": 30
+    }
+  ],
+  "maitrise": {
+    "seuil": 130,
+    "variante_fr": "Armure de Braise Sacrée — Éveil du Maître",
+    "variante_en": "Sacred Ember Armor — Master Awakening",
+    "bonus": 0.26
+  }
+}

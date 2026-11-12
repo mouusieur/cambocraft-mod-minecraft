@@ -1,0 +1,20 @@
+{
+  "nom": {
+    "fr": "Gardien du seuil",
+    "en": "Threshold Guardian"
+  },
+  "categorie": "zone",
+  "rang": "archonte",
+  "element": "lumiere",
+  "pv_base": 960.0,
+  "attaque_base": 98.0,
+  "armure_base": 29.0,
+  "vitesse": 0.34,
+  "xp": 765,
+  "pieces": 126,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_lumiere"
+  ],
+  "phases": []
+}

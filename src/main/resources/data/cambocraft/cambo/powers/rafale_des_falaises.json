@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Rafale des Falaises",
+    "en": "Cliff Gust"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (air, offensif) : Rafale des Falaises. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (air, offensif): Cliff Gust. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "rare",
+  "element": "air",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 10.5,
+      "soin": 0.0,
+      "portee": 8.5,
+      "duree_ticks": 25,
+      "recharge_ticks": 42,
+      "cout_energie": 19
+    },
+    {
+      "niveau": 2,
+      "degats": 12.81,
+      "soin": 0.0,
+      "portee": 9.18,
+      "duree_ticks": 28,
+      "recharge_ticks": 40,
+      "cout_energie": 19
+    },
+    {
+      "niveau": 3,
+      "degats": 15.12,
+      "soin": 0.0,
+      "portee": 9.86,
+      "duree_ticks": 31,
+      "recharge_ticks": 38,
+      "cout_energie": 19
+    },
+    {
+      "niveau": 4,
+      "degats": 17.43,
+      "soin": 0.0,
+      "portee": 10.54,
+      "duree_ticks": 34,
+      "recharge_ticks": 36,
+      "cout_energie": 19
+    },
+    {
+      "niveau": 5,
+      "degats": 19.74,
+      "soin": 0.0,
+      "portee": 11.22,
+      "duree_ticks": 37,
+      "recharge_ticks": 34,
+      "cout_energie": 19
+    }
+  ],
+  "maitrise": {
+    "seuil": 90,
+    "variante_fr": "Rafale des Falaises — Éveil du Maître",
+    "variante_en": "Cliff Gust — Master Awakening",
+    "bonus": 0.22
+  }
+}

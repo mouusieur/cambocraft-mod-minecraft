@@ -1,0 +1,20 @@
+{
+  "nom": {
+    "fr": "Sanglier des rizières",
+    "en": "Paddy Wild Boar"
+  },
+  "categorie": "zone",
+  "rang": "initie",
+  "element": "terre",
+  "pv_base": 75.0,
+  "attaque_base": 10.0,
+  "armure_base": 4.0,
+  "vitesse": 0.28,
+  "xp": 170,
+  "pieces": 28,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_terre"
+  ],
+  "phases": []
+}

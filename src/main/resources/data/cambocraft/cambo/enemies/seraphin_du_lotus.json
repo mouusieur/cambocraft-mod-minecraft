@@ -1,0 +1,20 @@
+{
+  "nom": {
+    "fr": "Séraphin du Lotus",
+    "en": "Lotus Seraph"
+  },
+  "categorie": "zone",
+  "rang": "archonte",
+  "element": "lumiere",
+  "pv_base": 1380.0,
+  "attaque_base": 134.0,
+  "armure_base": 34.0,
+  "vitesse": 0.34,
+  "xp": 935,
+  "pieces": 154,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_lumiere"
+  ],
+  "phases": []
+}

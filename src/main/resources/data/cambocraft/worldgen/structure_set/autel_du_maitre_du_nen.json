@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042039,
+    "separation": 9,
+    "spacing": 28,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:autel_du_maitre_du_nen",
+      "weight": 1
+    }
+  ]
+}

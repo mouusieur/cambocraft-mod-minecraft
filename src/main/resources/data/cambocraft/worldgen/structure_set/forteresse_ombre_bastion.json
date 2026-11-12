@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042029,
+    "separation": 8,
+    "spacing": 26,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:forteresse_ombre_bastion",
+      "weight": 1
+    }
+  ]
+}

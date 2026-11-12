@@ -1,0 +1,21 @@
+{
+  "nom": {
+    "fr": "Poisson Combattant",
+    "en": "Betta"
+  },
+  "item": "cambocraft:poisson_combattant",
+  "rarete": "peu_commun",
+  "poids": 16,
+  "zones": [
+    "riziere",
+    "etang"
+  ],
+  "saisons": [
+    "*"
+  ],
+  "nocturne": false,
+  "min_cm": 5,
+  "max_cm": 9,
+  "difficulte": 0.35,
+  "prix": 8
+}

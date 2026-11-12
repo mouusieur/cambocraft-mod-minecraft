@@ -1,0 +1,48 @@
+{
+  "faction": "tonle",
+  "offres": [
+    {
+      "item": "cambocraft:poisson_grille",
+      "palier_min": "connu",
+      "prix_base": 8,
+      "quantite": 2,
+      "sensible_au_riz": true
+    },
+    {
+      "item": "cambocraft:num_pang",
+      "palier_min": "connu",
+      "prix_base": 12,
+      "quantite": 2,
+      "sensible_au_riz": true
+    },
+    {
+      "item": "cambocraft:nom_banh_chok",
+      "palier_min": "respecte",
+      "prix_base": 16,
+      "quantite": 1,
+      "sensible_au_riz": true
+    },
+    {
+      "item": "cambocraft:amok",
+      "palier_min": "respecte",
+      "prix_base": 24,
+      "quantite": 1,
+      "sensible_au_riz": true
+    },
+    {
+      "item": "cambocraft:lok_lak",
+      "palier_min": "honore",
+      "prix_base": 30,
+      "quantite": 1,
+      "sensible_au_riz": true
+    },
+    {
+      "item": "cambocraft:crabe_au_poivre_vert",
+      "palier_min": "legendaire",
+      "prix_base": 45,
+      "quantite": 1,
+      "sensible_au_riz": false
+    }
+  ],
+  "pnj": "cuisinier_de_rue"
+}

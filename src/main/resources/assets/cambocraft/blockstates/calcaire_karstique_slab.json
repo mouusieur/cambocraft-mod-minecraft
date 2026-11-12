@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cambocraft:block/calcaire_karstique_slab"
+    },
+    "type=double": {
+      "model": "cambocraft:block/calcaire_karstique"
+    },
+    "type=top": {
+      "model": "cambocraft:block/calcaire_karstique_slab_top"
+    }
+  }
+}

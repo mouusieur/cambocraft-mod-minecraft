@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "cambocraft:block/pilier_de_lotus",
+      "x": 90,
+      "y": 0
+    },
+    "axis=y": {
+      "model": "cambocraft:block/pilier_de_lotus",
+      "x": 0,
+      "y": 0
+    },
+    "axis=z": {
+      "model": "cambocraft:block/pilier_de_lotus",
+      "x": 0,
+      "y": 90
+    }
+  }
+}

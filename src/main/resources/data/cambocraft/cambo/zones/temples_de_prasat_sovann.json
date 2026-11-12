@@ -1,0 +1,26 @@
+{
+  "biomes": [
+    "cambocraft:jungle_en_ruines",
+    "cambocraft:foret_de_kapokiers"
+  ],
+  "boss_id": "gardien_de_pierre",
+  "boss_requis": "le_serpent_de_la_foret",
+  "ennemis": [
+    "sentinelle_de_gres",
+    "automate_de_laterite",
+    "ombre_silencieuse",
+    "profanateur_de_relique"
+  ],
+  "niveau_max": 110,
+  "niveau_min": 90,
+  "nom": {
+    "en": "Prasat Sovann Temples",
+    "fr": "Temples de Prasat Sovann"
+  },
+  "ordre": 6,
+  "teleporteur": {
+    "x": 820,
+    "y": 86,
+    "z": 120
+  }
+}

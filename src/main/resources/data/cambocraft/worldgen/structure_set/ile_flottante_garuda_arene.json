@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042053,
+    "separation": 9,
+    "spacing": 28,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:ile_flottante_garuda_arene",
+      "weight": 1
+    }
+  ]
+}

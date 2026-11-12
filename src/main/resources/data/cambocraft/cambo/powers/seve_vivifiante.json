@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Sève Vivifiante",
+    "en": "Reviving Sap"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (vie, passif) : Sève Vivifiante. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (vie, passif): Reviving Sap. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "commun",
+  "element": "vie",
+  "type": "passif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 0.0,
+      "soin": 4.0,
+      "portee": 0.0,
+      "duree_ticks": 120,
+      "recharge_ticks": 80,
+      "cout_energie": 12
+    },
+    {
+      "niveau": 2,
+      "degats": 0.0,
+      "soin": 4.88,
+      "portee": 0.0,
+      "duree_ticks": 134,
+      "recharge_ticks": 76,
+      "cout_energie": 12
+    },
+    {
+      "niveau": 3,
+      "degats": 0.0,
+      "soin": 5.76,
+      "portee": 0.0,
+      "duree_ticks": 149,
+      "recharge_ticks": 72,
+      "cout_energie": 12
+    },
+    {
+      "niveau": 4,
+      "degats": 0.0,
+      "soin": 6.64,
+      "portee": 0.0,
+      "duree_ticks": 163,
+      "recharge_ticks": 68,
+      "cout_energie": 12
+    },
+    {
+      "niveau": 5,
+      "degats": 0.0,
+      "soin": 7.52,
+      "portee": 0.0,
+      "duree_ticks": 178,
+      "recharge_ticks": 64,
+      "cout_energie": 12
+    }
+  ],
+  "maitrise": {
+    "seuil": 60,
+    "variante_fr": "Sève Vivifiante — Éveil du Maître",
+    "variante_en": "Reviving Sap — Master Awakening",
+    "bonus": 0.18
+  }
+}

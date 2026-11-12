@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042010,
+    "separation": 6,
+    "spacing": 20,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:galerie_bas_reliefs_ouest",
+      "weight": 1
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Mythe Fondateur d'Angkor",
+    "en": "Founding Myth of Angkor"
+  },
+  "pouvoirs": [
+    "barattage_de_la_mer_de_lait",
+    "eveil_du_temple_millenaire"
+  ],
+  "effet": "equilibre_cosmique",
+  "multiplicateur": 1.45,
+  "duree_ticks": 280,
+  "description": {
+    "fr": "Synergie active lorsque barattage_de_la_mer_de_lait et eveil_du_temple_millenaire sont équipés ensemble : Mythe Fondateur d'Angkor (×1.45).",
+    "en": "Active synergy when barattage_de_la_mer_de_lait and eveil_du_temple_millenaire are equipped together: Founding Myth of Angkor (×1.45)."
+  }
+}

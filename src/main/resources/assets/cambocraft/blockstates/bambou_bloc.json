@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "cambocraft:block/bambou_bloc",
+      "x": 90,
+      "y": 0
+    },
+    "axis=y": {
+      "model": "cambocraft:block/bambou_bloc",
+      "x": 0,
+      "y": 0
+    },
+    "axis=z": {
+      "model": "cambocraft:block/bambou_bloc",
+      "x": 0,
+      "y": 90
+    }
+  }
+}

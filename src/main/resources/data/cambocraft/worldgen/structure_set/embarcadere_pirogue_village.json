@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042049,
+    "separation": 5,
+    "spacing": 16,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:embarcadere_pirogue_village",
+      "weight": 1
+    }
+  ]
+}

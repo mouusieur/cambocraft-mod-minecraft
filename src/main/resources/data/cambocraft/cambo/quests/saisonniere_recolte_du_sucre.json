@@ -1,0 +1,38 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "cambocraft:sucre_de_palme",
+      "description": {
+        "en": "Complete 6x recolter (cambocraft:sucre_de_palme).",
+        "fr": "Accomplir 6x recolter (cambocraft:sucre_de_palme)."
+      },
+      "id": "etape_unique",
+      "objectif": "recolter",
+      "quantite": 6
+    }
+  ],
+  "faction": "ly",
+  "niveau_min": 1,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:piece_du_lotus"
+    ],
+    "pieces": 25,
+    "pouvoir": "",
+    "reputation": 40,
+    "xp": 400
+  },
+  "resume": {
+    "en": "Saisonniere quest in Ly province.",
+    "fr": "Quête saisonniere de la province de Ly."
+  },
+  "saison_requise": "saison_chaude",
+  "titre": {
+    "en": "Hot Season Palm Sap",
+    "fr": "Sève de Saison Chaude"
+  },
+  "type": "saisonniere"
+}

@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Orage de Mousson Céleste",
+    "en": "Celestial Monsoon Storm"
+  },
+  "pouvoirs": [
+    "lance_de_foudre_celeste",
+    "oeil_du_cyclone"
+  ],
+  "effet": "tempête_electrique",
+  "multiplicateur": 1.34,
+  "duree_ticks": 200,
+  "description": {
+    "fr": "Synergie active lorsque lance_de_foudre_celeste et oeil_du_cyclone sont équipés ensemble : Orage de Mousson Céleste (×1.34).",
+    "en": "Active synergy when lance_de_foudre_celeste and oeil_du_cyclone are equipped together: Celestial Monsoon Storm (×1.34)."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "cambocraft:block/manguier_planks",
+    "side": "cambocraft:block/manguier_planks",
+    "top": "cambocraft:block/manguier_planks"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Saut de l'Ombre",
+    "en": "Shadow Blink"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (ombre, mobilite) : Saut de l'Ombre. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (ombre, mobilite): Shadow Blink. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "rare",
+  "element": "ombre",
+  "type": "mobilite",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 4.0,
+      "soin": 0.0,
+      "portee": 9.5,
+      "duree_ticks": 35,
+      "recharge_ticks": 48,
+      "cout_energie": 19
+    },
+    {
+      "niveau": 2,
+      "degats": 4.88,
+      "soin": 0.0,
+      "portee": 10.26,
+      "duree_ticks": 39,
+      "recharge_ticks": 46,
+      "cout_energie": 19
+    },
+    {
+      "niveau": 3,
+      "degats": 5.76,
+      "soin": 0.0,
+      "portee": 11.02,
+      "duree_ticks": 43,
+      "recharge_ticks": 43,
+      "cout_energie": 19
+    },
+    {
+      "niveau": 4,
+      "degats": 6.64,
+      "soin": 0.0,
+      "portee": 11.78,
+      "duree_ticks": 48,
+      "recharge_ticks": 41,
+      "cout_energie": 19
+    },
+    {
+      "niveau": 5,
+      "degats": 7.52,
+      "soin": 0.0,
+      "portee": 12.54,
+      "duree_ticks": 52,
+      "recharge_ticks": 38,
+      "cout_energie": 19
+    }
+  ],
+  "maitrise": {
+    "seuil": 90,
+    "variante_fr": "Saut de l'Ombre — Éveil du Maître",
+    "variante_en": "Shadow Blink — Master Awakening",
+    "bonus": 0.22
+  }
+}

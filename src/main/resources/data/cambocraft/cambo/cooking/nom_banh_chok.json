@@ -1,0 +1,17 @@
+{
+  "buff_amplificateur": 0,
+  "buff_duree_ticks": 2400,
+  "buff_effet": "minecraft:speed",
+  "faction": "tonle",
+  "ingredients": [
+    "cambocraft:nouilles_de_riz",
+    "cambocraft:poisson_chat",
+    "cambocraft:citronnelle_coupee"
+  ],
+  "nom": {
+    "en": "Herbal Nom Banh Chok",
+    "fr": "Nom Banh Chok aux Herbes"
+  },
+  "palier_min": "connu",
+  "resultat": "cambocraft:nom_banh_chok"
+}

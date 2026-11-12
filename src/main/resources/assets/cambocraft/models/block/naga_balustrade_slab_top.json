@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "cambocraft:block/naga_balustrade",
+    "side": "cambocraft:block/naga_balustrade",
+    "top": "cambocraft:block/naga_balustrade"
+  }
+}

@@ -1,0 +1,24 @@
+# Types génériques de Minecraft : Yarn ne mémorise pas les paramètres de type.
+# Seuls les types utilisés avec des arguments explicites dans le code du mod sont listés ici.
+generic TypedActionResult <T>
+generic Registry <T>
+generic DefaultedRegistry <T>
+generic MutableRegistry <T>
+generic RegistryKey <T>
+generic RegistryEntry <T>
+generic RegistryEntry.Reference <T>
+generic RegistryEntryList <T>
+generic RegistryEntryList.Named <T>
+generic TagKey <T>
+generic TrackedData <T>
+generic RegistryWrapper <T>
+generic RegistryWrapper.Impl <T>
+generic RegistryWrapper.WrapperLookup <T>
+generic State <O, S>
+generic ComponentType <T>
+generic Component <T>
+generic ComponentHolder <T>
+generic CustomPayload.Id <T>
+generic CustomPayload.Type <B, T>
+generic PacketCodec <B, V>
+generic ConfiguredFeature <FC, F>

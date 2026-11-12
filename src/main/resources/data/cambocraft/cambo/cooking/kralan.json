@@ -1,0 +1,17 @@
+{
+  "buff_amplificateur": 0,
+  "buff_duree_ticks": 3000,
+  "buff_effet": "minecraft:absorption",
+  "faction": "srok",
+  "ingredients": [
+    "cambocraft:riz_gluant",
+    "cambocraft:noix_de_coco",
+    "cambocraft:bambou_brut"
+  ],
+  "nom": {
+    "en": "Bamboo Sticky Rice Kralan",
+    "fr": "Kralan de Riz Gluant en Bambou"
+  },
+  "palier_min": "connu",
+  "resultat": "cambocraft:kralan"
+}

@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Souffle des Palmes",
+    "en": "Palm Breeze"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (air, offensif) : Souffle des Palmes. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (air, offensif): Palm Breeze. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "commun",
+  "element": "air",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 6.5,
+      "soin": 0.0,
+      "portee": 7.5,
+      "duree_ticks": 20,
+      "recharge_ticks": 36,
+      "cout_energie": 13
+    },
+    {
+      "niveau": 2,
+      "degats": 7.93,
+      "soin": 0.0,
+      "portee": 8.1,
+      "duree_ticks": 22,
+      "recharge_ticks": 34,
+      "cout_energie": 13
+    },
+    {
+      "niveau": 3,
+      "degats": 9.36,
+      "soin": 0.0,
+      "portee": 8.7,
+      "duree_ticks": 25,
+      "recharge_ticks": 32,
+      "cout_energie": 13
+    },
+    {
+      "niveau": 4,
+      "degats": 10.79,
+      "soin": 0.0,
+      "portee": 9.3,
+      "duree_ticks": 27,
+      "recharge_ticks": 31,
+      "cout_energie": 13
+    },
+    {
+      "niveau": 5,
+      "degats": 12.22,
+      "soin": 0.0,
+      "portee": 9.9,
+      "duree_ticks": 30,
+      "recharge_ticks": 29,
+      "cout_energie": 13
+    }
+  ],
+  "maitrise": {
+    "seuil": 60,
+    "variante_fr": "Souffle des Palmes — Éveil du Maître",
+    "variante_en": "Palm Breeze — Master Awakening",
+    "bonus": 0.18
+  }
+}

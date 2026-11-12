@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Rayon du Prasat",
+    "en": "Prasat Beam"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (lumiere, offensif) : Rayon du Prasat. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (lumiere, offensif): Prasat Beam. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "rare",
+  "element": "lumiere",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 11.5,
+      "soin": 0.0,
+      "portee": 8.0,
+      "duree_ticks": 25,
+      "recharge_ticks": 46,
+      "cout_energie": 20
+    },
+    {
+      "niveau": 2,
+      "degats": 14.03,
+      "soin": 0.0,
+      "portee": 8.64,
+      "duree_ticks": 28,
+      "recharge_ticks": 44,
+      "cout_energie": 20
+    },
+    {
+      "niveau": 3,
+      "degats": 16.56,
+      "soin": 0.0,
+      "portee": 9.28,
+      "duree_ticks": 31,
+      "recharge_ticks": 41,
+      "cout_energie": 20
+    },
+    {
+      "niveau": 4,
+      "degats": 19.09,
+      "soin": 0.0,
+      "portee": 9.92,
+      "duree_ticks": 34,
+      "recharge_ticks": 39,
+      "cout_energie": 20
+    },
+    {
+      "niveau": 5,
+      "degats": 21.62,
+      "soin": 0.0,
+      "portee": 10.56,
+      "duree_ticks": 37,
+      "recharge_ticks": 37,
+      "cout_energie": 20
+    }
+  ],
+  "maitrise": {
+    "seuil": 90,
+    "variante_fr": "Rayon du Prasat — Éveil du Maître",
+    "variante_en": "Prasat Beam — Master Awakening",
+    "bonus": 0.22
+  }
+}

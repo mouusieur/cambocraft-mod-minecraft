@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Colère du Phénix",
+    "en": "Phoenix Wrath"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (feu, offensif) : Colère du Phénix. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (feu, offensif): Phoenix Wrath. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "epique",
+  "element": "feu",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 19.0,
+      "soin": 0.0,
+      "portee": 7.5,
+      "duree_ticks": 60,
+      "recharge_ticks": 58,
+      "cout_energie": 30
+    },
+    {
+      "niveau": 2,
+      "degats": 23.18,
+      "soin": 0.0,
+      "portee": 8.1,
+      "duree_ticks": 67,
+      "recharge_ticks": 55,
+      "cout_energie": 30
+    },
+    {
+      "niveau": 3,
+      "degats": 27.36,
+      "soin": 0.0,
+      "portee": 8.7,
+      "duree_ticks": 74,
+      "recharge_ticks": 52,
+      "cout_energie": 30
+    },
+    {
+      "niveau": 4,
+      "degats": 31.54,
+      "soin": 0.0,
+      "portee": 9.3,
+      "duree_ticks": 82,
+      "recharge_ticks": 49,
+      "cout_energie": 30
+    },
+    {
+      "niveau": 5,
+      "degats": 35.72,
+      "soin": 0.0,
+      "portee": 9.9,
+      "duree_ticks": 89,
+      "recharge_ticks": 46,
+      "cout_energie": 30
+    }
+  ],
+  "maitrise": {
+    "seuil": 130,
+    "variante_fr": "Colère du Phénix — Éveil du Maître",
+    "variante_en": "Phoenix Wrath — Master Awakening",
+    "bonus": 0.26
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "nom": {
+    "fr": "Avatar du Vide",
+    "en": "Avatar of the Void"
+  },
+  "categorie": "ninja",
+  "rang": "archonte",
+  "element": "ombre",
+  "pv_base": 1850.0,
+  "attaque_base": 170.0,
+  "armure_base": 40.0,
+  "vitesse": 0.34,
+  "xp": 1020,
+  "pieces": 168,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_ombre",
+    "transformation_5_etapes",
+    "pas_de_l_ombre",
+    "salve_shuriken"
+  ],
+  "phases": []
+}

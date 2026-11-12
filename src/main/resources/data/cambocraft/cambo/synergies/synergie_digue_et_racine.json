@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Rempart des Rizières",
+    "en": "Paddy Bulwark"
+  },
+  "pouvoirs": [
+    "ancrage_des_digues",
+    "racine_tenace"
+  ],
+  "effet": "enracinement_profond",
+  "multiplicateur": 1.23,
+  "duree_ticks": 180,
+  "description": {
+    "fr": "Synergie active lorsque ancrage_des_digues et racine_tenace sont équipés ensemble : Rempart des Rizières (×1.23).",
+    "en": "Active synergy when ancrage_des_digues and racine_tenace are equipped together: Paddy Bulwark (×1.23)."
+  }
+}

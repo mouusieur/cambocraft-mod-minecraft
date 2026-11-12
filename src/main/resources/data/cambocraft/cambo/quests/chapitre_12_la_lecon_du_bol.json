@@ -1,0 +1,88 @@
+{
+  "branches": [
+    {
+      "bonus_reputation": 300,
+      "consequence": {
+        "en": "The bowl brims with golden clarity: your healing and wards radiate to allies.",
+        "fr": "Le bol déborde d’une clarté dorée : vos soins et protections rayonnent sur vos alliés."
+      },
+      "id": "lumiere",
+      "pouvoir_debloque": "danse_de_l_apsara",
+      "titre": {
+        "en": "Path of Light — Vow of Benevolence",
+        "fr": "Voie de la Lumière — Serment de Bienveillance"
+      }
+    },
+    {
+      "bonus_reputation": 150,
+      "consequence": {
+        "en": "You accept the shadow without anger: your strikes grow swift and precise.",
+        "fr": "Vous accueillez la part d’ombre sans colère : vos frappes deviennent fulgurantes et précises."
+      },
+      "id": "ombre",
+      "pouvoir_debloque": "regard_du_naga",
+      "titre": {
+        "en": "Path of Shadow — Mastery of Silence",
+        "fr": "Voie de l’Ombre — Maîtrise du Silence"
+      }
+    },
+    {
+      "bonus_reputation": 250,
+      "consequence": {
+        "en": "Like still water reflecting the lotus, your spiritual energy regenerates in harmony.",
+        "fr": "Comme l’eau calme reflétant le lotus, votre énergie spirituelle se régénère en harmonie."
+      },
+      "id": "equilibre",
+      "pouvoir_debloque": "serment_de_l_esprit",
+      "titre": {
+        "en": "Path of Balance — The Still Bowl",
+        "fr": "Voie de l’Équilibre — Le Bol Immobile"
+      }
+    }
+  ],
+  "chapitre": 12,
+  "etapes": [
+    {
+      "cible": "maitre_moine_du_nen",
+      "description": {
+        "en": "Gather accounts from the province.",
+        "fr": "Recueillir les témoignages de la province."
+      },
+      "id": "enquete_province",
+      "objectif": "parler",
+      "quantite": 1
+    },
+    {
+      "cible": "maitre_moine_du_nen",
+      "description": {
+        "en": "Overcome the zone trial (maitre_moine_du_nen).",
+        "fr": "Surmonter l'épreuve de fin de zone (maitre_moine_du_nen)."
+      },
+      "id": "epreuve_majeure",
+      "objectif": "mediter",
+      "quantite": 1
+    }
+  ],
+  "faction": "kompong",
+  "niveau_min": 195,
+  "quete_requise": "chapitre_11_le_seuil_du_sanctuaire",
+  "recompenses": {
+    "objets": [
+      "cambocraft:bol_du_maitre_du_nen"
+    ],
+    "pieces": 480,
+    "pouvoir": "",
+    "reputation": 120,
+    "xp": 72000
+  },
+  "resume": {
+    "en": "Meditate with Venerable Preah Thera, the Nen Master, and choose your spiritual path.",
+    "fr": "Méditer auprès du Vénérable Preah Thera, Maître du Nen, et choisir sa voie spirituelle."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Chapter XII — The Lesson of the Bowl",
+    "fr": "Chapitre XII — La Leçon du Bol"
+  },
+  "type": "principale"
+}

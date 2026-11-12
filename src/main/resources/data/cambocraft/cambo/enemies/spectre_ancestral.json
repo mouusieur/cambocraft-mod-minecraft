@@ -1,0 +1,20 @@
+{
+  "nom": {
+    "fr": "Spectre ancestral",
+    "en": "Ancestral Wraith"
+  },
+  "categorie": "zone",
+  "rang": "archonte",
+  "element": "ombre",
+  "pv_base": 1750.0,
+  "attaque_base": 162.0,
+  "armure_base": 38.0,
+  "vitesse": 0.34,
+  "xp": 1020,
+  "pieces": 168,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_ombre"
+  ],
+  "phases": []
+}

@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042050,
+    "separation": 6,
+    "spacing": 20,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:embarcadere_course_royale",
+      "weight": 1
+    }
+  ]
+}

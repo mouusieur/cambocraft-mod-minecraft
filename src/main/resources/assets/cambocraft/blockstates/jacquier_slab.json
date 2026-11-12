@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cambocraft:block/jacquier_slab"
+    },
+    "type=double": {
+      "model": "cambocraft:block/jacquier_planks"
+    },
+    "type=top": {
+      "model": "cambocraft:block/jacquier_slab_top"
+    }
+  }
+}

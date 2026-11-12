@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Ascension des Îles Célestes",
+    "en": "Celestial Isles Ascension"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (air, mobilite) : Ascension des Îles Célestes. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (air, mobilite): Celestial Isles Ascension. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "legendaire",
+  "element": "air",
+  "type": "mobilite",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 12.0,
+      "soin": 0.0,
+      "portee": 15.0,
+      "duree_ticks": 110,
+      "recharge_ticks": 64,
+      "cout_energie": 36
+    },
+    {
+      "niveau": 2,
+      "degats": 14.64,
+      "soin": 0.0,
+      "portee": 16.2,
+      "duree_ticks": 123,
+      "recharge_ticks": 61,
+      "cout_energie": 36
+    },
+    {
+      "niveau": 3,
+      "degats": 17.28,
+      "soin": 0.0,
+      "portee": 17.4,
+      "duree_ticks": 136,
+      "recharge_ticks": 58,
+      "cout_energie": 36
+    },
+    {
+      "niveau": 4,
+      "degats": 19.92,
+      "soin": 0.0,
+      "portee": 18.6,
+      "duree_ticks": 150,
+      "recharge_ticks": 54,
+      "cout_energie": 36
+    },
+    {
+      "niveau": 5,
+      "degats": 22.56,
+      "soin": 0.0,
+      "portee": 19.8,
+      "duree_ticks": 163,
+      "recharge_ticks": 51,
+      "cout_energie": 36
+    }
+  ],
+  "maitrise": {
+    "seuil": 180,
+    "variante_fr": "Ascension des Îles Célestes — Éveil du Maître",
+    "variante_en": "Celestial Isles Ascension — Master Awakening",
+    "bonus": 0.3
+  }
+}

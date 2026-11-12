@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "cambocraft:block/pin_du_cambodge_stripped_log_top",
+    "side": "cambocraft:block/pin_du_cambodge_stripped_log_side"
+  }
+}

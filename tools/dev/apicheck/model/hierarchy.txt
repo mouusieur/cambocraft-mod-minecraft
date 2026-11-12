@@ -1,0 +1,131 @@
+# Hiérarchie réelle des classes vanilla (absente des mappings Enigma).
+# Format : super <Classe> : <Super>[, <Interface>...]   — « - » en première position = pas de super-classe.
+# Cette liste ne contient que ce dont le mod a besoin ; elle est complétée au fil des erreurs de compilation.
+
+# --- entités ---
+super Entity : -
+super LivingEntity : Entity
+super PlayerEntity : LivingEntity
+super ServerPlayerEntity : PlayerEntity
+super ClientPlayerEntity : PlayerEntity
+super MobEntity : LivingEntity
+super PathAwareEntity : MobEntity
+super HostileEntity : PathAwareEntity
+super PassiveEntity : PathAwareEntity
+super AnimalEntity : PassiveEntity
+super VillagerEntity : PassiveEntity
+super MerchantEntity : -
+super TameableEntity : PassiveEntity
+super ProjectileEntity : Entity
+super PersistentProjectileEntity : ProjectileEntity
+super ItemEntity : Entity
+super EntityType : -
+super EntityDimensions : -
+super EntityAttribute : -
+super EntityAttributeInstance : -
+super EntityAttributes : -
+super EntityAttributeModifier : -
+super AttributeModifierSlot : -
+
+# --- blocs et objets ---
+super Block : -, ItemConvertible
+super AbstractBlock : -, ItemConvertible
+super BlockItem : Item
+super Item : -, ItemConvertible
+super ToolItem : Item
+super SwordItem : ToolItem
+super MiningToolItem : ToolItem
+super SlabBlock : Block
+super StairsBlock : Block
+super WallBlock : Block
+super FenceBlock : Block
+super FenceGateBlock : Block
+super CarpetBlock : Block
+super LeavesBlock : Block
+super CropBlock : Block
+super BlockEntity : -
+super BlockEntityType : -
+super BlockState : AbstractBlock.AbstractBlockState
+super AbstractBlock.AbstractBlockState : State
+super net/minecraft/state/property/Property : -
+super net/minecraft/state/property/BooleanProperty : net/minecraft/state/property/Property
+super BlockSoundGroup : -
+super MapColor : -
+super WoodType : -
+super BlockSetType : -
+
+# --- monde ---
+super World : -, WorldAccess
+super ServerWorld : World
+super ClientWorld : World
+super WorldAccess : -
+super WorldView : -
+super BlockView : -
+super HeightLimitView : -
+super ChunkGenerator : -
+super Biome : -
+super BiomeSource : -
+super DimensionType : -
+super Chunk : -
+super WorldChunk : Chunk
+
+# --- réseau et texte ---
+super CustomPayload : -
+super PacketByteBuf : -
+super Text : -
+super MutableText : Text
+super Identifier : -
+super StatusEffect : -
+super StatusEffectInstance : -
+super SoundEvent : -
+super ParticleType : -
+super ItemStack : -
+super ItemGroup : -
+super ScreenHandler : -
+super ScreenHandlerType : -
+super ServerPlayNetworkHandler : -
+super ServerPlayerInteractionManager : -
+
+# --- structures, fonctions, données ---
+super Structure : -
+super StructurePiece : -
+super StructureType : -
+super Feature : -
+super ConfiguredFeature : -
+super PlacedFeature : -
+super StructureAccessor : -
+super StructureWorldAccess : -, WorldAccess
+
+# --- interfaces (doivent être déclarées comme telles) ---
+interface ItemConvertible
+interface WorldAccess
+interface BlockView
+interface WorldView
+interface HeightLimitView
+interface Inventory
+interface ScreenHandlerFactory
+interface Nameable
+interface DataTracked
+interface ModifiableWorld
+interface StructureWorldAccess
+interface TestableWorld
+interface RuleTest
+interface ItemGroup.Entries
+
+# --- interfaces supplémentaires ---
+interface SynchronousResourceReloader
+interface ItemGroup.EntryCollector
+interface ItemGroup.Entries
+# --- héritages de registres ---
+super DefaultedRegistry : Registry<T>
+super MutableRegistry : Registry<T>
+super RegistryEntry.Reference : RegistryEntry<T>
+enum EquipmentSlot
+enum Rarity
+enum Direction
+enum Hand
+
+super Registry : -, java.lang.Iterable<T>
+enum ResourceType
+enum ActionResult
+super BlockPos : Vec3i

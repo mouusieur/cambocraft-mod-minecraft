@@ -1,0 +1,23 @@
+{
+  "nom": {
+    "fr": "Archer des bambous",
+    "en": "Bamboo Archer"
+  },
+  "categorie": "ninja",
+  "rang": "archer",
+  "element": "air",
+  "pv_base": 122.0,
+  "attaque_base": 17.0,
+  "armure_base": 5.5,
+  "vitesse": 0.29,
+  "xp": 255,
+  "pieces": 42,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_air",
+    "transformation_5_etapes",
+    "pas_de_l_ombre",
+    "salve_shuriken"
+  ],
+  "phases": []
+}

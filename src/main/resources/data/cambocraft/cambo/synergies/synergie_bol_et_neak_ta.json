@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Alliance Sacrée du Bol et des Esprits",
+    "en": "Sacred Covenant of Bowl and Spirits"
+  },
+  "pouvoirs": [
+    "harmonie_du_bol_sacree",
+    "avatar_du_neak_ta_ancestral"
+  ],
+  "effet": "plenitude_du_nen",
+  "multiplicateur": 1.48,
+  "duree_ticks": 300,
+  "description": {
+    "fr": "Synergie active lorsque harmonie_du_bol_sacree et avatar_du_neak_ta_ancestral sont équipés ensemble : Alliance Sacrée du Bol et des Esprits (×1.48).",
+    "en": "Active synergy when harmonie_du_bol_sacree and avatar_du_neak_ta_ancestral are equipped together: Sacred Covenant of Bowl and Spirits (×1.48)."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042019,
+    "separation": 5,
+    "spacing": 16,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:maison_pilotis_tisserand",
+      "weight": 1
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "nom": {
+    "fr": "Lame du Clan Ombre",
+    "en": "Shadow Clan Blade"
+  },
+  "categorie": "ninja",
+  "rang": "lame",
+  "element": "ombre",
+  "pv_base": 135.0,
+  "attaque_base": 18.0,
+  "armure_base": 6.5,
+  "vitesse": 0.29,
+  "xp": 255,
+  "pieces": 42,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_ombre",
+    "transformation_5_etapes",
+    "pas_de_l_ombre",
+    "salve_shuriken"
+  ],
+  "phases": []
+}

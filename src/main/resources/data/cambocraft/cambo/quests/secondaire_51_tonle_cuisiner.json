@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "cambocraft:amok",
+      "description": {
+        "en": "Complete 4x cuisiner (cambocraft:amok).",
+        "fr": "Accomplir 4x cuisiner (cambocraft:amok)."
+      },
+      "id": "objectif_1",
+      "objectif": "cuisiner",
+      "quantite": 4
+    },
+    {
+      "cible": "cuisinier_de_rue",
+      "description": {
+        "en": "Report back to cuisinier_de_rue.",
+        "fr": "Rapporter le résultat à cuisinier_de_rue."
+      },
+      "id": "retour_pnj",
+      "objectif": "parler",
+      "quantite": 1
+    }
+  ],
+  "faction": "tonle",
+  "niveau_min": 141,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:amok"
+    ],
+    "pieces": 60,
+    "pouvoir": "",
+    "reputation": 140,
+    "xp": 1000
+  },
+  "resume": {
+    "en": "Assist cuisinier_de_rue in Tonle province (cuisiner: cambocraft:amok).",
+    "fr": "Aider cuisinier_de_rue dans la province de Tonle (cuisiner : cambocraft:amok)."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Lemongrass Aroma (IV)",
+    "fr": "Parfum de Citronnelle (IV)"
+  },
+  "type": "secondaire"
+}

@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042002,
+    "separation": 8,
+    "spacing": 24,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:prasat_moyen",
+      "weight": 1
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042036,
+    "separation": 6,
+    "spacing": 18,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:puits_sacree_lotus",
+      "weight": 1
+    }
+  ]
+}

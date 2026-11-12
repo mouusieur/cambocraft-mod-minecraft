@@ -1,0 +1,32 @@
+{
+  "replace": false,
+  "values": [
+    "cambocraft:ardoise_des_ombres",
+    "cambocraft:ardoise_des_ombres_slab",
+    "cambocraft:ardoise_des_ombres_stairs",
+    "cambocraft:ardoise_des_ombres_wall",
+    "cambocraft:brique_des_ombres",
+    "cambocraft:brique_des_ombres_slab",
+    "cambocraft:brique_des_ombres_stairs",
+    "cambocraft:brique_des_ombres_wall",
+    "cambocraft:cloche_de_temple",
+    "cambocraft:creuset_de_fusion",
+    "cambocraft:garuda",
+    "cambocraft:gong",
+    "cambocraft:lion_de_pierre",
+    "cambocraft:marbre_blanc",
+    "cambocraft:marbre_blanc_slab",
+    "cambocraft:marbre_blanc_stairs",
+    "cambocraft:marbre_blanc_wall",
+    "cambocraft:minerai_de_lotus",
+    "cambocraft:naga_balustrade",
+    "cambocraft:naga_balustrade_slab",
+    "cambocraft:naga_balustrade_stairs",
+    "cambocraft:pierre_des_ombres_runique",
+    "cambocraft:sol_de_temple",
+    "cambocraft:statue_de_pierre",
+    "cambocraft:table_de_forge",
+    "cambocraft:teleporteur_de_lotus",
+    "cambocraft:visage_de_pierre"
+  ]
+}

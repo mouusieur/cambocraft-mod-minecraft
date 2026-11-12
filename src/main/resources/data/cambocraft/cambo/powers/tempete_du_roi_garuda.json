@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Tempête du Roi Garuda",
+    "en": "Garuda King Storm"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (air, offensif) : Tempête du Roi Garuda. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (air, offensif): Garuda King Storm. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "legendaire",
+  "element": "air",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 28.0,
+      "soin": 0.0,
+      "portee": 13.0,
+      "duree_ticks": 70,
+      "recharge_ticks": 66,
+      "cout_energie": 38
+    },
+    {
+      "niveau": 2,
+      "degats": 34.16,
+      "soin": 0.0,
+      "portee": 14.04,
+      "duree_ticks": 78,
+      "recharge_ticks": 63,
+      "cout_energie": 38
+    },
+    {
+      "niveau": 3,
+      "degats": 40.32,
+      "soin": 0.0,
+      "portee": 15.08,
+      "duree_ticks": 87,
+      "recharge_ticks": 59,
+      "cout_energie": 38
+    },
+    {
+      "niveau": 4,
+      "degats": 46.48,
+      "soin": 0.0,
+      "portee": 16.12,
+      "duree_ticks": 95,
+      "recharge_ticks": 56,
+      "cout_energie": 38
+    },
+    {
+      "niveau": 5,
+      "degats": 52.64,
+      "soin": 0.0,
+      "portee": 17.16,
+      "duree_ticks": 104,
+      "recharge_ticks": 53,
+      "cout_energie": 38
+    }
+  ],
+  "maitrise": {
+    "seuil": 180,
+    "variante_fr": "Tempête du Roi Garuda — Éveil du Maître",
+    "variante_en": "Garuda King Storm — Master Awakening",
+    "bonus": 0.3
+  }
+}

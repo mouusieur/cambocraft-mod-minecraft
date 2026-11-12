@@ -1,0 +1,20 @@
+{
+  "nom": {
+    "fr": "Pillard des berges",
+    "en": "Riverbank Marauder"
+  },
+  "categorie": "zone",
+  "rang": "initie",
+  "element": "terre",
+  "pv_base": 42.0,
+  "attaque_base": 6.5,
+  "armure_base": 2.5,
+  "vitesse": 0.27,
+  "xp": 85,
+  "pieces": 14,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_terre"
+  ],
+  "phases": []
+}

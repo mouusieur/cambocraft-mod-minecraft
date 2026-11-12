@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cambocraft:block/gres_khmer_slab"
+    },
+    "type=double": {
+      "model": "cambocraft:block/gres_khmer"
+    },
+    "type=top": {
+      "model": "cambocraft:block/gres_khmer_slab_top"
+    }
+  }
+}

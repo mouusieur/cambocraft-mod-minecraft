@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Feu Immortel de Sovann",
+    "en": "Immortal Fire of Sovann"
+  },
+  "pouvoirs": [
+    "soleil_ardent_de_sovann",
+    "renaissance_du_phenix_de_laterite"
+  ],
+  "effet": "flamme_de_resurrection",
+  "multiplicateur": 1.38,
+  "duree_ticks": 240,
+  "description": {
+    "fr": "Synergie active lorsque soleil_ardent_de_sovann et renaissance_du_phenix_de_laterite sont équipés ensemble : Feu Immortel de Sovann (×1.38).",
+    "en": "Active synergy when soleil_ardent_de_sovann and renaissance_du_phenix_de_laterite are equipped together: Immortal Fire of Sovann (×1.38)."
+  }
+}

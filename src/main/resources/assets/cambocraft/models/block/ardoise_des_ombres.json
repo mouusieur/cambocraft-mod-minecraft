@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "cambocraft:block/ardoise_des_ombres"
+  }
+}

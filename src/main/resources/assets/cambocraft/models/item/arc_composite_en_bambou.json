@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "cambocraft:item/arc_composite_en_bambou"
+  }
+}

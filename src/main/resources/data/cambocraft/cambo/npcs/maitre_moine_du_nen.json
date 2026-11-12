@@ -1,0 +1,38 @@
+{
+  "dialogue_initial": "maitre_moine_du_nen",
+  "faction": "kompong",
+  "marchand_id": "",
+  "nom": {
+    "en": "Venerable Preah Thera — Nen Master",
+    "fr": "Vénérable Preah Thera — Maître du Nen"
+  },
+  "personnalite": "serein",
+  "peut_etre_ninja_deguise": false,
+  "role": "maitre_moine_du_nen",
+  "routine": [
+    {
+      "activite": "salut_matinal_et_offrande",
+      "debut_tick": 0,
+      "fin_tick": 2500,
+      "lieu": "pagode_ou_foyer"
+    },
+    {
+      "activite": "travail_principal",
+      "debut_tick": 2500,
+      "fin_tick": 9000,
+      "lieu": "atelier_ou_marche"
+    },
+    {
+      "activite": "echanges_et_conseils",
+      "debut_tick": 9000,
+      "fin_tick": 13000,
+      "lieu": "place_du_village"
+    },
+    {
+      "activite": "repos_sous_pilotis",
+      "debut_tick": 13000,
+      "fin_tick": 24000,
+      "lieu": "maison_pilotis"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "biomes": [
+    "cambocraft:montagnes_karstiques",
+    "cambocraft:plateau_de_laterite"
+  ],
+  "boss_id": "le_phenix_de_laterite",
+  "boss_requis": "generalissime_du_clan_ombre",
+  "ennemis": [
+    "faucon_de_braise",
+    "golem_de_calcaire",
+    "ermite_corrompu",
+    "ombre_des_cretes"
+  ],
+  "niveau_max": 150,
+  "niveau_min": 130,
+  "nom": {
+    "en": "Karst Mountains",
+    "fr": "Montagnes Karstiques"
+  },
+  "ordre": 8,
+  "teleporteur": {
+    "x": 1180,
+    "y": 128,
+    "z": -860
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "faction": "ly",
+  "offres": [
+    {
+      "item": "cambocraft:bandage_de_soie",
+      "palier_min": "connu",
+      "prix_base": 14,
+      "quantite": 2,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:infusion_de_citronnelle",
+      "palier_min": "connu",
+      "prix_base": 12,
+      "quantite": 2,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:onguent_de_lotus",
+      "palier_min": "respecte",
+      "prix_base": 28,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:infusion_de_lotus",
+      "palier_min": "honore",
+      "prix_base": 32,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:encens_beni",
+      "palier_min": "legendaire",
+      "prix_base": 40,
+      "quantite": 2,
+      "sensible_au_riz": false
+    }
+  ],
+  "pnj": "guerisseur"
+}

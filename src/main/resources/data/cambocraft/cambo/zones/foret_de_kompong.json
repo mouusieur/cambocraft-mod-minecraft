@@ -1,0 +1,26 @@
+{
+  "biomes": [
+    "cambocraft:foret_tropicale",
+    "cambocraft:foret_de_kapokiers"
+  ],
+  "boss_id": "le_serpent_de_la_foret",
+  "boss_requis": "le_crocodile_des_profondeurs",
+  "ennemis": [
+    "chasseur_sylvestre",
+    "vipere_des_frondaisons",
+    "ombre_silencieuse",
+    "esprit_des_racines"
+  ],
+  "niveau_max": 90,
+  "niveau_min": 70,
+  "nom": {
+    "en": "Kompong Forest",
+    "fr": "Forêt de Kompong"
+  },
+  "ordre": 5,
+  "teleporteur": {
+    "x": -680,
+    "y": 82,
+    "z": -420
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042042,
+    "separation": 6,
+    "spacing": 20,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:pagode_flottante_tonle",
+      "weight": 1
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "nom": {
+    "fr": "Ombre silencieuse",
+    "en": "Silent Shadow"
+  },
+  "categorie": "ninja",
+  "rang": "ombre_silencieuse",
+  "element": "ombre",
+  "pv_base": 340.0,
+  "attaque_base": 40.0,
+  "armure_base": 12.5,
+  "vitesse": 0.31,
+  "xp": 425,
+  "pieces": 70,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_ombre",
+    "transformation_5_etapes",
+    "pas_de_l_ombre",
+    "salve_shuriken"
+  ],
+  "phases": []
+}

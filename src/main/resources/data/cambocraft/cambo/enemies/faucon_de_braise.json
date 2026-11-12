@@ -1,0 +1,20 @@
+{
+  "nom": {
+    "fr": "Faucon de braise",
+    "en": "Ember Falcon"
+  },
+  "categorie": "zone",
+  "rang": "ombre_silencieuse",
+  "element": "feu",
+  "pv_base": 730.0,
+  "attaque_base": 84.0,
+  "armure_base": 20.0,
+  "vitesse": 0.34,
+  "xp": 680,
+  "pieces": 112,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_feu"
+  ],
+  "phases": []
+}

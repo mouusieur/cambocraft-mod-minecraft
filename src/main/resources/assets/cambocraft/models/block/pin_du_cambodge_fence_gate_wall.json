@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_fence_gate_wall",
+  "textures": {
+    "texture": "cambocraft:block/pin_du_cambodge_planks"
+  }
+}

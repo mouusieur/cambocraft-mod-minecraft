@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cambocraft:block/palmier_a_sucre_slab"
+    },
+    "type=double": {
+      "model": "cambocraft:block/palmier_a_sucre_planks"
+    },
+    "type=top": {
+      "model": "cambocraft:block/palmier_a_sucre_slab_top"
+    }
+  }
+}

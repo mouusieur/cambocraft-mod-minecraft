@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Bénédiction du Roi Naga",
+    "en": "Naga King Blessing"
+  },
+  "pouvoirs": [
+    "fureur_du_naga_a_sept_tetes",
+    "sanctuaire_des_eaux_eternelles"
+  ],
+  "effet": "souverainete_des_eaux",
+  "multiplicateur": 1.38,
+  "duree_ticks": 240,
+  "description": {
+    "fr": "Synergie active lorsque fureur_du_naga_a_sept_tetes et sanctuaire_des_eaux_eternelles sont équipés ensemble : Bénédiction du Roi Naga (×1.38).",
+    "en": "Active synergy when fureur_du_naga_a_sept_tetes and sanctuaire_des_eaux_eternelles are equipped together: Naga King Blessing (×1.38)."
+  }
+}

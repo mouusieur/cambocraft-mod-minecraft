@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042058,
+    "separation": 6,
+    "spacing": 20,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:village_kompong_place",
+      "weight": 1
+    }
+  ]
+}

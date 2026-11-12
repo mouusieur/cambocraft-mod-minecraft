@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "cambocraft:block/palmier_a_sucre_stripped_log_top",
+    "side": "cambocraft:block/palmier_a_sucre_stripped_log_side"
+  }
+}

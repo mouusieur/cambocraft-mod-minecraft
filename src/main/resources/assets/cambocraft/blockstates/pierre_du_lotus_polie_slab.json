@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cambocraft:block/pierre_du_lotus_polie_slab"
+    },
+    "type=double": {
+      "model": "cambocraft:block/pierre_du_lotus_polie"
+    },
+    "type=top": {
+      "model": "cambocraft:block/pierre_du_lotus_polie_slab_top"
+    }
+  }
+}

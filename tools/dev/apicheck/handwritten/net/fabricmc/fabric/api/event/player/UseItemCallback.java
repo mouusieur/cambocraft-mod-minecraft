@@ -1,0 +1,14 @@
+package net.fabricmc.fabric.api.event.player;
+
+import net.fabricmc.fabric.api.event.Event;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
+import net.minecraft.world.World;
+
+/** Utilisation d'un objet (stub de compilation). */
+public interface UseItemCallback {
+	Event<UseItemCallback> EVENT = null;
+
+	TypedActionResult<Object> interact(PlayerEntity player, World world, Hand hand);
+}

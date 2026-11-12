@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042046,
+    "separation": 6,
+    "spacing": 18,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:ruine_jungle_3_cour",
+      "weight": 1
+    }
+  ]
+}

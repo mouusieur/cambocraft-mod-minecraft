@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Lance Solaire du Sanctuaire",
+    "en": "Sanctuary Sun Spear"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (lumiere, offensif) : Lance Solaire du Sanctuaire. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (lumiere, offensif): Sanctuary Sun Spear. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "epique",
+  "element": "lumiere",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 18.0,
+      "soin": 0.0,
+      "portee": 10.0,
+      "duree_ticks": 40,
+      "recharge_ticks": 54,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 2,
+      "degats": 21.96,
+      "soin": 0.0,
+      "portee": 10.8,
+      "duree_ticks": 45,
+      "recharge_ticks": 51,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 3,
+      "degats": 25.92,
+      "soin": 0.0,
+      "portee": 11.6,
+      "duree_ticks": 50,
+      "recharge_ticks": 49,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 4,
+      "degats": 29.88,
+      "soin": 0.0,
+      "portee": 12.4,
+      "duree_ticks": 54,
+      "recharge_ticks": 46,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 5,
+      "degats": 33.84,
+      "soin": 0.0,
+      "portee": 13.2,
+      "duree_ticks": 59,
+      "recharge_ticks": 43,
+      "cout_energie": 28
+    }
+  ],
+  "maitrise": {
+    "seuil": 130,
+    "variante_fr": "Lance Solaire du Sanctuaire — Éveil du Maître",
+    "variante_en": "Sanctuary Sun Spear — Master Awakening",
+    "bonus": 0.26
+  }
+}

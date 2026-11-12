@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Muraille Éternelle d'Angkor",
+    "en": "Eternal Wall of Angkor"
+  },
+  "pouvoirs": [
+    "poing_du_colosse_de_pierre",
+    "bastion_d_angkor"
+  ],
+  "effet": "impact_titanesque",
+  "multiplicateur": 1.34,
+  "duree_ticks": 240,
+  "description": {
+    "fr": "Synergie active lorsque poing_du_colosse_de_pierre et bastion_d_angkor sont équipés ensemble : Muraille Éternelle d'Angkor (×1.34).",
+    "en": "Active synergy when poing_du_colosse_de_pierre and bastion_d_angkor are equipped together: Eternal Wall of Angkor (×1.34)."
+  }
+}

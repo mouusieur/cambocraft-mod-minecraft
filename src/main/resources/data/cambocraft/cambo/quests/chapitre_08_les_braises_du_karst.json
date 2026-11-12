@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 8,
+  "etapes": [
+    {
+      "cible": "maitre_de_quete",
+      "description": {
+        "en": "Gather accounts from the province.",
+        "fr": "Recueillir les témoignages de la province."
+      },
+      "id": "enquete_province",
+      "objectif": "parler",
+      "quantite": 1
+    },
+    {
+      "cible": "le_phenix_de_laterite",
+      "description": {
+        "en": "Overcome the zone trial (le_phenix_de_laterite).",
+        "fr": "Surmonter l'épreuve de fin de zone (le_phenix_de_laterite)."
+      },
+      "id": "epreuve_majeure",
+      "objectif": "vaincre",
+      "quantite": 1
+    }
+  ],
+  "faction": "ly",
+  "niveau_min": 130,
+  "quete_requise": "chapitre_07_la_citadelle_sans_lune",
+  "recompenses": {
+    "objets": [
+      "cambocraft:plume_ardente_du_phenix"
+    ],
+    "pieces": 320,
+    "pouvoir": "",
+    "reputation": 120,
+    "xp": 32000
+  },
+  "resume": {
+    "en": "Climb the mist-shrouded limestone peaks and face the Laterite Phoenix.",
+    "fr": "Gravir les pitons calcaires embrumés et affronter le Phénix de latérite."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Chapter VIII — Embers of the Karst",
+    "fr": "Chapitre VIII — Les Braises du Karst"
+  },
+  "type": "principale"
+}

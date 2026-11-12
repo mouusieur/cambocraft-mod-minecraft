@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cambocraft:item/perle_d_esprit_neak_ta"
+  }
+}

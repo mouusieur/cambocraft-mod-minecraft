@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "cambocraft:bas_relief",
+      "description": {
+        "en": "Complete 2x sculpter (cambocraft:bas_relief).",
+        "fr": "Accomplir 2x sculpter (cambocraft:bas_relief)."
+      },
+      "id": "objectif_1",
+      "objectif": "sculpter",
+      "quantite": 2
+    },
+    {
+      "cible": "sculpteur",
+      "description": {
+        "en": "Report back to sculpteur.",
+        "fr": "Rapporter le résultat à sculpteur."
+      },
+      "id": "retour_pnj",
+      "objectif": "parler",
+      "quantite": 1
+    }
+  ],
+  "faction": "kompong",
+  "niveau_min": 67,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:statuette_de_naga"
+    ],
+    "pieces": 30,
+    "pouvoir": "",
+    "reputation": 70,
+    "xp": 500
+  },
+  "resume": {
+    "en": "Assist sculpteur in Kompong province (sculpter: cambocraft:bas_relief).",
+    "fr": "Aider sculpteur dans la province de Kompong (sculpter : cambocraft:bas_relief)."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Chisel and Sandstone (II)",
+    "fr": "Ciseau et Grès (II)"
+  },
+  "type": "secondaire"
+}

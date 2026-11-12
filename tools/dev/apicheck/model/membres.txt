@@ -1,0 +1,195 @@
+# Membres à ajouter aux stubs : ce que Yarn ne mappe pas (constantes non documentées, membres
+# hérités de classes non fournies, utilitaires de test) ou à corriger (signatures génériques).
+# Format : add <Classe> :: <déclaration Java>   |   sig <Classe> <méthode> :: <déclaration>
+#          fieldtype <Classe> <champ> :: <type Java>
+
+# --- attributs vanilla (noms confirmés par les sources de Fabric API 1.21.1) ---
+add EntityAttributes :: public static final RegistryEntry<EntityAttribute> GENERIC_MAX_HEALTH = null;
+add EntityAttributes :: public static final RegistryEntry<EntityAttribute> GENERIC_ATTACK_DAMAGE = null;
+add EntityAttributes :: public static final RegistryEntry<EntityAttribute> GENERIC_ATTACK_SPEED = null;
+add EntityAttributes :: public static final RegistryEntry<EntityAttribute> GENERIC_ARMOR = null;
+add EntityAttributes :: public static final RegistryEntry<EntityAttribute> GENERIC_MOVEMENT_SPEED = null;
+add EntityAttributes :: public static final RegistryEntry<EntityAttribute> GENERIC_ATTACK_KNOCKBACK = null;
+add EntityAttributes :: public static final RegistryEntry<EntityAttribute> GENERIC_KNOCKBACK_RESISTANCE = null;
+add EntityAttributes :: public static final RegistryEntry<EntityAttribute> GENERIC_FOLLOW_RANGE = null;
+add EntityAttributes :: public static final RegistryEntry<EntityAttribute> GENERIC_MAX_ABSORPTION = null;
+add EntityAttributes :: public static final RegistryEntry<EntityAttribute> GENERIC_LUCK = null;
+add EntityAttributes :: public static final RegistryEntry<EntityAttribute> GENERIC_FLYING_SPEED = null;
+add EntityAttributeModifier :: public EntityAttributeModifier(Identifier id, double value, EntityAttributeModifier.Operation operation) { }
+add EntityAttributeModifier :: public Identifier id() { return null; }
+add EntityAttributeModifier :: public EntityAttributeModifier.Operation operation() { return null; }
+add EntityAttributeModifier.Operation :: public static final EntityAttributeModifier.Operation ADD_VALUE = null;
+add EntityAttributeModifier.Operation :: public static final EntityAttributeModifier.Operation ADD_MULTIPLIED_BASE = null;
+add EntityAttributeModifier.Operation :: public static final EntityAttributeModifier.Operation ADD_MULTIPLIED_TOTAL = null;
+add AttributeModifierSlot :: public static final AttributeModifierSlot MAINHAND = null;
+add AttributeModifierSlot :: public static final AttributeModifierSlot OFFHAND = null;
+add AttributeModifierSlot :: public static final AttributeModifierSlot HAND = null;
+add AttributeModifierSlot :: public static final AttributeModifierSlot ARMOR = null;
+add AttributeModifierSlot :: public static final AttributeModifierSlot ANY = null;
+
+# --- TypedActionResult : champ et accesseur typés ---
+fieldtype TypedActionResult value :: T
+sig TypedActionResult getValue :: public T getValue() { return null; }
+sig TypedActionResult <init> :: public TypedActionResult(ActionResult result, T value) { }
+drop TypedActionResult <init>
+
+# --- TypedActionResult : membres statiques typés ---
+sig TypedActionResult success :: public static <T> TypedActionResult<T> success(T value) { return null; }
+sig TypedActionResult fail :: public static <T> TypedActionResult<T> fail(T value) { return null; }
+sig TypedActionResult pass :: public static <T> TypedActionResult<T> pass(T value) { return null; }
+sig TypedActionResult consume :: public static <T> TypedActionResult<T> consume(T value) { return null; }
+sig TypedActionResult success :: public static <T> TypedActionResult<T> success(T value, boolean swingHand) { return null; }
+
+# --- Item.Settings / AbstractBlock.Settings : éléments non mappés ---
+add Item.Settings :: public static Item.Settings create() { return null; }
+
+# --- composants d'objet (noms de constantes non mappés dans Yarn 1.21.1) ---
+add DataComponentTypes :: public static final ComponentType<NbtComponent> CUSTOM_DATA = null;
+add DataComponentTypes :: public static final ComponentType<Text> CUSTOM_NAME = null;
+add DataComponentTypes :: public static final ComponentType<List<Text>> LORE = null;
+add DataComponentTypes :: public static final ComponentType<Integer> MAX_DAMAGE = null;
+add DataComponentTypes :: public static final ComponentType<Integer> DAMAGE = null;
+add DataComponentTypes :: public static final ComponentType<AttributeModifiersComponent> ATTRIBUTE_MODIFIERS = null;
+add NbtComponent :: public static NbtComponent of(NbtCompound nbt) { return null; }
+add NbtComponent :: public NbtCompound copyNbt() { return null; }
+add ItemStack :: public <T> T get(ComponentType<T> type) { return null; }
+add ItemStack :: public <T> boolean contains(ComponentType<T> type) { return false; }
+
+# --- attributs et outils divers ---
+static AttributeModifiersComponent builder
+
+# --- gestionnaire de ressources : signatures génériques réelles ---
+sig ResourceManager findAllResources :: public java.util.Map<Identifier, java.util.List<Resource>> findAllResources(String startingPath, java.util.function.Predicate<Identifier> allowedPathPredicate) { return null; }
+sig ResourceManager findResources :: public java.util.Map<Identifier, Resource> findResources(String startingPath, java.util.function.Predicate<Identifier> allowedPathPredicate) { return null; }
+sig ResourceManager getAllResources :: public java.util.List<Resource> getAllResources(Identifier id) { return null; }
+
+
+# --- constructeurs publics non mappés (Yarn 1.21.1) ---
+add WallBlock :: public WallBlock(AbstractBlock.Settings settings) { }
+add FenceBlock :: public FenceBlock(AbstractBlock.Settings settings) { }
+add FenceGateBlock :: public FenceGateBlock(WoodType type, AbstractBlock.Settings settings) { }
+add CarpetBlock :: public CarpetBlock(AbstractBlock.Settings settings) { }
+add SlabBlock :: public SlabBlock(AbstractBlock.Settings settings) { }
+add net/minecraft/block/LeavesBlock :: public LeavesBlock(AbstractBlock.Settings settings) { }
+add net/minecraft/block/CropBlock :: public CropBlock(AbstractBlock.Settings settings) { }
+static AbstractBlock.Settings create
+static AbstractBlock.Settings copy
+
+# --- constantes d'énumération non mappées ---
+const EquipmentSlot MAINHAND
+const EquipmentSlot OFFHAND
+const EquipmentSlot FEET
+const EquipmentSlot LEGS
+const EquipmentSlot CHEST
+const EquipmentSlot HEAD
+const EquipmentSlot BODY
+
+# --- membres d'entité non mappés ---
+add Entity :: public java.util.UUID getUuid() { return null; }
+add Entity :: public net.minecraft.world.World getWorld() { return null; }
+add Entity :: public net.minecraft.util.math.Vec3d getPos() { return null; }
+add Entity :: public net.minecraft.util.math.BlockPos getBlockPos() { return null; }
+add ServerPlayerEntity :: public net.minecraft.util.math.BlockPos getBlockPos() { return null; }
+add LivingEntity :: public net.minecraft.util.math.BlockPos getBlockPos() { return null; }
+add net/minecraft/entity/player/PlayerEntity :: public void sendMessage(Text message, boolean overlay) { }
+add net/minecraft/entity/player/PlayerEntity :: public void dropItem(ItemStack stack, boolean throwRandomly) { }
+
+# --- constantes d'énumération vanilla non mappées ---
+const Rarity COMMON
+const Rarity UNCOMMON
+const Rarity RARE
+const Rarity EPIC
+const Direction DOWN
+const Direction UP
+const Direction NORTH
+const Direction SOUTH
+const Direction WEST
+const Direction EAST
+const Hand MAIN_HAND
+const Hand OFF_HAND
+
+# --- membres du monde non mappés ---
+add World :: public net.minecraft.registry.entry.RegistryEntry<Biome> getBiome(net.minecraft.util.math.BlockPos pos) { return null; }
+add World :: public boolean isRaining() { return false; }
+add World :: public boolean isDay() { return true; }
+
+# --- registre : méthodes typées ---
+sig Registry get :: public T get(Identifier id) { return null; }
+sig Registry getId :: public Identifier getId(T value) { return null; }
+sig Registry getOrThrow :: public T getOrThrow(RegistryKey<T> key) { return null; }
+
+# --- entrées de registre typées ---
+generic RegistryEntry <T>
+sig RegistryEntry getKey :: public java.util.Optional<RegistryKey<T>> getKey() { return null; }
+sig Registry value :: public T value() { return null; }
+add World :: public net.minecraft.world.biome.source.BiomeAccess getBiomeAccess() { return null; }
+
+# --- ItemGroup : collecteur fonctionnel et entrées typées ---
+sig ItemGroup.EntryCollector accept :: void accept(ItemGroup.DisplayContext context, ItemGroup.Entries entries);
+sig ItemGroup.Entries add :: void add(ItemConvertible item);
+sig ItemGroup.Entries add :: void add(ItemStack stack);
+
+# --- champs de registres typés (Registries) ---
+fieldtype Registries ITEM :: DefaultedRegistry<Item>
+fieldtype Registries BLOCK :: DefaultedRegistry<Block>
+fieldtype Registries ITEM_GROUP :: Registry<ItemGroup>
+fieldtype Registries SOUND_EVENT :: Registry<SoundEvent>
+fieldtype Registries PARTICLE_TYPE :: Registry<ParticleType>
+fieldtype Registries STATUS_EFFECT :: Registry<StatusEffect>
+fieldtype Registries ENTITY_TYPE :: DefaultedRegistry<EntityType>
+fieldtype Registries BLOCK_ENTITY_TYPE :: Registry<BlockEntityType>
+fieldtype Registries SCREEN_HANDLER :: Registry<ScreenHandlerType>
+fieldtype Registries FEATURE :: Registry<Feature>
+fieldtype Registries STRUCTURE_TYPE :: Registry<StructureType>
+fieldtype Registries STRUCTURE_PIECE :: Registry<StructurePiece>
+fieldtype Registries CHUNK_GENERATOR :: Registry<ChunkGenerator>
+fieldtype Registries BIOME_SOURCE :: Registry<BiomeSource>
+
+# --- registres : enregistrement typé et itération ---
+sig Registry register :: public static <E> E register(Registry<E> registry, Identifier id, E value) { return null; }
+sig Registry register :: public static <E> E register(Registry<E> registry, String id, E value) { return null; }
+sig Registry register :: public static <E> E register(Registry<E> registry, RegistryKey<E> key, E value) { return null; }
+
+# --- itération des registres ---
+add Registry :: public java.util.Iterator<T> iterator() { return null; }
+add Registry :: public java.util.stream.Stream<T> stream() { return null; }
+
+# --- constructeurs de blocs non mappés ---
+add Block :: public Block(AbstractBlock.Settings settings) { }
+add Item :: public Item(Item.Settings settings) { }
+
+# --- itération typée ---
+sig Registry iterator :: public java.util.Iterator<T> iterator() { return null; }
+
+# --- entrées de registre ---
+sig Registry getEntry :: public java.util.Optional<RegistryEntry<T>> getEntry(Identifier id) { return null; }
+sig Registry getEntry :: public java.util.Optional<RegistryEntry<T>> getEntry(RegistryKey<T> key) { return null; }
+
+const ResourceType CLIENT_RESOURCES
+const ResourceType SERVER_DATA
+
+# --- ActionResult, BlockPos, World et RegistryKeys ---
+const ActionResult SUCCESS
+const ActionResult CONSUME
+const ActionResult CONSUME_PARTIAL
+const ActionResult PASS
+const ActionResult FAIL
+add BlockPos :: public BlockPos(int x, int y, int z) { }
+add BlockPos :: public BlockPos add(int dx, int dy, int dz) { return null; }
+add World :: public net.minecraft.block.BlockState getBlockState(net.minecraft.util.math.BlockPos pos) { return null; }
+add RegistryKeys :: public static RegistryKey<Registry<net.minecraft.world.dimension.DimensionType>> DIMENSION_TYPE;
+
+# --- Identifier et RegistryKey fonctionnels pour les tests hors ligne ---
+sig Identifier of :: public static Identifier of(String ns, String p) { Identifier i = new Identifier(); i.namespace = ns; i.path = p; return i; }
+sig Identifier of :: public static Identifier of(String raw) { int c = raw.indexOf(':'); return c >= 0 ? of(raw.substring(0, c), raw.substring(c + 1)) : of("minecraft", raw); }
+sig Identifier ofVanilla :: public static Identifier ofVanilla(String p) { return of("minecraft", p); }
+sig Identifier tryParse :: public static Identifier tryParse(String raw) { return raw == null || raw.isEmpty() ? null : of(raw); }
+sig Identifier getNamespace :: public String getNamespace() { return this.namespace; }
+sig Identifier getPath :: public String getPath() { return this.path; }
+add Identifier :: public String toString() { return this.namespace + ":" + this.path; }
+sig Identifier equals :: public boolean equals(Object o) { return (o instanceof Identifier other) && java.util.Objects.equals(this.namespace, other.namespace) && java.util.Objects.equals(this.path, other.path); }
+add Identifier :: public int hashCode() { return java.util.Objects.hash(this.namespace, this.path); }
+
+sig RegistryKey of :: public static <T> RegistryKey<T> of(RegistryKey<? extends Registry<T>> reg, Identifier val) { RegistryKey<T> k = new RegistryKey<>(); k.value = val; return k; }
+sig RegistryKey ofRegistry :: public static <T> RegistryKey<Registry<T>> ofRegistry(Identifier id) { RegistryKey<Registry<T>> k = new RegistryKey<>(); k.value = id; return k; }
+sig RegistryKey getValue :: public Identifier getValue() { return this.value; }

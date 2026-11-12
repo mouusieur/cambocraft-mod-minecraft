@@ -1,0 +1,23 @@
+{
+  "nom": {
+    "fr": "Floraison Sacrée du Lotus",
+    "en": "Sacred Lotus Blooming"
+  },
+  "description": {
+    "fr": "Les bassins sacrés s'ouvrent à l'unisson et amplifient la résonance spirituelle du Nen.",
+    "en": "Sacred ponds bloom in unison and amplify the spiritual resonance of Nen."
+  },
+  "saison": "saison_chaude",
+  "jour_saison": 3,
+  "heure_debut_tick": 2000,
+  "duree_ticks": 12000,
+  "effets": [
+    "regeneration_nen_accrue",
+    "abondance_fleurs_de_lotus"
+  ],
+  "recompenses": [
+    "cambocraft:fleur_de_lotus",
+    "cambocraft:graine_de_lotus",
+    "cambocraft:bol_de_riz_beni"
+  ]
+}

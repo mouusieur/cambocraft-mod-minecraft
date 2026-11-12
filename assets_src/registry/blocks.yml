@@ -1,0 +1,497 @@
+# Catalogue des blocs de Cambocraft — source de vérité du registre.
+#
+# Chaque bloc décrit ici produit : un champ Java dans CamboBlocks, un blockstate, un ou
+# plusieurs modèles, une table de butin, un nom en français et en anglais, et son entrée
+# dans les balises d'outils (mineable/*, needs_*_tool).
+#
+# Exécution : python3 tools/gen_registry.py
+# Contrôle   : python3 tools/validate.py  (vérifie la cohérence Java / JSON / textures)
+#
+# Champs d'un bloc :
+#   id, fr, en      identifiant (espace de noms cambocraft) et noms localisés
+#   mat             matière de texture (doit exister dans « textures » ci-dessous)
+#   model           cube_all | cube_bottom_top | cube_column | cross | slab | stairs | wall
+#                   | fence | fence_gate | carpet
+#   hardness, resistance, tool (pickaxe|axe|shovel|hoe|shears|none), level (stone|iron|diamond)
+#   sound, color    sonorité et couleur de carte (voir SONS/COULEURS dans gen_registry.py)
+#   luminance       lumière émise 0-15
+#   drops           self (défaut) | nothing | identifiant complet d'un autre objet
+#   item            false pour un bloc sans objet d'inventaire
+#   comment         commentaire repris dans le Java
+#
+# Les palettes de couleurs sont documentées dans docs/PALETTES.md.
+
+textures:
+  # --- pierres et terres ---------------------------------------------------
+  pierre_du_lotus:          {pattern: stone,    base: "#8C9089", accent: "#6E736C", alt: "#A3A79F"}
+  pierre_du_lotus_polie:    {pattern: polished, base: "#8C9089", accent: "#7C8078", alt: "#9BA095"}
+  brique_de_lotus:          {pattern: bricks,   base: "#7E827B", accent: "#5F635D", alt: "#93978F"}
+  pierre_du_lotus_sculptee: {pattern: carving,  base: "#868A83", accent: "#64685F", alt: "#A8AC9F"}
+  laterite:                 {pattern: stone,    base: "#9C4A2A", accent: "#7C371E", alt: "#B35C36"}
+  brique_de_laterite:       {pattern: bricks,   base: "#A04F2C", accent: "#7B3A1F", alt: "#BC6039"}
+  gres_khmer_side:          {pattern: sandstone, base: "#C9AE7F", accent: "#B2966A", alt: "#DBBE8C"}
+  gres_khmer_top:           {pattern: sandstone_top, base: "#CDB282", accent: "#B89C6D", alt: "#DEC292"}
+  gres_sculpte:             {pattern: carving,  base: "#C4A878", accent: "#9F855A", alt: "#D8BC8B"}
+  ardoise_des_ombres:       {pattern: stone,    base: "#3B3F46", accent: "#2A2D33", alt: "#4B5058"}
+  basalte_colonnaire_side:  {pattern: column,   base: "#4A4E55", accent: "#363A40", alt: "#5B6068"}
+  basalte_colonnaire_top:   {pattern: stone,    base: "#4A4E55", accent: "#363A40", alt: "#5B6068"}
+  calcaire_karstique:       {pattern: stone,    base: "#B9B6A6", accent: "#9A9788", alt: "#CFCCBB"}
+  marbre_blanc:             {pattern: polished, base: "#E6E2D8", accent: "#CFCABE", alt: "#F3F0E8"}
+  brique_de_temple:         {pattern: bricks,   base: "#7A6A52", accent: "#5A4C39", alt: "#8E7C61"}
+  pierre_erodee:            {pattern: roughstone, base: "#8A8577", accent: "#6B675C", alt: "#A19B8C"}
+  terre_lateritique:        {pattern: soil,     base: "#7E4327", accent: "#65341C", alt: "#955238"}
+  boue_de_riziaire:         {pattern: mud,      base: "#5E4A33", accent: "#4A3A27", alt: "#71593E"}
+  sable_de_riviere:         {pattern: sand,     base: "#D8C79A", accent: "#C4B183", alt: "#E5D6AC"}
+  gravier_de_riviere:       {pattern: gravel,   base: "#8E8779", accent: "#6F695E", alt: "#A59E8F"}
+  terre_cuite:              {pattern: bricks,   base: "#A85B37", accent: "#83452A", alt: "#C06C43"}
+  tuile_de_terre_cuite:     {pattern: tiles,    base: "#9E4E2E", accent: "#7C3A20", alt: "#B85F3A"}
+  tuile_vernissee:          {pattern: tiles,    base: "#2F5E4E", accent: "#244A3D", alt: "#3B7260"}
+  paille_de_riz:            {pattern: thatch,   base: "#C7A95E", accent: "#A98D47", alt: "#D9C079"}
+  # --- bois ---------------------------------------------------------------
+  teck_log_side:            {pattern: bark,     base: "#6E4A2E", accent: "#523419", alt: "#845C3B"}
+  teck_log_top:             {pattern: wood_end, base: "#B08A5A", accent: "#8E6C41", alt: "#C4A170"}
+  teck_planks:              {pattern: planks,   base: "#A87A4A", accent: "#8B6238", alt: "#BE9059"}
+  teck_leaves:              {pattern: leaves,   base: "#3F7A34", accent: "#2F5E27", alt: "#4F9042"}
+  teck_sapling:             {pattern: sapling,  base: "#3F7A34", accent: "#5A8A3A", alt: "#2C5A24"}
+  kapokier_log_side:           {pattern: bark,     base: "#8A7F72", accent: "#6C6256", alt: "#A09584"}
+  kapokier_log_top:            {pattern: wood_end, base: "#C9B99B", accent: "#A99A7E", alt: "#D9CBB0"}
+  kapokier_planks:             {pattern: planks,   base: "#C2B49A", accent: "#A6977E", alt: "#D4C7AE"}
+  kapokier_leaves:             {pattern: leaves,   base: "#4E8A44", accent: "#3A6C32", alt: "#5F9E52"}
+  kapokier_sapling:            {pattern: sapling,  base: "#4E8A44", accent: "#6FA05A", alt: "#376A2E"}
+  cocotier_log_side:        {pattern: bark,     base: "#7A6244", accent: "#5C4830", alt: "#917757"}
+  cocotier_log_top:         {pattern: wood_end, base: "#BFA171", accent: "#A08355", alt: "#D2B787"}
+  cocotier_planks:          {pattern: planks,   base: "#B98F5C", accent: "#9A7447", alt: "#CBA271"}
+  cocotier_leaves:          {pattern: palm_leaves, base: "#3C7A38", accent: "#2B5A28", alt: "#4E9146"}
+  cocotier_sapling:         {pattern: sapling,  base: "#3C7A38", accent: "#5A8E4A", alt: "#2A5A26"}
+  manguier_log_side:        {pattern: bark,     base: "#6B5340", accent: "#4F3C2C", alt: "#83674F"}
+  manguier_log_top:         {pattern: wood_end, base: "#C0A470", accent: "#A1885A", alt: "#D2B886"}
+  manguier_planks:          {pattern: planks,   base: "#B08A5C", accent: "#916F46", alt: "#C49E70"}
+  manguier_leaves:          {pattern: leaves_fruit, base: "#2F6B31", accent: "#1F4E22", alt: "#3E8040"}
+  manguier_sapling:         {pattern: sapling,  base: "#2F6B31", accent: "#4C8A46", alt: "#1D4A1F"}
+  jacquier_log_side:        {pattern: bark,     base: "#5E4A34", accent: "#46351F", alt: "#775E42"}
+  jacquier_log_top:         {pattern: wood_end, base: "#B99B6A", accent: "#9A7F51", alt: "#CBAE7C"}
+  jacquier_planks:          {pattern: planks,   base: "#A4855A", accent: "#856A43", alt: "#B89A6D"}
+  jacquier_leaves:          {pattern: leaves,   base: "#356B33", accent: "#274F26", alt: "#458044"}
+  jacquier_sapling:         {pattern: sapling,  base: "#356B33", accent: "#4F8A46", alt: "#245223"}
+  bambou_planches:          {pattern: planks,   base: "#C9B260", accent: "#A99244", alt: "#DCC66F"}
+  bambou_bloc:              {pattern: bamboo_block, base: "#CBB466", accent: "#A79246", alt: "#DFCA7C"}
+  bambou_tresse:            {pattern: mosaic,   base: "#BFA75C", accent: "#9E8741", alt: "#D2BB6E"}
+  # --- végétaux -----------------------------------------------------------
+  riz_culture:              {pattern: crop,     base: "#8FA83C", accent: "#6E8A2A", alt: "#B2C255"}
+  riz_paille:               {pattern: thatch,   base: "#C9AE63", accent: "#A98F4B", alt: "#DCC57A"}
+  fleur_de_lotus:           {pattern: flower,   base: "#E7B7C8", accent: "#C98CA5", alt: "#F4D6E0"}
+  lotus_rose:               {pattern: flower,   base: "#DC8FA8", accent: "#B56C86", alt: "#F0B5C8"}
+  lotus_blanc:              {pattern: flower,   base: "#F2EFE6", accent: "#D3CEC2", alt: "#FFFFFF"}
+  feuille_de_lotus:         {pattern: lotus_leaf, base: "#2F6E3A", accent: "#1F5028", alt: "#3F8A4A"}
+  fleur_de_frangipanier:    {pattern: flower,   base: "#F5E7C8", accent: "#D8C79F", alt: "#FFF6E0"}
+  fleur_d_hibiscus:         {pattern: flower,   base: "#D9473F", accent: "#AE332C", alt: "#EE6B5F"}
+  fleur_de_bougainvillier:  {pattern: flower,   base: "#C4498C", accent: "#9B346C", alt: "#DE6CA8"}
+  citronnelle:              {pattern: crop,     base: "#9BB04A", accent: "#7A8C35", alt: "#B5C964"}
+  piment:                   {pattern: crop,     base: "#4E7A32", accent: "#C43A2A", alt: "#6B9A46"}
+  aubergine:                {pattern: crop,     base: "#4A6E32", accent: "#5A3F7A", alt: "#6B8A46"}
+  concombre:                {pattern: crop,     base: "#4E7A34", accent: "#7FA83C", alt: "#6E9A4A"}
+  # --- décor, artisanat, symboles ----------------------------------------
+  lanterne_de_bambou:       {pattern: lantern,  base: "#D9B45E", accent: "#8C6A2E", alt: "#FFF3C4"}
+  torche_de_resine:         {pattern: torch,    base: "#8A5A2E", accent: "#FFD27A", alt: "#C98A3E"}
+  encens:                   {pattern: incense,  base: "#6B5A44", accent: "#C8B79A", alt: "#8A7659"}
+  banniere_rouge:           {pattern: banner,   base: "#A8332E", accent: "#D9B45E", alt: "#C2443E"}
+  banniere_or:              {pattern: banner,   base: "#C9A24A", accent: "#8C6A2E", alt: "#E0BC63"}
+  banniere_bleue:           {pattern: banner,   base: "#2F4E7A", accent: "#D9B45E", alt: "#3C6296"}
+  banniere_verte:           {pattern: banner,   base: "#2F6B45", accent: "#D9B45E", alt: "#3C8455"}
+  banniere_blanche:         {pattern: banner,   base: "#E7E2D4", accent: "#A8332E", alt: "#F5F1E6"}
+  banniere_violette:        {pattern: banner,   base: "#5A3F7A", accent: "#D9B45E", alt: "#6E4E96"}
+  tissu_suspendu:           {pattern: fabric,   base: "#C98A3E", accent: "#A66B2A", alt: "#DEA25A"}
+  etal_de_marche:           {pattern: planks,   base: "#8C6A44", accent: "#6E5030", alt: "#A07C52"}
+  jarre:                    {pattern: jar,      base: "#A8643C", accent: "#7C462A", alt: "#C07A4E"}
+  panier:                   {pattern: basket,   base: "#B59A5E", accent: "#8F7742", alt: "#C9B075"}
+  statue_de_pierre:         {pattern: carving,  base: "#A9A594", accent: "#8A8677", alt: "#BDBAAB"}
+  naga_balustrade:          {pattern: carving,  base: "#9A9686", accent: "#7A7767", alt: "#B0AC9A"}
+  visage_de_pierre:         {pattern: faces,    base: "#8F8B7C", accent: "#6E6A5D", alt: "#A6A292"}
+  bas_relief:               {pattern: relief,   base: "#B3AB94", accent: "#8E8770", alt: "#C8C1AB"}
+  garuda:                   {pattern: carving,  base: "#B89A5E", accent: "#96793F", alt: "#CBAE74"}
+  autel:                    {pattern: carving,  base: "#8F8B7C", accent: "#6E6A5D", alt: "#A6A292"}
+  cloche_de_temple:         {pattern: metal,    base: "#8A7A4A", accent: "#6A5C34", alt: "#A99A62"}
+  gong:                     {pattern: metal,    base: "#A98F4A", accent: "#86702F", alt: "#C4AC64"}
+  tambour:                  {pattern: drum,     base: "#8A5A34", accent: "#C9AE7A", alt: "#A06E42"}
+  four_de_forge:            {pattern: stone,    base: "#6E6A60", accent: "#4A4640", alt: "#8A8678"}
+  table_de_forge:           {pattern: metal,    base: "#5A5A60", accent: "#3E3E44", alt: "#74747C"}
+  metier_a_tisser:          {pattern: planks,   base: "#9A7748", accent: "#7A5C34", alt: "#B08C5A"}
+  cuve_de_soie:             {pattern: jar,      base: "#D9C27A", accent: "#A89352", alt: "#EBD68E"}
+  marmite:                  {pattern: metal,    base: "#4A4A50", accent: "#33333A", alt: "#5E5E66"}
+  mortier:                  {pattern: carving,  base: "#9A9483", accent: "#7A7566", alt: "#B0AA98"}
+  tour_de_poterie:          {pattern: clay,     base: "#A8613C", accent: "#84492C", alt: "#C07950"}
+  atelier_de_sculpture:     {pattern: carving,  base: "#A9A594", accent: "#8A8677", alt: "#BDBAAB"}
+  cadre_du_portail:         {pattern: carving,  base: "#8C9089", accent: "#D9B45E", alt: "#A3A79F"}
+  coeur_du_portail:         {pattern: crystal,  base: "#7FB7C9", accent: "#4E8A9E", alt: "#B5DEE8"}
+  teleporteur_de_lotus:     {pattern: crystal,  base: "#8CC9B0", accent: "#4E8A72", alt: "#BDE6D2"}
+  cristal_de_lotus:         {pattern: crystal,  base: "#9AD1E0", accent: "#5E9EB0", alt: "#C6EAF4"}
+  minerai_de_lotus:         {pattern: ore,      base: "#8C9089", accent: "#9AD1E0", alt: "#A3A79F"}
+  bloc_de_lotus:            {pattern: crystal,  base: "#7FC0A8", accent: "#4E8A72", alt: "#AEE0CA"}
+  mur_de_roseaux:           {pattern: thatch,   base: "#A98F4B", accent: "#8A7238", alt: "#C0A75E"}
+  riz_empile:               {pattern: thatch,   base: "#D2B96E", accent: "#B29A54", alt: "#E4CE86"}
+  sol_de_temple:            {pattern: polished, base: "#9A9686", accent: "#7C7868", alt: "#B2AE9E"}
+  eau_du_lotus:             {pattern: water,    base: "#2F6B8A", accent: "#24526B", alt: "#3F88A8"}
+  toit_de_chaume:           {pattern: thatch,   base: "#B59A5E", accent: "#8F7742", alt: "#C9B075"}
+  planche_de_toit:          {pattern: planks,   base: "#7A5C3A", accent: "#5E462C", alt: "#916E48"}
+  vitrail_de_temple:        {pattern: stained_glass, base: "#C9A24A", accent: "#8C6A2E", alt: "#E0BC63"}
+  pierre_des_ombres_runique: {pattern: runes,   base: "#3B3F46", accent: "#8A5AA8", alt: "#4B5058"}
+  creuset_de_fusion:        {pattern: metal,    base: "#4A3A50", accent: "#2E2434", alt: "#5E4A66"}
+
+  # --- pierres et terres supplémentaires ----------------------------------
+  gres_khmer_poli:          {pattern: polished, base: "#D2B785", accent: "#B89C6D", alt: "#E4CA98"}
+  brique_des_ombres:        {pattern: bricks,   base: "#353941", accent: "#23262C", alt: "#464B55"}
+  pierre_moussue_de_temple: {pattern: bricks,   base: "#6E6B4E", accent: "#4A5D36", alt: "#857E5D"}
+  mousson_vase:             {pattern: mud,      base: "#4F4638", accent: "#3B3429", alt: "#655A49"}
+  dalle_de_pression_ancienne: {pattern: carving, base: "#8A7A5E", accent: "#D9B45E", alt: "#A39173"}
+  socle_d_offrande:         {pattern: carving,  base: "#9E9A8B", accent: "#C9A24A", alt: "#B5B0A0"}
+  lion_de_pierre:           {pattern: carving,  base: "#9C9684", accent: "#7A7464", alt: "#B4AE9B"}
+  pilier_de_laterite:       {pattern: column,   base: "#9C4A2A", accent: "#7C371E", alt: "#B35C36"}
+  pilier_de_lotus:          {pattern: column,   base: "#8C9089", accent: "#6E736C", alt: "#A3A79F"}
+  natte_de_jonc:            {pattern: thatch,   base: "#C2AA6B", accent: "#9E874D", alt: "#D4BE80"}
+  tapis_de_soie_krama:      {pattern: fabric,   base: "#A8332E", accent: "#E7E2D4", alt: "#C2443E"}
+  # --- bois supplémentaires (palmier à sucre, palétuvier, pin) -------------
+  palmier_a_sucre_log_side: {pattern: bark,     base: "#5C4938", accent: "#423325", alt: "#735C47"}
+  palmier_a_sucre_log_top:  {pattern: wood_end, base: "#B89A6C", accent: "#967B50", alt: "#CAAE80"}
+  palmier_a_sucre_planks:   {pattern: planks,   base: "#AE8855", accent: "#8E6C3F", alt: "#C29C68"}
+  palmier_a_sucre_leaves:   {pattern: palm_leaves, base: "#437A36", accent: "#2F5B25", alt: "#569147"}
+  palmier_a_sucre_sapling:  {pattern: sapling,  base: "#437A36", accent: "#62944B", alt: "#2F5B25"}
+  paletuvier_log_side:      {pattern: bark,     base: "#584339", accent: "#3F2E27", alt: "#6E5549"}
+  paletuvier_log_top:       {pattern: wood_end, base: "#9E6A4E", accent: "#7F523B", alt: "#B27C5F"}
+  paletuvier_planks:        {pattern: planks,   base: "#945E44", accent: "#784932", alt: "#A87055"}
+  paletuvier_leaves:        {pattern: leaves,   base: "#3B6E3A", accent: "#295228", alt: "#4C844B"}
+  paletuvier_sapling:       {pattern: sapling,  base: "#3B6E3A", accent: "#548A4E", alt: "#295228"}
+  pin_du_cambodge_log_side: {pattern: bark,     base: "#6B4E37", accent: "#4E3725", alt: "#826146"}
+  pin_du_cambodge_log_top:  {pattern: wood_end, base: "#C4A372", accent: "#A38457", alt: "#D6B786"}
+  pin_du_cambodge_planks:   {pattern: planks,   base: "#BC9866", accent: "#9C7B4E", alt: "#CEA978"}
+  pin_du_cambodge_leaves:   {pattern: leaves,   base: "#2F5E3A", accent: "#204428", alt: "#3E734A"}
+  pin_du_cambodge_sapling:  {pattern: sapling,  base: "#2F5E3A", accent: "#487A4E", alt: "#204428"}
+  bambou_leaves:            {pattern: leaves,   base: "#5E963C", accent: "#457429", alt: "#74AD4E"}
+  bambou_sapling:           {pattern: sapling,  base: "#5E963C", accent: "#74AD4E", alt: "#457429"}
+  # --- flore supplémentaire -----------------------------------------------
+  murier_buisson:           {pattern: leaves_fruit, base: "#3C7536", accent: "#5A2D4E", alt: "#4E8C46"}
+  riz_sauvage:              {pattern: crop,     base: "#7E9E3A", accent: "#5F7A28", alt: "#98B84E"}
+  herbe_de_savane:          {pattern: crop,     base: "#B59E4A", accent: "#8F7B34", alt: "#C9B25E"}
+  fougere_tropicale:        {pattern: sapling,  base: "#347233", accent: "#245424", alt: "#468A45"}
+  orchidee_khmer:           {pattern: flower,   base: "#D46AAE", accent: "#A84887", alt: "#E88EC6"}
+  racine_de_banyan:         {pattern: bark,     base: "#6B5844", accent: "#4E3F30", alt: "#826C55"}
+
+# --- Bois : chaque entrée produit tronc, planches, dérivés, feuilles et pousse -------------
+woods:
+  - id: teck
+    fr: Teck
+    en: Teak
+    forms: [log, stripped_log, planks, stairs, slab, fence, fence_gate, leaves, sapling]
+    wood_type: OAK
+    hardness: 2.0
+    color: wood
+  - id: kapokier
+    fr: Kapokier
+    en: Kapok
+    forms: [log, stripped_log, planks, stairs, slab, fence, fence_gate, leaves, sapling]
+    wood_type: BIRCH
+    hardness: 1.6
+    color: wood
+  - id: cocotier
+    fr: Cocotier
+    en: Coconut Palm
+    forms: [log, stripped_log, planks, stairs, slab, fence, fence_gate, leaves, sapling]
+    wood_type: JUNGLE
+    hardness: 1.6
+    color: wood
+  - id: manguier
+    fr: Manguier
+    en: Mango
+    forms: [log, stripped_log, planks, stairs, slab, fence, fence_gate, leaves, sapling]
+    wood_type: JUNGLE
+    hardness: 2.0
+    color: wood
+  - id: jacquier
+    fr: Jacquier
+    en: Jackfruit
+    forms: [log, stripped_log, planks, stairs, slab, fence, fence_gate, leaves, sapling]
+    wood_type: OAK
+    hardness: 2.0
+    color: wood
+  - id: bambou
+    fr: Bambou
+    en: Bamboo
+    forms: [leaves, sapling]
+    wood_type: BAMBOO
+    hardness: 1.0
+    color: plant
+
+  - id: palmier_a_sucre
+    fr: Palmier à Sucre
+    en: Sugar Palm
+    forms: [log, stripped_log, planks, stairs, slab, fence, fence_gate, leaves, sapling]
+    wood_type: JUNGLE
+    hardness: 1.8
+    color: wood
+  - id: paletuvier
+    fr: Palétuvier
+    en: Mangrove
+    forms: [log, stripped_log, planks, stairs, slab, fence, fence_gate, leaves, sapling]
+    wood_type: OAK
+    hardness: 1.8
+    color: wood
+  - id: pin_du_cambodge
+    fr: Pin du Cambodge
+    en: Cambodian Pine
+    forms: [log, stripped_log, planks, stairs, slab, fence, fence_gate, leaves, sapling]
+    wood_type: OAK
+    hardness: 1.8
+    color: wood
+
+# --- Ensembles de pierre : base + dérivés --------------------------------------------------
+sets:
+  - id: pierre_du_lotus
+    fr: Pierre du Lotus
+    en: Lotus Stone
+    mat: pierre_du_lotus
+    hardness: 1.5
+    resistance: 6.0
+    tool: pickaxe
+    level: stone
+    sound: stone
+    color: stone
+    forms: [slab, stairs, wall]
+  - id: pierre_du_lotus_polie
+    fr: Pierre du Lotus Polie
+    en: Polished Lotus Stone
+    mat: pierre_du_lotus_polie
+    hardness: 1.5
+    resistance: 6.0
+    tool: pickaxe
+    level: stone
+    sound: stone
+    color: stone
+    forms: [slab, stairs, wall]
+  - id: brique_de_lotus
+    fr: Brique de Lotus
+    en: Lotus Brick
+    mat: brique_de_lotus
+    hardness: 1.5
+    resistance: 6.0
+    tool: pickaxe
+    level: stone
+    sound: stone
+    color: stone
+    forms: [slab, stairs, wall]
+  - id: laterite
+    fr: Latérite
+    en: Laterite
+    mat: laterite
+    hardness: 1.2
+    resistance: 3.0
+    tool: pickaxe
+    sound: stone
+    color: terracotta
+    forms: [slab, stairs, wall]
+  - id: brique_de_laterite
+    fr: Brique de Latérite
+    en: Laterite Brick
+    mat: brique_de_laterite
+    hardness: 1.4
+    resistance: 4.0
+    tool: pickaxe
+    level: stone
+    sound: stone
+    color: terracotta
+    forms: [slab, stairs, wall]
+  - id: gres_khmer
+    fr: Grès Khmer
+    en: Khmer Sandstone
+    mat: gres_khmer_side
+    model: cube_bottom_top
+    hardness: 0.8
+    resistance: 0.8
+    tool: pickaxe
+    sound: stone
+    color: sand
+    forms: [slab, stairs, wall]
+  - id: ardoise_des_ombres
+    fr: Ardoise des Ombres
+    en: Shadow Slate
+    mat: ardoise_des_ombres
+    hardness: 2.0
+    resistance: 9.0
+    tool: pickaxe
+    level: iron
+    sound: deepslate
+    color: black
+    forms: [slab, stairs, wall]
+  - id: calcaire_karstique
+    fr: Calcaire Karstique
+    en: Karst Limestone
+    mat: calcaire_karstique
+    hardness: 1.5
+    resistance: 6.0
+    tool: pickaxe
+    level: stone
+    sound: stone
+    color: stone
+    forms: [slab, stairs, wall]
+  - id: marbre_blanc
+    fr: Marbre Blanc
+    en: White Marble
+    mat: marbre_blanc
+    hardness: 1.8
+    resistance: 7.0
+    tool: pickaxe
+    level: iron
+    sound: stone
+    color: white
+    forms: [slab, stairs, wall]
+  - id: brique_de_temple
+    fr: Brique de Temple
+    en: Temple Brick
+    mat: brique_de_temple
+    hardness: 2.0
+    resistance: 8.0
+    tool: pickaxe
+    level: stone
+    sound: stone
+    color: brown
+    forms: [slab, stairs, wall, pillar]
+  - id: tuile_de_terre_cuite
+    fr: Tuile de Terre Cuite
+    en: Terracotta Tile
+    mat: tuile_de_terre_cuite
+    hardness: 1.2
+    resistance: 4.0
+    tool: pickaxe
+    sound: stone
+    color: terracotta
+    forms: [slab, stairs]
+
+  - id: gres_khmer_poli
+    fr: Grès Khmer Poli
+    en: Polished Khmer Sandstone
+    mat: gres_khmer_poli
+    hardness: 1.0
+    resistance: 2.0
+    tool: pickaxe
+    sound: stone
+    color: sand
+    forms: [slab, stairs, wall, pillar]
+  - id: brique_des_ombres
+    fr: Brique des Ombres
+    en: Shadow Brick
+    mat: brique_des_ombres
+    hardness: 2.2
+    resistance: 9.0
+    tool: pickaxe
+    level: iron
+    sound: deepslate
+    color: black
+    forms: [slab, stairs, wall]
+  - id: pierre_moussue_de_temple
+    fr: Brique de Temple Moussue
+    en: Mossy Temple Brick
+    mat: pierre_moussue_de_temple
+    hardness: 1.8
+    resistance: 7.0
+    tool: pickaxe
+    level: stone
+    sound: stone
+    color: brown
+    forms: [slab, stairs, wall]
+
+# --- Blocs isolés -------------------------------------------------------------------------
+blocks:
+  # --- pierres spéciales ---
+  - {id: pierre_du_lotus_sculptee, fr: Pierre du Lotus Sculptée, en: Chiseled Lotus Stone, mat: pierre_du_lotus_sculptee, model: cube_all, hardness: 1.5, resistance: 6.0, tool: pickaxe, level: stone, sound: stone, color: stone}
+  - {id: gres_sculpte, fr: Grès Sculpté, en: Chiseled Sandstone, mat: gres_sculpte, model: cube_all, hardness: 0.8, resistance: 0.8, tool: pickaxe, sound: stone, color: sand}
+  - {id: basalte_colonnaire, fr: Basalte Colonnaire, en: Columnar Basalt, mat: basalte_colonnaire_side, model: cube_column, hardness: 1.5, resistance: 6.0, tool: pickaxe, level: stone, sound: stone, color: stone}
+  - {id: pierre_erodee, fr: Pierre Érodée, en: Eroded Stone, mat: pierre_erodee, model: cube_all, hardness: 1.3, resistance: 5.0, tool: pickaxe, sound: stone, color: stone}
+  - {id: sol_de_temple, fr: Sol de Temple, en: Temple Floor, mat: sol_de_temple, model: cube_all, hardness: 2.0, resistance: 8.0, tool: pickaxe, level: iron, sound: stone, color: stone}
+  - {id: pierre_des_ombres_runique, fr: Pierre Runique des Ombres, en: Runic Shadow Stone, mat: pierre_des_ombres_runique, model: cube_all, hardness: 2.5, resistance: 10.0, tool: pickaxe, level: iron, sound: deepslate, color: black, luminance: 3}
+  - {id: minerai_de_lotus, fr: Minerai de Lotus, en: Lotus Ore, mat: minerai_de_lotus, model: cube_all, hardness: 3.0, resistance: 6.0, tool: pickaxe, level: iron, sound: stone, color: stone}
+  # --- terres et eaux ---
+  - {id: terre_lateritique, fr: Terre Latéritique, en: Lateritic Soil, mat: terre_lateritique, model: cube_all, hardness: 0.6, resistance: 0.6, tool: shovel, sound: gravel, color: terracotta}
+  - {id: boue_de_riziaire, fr: Boue de Rizière, en: Paddy Mud, mat: boue_de_riziaire, model: cube_all, hardness: 0.7, resistance: 0.7, tool: shovel, sound: mud, color: dirt}
+  - {id: sable_de_riviere, fr: Sable de Rivière, en: River Sand, mat: sable_de_riviere, model: cube_all, hardness: 0.6, resistance: 0.6, tool: shovel, sound: sand, color: sand}
+  - {id: gravier_de_riviere, fr: Gravier de Rivière, en: River Gravel, mat: gravier_de_riviere, model: cube_all, hardness: 0.7, resistance: 0.7, tool: shovel, sound: gravel, color: stone}
+  - {id: terre_cuite, fr: Terre Cuite, en: Fired Clay, mat: terre_cuite, model: cube_all, hardness: 1.2, resistance: 3.0, tool: pickaxe, sound: stone, color: terracotta}
+  # --- bois particuliers ---
+  - {id: bambou_planches_bloc, fr: Bloc de Planches de Bambou, en: Bamboo Plank Block, mat: bambou_planches, model: cube_all, hardness: 1.4, resistance: 3.0, tool: axe, sound: bamboo, color: wood, wood_type: BAMBOO}
+  - {id: bambou_bloc, fr: Bloc de Bambou, en: Bamboo Block, mat: bambou_bloc, model: cube_column, hardness: 1.5, resistance: 3.0, tool: axe, sound: bamboo, color: wood, axis: true}
+  - {id: bambou_tresse, fr: Bambou Tressé, en: Bamboo Mosaic, mat: bambou_tresse, model: cube_all, hardness: 1.4, resistance: 3.0, tool: axe, sound: bamboo, color: wood}
+  - {id: bambou_planches_stairs, fr: Escalier en Planches de Bambou, en: Bamboo Plank Stairs, mat: bambou_planches, model: stairs, base: bambou_planches_bloc, hardness: 1.4, resistance: 3.0, tool: axe, sound: bamboo, color: wood}
+  - {id: bambou_planches_slab, fr: Dalle de Planches de Bambou, en: Bamboo Plank Slab, mat: bambou_planches, model: slab, base: bambou_planches_bloc, hardness: 1.4, resistance: 3.0, tool: axe, sound: bamboo, color: wood}
+  - {id: bambou_fence, fr: Barrière en Bambou, en: Bamboo Fence, mat: bambou_planches, model: fence, hardness: 1.4, resistance: 3.0, tool: axe, sound: bamboo, color: wood}
+  - {id: bambou_fence_gate, fr: Portillon en Bambou, en: Bamboo Fence Gate, mat: bambou_planches, model: fence_gate, hardness: 1.4, resistance: 3.0, tool: axe, sound: bamboo, color: wood, wood_type: BAMBOO}
+  # --- végétaux ---
+  - {id: paille_de_riz, fr: Paille de Riz, en: Rice Straw, mat: paille_de_riz, model: cube_all, hardness: 0.4, resistance: 0.4, tool: hoe, sound: plant, color: sand}
+  - {id: toit_de_chaume, fr: Toit de Chaume, en: Thatch Roof, mat: toit_de_chaume, model: cube_all, hardness: 0.5, resistance: 0.5, tool: hoe, sound: plant, color: sand}
+  - {id: planche_de_toit, fr: Planche de Toit, en: Roof Plank, mat: planche_de_toit, model: cube_all, hardness: 0.8, resistance: 1.5, tool: axe, sound: wood, color: wood}
+  - {id: tuile_vernissee, fr: Tuile Vernissée, en: Glazed Tile, mat: tuile_vernissee, model: cube_all, hardness: 1.2, resistance: 4.0, tool: pickaxe, sound: stone, color: wood}
+  - {id: riz_empile, fr: Riz Empilé, en: Stacked Rice, mat: riz_empile, model: cube_all, hardness: 0.4, resistance: 0.4, tool: none, sound: plant, color: sand}
+  - {id: mur_de_roseaux, fr: Mur de Roseaux, en: Reed Wall, mat: mur_de_roseaux, model: cube_all, hardness: 0.4, resistance: 0.4, tool: hoe, sound: plant, color: sand}
+  - {id: feuille_de_lotus, fr: Feuille de Lotus, en: Lotus Leaf, mat: feuille_de_lotus, model: carpet, hardness: 0.1, resistance: 0.1, tool: none, sound: plant, color: plant}
+  - {id: fleur_de_lotus, fr: Fleur de Lotus, en: Lotus Flower, mat: fleur_de_lotus, model: cross, hardness: 0, cutout: true, sound: grass, color: plant}
+  - {id: lotus_rose, fr: Lotus Rose, en: Pink Lotus, mat: lotus_rose, model: cross, hardness: 0, cutout: true, sound: grass, color: plant}
+  - {id: lotus_blanc, fr: Lotus Blanc, en: White Lotus, mat: lotus_blanc, model: cross, hardness: 0, cutout: true, sound: grass, color: plant}
+  - {id: fleur_de_frangipanier, fr: Fleur de Frangipanier, en: Frangipani Flower, mat: fleur_de_frangipanier, model: cross, hardness: 0, cutout: true, sound: grass, color: plant}
+  - {id: fleur_d_hibiscus, fr: Hibiscus, en: Hibiscus, mat: fleur_d_hibiscus, model: cross, hardness: 0, cutout: true, sound: grass, color: plant}
+  - {id: fleur_de_bougainvillier, fr: Bougainvillier, en: Bougainvillea, mat: fleur_de_bougainvillier, model: cross, hardness: 0, cutout: true, sound: grass, color: plant}
+  - {id: citronnelle, fr: Citronnelle, en: Lemongrass, mat: citronnelle, model: cross, hardness: 0, cutout: true, sound: grass, color: plant}
+  - {id: piment, fr: Piment, en: Chili, mat: piment, model: cross, hardness: 0, cutout: true, sound: grass, color: plant}
+  - {id: aubergine, fr: Aubergine, en: Eggplant, mat: aubergine, model: cross, hardness: 0, cutout: true, sound: grass, color: plant}
+  - {id: concombre, fr: Concombre, en: Cucumber, mat: concombre, model: cross, hardness: 0, cutout: true, sound: grass, color: plant}
+  # --- décor et symboles (traitement respectueux : jamais de fonction humoristique) ---
+  - {id: lanterne_de_bambou, fr: Lanterne de Bambou, en: Bamboo Lantern, mat: lanterne_de_bambou, model: cube_all, hardness: 0.3, luminance: 14, sound: lantern, color: gold, tool: axe}
+  - {id: torche_de_resine, fr: Torche de Résine, en: Resin Torch, mat: torche_de_resine, model: cross, hardness: 0, luminance: 12, cutout: true, sound: wood, color: gold}
+  - {id: encens, fr: Brûleur d'Encens, en: Incense Burner, mat: encens, model: cross, hardness: 0.2, luminance: 5, cutout: true, sound: stone, color: brown}
+  - {id: banniere_rouge, fr: Bannière Rouge, en: Red Banner, mat: banniere_rouge, model: carpet, hardness: 0.2, sound: cloth, color: red}
+  - {id: banniere_or, fr: Bannière Dorée, en: Golden Banner, mat: banniere_or, model: carpet, hardness: 0.2, sound: cloth, color: gold}
+  - {id: banniere_bleue, fr: Bannière Bleue, en: Blue Banner, mat: banniere_bleue, model: carpet, hardness: 0.2, sound: cloth, color: light_blue}
+  - {id: banniere_verte, fr: Bannière Verte, en: Green Banner, mat: banniere_verte, model: carpet, hardness: 0.2, sound: cloth, color: plant}
+  - {id: banniere_blanche, fr: Bannière Blanche, en: White Banner, mat: banniere_blanche, model: carpet, hardness: 0.2, sound: cloth, color: white}
+  - {id: banniere_violette, fr: Bannière Violette, en: Violet Banner, mat: banniere_violette, model: carpet, hardness: 0.2, sound: cloth, color: black}
+  - {id: tissu_suspendu, fr: Tissu Suspendu, en: Hanging Cloth, mat: tissu_suspendu, model: cross, hardness: 0.2, cutout: true, sound: cloth, color: terracotta}
+  - {id: etal_de_marche, fr: Étal de Marché, en: Market Stall, mat: etal_de_marche, model: cube_all, hardness: 0.9, resistance: 1.5, tool: axe, sound: wood, color: wood}
+  - {id: jarre, fr: Jarre, en: Jar, mat: jarre, model: cube_all, hardness: 0.5, resistance: 0.5, tool: none, sound: vase, color: terracotta}
+  - {id: panier, fr: Panier, en: Basket, mat: panier, model: cube_all, hardness: 0.4, resistance: 0.4, tool: none, sound: plant, color: sand}
+  - {id: statue_de_pierre, fr: Statue de Pierre, en: Stone Statue, mat: statue_de_pierre, model: cube_all, hardness: 2.5, resistance: 9.0, tool: pickaxe, level: iron, sound: stone, color: stone}
+  - {id: naga_balustrade, fr: Balustrade Naga, en: Naga Balustrade, mat: naga_balustrade, model: cube_all, hardness: 2.5, resistance: 9.0, tool: pickaxe, level: iron, sound: stone, color: stone, comment: "Balustrade ornementale : le naga est un protecteur bienveillant, jamais un ennemi."}
+  - {id: naga_balustrade_stairs, fr: Balustrade Naga en Pente, en: Sloped Naga Balustrade, mat: naga_balustrade, model: stairs, base: naga_balustrade, hardness: 2.5, resistance: 9.0, tool: pickaxe, level: iron, sound: stone, color: stone}
+  - {id: naga_balustrade_slab, fr: Dalle de Balustrade Naga, en: Naga Balustrade Slab, mat: naga_balustrade, model: slab, base: naga_balustrade, hardness: 2.5, resistance: 9.0, tool: pickaxe, level: iron, sound: stone, color: stone}
+  - {id: bas_relief, fr: Bas-Relief, en: Bas-Relief, mat: bas_relief, model: cube_all, hardness: 2.0, resistance: 8.0, tool: pickaxe, level: stone, sound: stone, color: stone, comment: "Décor de galerie : éléments d'architecture traités avec respect, jamais moqués."}
+  - {id: visage_de_pierre, fr: Visage de Pierre, en: Stone Face, mat: visage_de_pierre, model: cube_all, hardness: 3.0, resistance: 10.0, tool: pickaxe, level: iron, sound: stone, color: stone, comment: "Tour-visage : élément de décor et de donjon, traité avec respect."}
+  - {id: garuda, fr: Garuda, en: Garuda, mat: garuda, model: cube_all, hardness: 2.5, resistance: 9.0, tool: pickaxe, level: iron, sound: metal, color: gold}
+  - {id: autel, fr: Autel, en: Altar, mat: autel, model: cube_all, hardness: 2.0, resistance: 8.0, tool: pickaxe, level: stone, sound: stone, color: stone}
+  - {id: cloche_de_temple, fr: Cloche de Temple, en: Temple Bell, mat: cloche_de_temple, model: cube_all, hardness: 2.0, resistance: 8.0, tool: pickaxe, level: iron, sound: metal, color: gold}
+  - {id: gong, fr: Gong, en: Gong, mat: gong, model: cube_all, hardness: 2.0, resistance: 8.0, tool: pickaxe, level: iron, sound: metal, color: gold}
+  - {id: tambour, fr: Tambour, en: Drum, mat: tambour, model: cube_all, hardness: 0.8, resistance: 1.0, tool: axe, sound: wood, color: wood}
+  - {id: vitrail_de_temple, fr: Vitrail de Temple, en: Temple Glass, mat: vitrail_de_temple, model: cube_all, hardness: 0.4, resistance: 0.4, sound: glass, color: gold, no_collision: false, cutout: true}
+  # --- artisanat et machines (logique en Java : forge, tissage, cuisson…) ---
+  - {id: four_de_forge, fr: Four de Forge, en: Forge Furnace, mat: four_de_forge, model: cube_all, hardness: 3.5, resistance: 10.0, tool: pickaxe, level: stone, sound: stone, color: stone, luminance: 6}
+  - {id: table_de_forge, fr: Table de Forge, en: Forge Table, mat: table_de_forge, model: cube_all, hardness: 3.0, resistance: 9.0, tool: pickaxe, level: iron, sound: metal, color: metal}
+  - {id: metier_a_tisser, fr: Métier à Tisser, en: Weaving Loom, mat: metier_a_tisser, model: cube_all, hardness: 1.0, resistance: 2.0, tool: axe, sound: wood, color: wood}
+  - {id: cuve_de_soie, fr: Cuve de Soie, en: Silk Vat, mat: cuve_de_soie, model: cube_all, hardness: 0.8, resistance: 1.5, tool: axe, sound: wood, color: sand}
+  - {id: marmite, fr: Marmite, en: Cooking Pot, mat: marmite, model: cube_all, hardness: 1.2, resistance: 3.0, tool: pickaxe, sound: metal, color: metal}
+  - {id: mortier, fr: Mortier, en: Mortar, mat: mortier, model: cube_all, hardness: 1.0, resistance: 3.0, tool: pickaxe, sound: stone, color: stone}
+  - {id: tour_de_poterie, fr: Tour de Poterie, en: Potter's Wheel, mat: tour_de_poterie, model: cube_all, hardness: 0.8, resistance: 1.5, tool: axe, sound: wood, color: terracotta}
+  - {id: atelier_de_sculpture, fr: Atelier de Sculpture, en: Sculpture Bench, mat: atelier_de_sculpture, model: cube_all, hardness: 2.0, resistance: 6.0, tool: pickaxe, level: stone, sound: stone, color: stone}
+  - {id: creuset_de_fusion, fr: Creuset de Fusion, en: Fusion Crucible, mat: creuset_de_fusion, model: cube_all, hardness: 3.0, resistance: 9.0, tool: pickaxe, level: iron, sound: metal, color: black, luminance: 4}
+  # --- portail et téléporteurs ---
+  - {id: cadre_du_portail, fr: Cadre du Portail, en: Portal Frame, mat: cadre_du_portail, model: cube_all, hardness: 3.0, resistance: 12.0, tool: pickaxe, level: diamond, sound: stone, color: stone, comment: "Cadre du portail du Cambodge : 12 blocs entourant un bol de riz béni."}
+  - {id: coeur_du_portail, fr: Cœur du Portail, en: Portal Core, mat: coeur_du_portail, model: cube_all, hardness: 3.0, resistance: 12.0, tool: pickaxe, level: diamond, sound: amethyst, color: light_blue, luminance: 11}
+  - {id: teleporteur_de_lotus, fr: Téléporteur de Lotus, en: Lotus Teleporter, mat: teleporteur_de_lotus, model: cube_bottom_top, hardness: 2.5, resistance: 9.0, tool: pickaxe, level: iron, sound: amethyst, color: light_blue, luminance: 7}
+  - {id: cristal_de_lotus, fr: Cristal de Lotus, en: Lotus Crystal, mat: cristal_de_lotus, model: cube_all, hardness: 1.0, resistance: 3.0, tool: pickaxe, sound: amethyst, color: light_blue, luminance: 9}
+  - {id: bloc_de_lotus, fr: Bloc de Lotus, en: Lotus Block, mat: bloc_de_lotus, model: cube_all, hardness: 1.0, resistance: 3.0, tool: pickaxe, sound: amethyst, color: light_blue, luminance: 4}
+  - {id: mousson_vase, fr: Vase du Grand Lac, en: Great Lake Silt, mat: mousson_vase, model: cube_all, hardness: 0.6, resistance: 0.6, tool: shovel, sound: mud, color: dirt}
+  - {id: dalle_de_pression_ancienne, fr: Dalle Ancienne de Temple, en: Ancient Temple Tile, mat: dalle_de_pression_ancienne, model: cube_all, hardness: 2.0, resistance: 8.0, tool: pickaxe, level: stone, sound: stone, color: stone, comment: "Dalle à mécanisme des temples-pyramides."}
+  - {id: socle_d_offrande, fr: Socle d'Offrande, en: Offering Pedestal, mat: socle_d_offrande, model: cube_all, hardness: 2.0, resistance: 8.0, tool: pickaxe, level: stone, sound: stone, color: stone}
+  - {id: lion_de_pierre, fr: Lion Gardien de Pierre, en: Stone Guardian Lion, mat: lion_de_pierre, model: cube_all, hardness: 2.8, resistance: 10.0, tool: pickaxe, level: iron, sound: stone, color: stone}
+  - {id: pilier_de_laterite, fr: Pilier de Latérite, en: Laterite Pillar, mat: pilier_de_laterite, model: cube_column, hardness: 1.4, resistance: 4.0, tool: pickaxe, level: stone, sound: stone, color: terracotta, axis: true}
+  - {id: pilier_de_lotus, fr: Pilier de Pierre du Lotus, en: Lotus Stone Pillar, mat: pilier_de_lotus, model: cube_column, hardness: 1.5, resistance: 6.0, tool: pickaxe, level: stone, sound: stone, color: stone, axis: true}
+  - {id: natte_de_jonc, fr: Natte de Jonc, en: Reed Mat, mat: natte_de_jonc, model: carpet, hardness: 0.2, sound: plant, color: sand}
+  - {id: tapis_de_soie_krama, fr: Tapis Krama de Soie, en: Silk Krama Rug, mat: tapis_de_soie_krama, model: carpet, hardness: 0.2, sound: cloth, color: red}
+  - {id: murier_buisson, fr: Buisson de Mûrier, en: Mulberry Bush, mat: murier_buisson, model: cube_all, hardness: 0.4, resistance: 0.4, tool: hoe, sound: grass, color: plant}
+  - {id: riz_sauvage, fr: Riz Sauvage, en: Wild Rice, mat: riz_sauvage, model: cross, hardness: 0, cutout: true, sound: grass, color: plant}
+  - {id: herbe_de_savane, fr: Herbe Haute de Savane, en: Tall Savanna Grass, mat: herbe_de_savane, model: cross, hardness: 0, cutout: true, sound: grass, color: plant}
+  - {id: fougere_tropicale, fr: Fougère Tropicale, en: Tropical Fern, mat: fougere_tropicale, model: cross, hardness: 0, cutout: true, sound: grass, color: plant}
+  - {id: orchidee_khmer, fr: Orchidée Sauvage, en: Wild Khmer Orchid, mat: orchidee_khmer, model: cross, hardness: 0, cutout: true, sound: grass, color: plant}
+  - {id: racine_de_banyan, fr: Racine Aérienne de Banyan, en: Aerial Banyan Root, mat: racine_de_banyan, model: cross, hardness: 0.3, cutout: true, sound: wood, color: wood}

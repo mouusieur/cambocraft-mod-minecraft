@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042015,
+    "separation": 7,
+    "spacing": 22,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:wat_village",
+      "weight": 1
+    }
+  ]
+}

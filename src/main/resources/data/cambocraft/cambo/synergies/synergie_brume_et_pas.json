@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Marcheur de la Brume",
+    "en": "Mist Walker"
+  },
+  "pouvoirs": [
+    "pas_de_brume",
+    "voile_d_encre"
+  ],
+  "effet": "furtivite_aquatique",
+  "multiplicateur": 1.2,
+  "duree_ticks": 180,
+  "description": {
+    "fr": "Synergie active lorsque pas_de_brume et voile_d_encre sont équipés ensemble : Marcheur de la Brume (×1.20).",
+    "en": "Active synergy when pas_de_brume and voile_d_encre are equipped together: Mist Walker (×1.20)."
+  }
+}

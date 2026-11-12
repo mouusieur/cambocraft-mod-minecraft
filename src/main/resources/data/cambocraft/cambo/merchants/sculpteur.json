@@ -1,0 +1,48 @@
+{
+  "faction": "kompong",
+  "offres": [
+    {
+      "item": "cambocraft:bloc_de_gres_brut",
+      "palier_min": "connu",
+      "prix_base": 8,
+      "quantite": 4,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:maillet_de_sculpteur",
+      "palier_min": "connu",
+      "prix_base": 18,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:ciseau_de_sculpteur",
+      "palier_min": "connu",
+      "prix_base": 18,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:statuette_de_naga",
+      "palier_min": "respecte",
+      "prix_base": 40,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:statuette_d_apsara",
+      "palier_min": "honore",
+      "prix_base": 55,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:pierre_de_teleportation",
+      "palier_min": "legendaire",
+      "prix_base": 65,
+      "quantite": 2,
+      "sensible_au_riz": false
+    }
+  ],
+  "pnj": "sculpteur"
+}

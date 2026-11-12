@@ -1,0 +1,38 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "embarcadere_course_royale",
+      "description": {
+        "en": "Complete 1x visiter (embarcadere_course_royale).",
+        "fr": "Accomplir 1x visiter (embarcadere_course_royale)."
+      },
+      "id": "etape_unique",
+      "objectif": "visiter",
+      "quantite": 1
+    }
+  ],
+  "faction": "tonle",
+  "niveau_min": 1,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:piece_du_lotus"
+    ],
+    "pieces": 25,
+    "pouvoir": "",
+    "reputation": 40,
+    "xp": 400
+  },
+  "resume": {
+    "en": "Hebdomadaire quest in Tonle province.",
+    "fr": "Quête hebdomadaire de la province de Tonle."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Weekly Pirogue Regatta",
+    "fr": "Régate Hebdomadaire en Pirogue"
+  },
+  "type": "hebdomadaire"
+}

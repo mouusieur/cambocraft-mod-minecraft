@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cambocraft:item/sceau_du_gardien_de_l_equilibre"
+  }
+}

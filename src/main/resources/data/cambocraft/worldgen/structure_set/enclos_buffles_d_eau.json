@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042061,
+    "separation": 5,
+    "spacing": 16,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:enclos_buffles_d_eau",
+      "weight": 1
+    }
+  ]
+}

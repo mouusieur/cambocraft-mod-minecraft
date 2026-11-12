@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Lance de Foudre Céleste",
+    "en": "Celestial Lightning Spear"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (air, offensif) : Lance de Foudre Céleste. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (air, offensif): Celestial Lightning Spear. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "epique",
+  "element": "air",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 18.5,
+      "soin": 0.0,
+      "portee": 11.0,
+      "duree_ticks": 35,
+      "recharge_ticks": 52,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 2,
+      "degats": 22.57,
+      "soin": 0.0,
+      "portee": 11.88,
+      "duree_ticks": 39,
+      "recharge_ticks": 49,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 3,
+      "degats": 26.64,
+      "soin": 0.0,
+      "portee": 12.76,
+      "duree_ticks": 43,
+      "recharge_ticks": 47,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 4,
+      "degats": 30.71,
+      "soin": 0.0,
+      "portee": 13.64,
+      "duree_ticks": 48,
+      "recharge_ticks": 44,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 5,
+      "degats": 34.78,
+      "soin": 0.0,
+      "portee": 14.52,
+      "duree_ticks": 52,
+      "recharge_ticks": 42,
+      "cout_energie": 28
+    }
+  ],
+  "maitrise": {
+    "seuil": 130,
+    "variante_fr": "Lance de Foudre Céleste — Éveil du Maître",
+    "variante_en": "Celestial Lightning Spear — Master Awakening",
+    "bonus": 0.26
+  }
+}

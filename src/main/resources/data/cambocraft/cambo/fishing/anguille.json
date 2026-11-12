@@ -1,0 +1,22 @@
+{
+  "nom": {
+    "fr": "Anguille",
+    "en": "Eel"
+  },
+  "item": "cambocraft:anguille",
+  "rarete": "peu_commun",
+  "poids": 15,
+  "zones": [
+    "mangrove",
+    "riviere",
+    "grand_lac"
+  ],
+  "saisons": [
+    "*"
+  ],
+  "nocturne": true,
+  "min_cm": 30,
+  "max_cm": 90,
+  "difficulte": 0.5,
+  "prix": 9
+}

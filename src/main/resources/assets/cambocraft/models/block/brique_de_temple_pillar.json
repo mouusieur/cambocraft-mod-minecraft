@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "cambocraft:block/brique_de_temple",
+    "side": "cambocraft:block/brique_de_temple"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "nom": {
+    "fr": "Carpe Géante",
+    "en": "Giant Carp"
+  },
+  "item": "cambocraft:carpe_geante",
+  "rarete": "rare",
+  "poids": 8,
+  "zones": [
+    "grand_lac",
+    "riviere"
+  ],
+  "saisons": [
+    "*"
+  ],
+  "nocturne": false,
+  "min_cm": 45,
+  "max_cm": 130,
+  "difficulte": 0.62,
+  "prix": 18
+}

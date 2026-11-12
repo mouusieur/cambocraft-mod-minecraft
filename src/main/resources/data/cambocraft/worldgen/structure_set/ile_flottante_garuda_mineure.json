@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042052,
+    "separation": 6,
+    "spacing": 20,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:ile_flottante_garuda_mineure",
+      "weight": 1
+    }
+  ]
+}

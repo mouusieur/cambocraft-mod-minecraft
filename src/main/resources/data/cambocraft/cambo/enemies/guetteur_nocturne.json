@@ -1,0 +1,23 @@
+{
+  "nom": {
+    "fr": "Guetteur nocturne",
+    "en": "Night Watcher"
+  },
+  "categorie": "ninja",
+  "rang": "lame",
+  "element": "ombre",
+  "pv_base": 140.0,
+  "attaque_base": 19.0,
+  "armure_base": 6.0,
+  "vitesse": 0.29,
+  "xp": 255,
+  "pieces": 42,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_ombre",
+    "transformation_5_etapes",
+    "pas_de_l_ombre",
+    "salve_shuriken"
+  ],
+  "phases": []
+}

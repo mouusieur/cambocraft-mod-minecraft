@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "cambocraft:block/teck_planks",
+    "side": "cambocraft:block/teck_planks",
+    "top": "cambocraft:block/teck_planks"
+  }
+}

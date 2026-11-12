@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Bourgeon de Riz",
+    "en": "Rice Sprout"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (vie, soin) : Bourgeon de Riz. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (vie, soin): Rice Sprout. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "commun",
+  "element": "vie",
+  "type": "soin",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 0.0,
+      "soin": 6.0,
+      "portee": 4.0,
+      "duree_ticks": 50,
+      "recharge_ticks": 58,
+      "cout_energie": 15
+    },
+    {
+      "niveau": 2,
+      "degats": 0.0,
+      "soin": 7.32,
+      "portee": 4.32,
+      "duree_ticks": 56,
+      "recharge_ticks": 55,
+      "cout_energie": 15
+    },
+    {
+      "niveau": 3,
+      "degats": 0.0,
+      "soin": 8.64,
+      "portee": 4.64,
+      "duree_ticks": 62,
+      "recharge_ticks": 52,
+      "cout_energie": 15
+    },
+    {
+      "niveau": 4,
+      "degats": 0.0,
+      "soin": 9.96,
+      "portee": 4.96,
+      "duree_ticks": 68,
+      "recharge_ticks": 49,
+      "cout_energie": 15
+    },
+    {
+      "niveau": 5,
+      "degats": 0.0,
+      "soin": 11.28,
+      "portee": 5.28,
+      "duree_ticks": 74,
+      "recharge_ticks": 46,
+      "cout_energie": 15
+    }
+  ],
+  "maitrise": {
+    "seuil": 60,
+    "variante_fr": "Bourgeon de Riz — Éveil du Maître",
+    "variante_en": "Rice Sprout — Master Awakening",
+    "bonus": 0.18
+  }
+}

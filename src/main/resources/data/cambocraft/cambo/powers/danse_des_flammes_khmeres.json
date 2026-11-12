@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Danse des Flammes Khmères",
+    "en": "Khmer Flame Dance"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (feu, mobilite) : Danse des Flammes Khmères. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (feu, mobilite): Khmer Flame Dance. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "epique",
+  "element": "feu",
+  "type": "mobilite",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 11.0,
+      "soin": 0.0,
+      "portee": 9.5,
+      "duree_ticks": 50,
+      "recharge_ticks": 54,
+      "cout_energie": 26
+    },
+    {
+      "niveau": 2,
+      "degats": 13.42,
+      "soin": 0.0,
+      "portee": 10.26,
+      "duree_ticks": 56,
+      "recharge_ticks": 51,
+      "cout_energie": 26
+    },
+    {
+      "niveau": 3,
+      "degats": 15.84,
+      "soin": 0.0,
+      "portee": 11.02,
+      "duree_ticks": 62,
+      "recharge_ticks": 49,
+      "cout_energie": 26
+    },
+    {
+      "niveau": 4,
+      "degats": 18.26,
+      "soin": 0.0,
+      "portee": 11.78,
+      "duree_ticks": 68,
+      "recharge_ticks": 46,
+      "cout_energie": 26
+    },
+    {
+      "niveau": 5,
+      "degats": 20.68,
+      "soin": 0.0,
+      "portee": 12.54,
+      "duree_ticks": 74,
+      "recharge_ticks": 43,
+      "cout_energie": 26
+    }
+  ],
+  "maitrise": {
+    "seuil": 130,
+    "variante_fr": "Danse des Flammes Khmères — Éveil du Maître",
+    "variante_en": "Khmer Flame Dance — Master Awakening",
+    "bonus": 0.26
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "nom": {
+    "fr": "Le Phénix de latérite",
+    "en": "The Laterite Phoenix"
+  },
+  "categorie": "boss",
+  "rang": "seigneur_boss",
+  "element": "feu",
+  "pv_base": 10200.0,
+  "attaque_base": 132.0,
+  "armure_base": 30.0,
+  "vitesse": 0.32,
+  "xp": 118000,
+  "pieces": 3000,
+  "capacites": [
+    "presence_de_boss",
+    "transition_invulnerable",
+    "maitrise_feu"
+  ],
+  "phases": [
+    {
+      "phase": 1,
+      "seuil_pv": 1.0,
+      "nom": {
+        "fr": "Sentinelle des pitons karstiques",
+        "en": "Karst Peak Sentinel"
+      },
+      "mult_attaque": 1.0,
+      "mult_vitesse": 1.08,
+      "mecanique_arene": "vents_thermiques",
+      "capacites": [
+        "plumes_de_braise",
+        "pique_incandescent"
+      ]
+    },
+    {
+      "phase": 2,
+      "seuil_pv": 0.65,
+      "nom": {
+        "fr": "Bûcher des crêtes rouges",
+        "en": "Red Ridge Pyre"
+      },
+      "mult_attaque": 1.3,
+      "mult_vitesse": 1.2,
+      "mecanique_arene": "pluie_de_laterite_fondue",
+      "capacites": [
+        "nova_solaire",
+        "tourbillon_de_cendres"
+      ]
+    },
+    {
+      "phase": 3,
+      "seuil_pv": 0.3,
+      "nom": {
+        "fr": "Renaissance par la flamme sacrée",
+        "en": "Sacred Flame Rebirth"
+      },
+      "mult_attaque": 1.65,
+      "mult_vitesse": 1.32,
+      "mecanique_arene": "embrasement_du_ciel",
+      "capacites": [
+        "soleil_des_karsts",
+        "plume_immortelle"
+      ]
+    }
+  ]
+}

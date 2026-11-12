@@ -1,0 +1,17 @@
+{
+  "buff_amplificateur": 0,
+  "buff_duree_ticks": 3000,
+  "buff_effet": "minecraft:regeneration",
+  "faction": "kompong",
+  "ingredients": [
+    "cambocraft:farine_de_riz",
+    "cambocraft:sucre_de_palme",
+    "cambocraft:noix_de_coco"
+  ],
+  "nom": {
+    "en": "Sweet Num Kom Pyramid",
+    "fr": "Pyramide Sucrée Num Kom"
+  },
+  "palier_min": "respecte",
+  "resultat": "cambocraft:num_kom"
+}

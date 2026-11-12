@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Hymne Solaire des Apsaras",
+    "en": "Solar Hymn of Apsaras"
+  },
+  "pouvoirs": [
+    "lance_solaire_du_sanctuaire",
+    "choeur_des_apsaras"
+  ],
+  "effet": "harmonie_radieuse",
+  "multiplicateur": 1.32,
+  "duree_ticks": 220,
+  "description": {
+    "fr": "Synergie active lorsque lance_solaire_du_sanctuaire et choeur_des_apsaras sont équipés ensemble : Hymne Solaire des Apsaras (×1.32).",
+    "en": "Active synergy when lance_solaire_du_sanctuaire and choeur_des_apsaras are equipped together: Solar Hymn of Apsaras (×1.32)."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "buff_amplificateur": 0,
+  "buff_duree_ticks": 2400,
+  "buff_effet": "minecraft:haste",
+  "faction": "ly",
+  "ingredients": [
+    "cambocraft:riz_cuit",
+    "cambocraft:sucre_de_palme",
+    "cambocraft:ail_grille"
+  ],
+  "nom": {
+    "en": "Morning Bai Sach Chrouk",
+    "fr": "Bai Sach Chrouk Matinal"
+  },
+  "palier_min": "connu",
+  "resultat": "cambocraft:bai_sach_chrouk"
+}

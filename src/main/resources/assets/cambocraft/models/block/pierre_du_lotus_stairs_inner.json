@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "cambocraft:block/pierre_du_lotus",
+    "side": "cambocraft:block/pierre_du_lotus",
+    "top": "cambocraft:block/pierre_du_lotus"
+  }
+}

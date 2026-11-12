@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Crue de Mousson",
+    "en": "Monsoon Flood"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (eau, offensif) : Crue de Mousson. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (eau, offensif): Monsoon Flood. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "epique",
+  "element": "eau",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 17.5,
+      "soin": 0.0,
+      "portee": 9.0,
+      "duree_ticks": 50,
+      "recharge_ticks": 56,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 2,
+      "degats": 21.35,
+      "soin": 0.0,
+      "portee": 9.72,
+      "duree_ticks": 56,
+      "recharge_ticks": 53,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 3,
+      "degats": 25.2,
+      "soin": 0.0,
+      "portee": 10.44,
+      "duree_ticks": 62,
+      "recharge_ticks": 50,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 4,
+      "degats": 29.05,
+      "soin": 0.0,
+      "portee": 11.16,
+      "duree_ticks": 68,
+      "recharge_ticks": 48,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 5,
+      "degats": 32.9,
+      "soin": 0.0,
+      "portee": 11.88,
+      "duree_ticks": 74,
+      "recharge_ticks": 45,
+      "cout_energie": 28
+    }
+  ],
+  "maitrise": {
+    "seuil": 130,
+    "variante_fr": "Crue de Mousson — Éveil du Maître",
+    "variante_en": "Monsoon Flood — Master Awakening",
+    "bonus": 0.26
+  }
+}

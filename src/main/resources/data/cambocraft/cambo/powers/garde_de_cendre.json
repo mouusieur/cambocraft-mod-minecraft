@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Garde de Cendre",
+    "en": "Ash Guard"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (feu, defensif) : Garde de Cendre. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (feu, defensif): Ash Guard. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "commun",
+  "element": "feu",
+  "type": "defensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 0.0,
+      "soin": 3.0,
+      "portee": 3.0,
+      "duree_ticks": 80,
+      "recharge_ticks": 70,
+      "cout_energie": 15
+    },
+    {
+      "niveau": 2,
+      "degats": 0.0,
+      "soin": 3.66,
+      "portee": 3.24,
+      "duree_ticks": 90,
+      "recharge_ticks": 66,
+      "cout_energie": 15
+    },
+    {
+      "niveau": 3,
+      "degats": 0.0,
+      "soin": 4.32,
+      "portee": 3.48,
+      "duree_ticks": 99,
+      "recharge_ticks": 63,
+      "cout_energie": 15
+    },
+    {
+      "niveau": 4,
+      "degats": 0.0,
+      "soin": 4.98,
+      "portee": 3.72,
+      "duree_ticks": 109,
+      "recharge_ticks": 60,
+      "cout_energie": 15
+    },
+    {
+      "niveau": 5,
+      "degats": 0.0,
+      "soin": 5.64,
+      "portee": 3.96,
+      "duree_ticks": 118,
+      "recharge_ticks": 56,
+      "cout_energie": 15
+    }
+  ],
+  "maitrise": {
+    "seuil": 60,
+    "variante_fr": "Garde de Cendre — Éveil du Maître",
+    "variante_en": "Ash Guard — Master Awakening",
+    "bonus": 0.18
+  }
+}

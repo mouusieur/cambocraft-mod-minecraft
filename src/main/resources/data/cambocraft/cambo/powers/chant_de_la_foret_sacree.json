@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Chant de la Forêt Sacrée",
+    "en": "Sacred Forest Song"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (vie, soin) : Chant de la Forêt Sacrée. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (vie, soin): Sacred Forest Song. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "epique",
+  "element": "vie",
+  "type": "soin",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 4.0,
+      "soin": 15.5,
+      "portee": 8.5,
+      "duree_ticks": 120,
+      "recharge_ticks": 72,
+      "cout_energie": 30
+    },
+    {
+      "niveau": 2,
+      "degats": 4.88,
+      "soin": 18.91,
+      "portee": 9.18,
+      "duree_ticks": 134,
+      "recharge_ticks": 68,
+      "cout_energie": 30
+    },
+    {
+      "niveau": 3,
+      "degats": 5.76,
+      "soin": 22.32,
+      "portee": 9.86,
+      "duree_ticks": 149,
+      "recharge_ticks": 65,
+      "cout_energie": 30
+    },
+    {
+      "niveau": 4,
+      "degats": 6.64,
+      "soin": 25.73,
+      "portee": 10.54,
+      "duree_ticks": 163,
+      "recharge_ticks": 61,
+      "cout_energie": 30
+    },
+    {
+      "niveau": 5,
+      "degats": 7.52,
+      "soin": 29.14,
+      "portee": 11.22,
+      "duree_ticks": 178,
+      "recharge_ticks": 58,
+      "cout_energie": 30
+    }
+  ],
+  "maitrise": {
+    "seuil": 130,
+    "variante_fr": "Chant de la Forêt Sacrée — Éveil du Maître",
+    "variante_en": "Sacred Forest Song — Master Awakening",
+    "bonus": 0.26
+  }
+}

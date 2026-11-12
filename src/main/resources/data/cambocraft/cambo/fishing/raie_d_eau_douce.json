@@ -1,0 +1,21 @@
+{
+  "nom": {
+    "fr": "Raie d'Eau Douce",
+    "en": "Freshwater Ray"
+  },
+  "item": "cambocraft:raie_d_eau_douce",
+  "rarete": "rare",
+  "poids": 5,
+  "zones": [
+    "grand_lac",
+    "abysses"
+  ],
+  "saisons": [
+    "*"
+  ],
+  "nocturne": false,
+  "min_cm": 35,
+  "max_cm": 110,
+  "difficulte": 0.8,
+  "prix": 26
+}

@@ -1,0 +1,17 @@
+{
+  "buff_amplificateur": 0,
+  "buff_duree_ticks": 3600,
+  "buff_effet": "minecraft:water_breathing",
+  "faction": "tonle",
+  "ingredients": [
+    "cambocraft:nouilles_de_riz",
+    "cambocraft:crevette_de_riviere",
+    "cambocraft:ail_grille"
+  ],
+  "nom": {
+    "en": "Harbor Kuy Teav Soup",
+    "fr": "Soupe Kuy Teav du Port"
+  },
+  "palier_min": "respecte",
+  "resultat": "cambocraft:kuy_teav"
+}

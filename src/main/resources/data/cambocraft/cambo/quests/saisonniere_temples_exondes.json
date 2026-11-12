@@ -1,0 +1,38 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "temple_englouti_du_lac",
+      "description": {
+        "en": "Complete 1x visiter (temple_englouti_du_lac).",
+        "fr": "Accomplir 1x visiter (temple_englouti_du_lac)."
+      },
+      "id": "etape_unique",
+      "objectif": "visiter",
+      "quantite": 1
+    }
+  ],
+  "faction": "kompong",
+  "niveau_min": 1,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:piece_du_lotus"
+    ],
+    "pieces": 25,
+    "pouvoir": "",
+    "reputation": 40,
+    "xp": 400
+  },
+  "resume": {
+    "en": "Saisonniere quest in Kompong province.",
+    "fr": "Quête saisonniere de la province de Kompong."
+  },
+  "saison_requise": "saison_douce",
+  "titre": {
+    "en": "Uncovered Shrines",
+    "fr": "Sanctuaires Exondés"
+  },
+  "type": "saisonniere"
+}

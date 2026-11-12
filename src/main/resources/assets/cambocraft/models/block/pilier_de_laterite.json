@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "cambocraft:block/pilier_de_laterite",
+    "side": "cambocraft:block/pilier_de_laterite"
+  }
+}

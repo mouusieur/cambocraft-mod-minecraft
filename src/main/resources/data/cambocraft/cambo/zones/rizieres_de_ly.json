@@ -1,0 +1,26 @@
+{
+  "biomes": [
+    "cambocraft:rizieres_en_terrasses",
+    "cambocraft:plaine_inondable"
+  ],
+  "boss_id": "le_buffle_d_or",
+  "boss_requis": "chef_des_bandits_de_la_riviere",
+  "ennemis": [
+    "maraudeur_des_digues",
+    "sanglier_des_rizieres",
+    "initie_ombre",
+    "garde_corrompu"
+  ],
+  "niveau_max": 30,
+  "niveau_min": 15,
+  "nom": {
+    "en": "Ly Rice Terraces",
+    "fr": "Rizières de Ly"
+  },
+  "ordre": 2,
+  "teleporteur": {
+    "x": 320,
+    "y": 74,
+    "z": -180
+  }
+}

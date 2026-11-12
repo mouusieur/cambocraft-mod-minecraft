@@ -1,0 +1,20 @@
+{
+  "nom": {
+    "fr": "Pirate du Grand Lac",
+    "en": "Great Lake Pirate"
+  },
+  "categorie": "zone",
+  "rang": "lame",
+  "element": "eau",
+  "pv_base": 205.0,
+  "attaque_base": 24.5,
+  "armure_base": 8.5,
+  "vitesse": 0.3,
+  "xp": 340,
+  "pieces": 56,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_eau"
+  ],
+  "phases": []
+}

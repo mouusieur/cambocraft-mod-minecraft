@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cambocraft:item/coeur_du_gardien_de_pierre"
+  }
+}

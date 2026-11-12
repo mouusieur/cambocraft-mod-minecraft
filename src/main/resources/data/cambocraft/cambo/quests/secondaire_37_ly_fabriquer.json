@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "cambocraft:fil_de_soie",
+      "description": {
+        "en": "Complete 3x fabriquer (cambocraft:fil_de_soie).",
+        "fr": "Accomplir 3x fabriquer (cambocraft:fil_de_soie)."
+      },
+      "id": "objectif_1",
+      "objectif": "fabriquer",
+      "quantite": 3
+    },
+    {
+      "cible": "tisserand_de_soie",
+      "description": {
+        "en": "Report back to tisserand_de_soie.",
+        "fr": "Rapporter le résultat à tisserand_de_soie."
+      },
+      "id": "retour_pnj",
+      "objectif": "parler",
+      "quantite": 1
+    }
+  ],
+  "faction": "ly",
+  "niveau_min": 100,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:tissu_de_soie"
+    ],
+    "pieces": 45,
+    "pouvoir": "",
+    "reputation": 105,
+    "xp": 750
+  },
+  "resume": {
+    "en": "Assist tisserand_de_soie in Ly province (fabriquer: cambocraft:fil_de_soie).",
+    "fr": "Aider tisserand_de_soie dans la province de Ly (fabriquer : cambocraft:fil_de_soie)."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Golden Threads of Ly (III)",
+    "fr": "Fils d’Or de Ly (III)"
+  },
+  "type": "secondaire"
+}

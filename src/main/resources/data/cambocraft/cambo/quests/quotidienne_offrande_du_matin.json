@@ -1,0 +1,38 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "cambocraft:offrande_de_fleurs",
+      "description": {
+        "en": "Complete 2x livrer (cambocraft:offrande_de_fleurs).",
+        "fr": "Accomplir 2x livrer (cambocraft:offrande_de_fleurs)."
+      },
+      "id": "etape_unique",
+      "objectif": "livrer",
+      "quantite": 2
+    }
+  ],
+  "faction": "kompong",
+  "niveau_min": 1,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:piece_du_lotus"
+    ],
+    "pieces": 25,
+    "pouvoir": "",
+    "reputation": 40,
+    "xp": 400
+  },
+  "resume": {
+    "en": "Quotidienne quest in Kompong province.",
+    "fr": "Quête quotidienne de la province de Kompong."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Morning Offering",
+    "fr": "Offrande du Matin"
+  },
+  "type": "quotidienne"
+}

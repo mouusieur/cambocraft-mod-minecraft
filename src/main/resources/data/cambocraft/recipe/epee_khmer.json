@@ -1,0 +1,20 @@
+{
+  "key": {
+    "L": {
+      "item": "cambocraft:lingot_de_lotus"
+    },
+    "T": {
+      "item": "cambocraft:teck_planks"
+    }
+  },
+  "pattern": [
+    " L ",
+    " L ",
+    " T "
+  ],
+  "result": {
+    "count": 1,
+    "id": "cambocraft:epee_khmer"
+  },
+  "type": "minecraft:crafting_shaped"
+}

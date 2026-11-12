@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Fleur de Lotus Rose",
+    "en": "Pink Lotus Bloom"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (vie, soin) : Fleur de Lotus Rose. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (vie, soin): Pink Lotus Bloom. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "rare",
+  "element": "vie",
+  "type": "soin",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 0.0,
+      "soin": 10.0,
+      "portee": 6.0,
+      "duree_ticks": 90,
+      "recharge_ticks": 66,
+      "cout_energie": 22
+    },
+    {
+      "niveau": 2,
+      "degats": 0.0,
+      "soin": 12.2,
+      "portee": 6.48,
+      "duree_ticks": 101,
+      "recharge_ticks": 63,
+      "cout_energie": 22
+    },
+    {
+      "niveau": 3,
+      "degats": 0.0,
+      "soin": 14.4,
+      "portee": 6.96,
+      "duree_ticks": 112,
+      "recharge_ticks": 59,
+      "cout_energie": 22
+    },
+    {
+      "niveau": 4,
+      "degats": 0.0,
+      "soin": 16.6,
+      "portee": 7.44,
+      "duree_ticks": 122,
+      "recharge_ticks": 56,
+      "cout_energie": 22
+    },
+    {
+      "niveau": 5,
+      "degats": 0.0,
+      "soin": 18.8,
+      "portee": 7.92,
+      "duree_ticks": 133,
+      "recharge_ticks": 53,
+      "cout_energie": 22
+    }
+  ],
+  "maitrise": {
+    "seuil": 90,
+    "variante_fr": "Fleur de Lotus Rose — Éveil du Maître",
+    "variante_en": "Pink Lotus Bloom — Master Awakening",
+    "bonus": 0.22
+  }
+}

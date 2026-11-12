@@ -1,0 +1,31 @@
+name: build
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+  checks: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sonde
+        run: |
+          echo "bonjour depuis le runner" > ci_report.txt
+          java -version 2>&1 | tee -a ci_report.txt
+          nproc | tee -a ci_report.txt
+          free -h | tee -a ci_report.txt
+      - name: Rapport (check run)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import json, os, subprocess
+          text = open('ci_report.txt').read()[-60000:]
+          body = {"name": "cambocraft-rapport", "head_sha": os.environ["GITHUB_SHA"], "status": "completed", "conclusion": "neutral",
+                  "output": {"title": "Rapport CI", "summary": "sonde", "text": "```\n" + text + "\n```"}}
+          open('body.json','w').write(json.dumps(body))
+          subprocess.run(["gh","api","-X","POST","repos/"+os.environ["GITHUB_REPOSITORY"]+"/check-runs","--input","body.json"],check=True)
+          PY

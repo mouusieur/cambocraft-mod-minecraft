@@ -1,0 +1,47 @@
+{
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:canyon"
+    ]
+  },
+  "downfall": 0.92,
+  "effects": {
+    "fog_color": 12771071,
+    "foliage_color": 5017144,
+    "grass_color": 6070340,
+    "sky_color": 8040703,
+    "water_color": 2514046,
+    "water_fog_color": 1459294
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "cambocraft:minerai_de_lotus"
+    ],
+    [],
+    [],
+    [
+      "cambocraft:arbre_paletuvier",
+      "cambocraft:flore_lotus"
+    ],
+    []
+  ],
+  "has_precipitation": true,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "creature": [],
+    "misc": [],
+    "monster": [],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.86
+}

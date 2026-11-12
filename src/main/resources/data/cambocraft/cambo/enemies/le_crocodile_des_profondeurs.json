@@ -1,0 +1,67 @@
+{
+  "nom": {
+    "fr": "Le Crocodile des Profondeurs",
+    "en": "Crocodile of the Depths"
+  },
+  "categorie": "boss",
+  "rang": "seigneur_boss",
+  "element": "eau",
+  "pv_base": 2600.0,
+  "attaque_base": 52.0,
+  "armure_base": 17.0,
+  "vitesse": 0.32,
+  "xp": 15000,
+  "pieces": 800,
+  "capacites": [
+    "presence_de_boss",
+    "transition_invulnerable",
+    "maitrise_eau"
+  ],
+  "phases": [
+    {
+      "phase": 1,
+      "seuil_pv": 1.0,
+      "nom": {
+        "fr": "Prédateur des ruines englouties",
+        "en": "Sunken Ruins Predator"
+      },
+      "mult_attaque": 1.0,
+      "mult_vitesse": 1.0,
+      "mecanique_arene": "crue_du_bassin",
+      "capacites": [
+        "machoire_abyssale",
+        "coup_de_queue_lacustre"
+      ]
+    },
+    {
+      "phase": 2,
+      "seuil_pv": 0.65,
+      "nom": {
+        "fr": "Tourbillon de la mousson",
+        "en": "Monsoon Whirlpool"
+      },
+      "mult_attaque": 1.26,
+      "mult_vitesse": 1.12,
+      "mecanique_arene": "vortex_du_grand_lac",
+      "capacites": [
+        "plongee_furtive",
+        "raz_de_maree"
+      ]
+    },
+    {
+      "phase": 3,
+      "seuil_pv": 0.3,
+      "nom": {
+        "fr": "Léviathan ancestral du Tonlé",
+        "en": "Ancestral Tonle Leviathan"
+      },
+      "mult_attaque": 1.55,
+      "mult_vitesse": 1.24,
+      "mecanique_arene": "inondation_totale",
+      "capacites": [
+        "fureur_des_profondeurs",
+        "deluge_du_sanctuaire"
+      ]
+    }
+  ]
+}

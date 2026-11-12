@@ -1,0 +1,48 @@
+{
+  "faction": "srok",
+  "offres": [
+    {
+      "item": "cambocraft:bambou_brut",
+      "palier_min": "connu",
+      "prix_base": 4,
+      "quantite": 8,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:fleche_en_bambou",
+      "palier_min": "connu",
+      "prix_base": 8,
+      "quantite": 16,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:pique_en_bambou",
+      "palier_min": "respecte",
+      "prix_base": 18,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:arc_composite_en_bambou",
+      "palier_min": "respecte",
+      "prix_base": 32,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:bouclier_de_rotin",
+      "palier_min": "honore",
+      "prix_base": 28,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:arbalete_de_rotin",
+      "palier_min": "legendaire",
+      "prix_base": 48,
+      "quantite": 1,
+      "sensible_au_riz": false
+    }
+  ],
+  "pnj": "vendeur_de_bambou"
+}

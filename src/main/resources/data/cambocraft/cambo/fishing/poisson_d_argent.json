@@ -1,0 +1,22 @@
+{
+  "nom": {
+    "fr": "Poisson d'Argent",
+    "en": "Silver Fish"
+  },
+  "item": "cambocraft:poisson_d_argent",
+  "rarete": "peu_commun",
+  "poids": 12,
+  "zones": [
+    "riviere",
+    "grand_lac",
+    "montagne_riviere"
+  ],
+  "saisons": [
+    "*"
+  ],
+  "nocturne": false,
+  "min_cm": 14,
+  "max_cm": 34,
+  "difficulte": 0.4,
+  "prix": 7
+}

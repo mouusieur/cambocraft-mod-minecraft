@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042014,
+    "separation": 6,
+    "spacing": 20,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:parvis_lions_sacres",
+      "weight": 1
+    }
+  ]
+}

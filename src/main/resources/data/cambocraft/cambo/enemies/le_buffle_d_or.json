@@ -1,0 +1,67 @@
+{
+  "nom": {
+    "fr": "Le Buffle d'Or",
+    "en": "The Golden Buffalo"
+  },
+  "categorie": "boss",
+  "rang": "seigneur_boss",
+  "element": "terre",
+  "pv_base": 850.0,
+  "attaque_base": 25.0,
+  "armure_base": 10.0,
+  "vitesse": 0.32,
+  "xp": 3200,
+  "pieces": 320,
+  "capacites": [
+    "presence_de_boss",
+    "transition_invulnerable",
+    "maitrise_terre"
+  ],
+  "phases": [
+    {
+      "phase": 1,
+      "seuil_pv": 1.0,
+      "nom": {
+        "fr": "Gardien des terrasses sacrées",
+        "en": "Sacred Terrace Guardian"
+      },
+      "mult_attaque": 1.0,
+      "mult_vitesse": 1.0,
+      "mecanique_arene": "boue_lourde",
+      "capacites": [
+        "charge_de_cornes",
+        "pietinement_des_digues"
+      ]
+    },
+    {
+      "phase": 2,
+      "seuil_pv": 0.65,
+      "nom": {
+        "fr": "Ruée dorée des moissons",
+        "en": "Golden Harvest Stampede"
+      },
+      "mult_attaque": 1.25,
+      "mult_vitesse": 1.15,
+      "mecanique_arene": "ondes_sismiques",
+      "capacites": [
+        "ruee_d_or",
+        "geyser_de_riziere"
+      ]
+    },
+    {
+      "phase": 3,
+      "seuil_pv": 0.3,
+      "nom": {
+        "fr": "Colère tellurique de Ly",
+        "en": "Telluric Wrath of Ly"
+      },
+      "mult_attaque": 1.52,
+      "mult_vitesse": 1.25,
+      "mecanique_arene": "tremblement_de_terrasse",
+      "capacites": [
+        "cornes_solaires",
+        "effondrement_des_digues"
+      ]
+    }
+  ]
+}

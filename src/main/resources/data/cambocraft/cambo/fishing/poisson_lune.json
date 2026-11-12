@@ -1,0 +1,21 @@
+{
+  "nom": {
+    "fr": "Poisson-Lune",
+    "en": "Moonfish"
+  },
+  "item": "cambocraft:poisson_lune",
+  "rarete": "rare",
+  "poids": 6,
+  "zones": [
+    "grand_lac",
+    "abysses"
+  ],
+  "saisons": [
+    "*"
+  ],
+  "nocturne": true,
+  "min_cm": 20,
+  "max_cm": 60,
+  "difficulte": 0.75,
+  "prix": 22
+}

@@ -1,0 +1,26 @@
+{
+  "biomes": [
+    "cambocraft:sanctuaire_de_lotus",
+    "cambocraft:iles_flottantes_des_garudas"
+  ],
+  "boss_id": "l_ombre_premiere",
+  "boss_requis": "le_gardien_de_l_equilibre",
+  "ennemis": [
+    "avatar_du_vide",
+    "spectre_ancestral",
+    "archonte_de_l_ombre",
+    "seraphin_du_lotus"
+  ],
+  "niveau_max": 200,
+  "niveau_min": 200,
+  "nom": {
+    "en": "Spirit Realm",
+    "fr": "Royaume des Esprits"
+  },
+  "ordre": 12,
+  "teleporteur": {
+    "x": 0,
+    "y": 140,
+    "z": -2200
+  }
+}

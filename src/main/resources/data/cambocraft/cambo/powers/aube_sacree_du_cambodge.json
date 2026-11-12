@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Aube Sacrée du Cambodge",
+    "en": "Sacred Dawn of Cambodia"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (lumiere, soin) : Aube Sacrée du Cambodge. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (lumiere, soin): Sacred Dawn of Cambodia. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "mythique",
+  "element": "lumiere",
+  "type": "soin",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 20.0,
+      "soin": 36.0,
+      "portee": 14.0,
+      "duree_ticks": 160,
+      "recharge_ticks": 86,
+      "cout_energie": 52
+    },
+    {
+      "niveau": 2,
+      "degats": 24.4,
+      "soin": 43.92,
+      "portee": 15.12,
+      "duree_ticks": 179,
+      "recharge_ticks": 82,
+      "cout_energie": 52
+    },
+    {
+      "niveau": 3,
+      "degats": 28.8,
+      "soin": 51.84,
+      "portee": 16.24,
+      "duree_ticks": 198,
+      "recharge_ticks": 77,
+      "cout_energie": 52
+    },
+    {
+      "niveau": 4,
+      "degats": 33.2,
+      "soin": 59.76,
+      "portee": 17.36,
+      "duree_ticks": 218,
+      "recharge_ticks": 73,
+      "cout_energie": 52
+    },
+    {
+      "niveau": 5,
+      "degats": 37.6,
+      "soin": 67.68,
+      "portee": 18.48,
+      "duree_ticks": 237,
+      "recharge_ticks": 69,
+      "cout_energie": 52
+    }
+  ],
+  "maitrise": {
+    "seuil": 240,
+    "variante_fr": "Aube Sacrée du Cambodge — Éveil du Maître",
+    "variante_en": "Sacred Dawn of Cambodia — Master Awakening",
+    "bonus": 0.35
+  }
+}

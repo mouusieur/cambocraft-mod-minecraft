@@ -1,0 +1,62 @@
+{
+  "faction": "srok",
+  "offres": [
+    {
+      "item": "cambocraft:pierre_d_affutage",
+      "palier_min": "connu",
+      "prix_base": 12,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:dague_khmer",
+      "palier_min": "connu",
+      "prix_base": 22,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:epee_khmer",
+      "palier_min": "respecte",
+      "prix_base": 35,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:cristal_de_forge_mineur",
+      "palier_min": "respecte",
+      "prix_base": 30,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:lance_de_prasat",
+      "palier_min": "honore",
+      "prix_base": 60,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:cristal_de_forge_majeur",
+      "palier_min": "honore",
+      "prix_base": 75,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:sabre_de_garde_royal",
+      "palier_min": "legendaire",
+      "prix_base": 120,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:cristal_de_forge_parfait",
+      "palier_min": "legendaire",
+      "prix_base": 180,
+      "quantite": 1,
+      "sensible_au_riz": false
+    }
+  ],
+  "pnj": "forgeron"
+}

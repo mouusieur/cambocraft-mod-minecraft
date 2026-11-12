@@ -1,0 +1,70 @@
+{
+  "format_version": "1.21.1-cambocraft-native",
+  "archetype": "boss_monumental",
+  "texture_width": 64,
+  "texture_height": 64,
+  "bones": [
+    {
+      "name": "root",
+      "pivot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "body",
+      "parent": "root",
+      "pivot": [
+        0,
+        12,
+        0
+      ]
+    },
+    {
+      "name": "head",
+      "parent": "body",
+      "pivot": [
+        0,
+        24,
+        0
+      ]
+    },
+    {
+      "name": "right_arm",
+      "parent": "body",
+      "pivot": [
+        -5,
+        22,
+        0
+      ]
+    },
+    {
+      "name": "left_arm",
+      "parent": "body",
+      "pivot": [
+        5,
+        22,
+        0
+      ]
+    },
+    {
+      "name": "right_leg",
+      "parent": "root",
+      "pivot": [
+        -2,
+        12,
+        0
+      ]
+    },
+    {
+      "name": "left_leg",
+      "parent": "root",
+      "pivot": [
+        2,
+        12,
+        0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "cambocraft:carpe_geante",
+      "description": {
+        "en": "Complete 2x pecher (cambocraft:carpe_geante).",
+        "fr": "Accomplir 2x pecher (cambocraft:carpe_geante)."
+      },
+      "id": "etape_unique",
+      "objectif": "pecher",
+      "quantite": 2
+    }
+  ],
+  "faction": "tonle",
+  "niveau_min": 1,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:piece_du_lotus"
+    ],
+    "pieces": 25,
+    "pouvoir": "",
+    "reputation": 40,
+    "xp": 400
+  },
+  "resume": {
+    "en": "Saisonniere quest in Tonle province.",
+    "fr": "Quête saisonniere de la province de Tonle."
+  },
+  "saison_requise": "mousson",
+  "titre": {
+    "en": "Monsoon Flood Patrol",
+    "fr": "Crue de la Mousson"
+  },
+  "type": "saisonniere"
+}

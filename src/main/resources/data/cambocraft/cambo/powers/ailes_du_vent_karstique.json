@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Ailes du Vent Karstique",
+    "en": "Karst Wind Wings"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (air, mobilite) : Ailes du Vent Karstique. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (air, mobilite): Karst Wind Wings. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "epique",
+  "element": "air",
+  "type": "mobilite",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 5.0,
+      "soin": 0.0,
+      "portee": 12.5,
+      "duree_ticks": 80,
+      "recharge_ticks": 56,
+      "cout_energie": 26
+    },
+    {
+      "niveau": 2,
+      "degats": 6.1,
+      "soin": 0.0,
+      "portee": 13.5,
+      "duree_ticks": 90,
+      "recharge_ticks": 53,
+      "cout_energie": 26
+    },
+    {
+      "niveau": 3,
+      "degats": 7.2,
+      "soin": 0.0,
+      "portee": 14.5,
+      "duree_ticks": 99,
+      "recharge_ticks": 50,
+      "cout_energie": 26
+    },
+    {
+      "niveau": 4,
+      "degats": 8.3,
+      "soin": 0.0,
+      "portee": 15.5,
+      "duree_ticks": 109,
+      "recharge_ticks": 48,
+      "cout_energie": 26
+    },
+    {
+      "niveau": 5,
+      "degats": 9.4,
+      "soin": 0.0,
+      "portee": 16.5,
+      "duree_ticks": 118,
+      "recharge_ticks": 45,
+      "cout_energie": 26
+    }
+  ],
+  "maitrise": {
+    "seuil": 130,
+    "variante_fr": "Ailes du Vent Karstique — Éveil du Maître",
+    "variante_en": "Karst Wind Wings — Master Awakening",
+    "bonus": 0.26
+  }
+}

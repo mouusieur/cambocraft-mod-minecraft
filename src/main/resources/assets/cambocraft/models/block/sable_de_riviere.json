@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "cambocraft:block/sable_de_riviere"
+  }
+}

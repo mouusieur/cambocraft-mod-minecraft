@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Acrobate de la Bambouseraie",
+    "en": "Bamboo Grove Acrobat"
+  },
+  "pouvoirs": [
+    "bond_du_bambou",
+    "plume_legere"
+  ],
+  "effet": "agilite_aerienne",
+  "multiplicateur": 1.2,
+  "duree_ticks": 200,
+  "description": {
+    "fr": "Synergie active lorsque bond_du_bambou et plume_legere sont équipés ensemble : Acrobate de la Bambouseraie (×1.20).",
+    "en": "Active synergy when bond_du_bambou and plume_legere are equipped together: Bamboo Grove Acrobat (×1.20)."
+  }
+}

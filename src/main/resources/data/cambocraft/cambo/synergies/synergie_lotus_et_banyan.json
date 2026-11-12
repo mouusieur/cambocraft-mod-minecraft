@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Jardin Sacré des Esprits",
+    "en": "Sacred Spirit Garden"
+  },
+  "pouvoirs": [
+    "fleur_de_lotus_rose",
+    "esprit_du_banyan"
+  ],
+  "effet": "floraison_protectrice",
+  "multiplicateur": 1.28,
+  "duree_ticks": 220,
+  "description": {
+    "fr": "Synergie active lorsque fleur_de_lotus_rose et esprit_du_banyan sont équipés ensemble : Jardin Sacré des Esprits (×1.28).",
+    "en": "Active synergy when fleur_de_lotus_rose and esprit_du_banyan are equipped together: Sacred Spirit Garden (×1.28)."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Splendeur Royale du Lotus",
+    "en": "Royal Lotus Splendor"
+  },
+  "pouvoirs": [
+    "couronne_de_lumiere_d_angkor",
+    "grace_celeste_de_l_apsara"
+  ],
+  "effet": "benediction_souveraine",
+  "multiplicateur": 1.38,
+  "duree_ticks": 240,
+  "description": {
+    "fr": "Synergie active lorsque couronne_de_lumiere_d_angkor et grace_celeste_de_l_apsara sont équipés ensemble : Splendeur Royale du Lotus (×1.38).",
+    "en": "Active synergy when couronne_de_lumiere_d_angkor and grace_celeste_de_l_apsara are equipped together: Royal Lotus Splendor (×1.38)."
+  }
+}

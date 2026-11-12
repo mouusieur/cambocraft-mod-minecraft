@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Valse du Phénix Ardent",
+    "en": "Blazing Phoenix Waltz"
+  },
+  "pouvoirs": [
+    "colere_du_phenix",
+    "danse_des_flammes_khmeres"
+  ],
+  "effet": "tourbillon_solaire",
+  "multiplicateur": 1.33,
+  "duree_ticks": 200,
+  "description": {
+    "fr": "Synergie active lorsque colere_du_phenix et danse_des_flammes_khmeres sont équipés ensemble : Valse du Phénix Ardent (×1.33).",
+    "en": "Active synergy when colere_du_phenix and danse_des_flammes_khmeres are equipped together: Blazing Phoenix Waltz (×1.33)."
+  }
+}

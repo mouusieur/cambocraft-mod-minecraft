@@ -1,0 +1,24 @@
+{
+  "nom": {
+    "fr": "La Nuit des Ombres",
+    "en": "Night of Shadows"
+  },
+  "description": {
+    "fr": "Une fois par saison, au crépuscule du sixième jour, les infiltrés du Clan Ombre se dévoilent en trois vagues coordonnées.",
+    "en": "Once per season, at dusk on the sixth day, Shadow Clan infiltrators reveal themselves in three coordinated waves."
+  },
+  "saison": "toutes",
+  "jour_saison": 5,
+  "heure_debut_tick": 13000,
+  "duree_ticks": 10000,
+  "effets": [
+    "infiltration_clan_ombre",
+    "lune_pourpre",
+    "butin_ombre_double"
+  ],
+  "recompenses": [
+    "cambocraft:eclat_d_ombre",
+    "cambocraft:bol_de_riz_beni",
+    "cambocraft:piece_du_lotus_or"
+  ]
+}

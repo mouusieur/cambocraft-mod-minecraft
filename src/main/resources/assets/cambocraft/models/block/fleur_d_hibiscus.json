@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "cambocraft:block/fleur_d_hibiscus"
+  }
+}

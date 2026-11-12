@@ -1,0 +1,23 @@
+{
+  "nom": {
+    "fr": "Ermite corrompu par l'Ombre",
+    "en": "Shadow-Corrupted Hermit"
+  },
+  "categorie": "ninja",
+  "rang": "archonte",
+  "element": "ombre",
+  "pv_base": 760.0,
+  "attaque_base": 88.0,
+  "armure_base": 22.0,
+  "vitesse": 0.34,
+  "xp": 680,
+  "pieces": 112,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_ombre",
+    "transformation_5_etapes",
+    "pas_de_l_ombre",
+    "salve_shuriken"
+  ],
+  "phases": []
+}

@@ -1,0 +1,966 @@
+{
+  "palettes_blocs": {
+    "ardoise_des_ombres": {
+      "accent": "#2A2D33",
+      "alt": "#4B5058",
+      "base": "#3B3F46",
+      "pattern": "stone"
+    },
+    "atelier_de_sculpture": {
+      "accent": "#8A8677",
+      "alt": "#BDBAAB",
+      "base": "#A9A594",
+      "pattern": "carving"
+    },
+    "aubergine": {
+      "accent": "#5A3F7A",
+      "alt": "#6B8A46",
+      "base": "#4A6E32",
+      "pattern": "crop"
+    },
+    "autel": {
+      "accent": "#6E6A5D",
+      "alt": "#A6A292",
+      "base": "#8F8B7C",
+      "pattern": "carving"
+    },
+    "bambou_bloc": {
+      "accent": "#A79246",
+      "alt": "#DFCA7C",
+      "base": "#CBB466",
+      "pattern": "bamboo_block"
+    },
+    "bambou_leaves": {
+      "accent": "#457429",
+      "alt": "#74AD4E",
+      "base": "#5E963C",
+      "pattern": "leaves"
+    },
+    "bambou_planches": {
+      "accent": "#A99244",
+      "alt": "#DCC66F",
+      "base": "#C9B260",
+      "pattern": "planks"
+    },
+    "bambou_sapling": {
+      "accent": "#74AD4E",
+      "alt": "#457429",
+      "base": "#5E963C",
+      "pattern": "sapling"
+    },
+    "bambou_tresse": {
+      "accent": "#9E8741",
+      "alt": "#D2BB6E",
+      "base": "#BFA75C",
+      "pattern": "mosaic"
+    },
+    "banniere_blanche": {
+      "accent": "#A8332E",
+      "alt": "#F5F1E6",
+      "base": "#E7E2D4",
+      "pattern": "banner"
+    },
+    "banniere_bleue": {
+      "accent": "#D9B45E",
+      "alt": "#3C6296",
+      "base": "#2F4E7A",
+      "pattern": "banner"
+    },
+    "banniere_or": {
+      "accent": "#8C6A2E",
+      "alt": "#E0BC63",
+      "base": "#C9A24A",
+      "pattern": "banner"
+    },
+    "banniere_rouge": {
+      "accent": "#D9B45E",
+      "alt": "#C2443E",
+      "base": "#A8332E",
+      "pattern": "banner"
+    },
+    "banniere_verte": {
+      "accent": "#D9B45E",
+      "alt": "#3C8455",
+      "base": "#2F6B45",
+      "pattern": "banner"
+    },
+    "banniere_violette": {
+      "accent": "#D9B45E",
+      "alt": "#6E4E96",
+      "base": "#5A3F7A",
+      "pattern": "banner"
+    },
+    "bas_relief": {
+      "accent": "#8E8770",
+      "alt": "#C8C1AB",
+      "base": "#B3AB94",
+      "pattern": "relief"
+    },
+    "basalte_colonnaire_side": {
+      "accent": "#363A40",
+      "alt": "#5B6068",
+      "base": "#4A4E55",
+      "pattern": "column"
+    },
+    "basalte_colonnaire_top": {
+      "accent": "#363A40",
+      "alt": "#5B6068",
+      "base": "#4A4E55",
+      "pattern": "stone"
+    },
+    "bloc_de_lotus": {
+      "accent": "#4E8A72",
+      "alt": "#AEE0CA",
+      "base": "#7FC0A8",
+      "pattern": "crystal"
+    },
+    "boue_de_riziaire": {
+      "accent": "#4A3A27",
+      "alt": "#71593E",
+      "base": "#5E4A33",
+      "pattern": "mud"
+    },
+    "brique_de_laterite": {
+      "accent": "#7B3A1F",
+      "alt": "#BC6039",
+      "base": "#A04F2C",
+      "pattern": "bricks"
+    },
+    "brique_de_lotus": {
+      "accent": "#5F635D",
+      "alt": "#93978F",
+      "base": "#7E827B",
+      "pattern": "bricks"
+    },
+    "brique_de_temple": {
+      "accent": "#5A4C39",
+      "alt": "#8E7C61",
+      "base": "#7A6A52",
+      "pattern": "bricks"
+    },
+    "brique_des_ombres": {
+      "accent": "#23262C",
+      "alt": "#464B55",
+      "base": "#353941",
+      "pattern": "bricks"
+    },
+    "cadre_du_portail": {
+      "accent": "#D9B45E",
+      "alt": "#A3A79F",
+      "base": "#8C9089",
+      "pattern": "carving"
+    },
+    "calcaire_karstique": {
+      "accent": "#9A9788",
+      "alt": "#CFCCBB",
+      "base": "#B9B6A6",
+      "pattern": "stone"
+    },
+    "citronnelle": {
+      "accent": "#7A8C35",
+      "alt": "#B5C964",
+      "base": "#9BB04A",
+      "pattern": "crop"
+    },
+    "cloche_de_temple": {
+      "accent": "#6A5C34",
+      "alt": "#A99A62",
+      "base": "#8A7A4A",
+      "pattern": "metal"
+    },
+    "cocotier_leaves": {
+      "accent": "#2B5A28",
+      "alt": "#4E9146",
+      "base": "#3C7A38",
+      "pattern": "palm_leaves"
+    },
+    "cocotier_log_side": {
+      "accent": "#5C4830",
+      "alt": "#917757",
+      "base": "#7A6244",
+      "pattern": "bark"
+    },
+    "cocotier_log_top": {
+      "accent": "#A08355",
+      "alt": "#D2B787",
+      "base": "#BFA171",
+      "pattern": "wood_end"
+    },
+    "cocotier_planks": {
+      "accent": "#9A7447",
+      "alt": "#CBA271",
+      "base": "#B98F5C",
+      "pattern": "planks"
+    },
+    "cocotier_sapling": {
+      "accent": "#5A8E4A",
+      "alt": "#2A5A26",
+      "base": "#3C7A38",
+      "pattern": "sapling"
+    },
+    "cocotier_stripped_log_side": {
+      "accent": "#9A7447",
+      "alt": "#CBA271",
+      "base": "#B98F5C",
+      "pattern": "planks"
+    },
+    "cocotier_stripped_log_top": {
+      "accent": "#9A7447",
+      "alt": "#CBA271",
+      "base": "#B98F5C",
+      "pattern": "planks"
+    },
+    "coeur_du_portail": {
+      "accent": "#4E8A9E",
+      "alt": "#B5DEE8",
+      "base": "#7FB7C9",
+      "pattern": "crystal"
+    },
+    "concombre": {
+      "accent": "#7FA83C",
+      "alt": "#6E9A4A",
+      "base": "#4E7A34",
+      "pattern": "crop"
+    },
+    "creuset_de_fusion": {
+      "accent": "#2E2434",
+      "alt": "#5E4A66",
+      "base": "#4A3A50",
+      "pattern": "metal"
+    },
+    "cristal_de_lotus": {
+      "accent": "#5E9EB0",
+      "alt": "#C6EAF4",
+      "base": "#9AD1E0",
+      "pattern": "crystal"
+    },
+    "cuve_de_soie": {
+      "accent": "#A89352",
+      "alt": "#EBD68E",
+      "base": "#D9C27A",
+      "pattern": "jar"
+    },
+    "dalle_de_pression_ancienne": {
+      "accent": "#D9B45E",
+      "alt": "#A39173",
+      "base": "#8A7A5E",
+      "pattern": "carving"
+    },
+    "eau_du_lotus": {
+      "accent": "#24526B",
+      "alt": "#3F88A8",
+      "base": "#2F6B8A",
+      "pattern": "water"
+    },
+    "encens": {
+      "accent": "#C8B79A",
+      "alt": "#8A7659",
+      "base": "#6B5A44",
+      "pattern": "incense"
+    },
+    "etal_de_marche": {
+      "accent": "#6E5030",
+      "alt": "#A07C52",
+      "base": "#8C6A44",
+      "pattern": "planks"
+    },
+    "feuille_de_lotus": {
+      "accent": "#1F5028",
+      "alt": "#3F8A4A",
+      "base": "#2F6E3A",
+      "pattern": "lotus_leaf"
+    },
+    "fleur_d_hibiscus": {
+      "accent": "#AE332C",
+      "alt": "#EE6B5F",
+      "base": "#D9473F",
+      "pattern": "flower"
+    },
+    "fleur_de_bougainvillier": {
+      "accent": "#9B346C",
+      "alt": "#DE6CA8",
+      "base": "#C4498C",
+      "pattern": "flower"
+    },
+    "fleur_de_frangipanier": {
+      "accent": "#D8C79F",
+      "alt": "#FFF6E0",
+      "base": "#F5E7C8",
+      "pattern": "flower"
+    },
+    "fleur_de_lotus": {
+      "accent": "#C98CA5",
+      "alt": "#F4D6E0",
+      "base": "#E7B7C8",
+      "pattern": "flower"
+    },
+    "fougere_tropicale": {
+      "accent": "#245424",
+      "alt": "#468A45",
+      "base": "#347233",
+      "pattern": "sapling"
+    },
+    "four_de_forge": {
+      "accent": "#4A4640",
+      "alt": "#8A8678",
+      "base": "#6E6A60",
+      "pattern": "stone"
+    },
+    "garuda": {
+      "accent": "#96793F",
+      "alt": "#CBAE74",
+      "base": "#B89A5E",
+      "pattern": "carving"
+    },
+    "gong": {
+      "accent": "#86702F",
+      "alt": "#C4AC64",
+      "base": "#A98F4A",
+      "pattern": "metal"
+    },
+    "gravier_de_riviere": {
+      "accent": "#6F695E",
+      "alt": "#A59E8F",
+      "base": "#8E8779",
+      "pattern": "gravel"
+    },
+    "gres_khmer_poli": {
+      "accent": "#B89C6D",
+      "alt": "#E4CA98",
+      "base": "#D2B785",
+      "pattern": "polished"
+    },
+    "gres_khmer_side": {
+      "accent": "#B2966A",
+      "alt": "#DBBE8C",
+      "base": "#C9AE7F",
+      "pattern": "sandstone"
+    },
+    "gres_khmer_top": {
+      "accent": "#B89C6D",
+      "alt": "#DEC292",
+      "base": "#CDB282",
+      "pattern": "sandstone_top"
+    },
+    "gres_sculpte": {
+      "accent": "#9F855A",
+      "alt": "#D8BC8B",
+      "base": "#C4A878",
+      "pattern": "carving"
+    },
+    "herbe_de_savane": {
+      "accent": "#8F7B34",
+      "alt": "#C9B25E",
+      "base": "#B59E4A",
+      "pattern": "crop"
+    },
+    "jacquier_leaves": {
+      "accent": "#274F26",
+      "alt": "#458044",
+      "base": "#356B33",
+      "pattern": "leaves"
+    },
+    "jacquier_log_side": {
+      "accent": "#46351F",
+      "alt": "#775E42",
+      "base": "#5E4A34",
+      "pattern": "bark"
+    },
+    "jacquier_log_top": {
+      "accent": "#9A7F51",
+      "alt": "#CBAE7C",
+      "base": "#B99B6A",
+      "pattern": "wood_end"
+    },
+    "jacquier_planks": {
+      "accent": "#856A43",
+      "alt": "#B89A6D",
+      "base": "#A4855A",
+      "pattern": "planks"
+    },
+    "jacquier_sapling": {
+      "accent": "#4F8A46",
+      "alt": "#245223",
+      "base": "#356B33",
+      "pattern": "sapling"
+    },
+    "jacquier_stripped_log_side": {
+      "accent": "#856A43",
+      "alt": "#B89A6D",
+      "base": "#A4855A",
+      "pattern": "planks"
+    },
+    "jacquier_stripped_log_top": {
+      "accent": "#856A43",
+      "alt": "#B89A6D",
+      "base": "#A4855A",
+      "pattern": "planks"
+    },
+    "jarre": {
+      "accent": "#7C462A",
+      "alt": "#C07A4E",
+      "base": "#A8643C",
+      "pattern": "jar"
+    },
+    "kapokier_leaves": {
+      "accent": "#3A6C32",
+      "alt": "#5F9E52",
+      "base": "#4E8A44",
+      "pattern": "leaves"
+    },
+    "kapokier_log_side": {
+      "accent": "#6C6256",
+      "alt": "#A09584",
+      "base": "#8A7F72",
+      "pattern": "bark"
+    },
+    "kapokier_log_top": {
+      "accent": "#A99A7E",
+      "alt": "#D9CBB0",
+      "base": "#C9B99B",
+      "pattern": "wood_end"
+    },
+    "kapokier_planks": {
+      "accent": "#A6977E",
+      "alt": "#D4C7AE",
+      "base": "#C2B49A",
+      "pattern": "planks"
+    },
+    "kapokier_sapling": {
+      "accent": "#6FA05A",
+      "alt": "#376A2E",
+      "base": "#4E8A44",
+      "pattern": "sapling"
+    },
+    "kapokier_stripped_log_side": {
+      "accent": "#A6977E",
+      "alt": "#D4C7AE",
+      "base": "#C2B49A",
+      "pattern": "planks"
+    },
+    "kapokier_stripped_log_top": {
+      "accent": "#A6977E",
+      "alt": "#D4C7AE",
+      "base": "#C2B49A",
+      "pattern": "planks"
+    },
+    "lanterne_de_bambou": {
+      "accent": "#8C6A2E",
+      "alt": "#FFF3C4",
+      "base": "#D9B45E",
+      "pattern": "lantern"
+    },
+    "laterite": {
+      "accent": "#7C371E",
+      "alt": "#B35C36",
+      "base": "#9C4A2A",
+      "pattern": "stone"
+    },
+    "lion_de_pierre": {
+      "accent": "#7A7464",
+      "alt": "#B4AE9B",
+      "base": "#9C9684",
+      "pattern": "carving"
+    },
+    "lotus_blanc": {
+      "accent": "#D3CEC2",
+      "alt": "#FFFFFF",
+      "base": "#F2EFE6",
+      "pattern": "flower"
+    },
+    "lotus_rose": {
+      "accent": "#B56C86",
+      "alt": "#F0B5C8",
+      "base": "#DC8FA8",
+      "pattern": "flower"
+    },
+    "manguier_leaves": {
+      "accent": "#1F4E22",
+      "alt": "#3E8040",
+      "base": "#2F6B31",
+      "pattern": "leaves_fruit"
+    },
+    "manguier_log_side": {
+      "accent": "#4F3C2C",
+      "alt": "#83674F",
+      "base": "#6B5340",
+      "pattern": "bark"
+    },
+    "manguier_log_top": {
+      "accent": "#A1885A",
+      "alt": "#D2B886",
+      "base": "#C0A470",
+      "pattern": "wood_end"
+    },
+    "manguier_planks": {
+      "accent": "#916F46",
+      "alt": "#C49E70",
+      "base": "#B08A5C",
+      "pattern": "planks"
+    },
+    "manguier_sapling": {
+      "accent": "#4C8A46",
+      "alt": "#1D4A1F",
+      "base": "#2F6B31",
+      "pattern": "sapling"
+    },
+    "manguier_stripped_log_side": {
+      "accent": "#916F46",
+      "alt": "#C49E70",
+      "base": "#B08A5C",
+      "pattern": "planks"
+    },
+    "manguier_stripped_log_top": {
+      "accent": "#916F46",
+      "alt": "#C49E70",
+      "base": "#B08A5C",
+      "pattern": "planks"
+    },
+    "marbre_blanc": {
+      "accent": "#CFCABE",
+      "alt": "#F3F0E8",
+      "base": "#E6E2D8",
+      "pattern": "polished"
+    },
+    "marmite": {
+      "accent": "#33333A",
+      "alt": "#5E5E66",
+      "base": "#4A4A50",
+      "pattern": "metal"
+    },
+    "metier_a_tisser": {
+      "accent": "#7A5C34",
+      "alt": "#B08C5A",
+      "base": "#9A7748",
+      "pattern": "planks"
+    },
+    "minerai_de_lotus": {
+      "accent": "#9AD1E0",
+      "alt": "#A3A79F",
+      "base": "#8C9089",
+      "pattern": "ore"
+    },
+    "mortier": {
+      "accent": "#7A7566",
+      "alt": "#B0AA98",
+      "base": "#9A9483",
+      "pattern": "carving"
+    },
+    "mousson_vase": {
+      "accent": "#3B3429",
+      "alt": "#655A49",
+      "base": "#4F4638",
+      "pattern": "mud"
+    },
+    "mur_de_roseaux": {
+      "accent": "#8A7238",
+      "alt": "#C0A75E",
+      "base": "#A98F4B",
+      "pattern": "thatch"
+    },
+    "murier_buisson": {
+      "accent": "#5A2D4E",
+      "alt": "#4E8C46",
+      "base": "#3C7536",
+      "pattern": "leaves_fruit"
+    },
+    "naga_balustrade": {
+      "accent": "#7A7767",
+      "alt": "#B0AC9A",
+      "base": "#9A9686",
+      "pattern": "carving"
+    },
+    "natte_de_jonc": {
+      "accent": "#9E874D",
+      "alt": "#D4BE80",
+      "base": "#C2AA6B",
+      "pattern": "thatch"
+    },
+    "orchidee_khmer": {
+      "accent": "#A84887",
+      "alt": "#E88EC6",
+      "base": "#D46AAE",
+      "pattern": "flower"
+    },
+    "paille_de_riz": {
+      "accent": "#A98D47",
+      "alt": "#D9C079",
+      "base": "#C7A95E",
+      "pattern": "thatch"
+    },
+    "paletuvier_leaves": {
+      "accent": "#295228",
+      "alt": "#4C844B",
+      "base": "#3B6E3A",
+      "pattern": "leaves"
+    },
+    "paletuvier_log_side": {
+      "accent": "#3F2E27",
+      "alt": "#6E5549",
+      "base": "#584339",
+      "pattern": "bark"
+    },
+    "paletuvier_log_top": {
+      "accent": "#7F523B",
+      "alt": "#B27C5F",
+      "base": "#9E6A4E",
+      "pattern": "wood_end"
+    },
+    "paletuvier_planks": {
+      "accent": "#784932",
+      "alt": "#A87055",
+      "base": "#945E44",
+      "pattern": "planks"
+    },
+    "paletuvier_sapling": {
+      "accent": "#548A4E",
+      "alt": "#295228",
+      "base": "#3B6E3A",
+      "pattern": "sapling"
+    },
+    "paletuvier_stripped_log_side": {
+      "accent": "#784932",
+      "alt": "#A87055",
+      "base": "#945E44",
+      "pattern": "planks"
+    },
+    "paletuvier_stripped_log_top": {
+      "accent": "#784932",
+      "alt": "#A87055",
+      "base": "#945E44",
+      "pattern": "planks"
+    },
+    "palmier_a_sucre_leaves": {
+      "accent": "#2F5B25",
+      "alt": "#569147",
+      "base": "#437A36",
+      "pattern": "palm_leaves"
+    },
+    "palmier_a_sucre_log_side": {
+      "accent": "#423325",
+      "alt": "#735C47",
+      "base": "#5C4938",
+      "pattern": "bark"
+    },
+    "palmier_a_sucre_log_top": {
+      "accent": "#967B50",
+      "alt": "#CAAE80",
+      "base": "#B89A6C",
+      "pattern": "wood_end"
+    },
+    "palmier_a_sucre_planks": {
+      "accent": "#8E6C3F",
+      "alt": "#C29C68",
+      "base": "#AE8855",
+      "pattern": "planks"
+    },
+    "palmier_a_sucre_sapling": {
+      "accent": "#62944B",
+      "alt": "#2F5B25",
+      "base": "#437A36",
+      "pattern": "sapling"
+    },
+    "palmier_a_sucre_stripped_log_side": {
+      "accent": "#8E6C3F",
+      "alt": "#C29C68",
+      "base": "#AE8855",
+      "pattern": "planks"
+    },
+    "palmier_a_sucre_stripped_log_top": {
+      "accent": "#8E6C3F",
+      "alt": "#C29C68",
+      "base": "#AE8855",
+      "pattern": "planks"
+    },
+    "panier": {
+      "accent": "#8F7742",
+      "alt": "#C9B075",
+      "base": "#B59A5E",
+      "pattern": "basket"
+    },
+    "pierre_des_ombres_runique": {
+      "accent": "#8A5AA8",
+      "alt": "#4B5058",
+      "base": "#3B3F46",
+      "pattern": "runes"
+    },
+    "pierre_du_lotus": {
+      "accent": "#6E736C",
+      "alt": "#A3A79F",
+      "base": "#8C9089",
+      "pattern": "stone"
+    },
+    "pierre_du_lotus_polie": {
+      "accent": "#7C8078",
+      "alt": "#9BA095",
+      "base": "#8C9089",
+      "pattern": "polished"
+    },
+    "pierre_du_lotus_sculptee": {
+      "accent": "#64685F",
+      "alt": "#A8AC9F",
+      "base": "#868A83",
+      "pattern": "carving"
+    },
+    "pierre_erodee": {
+      "accent": "#6B675C",
+      "alt": "#A19B8C",
+      "base": "#8A8577",
+      "pattern": "roughstone"
+    },
+    "pierre_moussue_de_temple": {
+      "accent": "#4A5D36",
+      "alt": "#857E5D",
+      "base": "#6E6B4E",
+      "pattern": "bricks"
+    },
+    "pilier_de_laterite": {
+      "accent": "#7C371E",
+      "alt": "#B35C36",
+      "base": "#9C4A2A",
+      "pattern": "column"
+    },
+    "pilier_de_lotus": {
+      "accent": "#6E736C",
+      "alt": "#A3A79F",
+      "base": "#8C9089",
+      "pattern": "column"
+    },
+    "piment": {
+      "accent": "#C43A2A",
+      "alt": "#6B9A46",
+      "base": "#4E7A32",
+      "pattern": "crop"
+    },
+    "pin_du_cambodge_leaves": {
+      "accent": "#204428",
+      "alt": "#3E734A",
+      "base": "#2F5E3A",
+      "pattern": "leaves"
+    },
+    "pin_du_cambodge_log_side": {
+      "accent": "#4E3725",
+      "alt": "#826146",
+      "base": "#6B4E37",
+      "pattern": "bark"
+    },
+    "pin_du_cambodge_log_top": {
+      "accent": "#A38457",
+      "alt": "#D6B786",
+      "base": "#C4A372",
+      "pattern": "wood_end"
+    },
+    "pin_du_cambodge_planks": {
+      "accent": "#9C7B4E",
+      "alt": "#CEA978",
+      "base": "#BC9866",
+      "pattern": "planks"
+    },
+    "pin_du_cambodge_sapling": {
+      "accent": "#487A4E",
+      "alt": "#204428",
+      "base": "#2F5E3A",
+      "pattern": "sapling"
+    },
+    "pin_du_cambodge_stripped_log_side": {
+      "accent": "#9C7B4E",
+      "alt": "#CEA978",
+      "base": "#BC9866",
+      "pattern": "planks"
+    },
+    "pin_du_cambodge_stripped_log_top": {
+      "accent": "#9C7B4E",
+      "alt": "#CEA978",
+      "base": "#BC9866",
+      "pattern": "planks"
+    },
+    "planche_de_toit": {
+      "accent": "#5E462C",
+      "alt": "#916E48",
+      "base": "#7A5C3A",
+      "pattern": "planks"
+    },
+    "racine_de_banyan": {
+      "accent": "#4E3F30",
+      "alt": "#826C55",
+      "base": "#6B5844",
+      "pattern": "bark"
+    },
+    "riz_culture": {
+      "accent": "#6E8A2A",
+      "alt": "#B2C255",
+      "base": "#8FA83C",
+      "pattern": "crop"
+    },
+    "riz_empile": {
+      "accent": "#B29A54",
+      "alt": "#E4CE86",
+      "base": "#D2B96E",
+      "pattern": "thatch"
+    },
+    "riz_paille": {
+      "accent": "#A98F4B",
+      "alt": "#DCC57A",
+      "base": "#C9AE63",
+      "pattern": "thatch"
+    },
+    "riz_sauvage": {
+      "accent": "#5F7A28",
+      "alt": "#98B84E",
+      "base": "#7E9E3A",
+      "pattern": "crop"
+    },
+    "sable_de_riviere": {
+      "accent": "#C4B183",
+      "alt": "#E5D6AC",
+      "base": "#D8C79A",
+      "pattern": "sand"
+    },
+    "socle_d_offrande": {
+      "accent": "#C9A24A",
+      "alt": "#B5B0A0",
+      "base": "#9E9A8B",
+      "pattern": "carving"
+    },
+    "sol_de_temple": {
+      "accent": "#7C7868",
+      "alt": "#B2AE9E",
+      "base": "#9A9686",
+      "pattern": "polished"
+    },
+    "statue_de_pierre": {
+      "accent": "#8A8677",
+      "alt": "#BDBAAB",
+      "base": "#A9A594",
+      "pattern": "carving"
+    },
+    "table_de_forge": {
+      "accent": "#3E3E44",
+      "alt": "#74747C",
+      "base": "#5A5A60",
+      "pattern": "metal"
+    },
+    "tambour": {
+      "accent": "#C9AE7A",
+      "alt": "#A06E42",
+      "base": "#8A5A34",
+      "pattern": "drum"
+    },
+    "tapis_de_soie_krama": {
+      "accent": "#E7E2D4",
+      "alt": "#C2443E",
+      "base": "#A8332E",
+      "pattern": "fabric"
+    },
+    "teck_leaves": {
+      "accent": "#2F5E27",
+      "alt": "#4F9042",
+      "base": "#3F7A34",
+      "pattern": "leaves"
+    },
+    "teck_log_side": {
+      "accent": "#523419",
+      "alt": "#845C3B",
+      "base": "#6E4A2E",
+      "pattern": "bark"
+    },
+    "teck_log_top": {
+      "accent": "#8E6C41",
+      "alt": "#C4A170",
+      "base": "#B08A5A",
+      "pattern": "wood_end"
+    },
+    "teck_planks": {
+      "accent": "#8B6238",
+      "alt": "#BE9059",
+      "base": "#A87A4A",
+      "pattern": "planks"
+    },
+    "teck_sapling": {
+      "accent": "#5A8A3A",
+      "alt": "#2C5A24",
+      "base": "#3F7A34",
+      "pattern": "sapling"
+    },
+    "teck_stripped_log_side": {
+      "accent": "#8B6238",
+      "alt": "#BE9059",
+      "base": "#A87A4A",
+      "pattern": "planks"
+    },
+    "teck_stripped_log_top": {
+      "accent": "#8B6238",
+      "alt": "#BE9059",
+      "base": "#A87A4A",
+      "pattern": "planks"
+    },
+    "teleporteur_de_lotus": {
+      "accent": "#4E8A72",
+      "alt": "#BDE6D2",
+      "base": "#8CC9B0",
+      "pattern": "crystal"
+    },
+    "terre_cuite": {
+      "accent": "#83452A",
+      "alt": "#C06C43",
+      "base": "#A85B37",
+      "pattern": "bricks"
+    },
+    "terre_lateritique": {
+      "accent": "#65341C",
+      "alt": "#955238",
+      "base": "#7E4327",
+      "pattern": "soil"
+    },
+    "tissu_suspendu": {
+      "accent": "#A66B2A",
+      "alt": "#DEA25A",
+      "base": "#C98A3E",
+      "pattern": "fabric"
+    },
+    "toit_de_chaume": {
+      "accent": "#8F7742",
+      "alt": "#C9B075",
+      "base": "#B59A5E",
+      "pattern": "thatch"
+    },
+    "torche_de_resine": {
+      "accent": "#FFD27A",
+      "alt": "#C98A3E",
+      "base": "#8A5A2E",
+      "pattern": "torch"
+    },
+    "tour_de_poterie": {
+      "accent": "#84492C",
+      "alt": "#C07950",
+      "base": "#A8613C",
+      "pattern": "clay"
+    },
+    "tuile_de_terre_cuite": {
+      "accent": "#7C3A20",
+      "alt": "#B85F3A",
+      "base": "#9E4E2E",
+      "pattern": "tiles"
+    },
+    "tuile_vernissee": {
+      "accent": "#244A3D",
+      "alt": "#3B7260",
+      "base": "#2F5E4E",
+      "pattern": "tiles"
+    },
+    "visage_de_pierre": {
+      "accent": "#6E6A5D",
+      "alt": "#A6A292",
+      "base": "#8F8B7C",
+      "pattern": "faces"
+    },
+    "vitrail_de_temple": {
+      "accent": "#8C6A2E",
+      "alt": "#E0BC63",
+      "base": "#C9A24A",
+      "pattern": "stained_glass"
+    }
+  },
+  "textures_blocs": 160,
+  "textures_objets": 199
+}

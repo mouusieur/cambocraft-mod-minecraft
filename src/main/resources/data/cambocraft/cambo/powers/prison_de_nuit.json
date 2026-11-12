@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Prison de Nuit",
+    "en": "Nightfall Prison"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (ombre, controle) : Prison de Nuit. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (ombre, controle): Nightfall Prison. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "epique",
+  "element": "ombre",
+  "type": "controle",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 10.5,
+      "soin": 0.0,
+      "portee": 7.5,
+      "duree_ticks": 85,
+      "recharge_ticks": 68,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 2,
+      "degats": 12.81,
+      "soin": 0.0,
+      "portee": 8.1,
+      "duree_ticks": 95,
+      "recharge_ticks": 65,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 3,
+      "degats": 15.12,
+      "soin": 0.0,
+      "portee": 8.7,
+      "duree_ticks": 105,
+      "recharge_ticks": 61,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 4,
+      "degats": 17.43,
+      "soin": 0.0,
+      "portee": 9.3,
+      "duree_ticks": 116,
+      "recharge_ticks": 58,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 5,
+      "degats": 19.74,
+      "soin": 0.0,
+      "portee": 9.9,
+      "duree_ticks": 126,
+      "recharge_ticks": 54,
+      "cout_energie": 28
+    }
+  ],
+  "maitrise": {
+    "seuil": 130,
+    "variante_fr": "Prison de Nuit — Éveil du Maître",
+    "variante_en": "Nightfall Prison — Master Awakening",
+    "bonus": 0.26
+  }
+}

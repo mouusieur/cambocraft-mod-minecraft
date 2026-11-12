@@ -1,0 +1,902 @@
+{
+  "familles": 64,
+  "fichiers_nbt": 128,
+  "structures": [
+    {
+      "biome": "jungle_en_ruines",
+      "categorie": "prasat",
+      "id": "prasat_petit",
+      "taille": [
+        7,
+        9,
+        7
+      ],
+      "variantes": [
+        "cambocraft:prasat_petit_v1",
+        "cambocraft:prasat_petit_v2"
+      ]
+    },
+    {
+      "biome": "jungle_en_ruines",
+      "categorie": "prasat",
+      "id": "prasat_moyen",
+      "taille": [
+        9,
+        12,
+        9
+      ],
+      "variantes": [
+        "cambocraft:prasat_moyen_v1",
+        "cambocraft:prasat_moyen_v2"
+      ]
+    },
+    {
+      "biome": "foret_de_kapokiers",
+      "categorie": "prasat",
+      "id": "prasat_grand",
+      "taille": [
+        11,
+        15,
+        11
+      ],
+      "variantes": [
+        "cambocraft:prasat_grand_v1",
+        "cambocraft:prasat_grand_v2"
+      ]
+    },
+    {
+      "biome": "jungle_en_ruines",
+      "categorie": "pyramide",
+      "id": "pyramide_temple_petit",
+      "taille": [
+        9,
+        8,
+        9
+      ],
+      "variantes": [
+        "cambocraft:pyramide_temple_petit_v1",
+        "cambocraft:pyramide_temple_petit_v2"
+      ]
+    },
+    {
+      "biome": "foret_de_kapokiers",
+      "categorie": "pyramide",
+      "id": "pyramide_temple_moyen",
+      "taille": [
+        11,
+        10,
+        11
+      ],
+      "variantes": [
+        "cambocraft:pyramide_temple_moyen_v1",
+        "cambocraft:pyramide_temple_moyen_v2"
+      ]
+    },
+    {
+      "biome": "jungle_en_ruines",
+      "categorie": "pyramide",
+      "id": "pyramide_temple_grand",
+      "taille": [
+        13,
+        12,
+        13
+      ],
+      "variantes": [
+        "cambocraft:pyramide_temple_grand_v1",
+        "cambocraft:pyramide_temple_grand_v2"
+      ]
+    },
+    {
+      "biome": "jungle_en_ruines",
+      "categorie": "tour_visage",
+      "id": "tour_visage_nord",
+      "taille": [
+        7,
+        11,
+        7
+      ],
+      "variantes": [
+        "cambocraft:tour_visage_nord_v1",
+        "cambocraft:tour_visage_nord_v2"
+      ]
+    },
+    {
+      "biome": "foret_de_kapokiers",
+      "categorie": "tour_visage",
+      "id": "tour_visage_sud",
+      "taille": [
+        7,
+        11,
+        7
+      ],
+      "variantes": [
+        "cambocraft:tour_visage_sud_v1",
+        "cambocraft:tour_visage_sud_v2"
+      ]
+    },
+    {
+      "biome": "jungle_en_ruines",
+      "categorie": "galerie",
+      "id": "galerie_bas_reliefs_est",
+      "taille": [
+        11,
+        6,
+        5
+      ],
+      "variantes": [
+        "cambocraft:galerie_bas_reliefs_est_v1",
+        "cambocraft:galerie_bas_reliefs_est_v2"
+      ]
+    },
+    {
+      "biome": "foret_de_kapokiers",
+      "categorie": "galerie",
+      "id": "galerie_bas_reliefs_ouest",
+      "taille": [
+        11,
+        6,
+        5
+      ],
+      "variantes": [
+        "cambocraft:galerie_bas_reliefs_ouest_v1",
+        "cambocraft:galerie_bas_reliefs_ouest_v2"
+      ]
+    },
+    {
+      "biome": "riviere_du_tonle",
+      "categorie": "naga",
+      "id": "chaussee_naga_courte",
+      "taille": [
+        9,
+        4,
+        5
+      ],
+      "variantes": [
+        "cambocraft:chaussee_naga_courte_v1",
+        "cambocraft:chaussee_naga_courte_v2"
+      ]
+    },
+    {
+      "biome": "sanctuaire_de_lotus",
+      "categorie": "naga",
+      "id": "chaussee_naga_longue",
+      "taille": [
+        13,
+        4,
+        5
+      ],
+      "variantes": [
+        "cambocraft:chaussee_naga_longue_v1",
+        "cambocraft:chaussee_naga_longue_v2"
+      ]
+    },
+    {
+      "biome": "jungle_en_ruines",
+      "categorie": "lions",
+      "id": "entree_lions_gardiens",
+      "taille": [
+        7,
+        5,
+        5
+      ],
+      "variantes": [
+        "cambocraft:entree_lions_gardiens_v1",
+        "cambocraft:entree_lions_gardiens_v2"
+      ]
+    },
+    {
+      "biome": "sanctuaire_de_lotus",
+      "categorie": "lions",
+      "id": "parvis_lions_sacres",
+      "taille": [
+        9,
+        5,
+        7
+      ],
+      "variantes": [
+        "cambocraft:parvis_lions_sacres_v1",
+        "cambocraft:parvis_lions_sacres_v2"
+      ]
+    },
+    {
+      "biome": "rizieres_en_terrasses",
+      "categorie": "wat",
+      "id": "wat_village",
+      "taille": [
+        11,
+        9,
+        9
+      ],
+      "variantes": [
+        "cambocraft:wat_village_v1",
+        "cambocraft:wat_village_v2"
+      ]
+    },
+    {
+      "biome": "foret_tropicale",
+      "categorie": "wat",
+      "id": "wat_monastere",
+      "taille": [
+        13,
+        10,
+        11
+      ],
+      "variantes": [
+        "cambocraft:wat_monastere_v1",
+        "cambocraft:wat_monastere_v2"
+      ]
+    },
+    {
+      "biome": "rizieres_en_terrasses",
+      "categorie": "pilotis",
+      "id": "maison_pilotis_riziculteur",
+      "taille": [
+        7,
+        8,
+        7
+      ],
+      "variantes": [
+        "cambocraft:maison_pilotis_riziculteur_v1",
+        "cambocraft:maison_pilotis_riziculteur_v2"
+      ]
+    },
+    {
+      "biome": "riviere_du_tonle",
+      "categorie": "pilotis",
+      "id": "maison_pilotis_pecheur",
+      "taille": [
+        7,
+        8,
+        7
+      ],
+      "variantes": [
+        "cambocraft:maison_pilotis_pecheur_v1",
+        "cambocraft:maison_pilotis_pecheur_v2"
+      ]
+    },
+    {
+      "biome": "plaine_inondable",
+      "categorie": "pilotis",
+      "id": "maison_pilotis_tisserand",
+      "taille": [
+        8,
+        8,
+        7
+      ],
+      "variantes": [
+        "cambocraft:maison_pilotis_tisserand_v1",
+        "cambocraft:maison_pilotis_tisserand_v2"
+      ]
+    },
+    {
+      "biome": "savane_claire",
+      "categorie": "pilotis",
+      "id": "maison_pilotis_forgeron",
+      "taille": [
+        8,
+        8,
+        7
+      ],
+      "variantes": [
+        "cambocraft:maison_pilotis_forgeron_v1",
+        "cambocraft:maison_pilotis_forgeron_v2"
+      ]
+    },
+    {
+      "biome": "rizieres_en_terrasses",
+      "categorie": "pilotis",
+      "id": "maison_pilotis_cuisinier",
+      "taille": [
+        7,
+        8,
+        7
+      ],
+      "variantes": [
+        "cambocraft:maison_pilotis_cuisinier_v1",
+        "cambocraft:maison_pilotis_cuisinier_v2"
+      ]
+    },
+    {
+      "biome": "rizieres_en_terrasses",
+      "categorie": "pilotis",
+      "id": "maison_pilotis_chef",
+      "taille": [
+        9,
+        9,
+        9
+      ],
+      "variantes": [
+        "cambocraft:maison_pilotis_chef_v1",
+        "cambocraft:maison_pilotis_chef_v2"
+      ]
+    },
+    {
+      "biome": "rizieres_en_terrasses",
+      "categorie": "marche",
+      "id": "marche_couvert_village",
+      "taille": [
+        11,
+        6,
+        9
+      ],
+      "variantes": [
+        "cambocraft:marche_couvert_village_v1",
+        "cambocraft:marche_couvert_village_v2"
+      ]
+    },
+    {
+      "biome": "riviere_du_tonle",
+      "categorie": "marche",
+      "id": "marche_de_nuit_lanternes",
+      "taille": [
+        11,
+        6,
+        9
+      ],
+      "variantes": [
+        "cambocraft:marche_de_nuit_lanternes_v1",
+        "cambocraft:marche_de_nuit_lanternes_v2"
+      ]
+    },
+    {
+      "biome": "rizieres_en_terrasses",
+      "categorie": "riziere",
+      "id": "riziere_en_casiers",
+      "taille": [
+        11,
+        3,
+        11
+      ],
+      "variantes": [
+        "cambocraft:riziere_en_casiers_v1",
+        "cambocraft:riziere_en_casiers_v2"
+      ]
+    },
+    {
+      "biome": "plaine_inondable",
+      "categorie": "riziere",
+      "id": "riziere_en_terrasse_irriguee",
+      "taille": [
+        11,
+        4,
+        11
+      ],
+      "variantes": [
+        "cambocraft:riziere_en_terrasse_irriguee_v1",
+        "cambocraft:riziere_en_terrasse_irriguee_v2"
+      ]
+    },
+    {
+      "biome": "foret_tropicale",
+      "categorie": "soie",
+      "id": "ferme_de_soie_muriers",
+      "taille": [
+        9,
+        6,
+        9
+      ],
+      "variantes": [
+        "cambocraft:ferme_de_soie_muriers_v1",
+        "cambocraft:ferme_de_soie_muriers_v2"
+      ]
+    },
+    {
+      "biome": "rizieres_en_terrasses",
+      "categorie": "soie",
+      "id": "atelier_tisserand_soie",
+      "taille": [
+        9,
+        7,
+        8
+      ],
+      "variantes": [
+        "cambocraft:atelier_tisserand_soie_v1",
+        "cambocraft:atelier_tisserand_soie_v2"
+      ]
+    },
+    {
+      "biome": "plateau_de_laterite",
+      "categorie": "ombre",
+      "id": "forteresse_ombre_bastion",
+      "taille": [
+        11,
+        10,
+        11
+      ],
+      "variantes": [
+        "cambocraft:forteresse_ombre_bastion_v1",
+        "cambocraft:forteresse_ombre_bastion_v2"
+      ]
+    },
+    {
+      "biome": "pinedes_seches",
+      "categorie": "ombre",
+      "id": "forteresse_ombre_donjon",
+      "taille": [
+        13,
+        13,
+        13
+      ],
+      "variantes": [
+        "cambocraft:forteresse_ombre_donjon_v1",
+        "cambocraft:forteresse_ombre_donjon_v2"
+      ]
+    },
+    {
+      "biome": "bambouseraie",
+      "categorie": "ombre",
+      "id": "avant_poste_ombre",
+      "taille": [
+        7,
+        8,
+        7
+      ],
+      "variantes": [
+        "cambocraft:avant_poste_ombre_v1",
+        "cambocraft:avant_poste_ombre_v2"
+      ]
+    },
+    {
+      "biome": "bambouseraie",
+      "categorie": "ombre",
+      "id": "dojo_souterrain_ombre",
+      "taille": [
+        9,
+        6,
+        9
+      ],
+      "variantes": [
+        "cambocraft:dojo_souterrain_ombre_v1",
+        "cambocraft:dojo_souterrain_ombre_v2"
+      ]
+    },
+    {
+      "biome": "riviere_du_tonle",
+      "categorie": "pont",
+      "id": "pont_bambou_riviere",
+      "taille": [
+        11,
+        5,
+        5
+      ],
+      "variantes": [
+        "cambocraft:pont_bambou_riviere_v1",
+        "cambocraft:pont_bambou_riviere_v2"
+      ]
+    },
+    {
+      "biome": "riviere_du_tonle",
+      "categorie": "pont",
+      "id": "pont_laterite_naga",
+      "taille": [
+        13,
+        6,
+        5
+      ],
+      "variantes": [
+        "cambocraft:pont_laterite_naga_v1",
+        "cambocraft:pont_laterite_naga_v2"
+      ]
+    },
+    {
+      "biome": "rizieres_en_terrasses",
+      "categorie": "puits",
+      "id": "puits_laterite_village",
+      "taille": [
+        5,
+        6,
+        5
+      ],
+      "variantes": [
+        "cambocraft:puits_laterite_village_v1",
+        "cambocraft:puits_laterite_village_v2"
+      ]
+    },
+    {
+      "biome": "sanctuaire_de_lotus",
+      "categorie": "puits",
+      "id": "puits_sacree_lotus",
+      "taille": [
+        5,
+        6,
+        5
+      ],
+      "variantes": [
+        "cambocraft:puits_sacree_lotus_v1",
+        "cambocraft:puits_sacree_lotus_v2"
+      ]
+    },
+    {
+      "biome": "sanctuaire_de_lotus",
+      "categorie": "sanctuaire",
+      "id": "sanctuaire_lotus_bassin",
+      "taille": [
+        11,
+        7,
+        11
+      ],
+      "variantes": [
+        "cambocraft:sanctuaire_lotus_bassin_v1",
+        "cambocraft:sanctuaire_lotus_bassin_v2"
+      ]
+    },
+    {
+      "biome": "sanctuaire_de_lotus",
+      "categorie": "sanctuaire",
+      "id": "sanctuaire_lotus_pavillon",
+      "taille": [
+        9,
+        9,
+        9
+      ],
+      "variantes": [
+        "cambocraft:sanctuaire_lotus_pavillon_v1",
+        "cambocraft:sanctuaire_lotus_pavillon_v2"
+      ]
+    },
+    {
+      "biome": "sanctuaire_de_lotus",
+      "categorie": "sanctuaire",
+      "id": "autel_du_maitre_du_nen",
+      "taille": [
+        9,
+        8,
+        9
+      ],
+      "variantes": [
+        "cambocraft:autel_du_maitre_du_nen_v1",
+        "cambocraft:autel_du_maitre_du_nen_v2"
+      ]
+    },
+    {
+      "biome": "montagnes_karstiques",
+      "categorie": "montagne",
+      "id": "pagode_montagne_karst",
+      "taille": [
+        9,
+        11,
+        9
+      ],
+      "variantes": [
+        "cambocraft:pagode_montagne_karst_v1",
+        "cambocraft:pagode_montagne_karst_v2"
+      ]
+    },
+    {
+      "biome": "montagnes_karstiques",
+      "categorie": "montagne",
+      "id": "ermitage_des_nuages",
+      "taille": [
+        7,
+        9,
+        7
+      ],
+      "variantes": [
+        "cambocraft:ermitage_des_nuages_v1",
+        "cambocraft:ermitage_des_nuages_v2"
+      ]
+    },
+    {
+      "biome": "grand_lac",
+      "categorie": "lac",
+      "id": "pagode_flottante_tonle",
+      "taille": [
+        9,
+        8,
+        9
+      ],
+      "variantes": [
+        "cambocraft:pagode_flottante_tonle_v1",
+        "cambocraft:pagode_flottante_tonle_v2"
+      ]
+    },
+    {
+      "biome": "grand_lac",
+      "categorie": "lac",
+      "id": "temple_englouti_du_lac",
+      "taille": [
+        11,
+        9,
+        11
+      ],
+      "variantes": [
+        "cambocraft:temple_englouti_du_lac_v1",
+        "cambocraft:temple_englouti_du_lac_v2"
+      ]
+    },
+    {
+      "biome": "jungle_en_ruines",
+      "categorie": "ruine",
+      "id": "ruine_jungle_1_borne",
+      "taille": [
+        5,
+        5,
+        5
+      ],
+      "variantes": [
+        "cambocraft:ruine_jungle_1_borne_v1",
+        "cambocraft:ruine_jungle_1_borne_v2"
+      ]
+    },
+    {
+      "biome": "jungle_en_ruines",
+      "categorie": "ruine",
+      "id": "ruine_jungle_2_arche",
+      "taille": [
+        7,
+        6,
+        5
+      ],
+      "variantes": [
+        "cambocraft:ruine_jungle_2_arche_v1",
+        "cambocraft:ruine_jungle_2_arche_v2"
+      ]
+    },
+    {
+      "biome": "foret_tropicale",
+      "categorie": "ruine",
+      "id": "ruine_jungle_3_cour",
+      "taille": [
+        9,
+        6,
+        9
+      ],
+      "variantes": [
+        "cambocraft:ruine_jungle_3_cour_v1",
+        "cambocraft:ruine_jungle_3_cour_v2"
+      ]
+    },
+    {
+      "biome": "jungle_en_ruines",
+      "categorie": "ruine",
+      "id": "ruine_jungle_4_sanctuaire",
+      "taille": [
+        11,
+        8,
+        11
+      ],
+      "variantes": [
+        "cambocraft:ruine_jungle_4_sanctuaire_v1",
+        "cambocraft:ruine_jungle_4_sanctuaire_v2"
+      ]
+    },
+    {
+      "biome": "foret_de_kapokiers",
+      "categorie": "ruine",
+      "id": "ruine_jungle_5_complexe",
+      "taille": [
+        13,
+        9,
+        13
+      ],
+      "variantes": [
+        "cambocraft:ruine_jungle_5_complexe_v1",
+        "cambocraft:ruine_jungle_5_complexe_v2"
+      ]
+    },
+    {
+      "biome": "riviere_du_tonle",
+      "categorie": "embarcadere",
+      "id": "embarcadere_pirogue_village",
+      "taille": [
+        9,
+        5,
+        7
+      ],
+      "variantes": [
+        "cambocraft:embarcadere_pirogue_village_v1",
+        "cambocraft:embarcadere_pirogue_village_v2"
+      ]
+    },
+    {
+      "biome": "grand_lac",
+      "categorie": "embarcadere",
+      "id": "embarcadere_course_royale",
+      "taille": [
+        11,
+        6,
+        7
+      ],
+      "variantes": [
+        "cambocraft:embarcadere_course_royale_v1",
+        "cambocraft:embarcadere_course_royale_v2"
+      ]
+    },
+    {
+      "biome": "sanctuaire_de_lotus",
+      "categorie": "renaissance",
+      "id": "pyramide_de_la_renaissance",
+      "taille": [
+        13,
+        14,
+        13
+      ],
+      "variantes": [
+        "cambocraft:pyramide_de_la_renaissance_v1",
+        "cambocraft:pyramide_de_la_renaissance_v2"
+      ]
+    },
+    {
+      "biome": "iles_flottantes_des_garudas",
+      "categorie": "garuda",
+      "id": "ile_flottante_garuda_mineure",
+      "taille": [
+        9,
+        8,
+        9
+      ],
+      "variantes": [
+        "cambocraft:ile_flottante_garuda_mineure_v1",
+        "cambocraft:ile_flottante_garuda_mineure_v2"
+      ]
+    },
+    {
+      "biome": "iles_flottantes_des_garudas",
+      "categorie": "garuda",
+      "id": "ile_flottante_garuda_arene",
+      "taille": [
+        13,
+        10,
+        13
+      ],
+      "variantes": [
+        "cambocraft:ile_flottante_garuda_arene_v1",
+        "cambocraft:ile_flottante_garuda_arene_v2"
+      ]
+    },
+    {
+      "biome": "rizieres_en_terrasses",
+      "categorie": "arene",
+      "id": "arene_pradal_serey",
+      "taille": [
+        13,
+        7,
+        13
+      ],
+      "variantes": [
+        "cambocraft:arene_pradal_serey_v1",
+        "cambocraft:arene_pradal_serey_v2"
+      ]
+    },
+    {
+      "biome": "rizieres_en_terrasses",
+      "categorie": "village_jigsaw",
+      "id": "village_tonle_place",
+      "taille": [
+        11,
+        6,
+        11
+      ],
+      "variantes": [
+        "cambocraft:village_tonle_place_v1",
+        "cambocraft:village_tonle_place_v2"
+      ]
+    },
+    {
+      "biome": "plaine_inondable",
+      "categorie": "village_jigsaw",
+      "id": "village_ly_place",
+      "taille": [
+        11,
+        6,
+        11
+      ],
+      "variantes": [
+        "cambocraft:village_ly_place_v1",
+        "cambocraft:village_ly_place_v2"
+      ]
+    },
+    {
+      "biome": "bambouseraie",
+      "categorie": "village_jigsaw",
+      "id": "village_srok_place",
+      "taille": [
+        11,
+        6,
+        11
+      ],
+      "variantes": [
+        "cambocraft:village_srok_place_v1",
+        "cambocraft:village_srok_place_v2"
+      ]
+    },
+    {
+      "biome": "foret_tropicale",
+      "categorie": "village_jigsaw",
+      "id": "village_kompong_place",
+      "taille": [
+        11,
+        6,
+        11
+      ],
+      "variantes": [
+        "cambocraft:village_kompong_place_v1",
+        "cambocraft:village_kompong_place_v2"
+      ]
+    },
+    {
+      "biome": "rizieres_en_terrasses",
+      "categorie": "village_jigsaw",
+      "id": "chemin_laterite_lanternes",
+      "taille": [
+        9,
+        4,
+        5
+      ],
+      "variantes": [
+        "cambocraft:chemin_laterite_lanternes_v1",
+        "cambocraft:chemin_laterite_lanternes_v2"
+      ]
+    },
+    {
+      "biome": "rizieres_en_terrasses",
+      "categorie": "village_jigsaw",
+      "id": "grenier_a_riz_pilotis",
+      "taille": [
+        7,
+        8,
+        7
+      ],
+      "variantes": [
+        "cambocraft:grenier_a_riz_pilotis_v1",
+        "cambocraft:grenier_a_riz_pilotis_v2"
+      ]
+    },
+    {
+      "biome": "plaine_inondable",
+      "categorie": "village_jigsaw",
+      "id": "enclos_buffles_d_eau",
+      "taille": [
+        9,
+        4,
+        9
+      ],
+      "variantes": [
+        "cambocraft:enclos_buffles_d_eau_v1",
+        "cambocraft:enclos_buffles_d_eau_v2"
+      ]
+    },
+    {
+      "biome": "rizieres_en_terrasses",
+      "categorie": "village_jigsaw",
+      "id": "four_potier_village",
+      "taille": [
+        7,
+        6,
+        7
+      ],
+      "variantes": [
+        "cambocraft:four_potier_village_v1",
+        "cambocraft:four_potier_village_v2"
+      ]
+    },
+    {
+      "biome": "savane_claire",
+      "categorie": "village_jigsaw",
+      "id": "forge_villageoise",
+      "taille": [
+        8,
+        6,
+        8
+      ],
+      "variantes": [
+        "cambocraft:forge_villageoise_v1",
+        "cambocraft:forge_villageoise_v2"
+      ]
+    },
+    {
+      "biome": "rizieres_en_terrasses",
+      "categorie": "village_jigsaw",
+      "id": "pavillon_du_conteur",
+      "taille": [
+        7,
+        7,
+        7
+      ],
+      "variantes": [
+        "cambocraft:pavillon_du_conteur_v1",
+        "cambocraft:pavillon_du_conteur_v2"
+      ]
+    }
+  ]
+}

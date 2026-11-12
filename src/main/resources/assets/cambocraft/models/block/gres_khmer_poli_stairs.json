@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "cambocraft:block/gres_khmer_poli",
+    "side": "cambocraft:block/gres_khmer_poli",
+    "top": "cambocraft:block/gres_khmer_poli"
+  }
+}

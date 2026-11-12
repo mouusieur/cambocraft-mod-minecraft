@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Onde du Tonlé",
+    "en": "Tonle Ripple"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (eau, offensif) : Onde du Tonlé. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (eau, offensif): Tonle Ripple. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "commun",
+  "element": "eau",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 7.0,
+      "soin": 0.0,
+      "portee": 6.0,
+      "duree_ticks": 0,
+      "recharge_ticks": 40,
+      "cout_energie": 14
+    },
+    {
+      "niveau": 2,
+      "degats": 8.54,
+      "soin": 0.0,
+      "portee": 6.48,
+      "duree_ticks": 0,
+      "recharge_ticks": 38,
+      "cout_energie": 14
+    },
+    {
+      "niveau": 3,
+      "degats": 10.08,
+      "soin": 0.0,
+      "portee": 6.96,
+      "duree_ticks": 0,
+      "recharge_ticks": 36,
+      "cout_energie": 14
+    },
+    {
+      "niveau": 4,
+      "degats": 11.62,
+      "soin": 0.0,
+      "portee": 7.44,
+      "duree_ticks": 0,
+      "recharge_ticks": 34,
+      "cout_energie": 14
+    },
+    {
+      "niveau": 5,
+      "degats": 13.16,
+      "soin": 0.0,
+      "portee": 7.92,
+      "duree_ticks": 0,
+      "recharge_ticks": 32,
+      "cout_energie": 14
+    }
+  ],
+  "maitrise": {
+    "seuil": 60,
+    "variante_fr": "Onde du Tonlé — Éveil du Maître",
+    "variante_en": "Tonle Ripple — Master Awakening",
+    "bonus": 0.18
+  }
+}

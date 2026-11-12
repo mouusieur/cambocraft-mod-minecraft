@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "cambocraft:bambou_brut",
+      "description": {
+        "en": "Complete 12x recolter (cambocraft:bambou_brut).",
+        "fr": "Accomplir 12x recolter (cambocraft:bambou_brut)."
+      },
+      "id": "objectif_1",
+      "objectif": "recolter",
+      "quantite": 12
+    },
+    {
+      "cible": "vendeur_de_bambou",
+      "description": {
+        "en": "Report back to vendeur_de_bambou.",
+        "fr": "Rapporter le résultat à vendeur_de_bambou."
+      },
+      "id": "retour_pnj",
+      "objectif": "parler",
+      "quantite": 1
+    }
+  ],
+  "faction": "srok",
+  "niveau_min": 151,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:fleche_en_bambou"
+    ],
+    "pieces": 60,
+    "pouvoir": "",
+    "reputation": 140,
+    "xp": 1000
+  },
+  "resume": {
+    "en": "Assist vendeur_de_bambou in Srok province (recolter: cambocraft:bambou_brut).",
+    "fr": "Aider vendeur_de_bambou dans la province de Srok (recolter : cambocraft:bambou_brut)."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Mist Bamboo (IV)",
+    "fr": "Bambous de la Brume (IV)"
+  },
+  "type": "secondaire"
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "cambocraft:block/bambou_planches",
+    "side": "cambocraft:block/bambou_planches",
+    "top": "cambocraft:block/bambou_planches"
+  }
+}

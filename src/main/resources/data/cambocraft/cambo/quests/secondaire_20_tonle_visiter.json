@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "embarcadere_pirogue_village",
+      "description": {
+        "en": "Complete 2x visiter (embarcadere_pirogue_village).",
+        "fr": "Accomplir 2x visiter (embarcadere_pirogue_village)."
+      },
+      "id": "objectif_1",
+      "objectif": "visiter",
+      "quantite": 2
+    },
+    {
+      "cible": "capitaine_de_pirogue",
+      "description": {
+        "en": "Report back to capitaine_de_pirogue.",
+        "fr": "Rapporter le résultat à capitaine_de_pirogue."
+      },
+      "id": "retour_pnj",
+      "objectif": "parler",
+      "quantite": 1
+    }
+  ],
+  "faction": "tonle",
+  "niveau_min": 53,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:pagaie_de_course"
+    ],
+    "pieces": 30,
+    "pouvoir": "",
+    "reputation": 70,
+    "xp": 500
+  },
+  "resume": {
+    "en": "Assist capitaine_de_pirogue in Tonle province (visiter: embarcadere_pirogue_village).",
+    "fr": "Aider capitaine_de_pirogue dans la province de Tonle (visiter : embarcadere_pirogue_village)."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "River Currents (II)",
+    "fr": "Courants du Fleuve (II)"
+  },
+  "type": "secondaire"
+}

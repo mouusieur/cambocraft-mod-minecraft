@@ -1,0 +1,27 @@
+{
+  "config": {
+    "discard_chance_on_air_exposure": 0.0,
+    "size": 8,
+    "targets": [
+      {
+        "state": {
+          "Name": "cambocraft:minerai_de_lotus"
+        },
+        "target": {
+          "block": "cambocraft:gres_khmer",
+          "predicate_type": "minecraft:block_match"
+        }
+      },
+      {
+        "state": {
+          "Name": "cambocraft:minerai_de_lotus"
+        },
+        "target": {
+          "block": "cambocraft:calcaire_karstique",
+          "predicate_type": "minecraft:block_match"
+        }
+      }
+    ]
+  },
+  "type": "minecraft:ore"
+}

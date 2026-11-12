@@ -1,0 +1,20 @@
+{
+  "nom": {
+    "fr": "Golem de calcaire karstique",
+    "en": "Karst Limestone Golem"
+  },
+  "categorie": "zone",
+  "rang": "ombre_silencieuse",
+  "element": "terre",
+  "pv_base": 790.0,
+  "attaque_base": 80.0,
+  "armure_base": 28.0,
+  "vitesse": 0.34,
+  "xp": 680,
+  "pieces": 112,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_terre"
+  ],
+  "phases": []
+}

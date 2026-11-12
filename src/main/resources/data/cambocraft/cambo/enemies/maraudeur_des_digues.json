@@ -1,0 +1,20 @@
+{
+  "nom": {
+    "fr": "Maraudeur des digues",
+    "en": "Dike Raider"
+  },
+  "categorie": "zone",
+  "rang": "lame",
+  "element": "terre",
+  "pv_base": 82.0,
+  "attaque_base": 11.5,
+  "armure_base": 4.5,
+  "vitesse": 0.28,
+  "xp": 170,
+  "pieces": 28,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_terre"
+  ],
+  "phases": []
+}

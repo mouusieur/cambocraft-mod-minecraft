@@ -1,0 +1,20 @@
+{
+  "nom": {
+    "fr": "Crocodile Doré",
+    "en": "Golden Crocodile"
+  },
+  "item": "cambocraft:crocodile_dore",
+  "rarete": "epique",
+  "poids": 2,
+  "zones": [
+    "grand_lac"
+  ],
+  "saisons": [
+    "*"
+  ],
+  "nocturne": true,
+  "min_cm": 120,
+  "max_cm": 320,
+  "difficulte": 0.95,
+  "prix": 90
+}

@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Grâce Céleste de l'Apsara",
+    "en": "Celestial Apsara Grace"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (lumiere, soin) : Grâce Céleste de l'Apsara. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (lumiere, soin): Celestial Apsara Grace. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "legendaire",
+  "element": "lumiere",
+  "type": "soin",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 0.0,
+      "soin": 25.0,
+      "portee": 10.0,
+      "duree_ticks": 140,
+      "recharge_ticks": 78,
+      "cout_energie": 38
+    },
+    {
+      "niveau": 2,
+      "degats": 0.0,
+      "soin": 30.5,
+      "portee": 10.8,
+      "duree_ticks": 157,
+      "recharge_ticks": 74,
+      "cout_energie": 38
+    },
+    {
+      "niveau": 3,
+      "degats": 0.0,
+      "soin": 36.0,
+      "portee": 11.6,
+      "duree_ticks": 174,
+      "recharge_ticks": 70,
+      "cout_energie": 38
+    },
+    {
+      "niveau": 4,
+      "degats": 0.0,
+      "soin": 41.5,
+      "portee": 12.4,
+      "duree_ticks": 190,
+      "recharge_ticks": 66,
+      "cout_energie": 38
+    },
+    {
+      "niveau": 5,
+      "degats": 0.0,
+      "soin": 47.0,
+      "portee": 13.2,
+      "duree_ticks": 207,
+      "recharge_ticks": 62,
+      "cout_energie": 38
+    }
+  ],
+  "maitrise": {
+    "seuil": 180,
+    "variante_fr": "Grâce Céleste de l'Apsara — Éveil du Maître",
+    "variante_en": "Celestial Apsara Grace — Master Awakening",
+    "bonus": 0.3
+  }
+}

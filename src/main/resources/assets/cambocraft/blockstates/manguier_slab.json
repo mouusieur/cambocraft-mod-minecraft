@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cambocraft:block/manguier_slab"
+    },
+    "type=double": {
+      "model": "cambocraft:block/manguier_planks"
+    },
+    "type=top": {
+      "model": "cambocraft:block/manguier_slab_top"
+    }
+  }
+}

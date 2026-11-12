@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Voile Absolu du Néant",
+    "en": "Absolute Veil of Void"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (ombre, controle) : Voile Absolu du Néant. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (ombre, controle): Absolute Veil of Void. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "mythique",
+  "element": "ombre",
+  "type": "controle",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 32.0,
+      "soin": 0.0,
+      "portee": 12.5,
+      "duree_ticks": 130,
+      "recharge_ticks": 84,
+      "cout_energie": 50
+    },
+    {
+      "niveau": 2,
+      "degats": 39.04,
+      "soin": 0.0,
+      "portee": 13.5,
+      "duree_ticks": 146,
+      "recharge_ticks": 80,
+      "cout_energie": 50
+    },
+    {
+      "niveau": 3,
+      "degats": 46.08,
+      "soin": 0.0,
+      "portee": 14.5,
+      "duree_ticks": 161,
+      "recharge_ticks": 76,
+      "cout_energie": 50
+    },
+    {
+      "niveau": 4,
+      "degats": 53.12,
+      "soin": 0.0,
+      "portee": 15.5,
+      "duree_ticks": 177,
+      "recharge_ticks": 71,
+      "cout_energie": 50
+    },
+    {
+      "niveau": 5,
+      "degats": 60.16,
+      "soin": 0.0,
+      "portee": 16.5,
+      "duree_ticks": 192,
+      "recharge_ticks": 67,
+      "cout_energie": 50
+    }
+  ],
+  "maitrise": {
+    "seuil": 240,
+    "variante_fr": "Voile Absolu du Néant — Éveil du Maître",
+    "variante_en": "Absolute Veil of Void — Master Awakening",
+    "bonus": 0.35
+  }
+}

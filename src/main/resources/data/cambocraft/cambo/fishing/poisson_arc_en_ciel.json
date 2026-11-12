@@ -1,0 +1,22 @@
+{
+  "nom": {
+    "fr": "Poisson Arc-en-Ciel",
+    "en": "Rainbow Fish"
+  },
+  "item": "cambocraft:poisson_arc_en_ciel",
+  "rarete": "peu_commun",
+  "poids": 10,
+  "zones": [
+    "riviere",
+    "etang",
+    "riziere"
+  ],
+  "saisons": [
+    "*"
+  ],
+  "nocturne": false,
+  "min_cm": 6,
+  "max_cm": 16,
+  "difficulte": 0.3,
+  "prix": 6
+}

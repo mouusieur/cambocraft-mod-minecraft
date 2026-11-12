@@ -1,0 +1,26 @@
+{
+  "biomes": [
+    "cambocraft:bambouseraie",
+    "cambocraft:foret_tropicale"
+  ],
+  "boss_id": "maitre_des_lames_du_clan_ombre",
+  "boss_requis": "le_buffle_d_or",
+  "ennemis": [
+    "lame_ombre",
+    "archer_des_bambous",
+    "tigre_des_brumes",
+    "guetteur_nocturne"
+  ],
+  "niveau_max": 50,
+  "niveau_min": 30,
+  "nom": {
+    "en": "Srok Bamboo Grove",
+    "fr": "Bambouseraie de Srok"
+  },
+  "ordre": 3,
+  "teleporteur": {
+    "x": -420,
+    "y": 78,
+    "z": 260
+  }
+}

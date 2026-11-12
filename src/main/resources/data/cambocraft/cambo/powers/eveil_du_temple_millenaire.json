@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Éveil du Temple Millénaire",
+    "en": "Millennial Temple Awakening"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (terre, defensif) : Éveil du Temple Millénaire. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (terre, defensif): Millennial Temple Awakening. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "mythique",
+  "element": "terre",
+  "type": "defensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 24.0,
+      "soin": 30.0,
+      "portee": 10.0,
+      "duree_ticks": 180,
+      "recharge_ticks": 90,
+      "cout_energie": 54
+    },
+    {
+      "niveau": 2,
+      "degats": 29.28,
+      "soin": 36.6,
+      "portee": 10.8,
+      "duree_ticks": 202,
+      "recharge_ticks": 86,
+      "cout_energie": 54
+    },
+    {
+      "niveau": 3,
+      "degats": 34.56,
+      "soin": 43.2,
+      "portee": 11.6,
+      "duree_ticks": 223,
+      "recharge_ticks": 81,
+      "cout_energie": 54
+    },
+    {
+      "niveau": 4,
+      "degats": 39.84,
+      "soin": 49.8,
+      "portee": 12.4,
+      "duree_ticks": 245,
+      "recharge_ticks": 76,
+      "cout_energie": 54
+    },
+    {
+      "niveau": 5,
+      "degats": 45.12,
+      "soin": 56.4,
+      "portee": 13.2,
+      "duree_ticks": 266,
+      "recharge_ticks": 72,
+      "cout_energie": 54
+    }
+  ],
+  "maitrise": {
+    "seuil": 240,
+    "variante_fr": "Éveil du Temple Millénaire — Éveil du Maître",
+    "variante_en": "Millennial Temple Awakening — Master Awakening",
+    "bonus": 0.35
+  }
+}

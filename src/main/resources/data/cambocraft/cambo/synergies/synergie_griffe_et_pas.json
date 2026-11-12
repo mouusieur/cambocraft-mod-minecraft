@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Traqueur Nocturne",
+    "en": "Night Stalker"
+  },
+  "pouvoirs": [
+    "griffe_nocturne",
+    "pas_feutre"
+  ],
+  "effet": "embuscade_critique",
+  "multiplicateur": 1.24,
+  "duree_ticks": 160,
+  "description": {
+    "fr": "Synergie active lorsque griffe_nocturne et pas_feutre sont équipés ensemble : Traqueur Nocturne (×1.24).",
+    "en": "Active synergy when griffe_nocturne and pas_feutre are equipped together: Night Stalker (×1.24)."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cambocraft:block/bambou_planches_slab"
+    },
+    "type=double": {
+      "model": "cambocraft:block/bambou_planches_bloc"
+    },
+    "type=top": {
+      "model": "cambocraft:block/bambou_planches_slab_top"
+    }
+  }
+}

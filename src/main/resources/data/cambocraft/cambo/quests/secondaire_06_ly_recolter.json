@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "cambocraft:sucre_de_palme",
+      "description": {
+        "en": "Complete 3x recolter (cambocraft:sucre_de_palme).",
+        "fr": "Accomplir 3x recolter (cambocraft:sucre_de_palme)."
+      },
+      "id": "objectif_1",
+      "objectif": "recolter",
+      "quantite": 3
+    },
+    {
+      "cible": "guide_de_la_riziere",
+      "description": {
+        "en": "Report back to guide_de_la_riziere.",
+        "fr": "Rapporter le résultat à guide_de_la_riziere."
+      },
+      "id": "retour_pnj",
+      "objectif": "parler",
+      "quantite": 1
+    }
+  ],
+  "faction": "ly",
+  "niveau_min": 12,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:kralan"
+    ],
+    "pieces": 15,
+    "pouvoir": "",
+    "reputation": 35,
+    "xp": 250
+  },
+  "resume": {
+    "en": "Assist guide_de_la_riziere in Ly province (recolter: cambocraft:sucre_de_palme).",
+    "fr": "Aider guide_de_la_riziere dans la province de Ly (recolter : cambocraft:sucre_de_palme)."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Dike Sugar Palms (I)",
+    "fr": "Palmiers des Diguettes (I)"
+  },
+  "type": "secondaire"
+}

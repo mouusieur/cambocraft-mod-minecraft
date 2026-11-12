@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "prasat_moyen",
+      "description": {
+        "en": "Complete 4x visiter (prasat_moyen).",
+        "fr": "Accomplir 4x visiter (prasat_moyen)."
+      },
+      "id": "objectif_1",
+      "objectif": "visiter",
+      "quantite": 4
+    },
+    {
+      "cible": "gardien_du_temple",
+      "description": {
+        "en": "Report back to gardien_du_temple.",
+        "fr": "Rapporter le résultat à gardien_du_temple."
+      },
+      "id": "retour_pnj",
+      "objectif": "parler",
+      "quantite": 1
+    }
+  ],
+  "faction": "kompong",
+  "niveau_min": 159,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:encens_beni"
+    ],
+    "pieces": 60,
+    "pouvoir": "",
+    "reputation": 140,
+    "xp": 1000
+  },
+  "resume": {
+    "en": "Assist gardien_du_temple in Kompong province (visiter: prasat_moyen).",
+    "fr": "Aider gardien_du_temple dans la province de Kompong (visiter : prasat_moyen)."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Lantern Watch (IV)",
+    "fr": "Ronde des Lanternes (IV)"
+  },
+  "type": "secondaire"
+}

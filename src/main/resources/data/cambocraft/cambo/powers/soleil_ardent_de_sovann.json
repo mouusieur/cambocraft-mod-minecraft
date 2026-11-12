@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Soleil Ardent de Sovann",
+    "en": "Blazing Sun of Sovann"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (feu, offensif) : Soleil Ardent de Sovann. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (feu, offensif): Blazing Sun of Sovann. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "legendaire",
+  "element": "feu",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 29.0,
+      "soin": 0.0,
+      "portee": 10.0,
+      "duree_ticks": 65,
+      "recharge_ticks": 70,
+      "cout_energie": 40
+    },
+    {
+      "niveau": 2,
+      "degats": 35.38,
+      "soin": 0.0,
+      "portee": 10.8,
+      "duree_ticks": 73,
+      "recharge_ticks": 66,
+      "cout_energie": 40
+    },
+    {
+      "niveau": 3,
+      "degats": 41.76,
+      "soin": 0.0,
+      "portee": 11.6,
+      "duree_ticks": 81,
+      "recharge_ticks": 63,
+      "cout_energie": 40
+    },
+    {
+      "niveau": 4,
+      "degats": 48.14,
+      "soin": 0.0,
+      "portee": 12.4,
+      "duree_ticks": 88,
+      "recharge_ticks": 60,
+      "cout_energie": 40
+    },
+    {
+      "niveau": 5,
+      "degats": 54.52,
+      "soin": 0.0,
+      "portee": 13.2,
+      "duree_ticks": 96,
+      "recharge_ticks": 56,
+      "cout_energie": 40
+    }
+  ],
+  "maitrise": {
+    "seuil": 180,
+    "variante_fr": "Soleil Ardent de Sovann — Éveil du Maître",
+    "variante_en": "Blazing Sun of Sovann — Master Awakening",
+    "bonus": 0.3
+  }
+}

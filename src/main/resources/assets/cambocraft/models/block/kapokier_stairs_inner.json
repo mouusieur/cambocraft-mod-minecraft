@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "cambocraft:block/kapokier_planks",
+    "side": "cambocraft:block/kapokier_planks",
+    "top": "cambocraft:block/kapokier_planks"
+  }
+}

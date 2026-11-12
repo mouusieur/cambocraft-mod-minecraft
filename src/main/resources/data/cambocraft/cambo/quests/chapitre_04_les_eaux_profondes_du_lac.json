@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 4,
+  "etapes": [
+    {
+      "cible": "maitre_de_quete",
+      "description": {
+        "en": "Gather accounts from the province.",
+        "fr": "Recueillir les témoignages de la province."
+      },
+      "id": "enquete_province",
+      "objectif": "parler",
+      "quantite": 1
+    },
+    {
+      "cible": "le_crocodile_des_profondeurs",
+      "description": {
+        "en": "Overcome the zone trial (le_crocodile_des_profondeurs).",
+        "fr": "Surmonter l'épreuve de fin de zone (le_crocodile_des_profondeurs)."
+      },
+      "id": "epreuve_majeure",
+      "objectif": "vaincre",
+      "quantite": 1
+    }
+  ],
+  "faction": "tonle",
+  "niveau_min": 50,
+  "quete_requise": "chapitre_03_murmures_dans_les_bambous",
+  "recompenses": {
+    "objets": [
+      "cambocraft:croc_du_crocodile_des_profondeurs"
+    ],
+    "pieces": 160,
+    "pouvoir": "",
+    "reputation": 120,
+    "xp": 8000
+  },
+  "resume": {
+    "en": "Explore the sunken shrines of Tonle Sap and defeat the Deep Crocodile.",
+    "fr": "Explorer les sanctuaires engloutis du Tonlé Sap et vaincre le Crocodile des Profondeurs."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Chapter IV — Deep Waters of the Great Lake",
+    "fr": "Chapitre IV — Les Eaux Profondes du Grand Lac"
+  },
+  "type": "principale"
+}

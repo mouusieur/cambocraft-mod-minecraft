@@ -1,0 +1,67 @@
+{
+  "nom": {
+    "fr": "Garuda de la Tempête",
+    "en": "Storm Garuda"
+  },
+  "categorie": "boss",
+  "rang": "seigneur_boss",
+  "element": "air",
+  "pv_base": 16800.0,
+  "attaque_base": 184.0,
+  "armure_base": 35.0,
+  "vitesse": 0.32,
+  "xp": 235000,
+  "pieces": 5200,
+  "capacites": [
+    "presence_de_boss",
+    "transition_invulnerable",
+    "maitrise_air"
+  ],
+  "phases": [
+    {
+      "phase": 1,
+      "seuil_pv": 1.0,
+      "nom": {
+        "fr": "Seigneur des îles flottantes",
+        "en": "Lord of the Floating Isles"
+      },
+      "mult_attaque": 1.0,
+      "mult_vitesse": 1.12,
+      "mecanique_arene": "courants_ascendants",
+      "capacites": [
+        "serres_de_foudre",
+        "bourrasque_royale"
+      ]
+    },
+    {
+      "phase": 2,
+      "seuil_pv": 0.65,
+      "nom": {
+        "fr": "Cyclone de l'archipel céleste",
+        "en": "Sky Archipelago Cyclone"
+      },
+      "mult_attaque": 1.34,
+      "mult_vitesse": 1.24,
+      "mecanique_arene": "foudre_en_chaine",
+      "capacites": [
+        "lance_d_orage",
+        "ailes_ouragan"
+      ]
+    },
+    {
+      "phase": 3,
+      "seuil_pv": 0.3,
+      "nom": {
+        "fr": "Souverain du tonnerre primordial",
+        "en": "Primordial Thunder Sovereign"
+      },
+      "mult_attaque": 1.68,
+      "mult_vitesse": 1.36,
+      "mecanique_arene": "oeil_de_la_tempete",
+      "capacites": [
+        "jugement_de_garuda",
+        "plongee_supersonique"
+      ]
+    }
+  ]
+}

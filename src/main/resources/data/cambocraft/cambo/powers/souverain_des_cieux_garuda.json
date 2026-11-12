@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Souverain des Cieux Garuda",
+    "en": "Garuda Sovereign of Skies"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (air, invocation) : Souverain des Cieux Garuda. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (air, invocation): Garuda Sovereign of Skies. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "mythique",
+  "element": "air",
+  "type": "invocation",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 38.0,
+      "soin": 8.0,
+      "portee": 16.0,
+      "duree_ticks": 150,
+      "recharge_ticks": 84,
+      "cout_energie": 50
+    },
+    {
+      "niveau": 2,
+      "degats": 46.36,
+      "soin": 9.76,
+      "portee": 17.28,
+      "duree_ticks": 168,
+      "recharge_ticks": 80,
+      "cout_energie": 50
+    },
+    {
+      "niveau": 3,
+      "degats": 54.72,
+      "soin": 11.52,
+      "portee": 18.56,
+      "duree_ticks": 186,
+      "recharge_ticks": 76,
+      "cout_energie": 50
+    },
+    {
+      "niveau": 4,
+      "degats": 63.08,
+      "soin": 13.28,
+      "portee": 19.84,
+      "duree_ticks": 204,
+      "recharge_ticks": 71,
+      "cout_energie": 50
+    },
+    {
+      "niveau": 5,
+      "degats": 71.44,
+      "soin": 15.04,
+      "portee": 21.12,
+      "duree_ticks": 222,
+      "recharge_ticks": 67,
+      "cout_energie": 50
+    }
+  ],
+  "maitrise": {
+    "seuil": 240,
+    "variante_fr": "Souverain des Cieux Garuda — Éveil du Maître",
+    "variante_en": "Garuda Sovereign of Skies — Master Awakening",
+    "bonus": 0.35
+  }
+}

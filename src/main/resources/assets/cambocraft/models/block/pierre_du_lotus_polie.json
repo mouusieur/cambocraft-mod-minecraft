@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "cambocraft:block/pierre_du_lotus_polie"
+  }
+}

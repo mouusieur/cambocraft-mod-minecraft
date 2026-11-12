@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Rosée Fertile",
+    "en": "Fertile Dew"
+  },
+  "pouvoirs": [
+    "seve_vivifiante",
+    "goutte_apaisante"
+  ],
+  "effet": "vitalite_continue",
+  "multiplicateur": 1.22,
+  "duree_ticks": 200,
+  "description": {
+    "fr": "Synergie active lorsque seve_vivifiante et goutte_apaisante sont équipés ensemble : Rosée Fertile (×1.22).",
+    "en": "Active synergy when seve_vivifiante and goutte_apaisante are equipped together: Fertile Dew (×1.22)."
+  }
+}

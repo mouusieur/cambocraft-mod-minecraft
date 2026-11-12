@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cambocraft:block/tuile_de_terre_cuite_slab"
+    },
+    "type=double": {
+      "model": "cambocraft:block/tuile_de_terre_cuite"
+    },
+    "type=top": {
+      "model": "cambocraft:block/tuile_de_terre_cuite_slab_top"
+    }
+  }
+}

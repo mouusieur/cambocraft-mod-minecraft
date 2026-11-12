@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Arbre-Monde du Tonlé",
+    "en": "World-Tree of Tonle"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (vie, invocation) : Arbre-Monde du Tonlé. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (vie, invocation): World-Tree of Tonle. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "legendaire",
+  "element": "vie",
+  "type": "invocation",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 18.0,
+      "soin": 18.0,
+      "portee": 10.0,
+      "duree_ticks": 160,
+      "recharge_ticks": 86,
+      "cout_energie": 42
+    },
+    {
+      "niveau": 2,
+      "degats": 21.96,
+      "soin": 21.96,
+      "portee": 10.8,
+      "duree_ticks": 179,
+      "recharge_ticks": 82,
+      "cout_energie": 42
+    },
+    {
+      "niveau": 3,
+      "degats": 25.92,
+      "soin": 25.92,
+      "portee": 11.6,
+      "duree_ticks": 198,
+      "recharge_ticks": 77,
+      "cout_energie": 42
+    },
+    {
+      "niveau": 4,
+      "degats": 29.88,
+      "soin": 29.88,
+      "portee": 12.4,
+      "duree_ticks": 218,
+      "recharge_ticks": 73,
+      "cout_energie": 42
+    },
+    {
+      "niveau": 5,
+      "degats": 33.84,
+      "soin": 33.84,
+      "portee": 13.2,
+      "duree_ticks": 237,
+      "recharge_ticks": 69,
+      "cout_energie": 42
+    }
+  ],
+  "maitrise": {
+    "seuil": 180,
+    "variante_fr": "Arbre-Monde du Tonlé — Éveil du Maître",
+    "variante_en": "World-Tree of Tonle — Master Awakening",
+    "bonus": 0.3
+  }
+}

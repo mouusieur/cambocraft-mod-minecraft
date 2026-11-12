@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "cambocraft:block/tuile_de_terre_cuite",
+    "side": "cambocraft:block/tuile_de_terre_cuite",
+    "top": "cambocraft:block/tuile_de_terre_cuite"
+  }
+}

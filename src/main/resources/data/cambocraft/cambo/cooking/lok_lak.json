@@ -1,0 +1,17 @@
+{
+  "buff_amplificateur": 1,
+  "buff_duree_ticks": 3600,
+  "buff_effet": "minecraft:strength",
+  "faction": "srok",
+  "ingredients": [
+    "cambocraft:riz_cuit",
+    "cambocraft:poivre_noir_de_kampot",
+    "cambocraft:ail_grille"
+  ],
+  "nom": {
+    "en": "Kampot Pepper Lok Lak",
+    "fr": "Lok Lak au Poivre de Kampot"
+  },
+  "palier_min": "honore",
+  "resultat": "cambocraft:lok_lak"
+}

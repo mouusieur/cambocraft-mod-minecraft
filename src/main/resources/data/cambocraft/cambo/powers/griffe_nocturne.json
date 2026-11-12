@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Griffe Nocturne",
+    "en": "Night Claw"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (ombre, offensif) : Griffe Nocturne. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (ombre, offensif): Night Claw. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "commun",
+  "element": "ombre",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 7.8,
+      "soin": 0.0,
+      "portee": 4.0,
+      "duree_ticks": 20,
+      "recharge_ticks": 38,
+      "cout_energie": 14
+    },
+    {
+      "niveau": 2,
+      "degats": 9.52,
+      "soin": 0.0,
+      "portee": 4.32,
+      "duree_ticks": 22,
+      "recharge_ticks": 36,
+      "cout_energie": 14
+    },
+    {
+      "niveau": 3,
+      "degats": 11.23,
+      "soin": 0.0,
+      "portee": 4.64,
+      "duree_ticks": 25,
+      "recharge_ticks": 34,
+      "cout_energie": 14
+    },
+    {
+      "niveau": 4,
+      "degats": 12.95,
+      "soin": 0.0,
+      "portee": 4.96,
+      "duree_ticks": 27,
+      "recharge_ticks": 32,
+      "cout_energie": 14
+    },
+    {
+      "niveau": 5,
+      "degats": 14.66,
+      "soin": 0.0,
+      "portee": 5.28,
+      "duree_ticks": 30,
+      "recharge_ticks": 30,
+      "cout_energie": 14
+    }
+  ],
+  "maitrise": {
+    "seuil": 60,
+    "variante_fr": "Griffe Nocturne — Éveil du Maître",
+    "variante_en": "Night Claw — Master Awakening",
+    "bonus": 0.18
+  }
+}

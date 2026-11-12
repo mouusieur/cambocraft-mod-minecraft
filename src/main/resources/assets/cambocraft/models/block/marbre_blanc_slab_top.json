@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "cambocraft:block/marbre_blanc",
+    "side": "cambocraft:block/marbre_blanc",
+    "top": "cambocraft:block/marbre_blanc"
+  }
+}

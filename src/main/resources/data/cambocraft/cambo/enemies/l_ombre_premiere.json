@@ -1,0 +1,82 @@
+{
+  "nom": {
+    "fr": "L'Ombre Première",
+    "en": "The First Shadow"
+  },
+  "categorie": "boss",
+  "rang": "seigneur_boss",
+  "element": "ombre",
+  "pv_base": 30000.0,
+  "attaque_base": 260.0,
+  "armure_base": 48.0,
+  "vitesse": 0.32,
+  "xp": 600000,
+  "pieces": 12000,
+  "capacites": [
+    "presence_de_boss",
+    "transition_invulnerable",
+    "maitrise_ombre"
+  ],
+  "phases": [
+    {
+      "phase": 1,
+      "seuil_pv": 1.0,
+      "nom": {
+        "fr": "Murmure né avant l'Aube",
+        "en": "Whisper Born Before Dawn"
+      },
+      "mult_attaque": 1.0,
+      "mult_vitesse": 1.1,
+      "mecanique_arene": "brume_du_royaume_des_esprits",
+      "capacites": [
+        "lame_du_neant",
+        "reflet_obscur"
+      ]
+    },
+    {
+      "phase": 2,
+      "seuil_pv": 0.65,
+      "nom": {
+        "fr": "Fracture des Sept Éléments",
+        "en": "Shattering of Seven Elements"
+      },
+      "mult_attaque": 1.3,
+      "mult_vitesse": 1.2,
+      "mecanique_arene": "inversion_elementaire",
+      "capacites": [
+        "chaine_du_vide",
+        "pluie_d_etoiles_noires"
+      ]
+    },
+    {
+      "phase": 3,
+      "seuil_pv": 0.35,
+      "nom": {
+        "fr": "Miroir de la Renaissance",
+        "en": "Mirror of Rebirth"
+      },
+      "mult_attaque": 1.58,
+      "mult_vitesse": 1.3,
+      "mecanique_arene": "duel_interieur",
+      "capacites": [
+        "spectre_du_joueur",
+        "dechirure_spirituelle"
+      ]
+    },
+    {
+      "phase": 4,
+      "seuil_pv": 0.12,
+      "nom": {
+        "fr": "Transcendance de l'Ombre et du Lotus",
+        "en": "Shadow and Lotus Transcendence"
+      },
+      "mult_attaque": 1.88,
+      "mult_vitesse": 1.42,
+      "mecanique_arene": "apotheose_du_royaume_des_esprits",
+      "capacites": [
+        "abime_primordial",
+        "chant_de_l_eternite"
+      ]
+    }
+  ]
+}

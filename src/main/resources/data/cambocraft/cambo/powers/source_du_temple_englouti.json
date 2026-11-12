@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Source du Temple Englouti",
+    "en": "Sunken Temple Spring"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (eau, soin) : Source du Temple Englouti. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (eau, soin): Sunken Temple Spring. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "epique",
+  "element": "eau",
+  "type": "soin",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 0.0,
+      "soin": 15.0,
+      "portee": 7.0,
+      "duree_ticks": 100,
+      "recharge_ticks": 70,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 2,
+      "degats": 0.0,
+      "soin": 18.3,
+      "portee": 7.56,
+      "duree_ticks": 112,
+      "recharge_ticks": 66,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 3,
+      "degats": 0.0,
+      "soin": 21.6,
+      "portee": 8.12,
+      "duree_ticks": 124,
+      "recharge_ticks": 63,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 4,
+      "degats": 0.0,
+      "soin": 24.9,
+      "portee": 8.68,
+      "duree_ticks": 136,
+      "recharge_ticks": 60,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 5,
+      "degats": 0.0,
+      "soin": 28.2,
+      "portee": 9.24,
+      "duree_ticks": 148,
+      "recharge_ticks": 56,
+      "cout_energie": 28
+    }
+  ],
+  "maitrise": {
+    "seuil": 130,
+    "variante_fr": "Source du Temple Englouti — Éveil du Maître",
+    "variante_en": "Sunken Temple Spring — Master Awakening",
+    "bonus": 0.26
+  }
+}

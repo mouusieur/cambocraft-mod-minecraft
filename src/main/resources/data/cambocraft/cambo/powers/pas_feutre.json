@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Pas Feutré",
+    "en": "Muffled Footstep"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (ombre, mobilite) : Pas Feutré. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (ombre, mobilite): Muffled Footstep. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "commun",
+  "element": "ombre",
+  "type": "mobilite",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 0.0,
+      "soin": 0.0,
+      "portee": 6.5,
+      "duree_ticks": 45,
+      "recharge_ticks": 48,
+      "cout_energie": 12
+    },
+    {
+      "niveau": 2,
+      "degats": 0.0,
+      "soin": 0.0,
+      "portee": 7.02,
+      "duree_ticks": 50,
+      "recharge_ticks": 46,
+      "cout_energie": 12
+    },
+    {
+      "niveau": 3,
+      "degats": 0.0,
+      "soin": 0.0,
+      "portee": 7.54,
+      "duree_ticks": 56,
+      "recharge_ticks": 43,
+      "cout_energie": 12
+    },
+    {
+      "niveau": 4,
+      "degats": 0.0,
+      "soin": 0.0,
+      "portee": 8.06,
+      "duree_ticks": 61,
+      "recharge_ticks": 41,
+      "cout_energie": 12
+    },
+    {
+      "niveau": 5,
+      "degats": 0.0,
+      "soin": 0.0,
+      "portee": 8.58,
+      "duree_ticks": 67,
+      "recharge_ticks": 38,
+      "cout_energie": 12
+    }
+  ],
+  "maitrise": {
+    "seuil": 60,
+    "variante_fr": "Pas Feutré — Éveil du Maître",
+    "variante_en": "Muffled Footstep — Master Awakening",
+    "bonus": 0.18
+  }
+}

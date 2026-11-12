@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Renaissance du Phénix de Latérite",
+    "en": "Laterite Phoenix Rebirth"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (feu, soin) : Renaissance du Phénix de Latérite. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (feu, soin): Laterite Phoenix Rebirth. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "legendaire",
+  "element": "feu",
+  "type": "soin",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 18.0,
+      "soin": 20.0,
+      "portee": 8.0,
+      "duree_ticks": 140,
+      "recharge_ticks": 90,
+      "cout_energie": 42
+    },
+    {
+      "niveau": 2,
+      "degats": 21.96,
+      "soin": 24.4,
+      "portee": 8.64,
+      "duree_ticks": 157,
+      "recharge_ticks": 86,
+      "cout_energie": 42
+    },
+    {
+      "niveau": 3,
+      "degats": 25.92,
+      "soin": 28.8,
+      "portee": 9.28,
+      "duree_ticks": 174,
+      "recharge_ticks": 81,
+      "cout_energie": 42
+    },
+    {
+      "niveau": 4,
+      "degats": 29.88,
+      "soin": 33.2,
+      "portee": 9.92,
+      "duree_ticks": 190,
+      "recharge_ticks": 76,
+      "cout_energie": 42
+    },
+    {
+      "niveau": 5,
+      "degats": 33.84,
+      "soin": 37.6,
+      "portee": 10.56,
+      "duree_ticks": 207,
+      "recharge_ticks": 72,
+      "cout_energie": 42
+    }
+  ],
+  "maitrise": {
+    "seuil": 180,
+    "variante_fr": "Renaissance du Phénix de Latérite — Éveil du Maître",
+    "variante_en": "Laterite Phoenix Rebirth — Master Awakening",
+    "bonus": 0.3
+  }
+}

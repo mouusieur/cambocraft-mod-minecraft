@@ -1,0 +1,25 @@
+{
+  "biomes": [
+    "cambocraft:iles_flottantes_des_garudas"
+  ],
+  "boss_id": "garuda_de_la_tempete",
+  "boss_requis": "l_eveil_du_visage",
+  "ennemis": [
+    "lancier_celeste",
+    "aigle_de_foudre",
+    "elementaire_de_mousson",
+    "champion_des_nuages"
+  ],
+  "niveau_max": 185,
+  "niveau_min": 165,
+  "nom": {
+    "en": "Garuda Isles",
+    "fr": "Îles des Garudas"
+  },
+  "ordre": 10,
+  "teleporteur": {
+    "x": 1560,
+    "y": 168,
+    "z": 1240
+  }
+}

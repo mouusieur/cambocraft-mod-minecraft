@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Cœur de la Jungle Ancienne",
+    "en": "Ancient Jungle Heart"
+  },
+  "pouvoirs": [
+    "chant_de_la_foret_sacree",
+    "gardien_de_kapokier"
+  ],
+  "effet": "sylviculture_sacree",
+  "multiplicateur": 1.33,
+  "duree_ticks": 240,
+  "description": {
+    "fr": "Synergie active lorsque chant_de_la_foret_sacree et gardien_de_kapokier sont équipés ensemble : Cœur de la Jungle Ancienne (×1.33).",
+    "en": "Active synergy when chant_de_la_foret_sacree and gardien_de_kapokier are equipped together: Ancient Jungle Heart (×1.33)."
+  }
+}

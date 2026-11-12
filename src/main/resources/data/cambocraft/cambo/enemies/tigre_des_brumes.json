@@ -1,0 +1,20 @@
+{
+  "nom": {
+    "fr": "Tigre des brumes",
+    "en": "Mist Tiger"
+  },
+  "categorie": "zone",
+  "rang": "lame",
+  "element": "air",
+  "pv_base": 150.0,
+  "attaque_base": 20.0,
+  "armure_base": 7.0,
+  "vitesse": 0.29,
+  "xp": 255,
+  "pieces": 42,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_air"
+  ],
+  "phases": []
+}

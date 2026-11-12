@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Bond du Bambou",
+    "en": "Bamboo Leap"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (air, mobilite) : Bond du Bambou. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (air, mobilite): Bamboo Leap. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "commun",
+  "element": "air",
+  "type": "mobilite",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 0.0,
+      "soin": 0.0,
+      "portee": 8.0,
+      "duree_ticks": 30,
+      "recharge_ticks": 44,
+      "cout_energie": 12
+    },
+    {
+      "niveau": 2,
+      "degats": 0.0,
+      "soin": 0.0,
+      "portee": 8.64,
+      "duree_ticks": 34,
+      "recharge_ticks": 42,
+      "cout_energie": 12
+    },
+    {
+      "niveau": 3,
+      "degats": 0.0,
+      "soin": 0.0,
+      "portee": 9.28,
+      "duree_ticks": 37,
+      "recharge_ticks": 40,
+      "cout_energie": 12
+    },
+    {
+      "niveau": 4,
+      "degats": 0.0,
+      "soin": 0.0,
+      "portee": 9.92,
+      "duree_ticks": 41,
+      "recharge_ticks": 37,
+      "cout_energie": 12
+    },
+    {
+      "niveau": 5,
+      "degats": 0.0,
+      "soin": 0.0,
+      "portee": 10.56,
+      "duree_ticks": 44,
+      "recharge_ticks": 35,
+      "cout_energie": 12
+    }
+  ],
+  "maitrise": {
+    "seuil": 60,
+    "variante_fr": "Bond du Bambou — Éveil du Maître",
+    "variante_en": "Bamboo Leap — Master Awakening",
+    "bonus": 0.18
+  }
+}

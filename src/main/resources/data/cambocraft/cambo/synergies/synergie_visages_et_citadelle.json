@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Sentence du Labyrinthe Sacré",
+    "en": "Sacred Labyrinth Sentence"
+  },
+  "pouvoirs": [
+    "jugement_des_quatre_visages",
+    "citadelle_vivante_de_gres"
+  ],
+  "effet": "monolithe_implacable",
+  "multiplicateur": 1.38,
+  "duree_ticks": 240,
+  "description": {
+    "fr": "Synergie active lorsque jugement_des_quatre_visages et citadelle_vivante_de_gres sont équipés ensemble : Sentence du Labyrinthe Sacré (×1.38).",
+    "en": "Active synergy when jugement_des_quatre_visages and citadelle_vivante_de_gres are equipped together: Sacred Labyrinth Sentence (×1.38)."
+  }
+}

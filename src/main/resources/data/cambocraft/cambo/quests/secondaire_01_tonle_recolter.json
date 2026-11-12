@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "cambocraft:riz_brut",
+      "description": {
+        "en": "Complete 3x recolter (cambocraft:riz_brut).",
+        "fr": "Accomplir 3x recolter (cambocraft:riz_brut)."
+      },
+      "id": "objectif_1",
+      "objectif": "recolter",
+      "quantite": 3
+    },
+    {
+      "cible": "vendeur_de_riz",
+      "description": {
+        "en": "Report back to vendeur_de_riz.",
+        "fr": "Rapporter le résultat à vendeur_de_riz."
+      },
+      "id": "retour_pnj",
+      "objectif": "parler",
+      "quantite": 1
+    }
+  ],
+  "faction": "tonle",
+  "niveau_min": 2,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:bol_de_riz"
+    ],
+    "pieces": 15,
+    "pouvoir": "",
+    "reputation": 35,
+    "xp": 250
+  },
+  "resume": {
+    "en": "Assist vendeur_de_riz in Tonle province (recolter: cambocraft:riz_brut).",
+    "fr": "Aider vendeur_de_riz dans la province de Tonle (recolter : cambocraft:riz_brut)."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Tonle Harvest (I)",
+    "fr": "Moisson du Tonlé (I)"
+  },
+  "type": "secondaire"
+}

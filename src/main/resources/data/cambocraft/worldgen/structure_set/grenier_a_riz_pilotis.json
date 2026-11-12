@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042060,
+    "separation": 5,
+    "spacing": 16,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:grenier_a_riz_pilotis",
+      "weight": 1
+    }
+  ]
+}

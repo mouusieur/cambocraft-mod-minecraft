@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042048,
+    "separation": 8,
+    "spacing": 24,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:ruine_jungle_5_complexe",
+      "weight": 1
+    }
+  ]
+}

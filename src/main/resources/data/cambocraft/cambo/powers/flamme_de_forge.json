@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Flamme de Forge",
+    "en": "Forge Flame"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (feu, offensif) : Flamme de Forge. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (feu, offensif): Forge Flame. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "rare",
+  "element": "feu",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 12.0,
+      "soin": 0.0,
+      "portee": 6.0,
+      "duree_ticks": 50,
+      "recharge_ticks": 46,
+      "cout_energie": 22
+    },
+    {
+      "niveau": 2,
+      "degats": 14.64,
+      "soin": 0.0,
+      "portee": 6.48,
+      "duree_ticks": 56,
+      "recharge_ticks": 44,
+      "cout_energie": 22
+    },
+    {
+      "niveau": 3,
+      "degats": 17.28,
+      "soin": 0.0,
+      "portee": 6.96,
+      "duree_ticks": 62,
+      "recharge_ticks": 41,
+      "cout_energie": 22
+    },
+    {
+      "niveau": 4,
+      "degats": 19.92,
+      "soin": 0.0,
+      "portee": 7.44,
+      "duree_ticks": 68,
+      "recharge_ticks": 39,
+      "cout_energie": 22
+    },
+    {
+      "niveau": 5,
+      "degats": 22.56,
+      "soin": 0.0,
+      "portee": 7.92,
+      "duree_ticks": 74,
+      "recharge_ticks": 37,
+      "cout_energie": 22
+    }
+  ],
+  "maitrise": {
+    "seuil": 90,
+    "variante_fr": "Flamme de Forge — Éveil du Maître",
+    "variante_en": "Forge Flame — Master Awakening",
+    "bonus": 0.22
+  }
+}

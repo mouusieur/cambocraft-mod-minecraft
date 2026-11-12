@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Clairvoyance du Sanctuaire",
+    "en": "Sanctuary Clairvoyance"
+  },
+  "pouvoirs": [
+    "etincelle_du_wat",
+    "regard_clair"
+  ],
+  "effet": "precision_lumineuse",
+  "multiplicateur": 1.21,
+  "duree_ticks": 180,
+  "description": {
+    "fr": "Synergie active lorsque etincelle_du_wat et regard_clair sont équipés ensemble : Clairvoyance du Sanctuaire (×1.21).",
+    "en": "Active synergy when etincelle_du_wat and regard_clair are equipped together: Sanctuary Clairvoyance (×1.21)."
+  }
+}

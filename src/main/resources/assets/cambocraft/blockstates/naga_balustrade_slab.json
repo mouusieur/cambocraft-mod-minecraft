@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cambocraft:block/naga_balustrade_slab"
+    },
+    "type=double": {
+      "model": "cambocraft:block/naga_balustrade"
+    },
+    "type=top": {
+      "model": "cambocraft:block/naga_balustrade_slab_top"
+    }
+  }
+}

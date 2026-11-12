@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042054,
+    "separation": 8,
+    "spacing": 24,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:arene_pradal_serey",
+      "weight": 1
+    }
+  ]
+}

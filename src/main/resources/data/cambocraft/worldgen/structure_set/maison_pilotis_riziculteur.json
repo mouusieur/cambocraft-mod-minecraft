@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042017,
+    "separation": 5,
+    "spacing": 16,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:maison_pilotis_riziculteur",
+      "weight": 1
+    }
+  ]
+}

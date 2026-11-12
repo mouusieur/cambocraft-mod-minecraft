@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cambocraft:block/paletuvier_slab"
+    },
+    "type=double": {
+      "model": "cambocraft:block/paletuvier_planks"
+    },
+    "type=top": {
+      "model": "cambocraft:block/paletuvier_slab_top"
+    }
+  }
+}

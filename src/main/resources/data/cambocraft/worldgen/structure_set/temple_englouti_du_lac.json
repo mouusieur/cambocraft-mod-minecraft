@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042043,
+    "separation": 8,
+    "spacing": 24,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:temple_englouti_du_lac",
+      "weight": 1
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "nom": {
+    "fr": "Grenouille de Rizière",
+    "en": "Paddy Frog"
+  },
+  "item": "cambocraft:grenouille_de_riziaire",
+  "rarete": "commun",
+  "poids": 24,
+  "zones": [
+    "riziere",
+    "mangrove"
+  ],
+  "saisons": [
+    "*"
+  ],
+  "nocturne": false,
+  "min_cm": 5,
+  "max_cm": 12,
+  "difficulte": 0.15,
+  "prix": 2
+}

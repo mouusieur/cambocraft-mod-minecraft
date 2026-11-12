@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cambocraft:block/laterite_slab"
+    },
+    "type=double": {
+      "model": "cambocraft:block/laterite"
+    },
+    "type=top": {
+      "model": "cambocraft:block/laterite_slab_top"
+    }
+  }
+}

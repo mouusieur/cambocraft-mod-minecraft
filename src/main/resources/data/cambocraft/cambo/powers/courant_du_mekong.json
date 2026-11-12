@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Courant du Mékong",
+    "en": "Mekong Current"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (eau, offensif) : Courant du Mékong. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (eau, offensif): Mekong Current. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "rare",
+  "element": "eau",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 11.0,
+      "soin": 0.0,
+      "portee": 7.5,
+      "duree_ticks": 30,
+      "recharge_ticks": 48,
+      "cout_energie": 20
+    },
+    {
+      "niveau": 2,
+      "degats": 13.42,
+      "soin": 0.0,
+      "portee": 8.1,
+      "duree_ticks": 34,
+      "recharge_ticks": 46,
+      "cout_energie": 20
+    },
+    {
+      "niveau": 3,
+      "degats": 15.84,
+      "soin": 0.0,
+      "portee": 8.7,
+      "duree_ticks": 37,
+      "recharge_ticks": 43,
+      "cout_energie": 20
+    },
+    {
+      "niveau": 4,
+      "degats": 18.26,
+      "soin": 0.0,
+      "portee": 9.3,
+      "duree_ticks": 41,
+      "recharge_ticks": 41,
+      "cout_energie": 20
+    },
+    {
+      "niveau": 5,
+      "degats": 20.68,
+      "soin": 0.0,
+      "portee": 9.9,
+      "duree_ticks": 44,
+      "recharge_ticks": 38,
+      "cout_energie": 20
+    }
+  ],
+  "maitrise": {
+    "seuil": 90,
+    "variante_fr": "Courant du Mékong — Éveil du Maître",
+    "variante_en": "Mekong Current — Master Awakening",
+    "bonus": 0.22
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Lucioles du Marais",
+    "en": "Marsh Fireflies"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (vie, invocation) : Lucioles du Marais. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (vie, invocation): Marsh Fireflies. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "commun",
+  "element": "vie",
+  "type": "invocation",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 5.0,
+      "soin": 2.5,
+      "portee": 6.0,
+      "duree_ticks": 80,
+      "recharge_ticks": 70,
+      "cout_energie": 16
+    },
+    {
+      "niveau": 2,
+      "degats": 6.1,
+      "soin": 3.05,
+      "portee": 6.48,
+      "duree_ticks": 90,
+      "recharge_ticks": 66,
+      "cout_energie": 16
+    },
+    {
+      "niveau": 3,
+      "degats": 7.2,
+      "soin": 3.6,
+      "portee": 6.96,
+      "duree_ticks": 99,
+      "recharge_ticks": 63,
+      "cout_energie": 16
+    },
+    {
+      "niveau": 4,
+      "degats": 8.3,
+      "soin": 4.15,
+      "portee": 7.44,
+      "duree_ticks": 109,
+      "recharge_ticks": 60,
+      "cout_energie": 16
+    },
+    {
+      "niveau": 5,
+      "degats": 9.4,
+      "soin": 4.7,
+      "portee": 7.92,
+      "duree_ticks": 118,
+      "recharge_ticks": 56,
+      "cout_energie": 16
+    }
+  ],
+  "maitrise": {
+    "seuil": 60,
+    "variante_fr": "Lucioles du Marais — Éveil du Maître",
+    "variante_en": "Marsh Fireflies — Master Awakening",
+    "bonus": 0.18
+  }
+}

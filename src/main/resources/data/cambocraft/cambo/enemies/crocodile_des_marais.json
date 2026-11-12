@@ -1,0 +1,20 @@
+{
+  "nom": {
+    "fr": "Crocodile des marais",
+    "en": "Swamp Crocodile"
+  },
+  "categorie": "zone",
+  "rang": "lame",
+  "element": "eau",
+  "pv_base": 220.0,
+  "attaque_base": 26.0,
+  "armure_base": 10.0,
+  "vitesse": 0.3,
+  "xp": 340,
+  "pieces": 56,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_eau"
+  ],
+  "phases": []
+}

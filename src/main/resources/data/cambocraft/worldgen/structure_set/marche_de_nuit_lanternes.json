@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042024,
+    "separation": 7,
+    "spacing": 22,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:marche_de_nuit_lanternes",
+      "weight": 1
+    }
+  ]
+}

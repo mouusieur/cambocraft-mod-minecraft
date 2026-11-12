@@ -1,0 +1,21 @@
+{
+  "nom": {
+    "fr": "Crabe de Rizière",
+    "en": "Paddy Crab"
+  },
+  "item": "cambocraft:crabe_de_riziaire",
+  "rarete": "peu_commun",
+  "poids": 18,
+  "zones": [
+    "riziere",
+    "mangrove"
+  ],
+  "saisons": [
+    "*"
+  ],
+  "nocturne": false,
+  "min_cm": 4,
+  "max_cm": 14,
+  "difficulte": 0.28,
+  "prix": 5
+}

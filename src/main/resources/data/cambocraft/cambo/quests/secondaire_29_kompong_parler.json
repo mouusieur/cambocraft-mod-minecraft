@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "conteur",
+      "description": {
+        "en": "Complete 2x parler (conteur).",
+        "fr": "Accomplir 2x parler (conteur)."
+      },
+      "id": "objectif_1",
+      "objectif": "parler",
+      "quantite": 2
+    },
+    {
+      "cible": "conteur",
+      "description": {
+        "en": "Report back to conteur.",
+        "fr": "Rapporter le résultat à conteur."
+      },
+      "id": "retour_pnj",
+      "objectif": "parler",
+      "quantite": 1
+    }
+  ],
+  "faction": "kompong",
+  "niveau_min": 71,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:offrande_de_fleurs"
+    ],
+    "pieces": 30,
+    "pouvoir": "",
+    "reputation": 70,
+    "xp": 500
+  },
+  "resume": {
+    "en": "Assist conteur in Kompong province (parler: conteur).",
+    "fr": "Aider conteur dans la province de Kompong (parler : conteur)."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Memory of the Elders (II)",
+    "fr": "Mémoire des Anciens (II)"
+  },
+  "type": "secondaire"
+}

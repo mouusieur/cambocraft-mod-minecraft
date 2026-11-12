@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Attisement des Palmes",
+    "en": "Palm Fanning"
+  },
+  "pouvoirs": [
+    "souffle_des_palmes",
+    "tison_ardent"
+  ],
+  "effet": "embrasement_rapide",
+  "multiplicateur": 1.22,
+  "duree_ticks": 160,
+  "description": {
+    "fr": "Synergie active lorsque souffle_des_palmes et tison_ardent sont équipés ensemble : Attisement des Palmes (×1.22).",
+    "en": "Active synergy when souffle_des_palmes and tison_ardent are equipped together: Palm Fanning (×1.22)."
+  }
+}

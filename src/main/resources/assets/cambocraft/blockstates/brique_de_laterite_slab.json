@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cambocraft:block/brique_de_laterite_slab"
+    },
+    "type=double": {
+      "model": "cambocraft:block/brique_de_laterite"
+    },
+    "type=top": {
+      "model": "cambocraft:block/brique_de_laterite_slab_top"
+    }
+  }
+}

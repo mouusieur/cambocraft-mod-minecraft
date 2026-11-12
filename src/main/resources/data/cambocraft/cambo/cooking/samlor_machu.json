@@ -1,0 +1,17 @@
+{
+  "buff_amplificateur": 0,
+  "buff_duree_ticks": 3600,
+  "buff_effet": "minecraft:luck",
+  "faction": "tonle",
+  "ingredients": [
+    "cambocraft:poisson_tilapia",
+    "cambocraft:tamarin_gousse",
+    "cambocraft:citronnelle_coupee"
+  ],
+  "nom": {
+    "en": "Sour Samlor Machu",
+    "fr": "Soupe Aigre Samlor Machu"
+  },
+  "palier_min": "respecte",
+  "resultat": "cambocraft:samlor_machu"
+}

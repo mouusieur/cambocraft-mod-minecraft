@@ -1,0 +1,17 @@
+{
+  "buff_amplificateur": 1,
+  "buff_duree_ticks": 3000,
+  "buff_effet": "minecraft:speed",
+  "faction": "srok",
+  "ingredients": [
+    "cambocraft:combava_zeste",
+    "cambocraft:citronnelle_coupee",
+    "cambocraft:piment_rouge"
+  ],
+  "nom": {
+    "en": "Kaffir Lime Salad",
+    "fr": "Salade Citronnée au Combava"
+  },
+  "palier_min": "respecte",
+  "resultat": "cambocraft:pleah_sach_ko"
+}

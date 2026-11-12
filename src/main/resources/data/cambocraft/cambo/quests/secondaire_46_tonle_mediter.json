@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "sanctuaire_lotus_bassin",
+      "description": {
+        "en": "Complete 3x mediter (sanctuaire_lotus_bassin).",
+        "fr": "Accomplir 3x mediter (sanctuaire_lotus_bassin)."
+      },
+      "id": "objectif_1",
+      "objectif": "mediter",
+      "quantite": 3
+    },
+    {
+      "cible": "apprenti_moine",
+      "description": {
+        "en": "Report back to apprenti_moine.",
+        "fr": "Rapporter le résultat à apprenti_moine."
+      },
+      "id": "retour_pnj",
+      "objectif": "parler",
+      "quantite": 1
+    }
+  ],
+  "faction": "tonle",
+  "niveau_min": 118,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:poudre_de_lotus"
+    ],
+    "pieces": 45,
+    "pouvoir": "",
+    "reputation": 105,
+    "xp": 750
+  },
+  "resume": {
+    "en": "Assist apprenti_moine in Tonle province (mediter: sanctuaire_lotus_bassin).",
+    "fr": "Aider apprenti_moine dans la province de Tonle (mediter : sanctuaire_lotus_bassin)."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Morning Calm (III)",
+    "fr": "Calme Matinal (III)"
+  },
+  "type": "secondaire"
+}

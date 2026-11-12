@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Peau d'Argile",
+    "en": "Clay Skin"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (terre, defensif) : Peau d'Argile. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (terre, defensif): Clay Skin. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "commun",
+  "element": "terre",
+  "type": "defensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 0.0,
+      "soin": 4.0,
+      "portee": 2.0,
+      "duree_ticks": 100,
+      "recharge_ticks": 75,
+      "cout_energie": 16
+    },
+    {
+      "niveau": 2,
+      "degats": 0.0,
+      "soin": 4.88,
+      "portee": 2.16,
+      "duree_ticks": 112,
+      "recharge_ticks": 71,
+      "cout_energie": 16
+    },
+    {
+      "niveau": 3,
+      "degats": 0.0,
+      "soin": 5.76,
+      "portee": 2.32,
+      "duree_ticks": 124,
+      "recharge_ticks": 68,
+      "cout_energie": 16
+    },
+    {
+      "niveau": 4,
+      "degats": 0.0,
+      "soin": 6.64,
+      "portee": 2.48,
+      "duree_ticks": 136,
+      "recharge_ticks": 64,
+      "cout_energie": 16
+    },
+    {
+      "niveau": 5,
+      "degats": 0.0,
+      "soin": 7.52,
+      "portee": 2.64,
+      "duree_ticks": 148,
+      "recharge_ticks": 60,
+      "cout_energie": 16
+    }
+  ],
+  "maitrise": {
+    "seuil": 60,
+    "variante_fr": "Peau d'Argile — Éveil du Maître",
+    "variante_en": "Clay Skin — Master Awakening",
+    "bonus": 0.18
+  }
+}

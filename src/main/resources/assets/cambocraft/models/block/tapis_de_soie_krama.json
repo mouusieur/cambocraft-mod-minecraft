@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/carpet",
+  "textures": {
+    "wool": "cambocraft:block/tapis_de_soie_krama"
+  }
+}

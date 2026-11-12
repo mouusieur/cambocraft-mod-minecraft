@@ -1,0 +1,21 @@
+{
+  "nom": {
+    "fr": "Silure Géant",
+    "en": "Giant Catfish"
+  },
+  "item": "cambocraft:silure_geant",
+  "rarete": "rare",
+  "poids": 6,
+  "zones": [
+    "grand_lac",
+    "mangrove"
+  ],
+  "saisons": [
+    "*"
+  ],
+  "nocturne": true,
+  "min_cm": 60,
+  "max_cm": 180,
+  "difficulte": 0.85,
+  "prix": 30
+}

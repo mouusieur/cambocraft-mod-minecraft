@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Seigneur de l'Archipel Céleste",
+    "en": "Lord of the Sky Archipelago"
+  },
+  "pouvoirs": [
+    "tempete_du_roi_garuda",
+    "ascension_des_iles_celestes"
+  ],
+  "effet": "souverainete_des_vents",
+  "multiplicateur": 1.38,
+  "duree_ticks": 240,
+  "description": {
+    "fr": "Synergie active lorsque tempete_du_roi_garuda et ascension_des_iles_celestes sont équipés ensemble : Seigneur de l'Archipel Céleste (×1.38).",
+    "en": "Active synergy when tempete_du_roi_garuda and ascension_des_iles_celestes are equipped together: Lord of the Sky Archipelago (×1.38)."
+  }
+}

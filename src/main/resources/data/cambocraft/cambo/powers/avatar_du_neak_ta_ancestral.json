@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Avatar du Neak Ta Ancestral",
+    "en": "Ancestral Neak Ta Avatar"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (vie, invocation) : Avatar du Neak Ta Ancestral. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (vie, invocation): Ancestral Neak Ta Avatar. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "mythique",
+  "element": "vie",
+  "type": "invocation",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 36.0,
+      "soin": 24.0,
+      "portee": 13.0,
+      "duree_ticks": 180,
+      "recharge_ticks": 88,
+      "cout_energie": 54
+    },
+    {
+      "niveau": 2,
+      "degats": 43.92,
+      "soin": 29.28,
+      "portee": 14.04,
+      "duree_ticks": 202,
+      "recharge_ticks": 84,
+      "cout_energie": 54
+    },
+    {
+      "niveau": 3,
+      "degats": 51.84,
+      "soin": 34.56,
+      "portee": 15.08,
+      "duree_ticks": 223,
+      "recharge_ticks": 79,
+      "cout_energie": 54
+    },
+    {
+      "niveau": 4,
+      "degats": 59.76,
+      "soin": 39.84,
+      "portee": 16.12,
+      "duree_ticks": 245,
+      "recharge_ticks": 75,
+      "cout_energie": 54
+    },
+    {
+      "niveau": 5,
+      "degats": 67.68,
+      "soin": 45.12,
+      "portee": 17.16,
+      "duree_ticks": 266,
+      "recharge_ticks": 70,
+      "cout_energie": 54
+    }
+  ],
+  "maitrise": {
+    "seuil": 240,
+    "variante_fr": "Avatar du Neak Ta Ancestral — Éveil du Maître",
+    "variante_en": "Ancestral Neak Ta Avatar — Master Awakening",
+    "bonus": 0.35
+  }
+}

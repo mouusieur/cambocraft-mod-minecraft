@@ -1,0 +1,17 @@
+{
+  "buff_amplificateur": 1,
+  "buff_duree_ticks": 4800,
+  "buff_effet": "minecraft:strength",
+  "faction": "tonle",
+  "ingredients": [
+    "cambocraft:crabe_de_riziaire",
+    "cambocraft:poivre_vert_frais",
+    "cambocraft:ail_grille"
+  ],
+  "nom": {
+    "en": "Fresh Green Pepper Crab",
+    "fr": "Crabe au Poivre Vert Frais"
+  },
+  "palier_min": "legendaire",
+  "resultat": "cambocraft:crabe_au_poivre_vert"
+}

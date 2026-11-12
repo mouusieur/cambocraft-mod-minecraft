@@ -1,0 +1,48 @@
+{
+  "faction": "ly",
+  "offres": [
+    {
+      "item": "cambocraft:feuille_de_murier",
+      "palier_min": "connu",
+      "prix_base": 4,
+      "quantite": 4,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:fil_de_soie",
+      "palier_min": "connu",
+      "prix_base": 10,
+      "quantite": 4,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:tissu_de_soie",
+      "palier_min": "respecte",
+      "prix_base": 22,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:krama_traditionnel",
+      "palier_min": "respecte",
+      "prix_base": 30,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:tunique_de_soie_et_lotus",
+      "palier_min": "honore",
+      "prix_base": 85,
+      "quantite": 1,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:krama_de_soie_doree",
+      "palier_min": "legendaire",
+      "prix_base": 140,
+      "quantite": 1,
+      "sensible_au_riz": false
+    }
+  ],
+  "pnj": "tisserand_de_soie"
+}

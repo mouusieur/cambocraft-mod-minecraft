@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Offrande du Matin Calme",
+    "en": "Calm Morning Offering"
+  },
+  "pouvoirs": [
+    "lueur_d_encens",
+    "bourgeon_de_riz"
+  ],
+  "effet": "regeneration_douce",
+  "multiplicateur": 1.24,
+  "duree_ticks": 200,
+  "description": {
+    "fr": "Synergie active lorsque lueur_d_encens et bourgeon_de_riz sont équipés ensemble : Offrande du Matin Calme (×1.24).",
+    "en": "Active synergy when lueur_d_encens and bourgeon_de_riz are equipped together: Calm Morning Offering (×1.24)."
+  }
+}

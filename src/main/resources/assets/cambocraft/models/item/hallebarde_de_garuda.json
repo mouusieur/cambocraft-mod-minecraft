@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "cambocraft:item/hallebarde_de_garuda"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "cambocraft:lok_lak",
+      "description": {
+        "en": "Complete 2x cuisiner (cambocraft:lok_lak).",
+        "fr": "Accomplir 2x cuisiner (cambocraft:lok_lak)."
+      },
+      "id": "objectif_1",
+      "objectif": "cuisiner",
+      "quantite": 2
+    },
+    {
+      "cible": "cuisinier_de_rue",
+      "description": {
+        "en": "Report back to cuisinier_de_rue.",
+        "fr": "Rapporter le résultat à cuisinier_de_rue."
+      },
+      "id": "retour_pnj",
+      "objectif": "parler",
+      "quantite": 1
+    }
+  ],
+  "faction": "ly",
+  "niveau_min": 77,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:lok_lak"
+    ],
+    "pieces": 30,
+    "pouvoir": "",
+    "reputation": 70,
+    "xp": 500
+  },
+  "resume": {
+    "en": "Assist cuisinier_de_rue in Ly province (cuisiner: cambocraft:lok_lak).",
+    "fr": "Aider cuisinier_de_rue dans la province de Ly (cuisiner : cambocraft:lok_lak)."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Hill Pepper (II)",
+    "fr": "Poivre des Collines (II)"
+  },
+  "type": "secondaire"
+}

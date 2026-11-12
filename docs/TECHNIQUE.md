@@ -1,0 +1,44 @@
+# Documentation technique et chaîne de compilation — Cambocraft
+
+Version : `1.0.0` · Minecraft `1.21.1` · Yarn `1.21.1+build.3` · Fabric Loader `0.16.14` · Fabric API `0.116.18+1.21.1` · Java `21`
+
+---
+
+## 1. Architecture en 18 paquets (`src/main/java/com/cambocraft/`)
+
+| Paquet | Classes principales | Rôle technique |
+|---|---|---|
+| `com.cambocraft` | `Cambocraft` | Point d'entrée `ModInitializer` ordonnant l'enregistrement des blocs, objets, registres et événements. |
+| `registry` | `Registrar`, `CamboBlocks`, `CamboItems`, `CamboItemGroup` | Enregistrement déclaratif de **220 blocs** et **199 objets autonomes** (419 items au total). |
+| `data` | `DataManager`, `DataConsumer` | Écouteur `ResourceManagerHelper` (`SERVER_DATA`) et chargeur hors ligne `chargerDepuisDossier(Path)`. |
+| `world` | `CambodiaDimension`, `LotusPortal`, `LotusTeleporter` | Dimension `cambocraft:cambodia`, 15 biomes, portail horizontal 3×3 et téléporteurs inter-zones. |
+| `ecology` | `Season`, `Seasons`, `RiceCycle`, `WorldAtmosphere` | Cycle de 3 saisons de 8 jours, crue du Grand Lac (`Y = 62 / 64 / 68`), temples engloutis et riziculture. |
+| `npc` | `Faction`, `ReputationTier`, `Economy`, `NpcDefinition`, `DialogueNode`, `MerchantOfferSpec`, `NpcRegistry` | 4 factions, 5 paliers de réputation, inflation du riz, 16 PNJ à routine horaire, dialogues et 8 marchands. |
+| `craft` | `CamboFoods`, `CamboWeapons`, `CamboWeaponItem`, `CamboHealingItem`, `CookingRecipeSpec`, `CookingRegistry`, `SilkChain`, `StoneSculpture`, `ForgeUpgrade` | 16 plats khmers à buffs, chaîne de la soie, 9 sculptures sur pierre et forge `+1..+5` non destructive. |
+| `fishing` | `FishRarity`, `FishSpecies`, `FishingTable`, `FishingContext`, `FishingCatch`, `FishingMinigame`, `FishingRegistry`, `CamboFishingRodItem` | 16 espèces de poissons, mini-jeu à fenêtre de réflexe et marquage de taille/prix. |
+| `progression` | `ProgressionCurve`, `ZoneDefinition`, `ZoneRegistry` | Courbe d'XP des niveaux `1` à `200` (`round(120 × n^1.8)`), Renaissance `1–5` et verrouillage des 12 zones. |
+| `quest` | `QuestDefinition`, `QuestEngine`, `QuestRegistry` | Moteur d'états des 85 quêtes (intro, 12 chapitres principaux non abandonnables, 64 secondaires, 8 répétables, 3 fins). |
+| `combat` | `WildlifeSpecies`, `ShadowClanRank`, `ShadowNinjaAi`, `BossPhaseSpec`, `EnemyDefinition`, `BossEncounterEngine`, `CombatEngine`, `CombatRegistry` | 12 espèces de faune, transformation en 5 étapes des ninjas de l'Ombre, 12 boss multi-phases et calcul serveur des dégâts + *i-frames*. |
+| `event` | `SeasonalEventDefinition`, `ShadowNightManager` | Événements saisonniers dynamiques et **Nuit des Ombres** (3 vagues au 6e jour de chaque saison). |
+| `power` | `PowerRarity`, `PowerElement`, `PowerType`, `PowerDefinition`, `SynergyDefinition`, `RiceBowlGacha`, `NenNotebook`, `PowerRegistry` | 84 pouvoirs du Nen (niveaux 1–5 + Maîtrise), 34 synergies, gacha avec *pity* (30 / 80 / 250) et Carnet du Nen. |
+| `companion` | `NeakTaCompanion`, `MountSystem` | Esprit protecteur Neak Ta à 3 stades d'évolution, monture Buffle d'eau et Pirogue khmère. |
+| `minigame` | `PradalSereyArena`, `PirogueRaceCourse`, `ApsaraDanceGame`, `NightMarketManager` | Arène Pradal Serey (3 paliers), courses de pirogues (3 parcours), danse Apsara et marché de nuit. |
+| `network` | `CamboPayloads`, `ServerPacketValidator` | Paquets C2S/S2C et validation serveur systématique (portée `<= 6,0` blocs, anti-spam, permissions). |
+| `client` | `CambocraftClient`, `CamboHudModel`, `AccessibilityConfig` | Point d'entrée client, modèle du HUD et accessibilité (daltonisme Okabe-Ito, effets réduits, taille du texte, sous-titres). |
+| `datagen` / `util` | `CambocraftDataGen`, `Ids`, `Localized`, `JsonUtil`, `DataBundle`, `Log`, `Tick`, `Validate`, `Effects` | Utilitaires transversaux et synchronisation des générateurs. |
+
+---
+
+## 2. Chaîne de génération et de validation (`tools/`)
+
+- `python3 tools/gen_registry.py` : génère `CamboBlocks.java`, `CamboItems.java`, blockstates, modèles, tables de butin, tags et traductions `fr_fr.json` / `en_us.json` depuis `assets_src/registry/*.yml`.
+- `python3 tools/gen_textures.py` : génère de façon déterministe les 160 textures de blocs 16×16, les 199 icônes d'objets 16×16 et `icon.png` 64×64.
+- `python3 tools/gen_worldgen.py` : génère la dimension `cambocraft:cambodia`, le routeur de densité `cambodia_noise.json`, les 15 biomes, les 16 features et les 12 zones.
+- `python3 tools/gen_structures.py` : génère les **128 fichiers `.nbt`** compressés GZip (`DataVersion: 3953`) des 64 familles de structures (2 variantes chacune) et leurs `template_pool` Jigsaw.
+- `python3 tools/gen_npc_craft_data.py` : génère les 16 PNJ, 16 dialogues, 8 marchands, 16 plats khmers et `docs/RECETTES.md`.
+- `python3 tools/gen_quests.py` : génère les 85 quêtes JSON (intro, 12 chapitres principaux, 64 secondaires, 8 répétables).
+- `python3 tools/gen_combat_power_data.py` : génère les 84 pouvoirs, 34 synergies, 56 ennemis/boss, 4 événements et modèles d'entités.
+- `python3 tools/gen_sounds.py` : génère `sounds.json`, les 12 fichiers `.ogg` et les sous-titres bilingues.
+- `python3 tools/sim_gacha.py` : exécute `5 000 000` de tirages sans pity + `5 000 000` de tirages avec pity et génère `docs/EQUILIBRAGE.md`.
+- `python3 tools/validate.py` : contrôle l'intégralité des **1 889 fichiers JSON**, **128 fichiers NBT**, **360 PNG** et **12 fichiers OGG** (**0 erreur**).
+- `bash tools/dev/apicheck/check.sh` : auto-amorce la chaîne Java 21 / JDT + stubs Yarn `1.21.1+build.3`, compile les **124 classes** du mod et exécute les **10 suites de tests unitaires** (**0 échec**).

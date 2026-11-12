@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "ninja_repenti",
+      "description": {
+        "en": "Complete 1x parler (ninja_repenti).",
+        "fr": "Accomplir 1x parler (ninja_repenti)."
+      },
+      "id": "objectif_1",
+      "objectif": "parler",
+      "quantite": 1
+    },
+    {
+      "cible": "maitre_de_quete",
+      "description": {
+        "en": "Report back to maitre_de_quete.",
+        "fr": "Rapporter le résultat à maitre_de_quete."
+      },
+      "id": "retour_pnj",
+      "objectif": "parler",
+      "quantite": 1
+    }
+  ],
+  "faction": "srok",
+  "niveau_min": 30,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:essence_d_ombre"
+    ],
+    "pieces": 15,
+    "pouvoir": "",
+    "reputation": 35,
+    "xp": 250
+  },
+  "resume": {
+    "en": "Assist maitre_de_quete in Srok province (parler: ninja_repenti).",
+    "fr": "Aider maitre_de_quete dans la province de Srok (parler : ninja_repenti)."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Voice of Repentance (I)",
+    "fr": "Voix du Repentir (I)"
+  },
+  "type": "secondaire"
+}

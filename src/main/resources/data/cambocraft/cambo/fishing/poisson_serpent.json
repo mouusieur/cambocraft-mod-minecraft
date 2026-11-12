@@ -1,0 +1,22 @@
+{
+  "nom": {
+    "fr": "Poisson-Serpent",
+    "en": "Snakehead"
+  },
+  "item": "cambocraft:poisson_serpent",
+  "rarete": "peu_commun",
+  "poids": 20,
+  "zones": [
+    "riviere",
+    "mangrove",
+    "riziere"
+  ],
+  "saisons": [
+    "*"
+  ],
+  "nocturne": false,
+  "min_cm": 25,
+  "max_cm": 70,
+  "difficulte": 0.45,
+  "prix": 6
+}

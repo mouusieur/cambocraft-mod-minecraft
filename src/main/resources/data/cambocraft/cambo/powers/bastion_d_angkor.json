@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Bastion d'Angkor",
+    "en": "Bastion of Angkor"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (terre, defensif) : Bastion d'Angkor. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (terre, defensif): Bastion of Angkor. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "epique",
+  "element": "terre",
+  "type": "defensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 0.0,
+      "soin": 14.0,
+      "portee": 5.0,
+      "duree_ticks": 140,
+      "recharge_ticks": 84,
+      "cout_energie": 32
+    },
+    {
+      "niveau": 2,
+      "degats": 0.0,
+      "soin": 17.08,
+      "portee": 5.4,
+      "duree_ticks": 157,
+      "recharge_ticks": 80,
+      "cout_energie": 32
+    },
+    {
+      "niveau": 3,
+      "degats": 0.0,
+      "soin": 20.16,
+      "portee": 5.8,
+      "duree_ticks": 174,
+      "recharge_ticks": 76,
+      "cout_energie": 32
+    },
+    {
+      "niveau": 4,
+      "degats": 0.0,
+      "soin": 23.24,
+      "portee": 6.2,
+      "duree_ticks": 190,
+      "recharge_ticks": 71,
+      "cout_energie": 32
+    },
+    {
+      "niveau": 5,
+      "degats": 0.0,
+      "soin": 26.32,
+      "portee": 6.6,
+      "duree_ticks": 207,
+      "recharge_ticks": 67,
+      "cout_energie": 32
+    }
+  ],
+  "maitrise": {
+    "seuil": 130,
+    "variante_fr": "Bastion d'Angkor — Éveil du Maître",
+    "variante_en": "Bastion of Angkor — Master Awakening",
+    "bonus": 0.26
+  }
+}

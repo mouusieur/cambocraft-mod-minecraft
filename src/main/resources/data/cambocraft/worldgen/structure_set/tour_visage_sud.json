@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042008,
+    "separation": 7,
+    "spacing": 22,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:tour_visage_sud",
+      "weight": 1
+    }
+  ]
+}

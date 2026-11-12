@@ -1,0 +1,81 @@
+{
+  "format_version": "1.21.1-cambocraft-native",
+  "animations": {
+    "respiration_repos": {
+      "loop": true,
+      "length_ticks": 40,
+      "bones": {
+        "body": {
+          "scale": [
+            1.0,
+            1.02,
+            1.0
+          ]
+        }
+      }
+    },
+    "marche_standard": {
+      "loop": true,
+      "length_ticks": 20,
+      "bones": {
+        "left_leg": {
+          "rot_x": 30
+        },
+        "right_leg": {
+          "rot_x": -30
+        }
+      }
+    },
+    "salut_khmer_sampeah": {
+      "loop": false,
+      "length_ticks": 30,
+      "bones": {
+        "left_arm": {
+          "rot_x": -65
+        },
+        "right_arm": {
+          "rot_x": -65
+        },
+        "head": {
+          "rot_x": 15
+        }
+      }
+    },
+    "transformation_ninja_5_etapes": {
+      "loop": false,
+      "length_ticks": 42,
+      "stages": [
+        {
+          "etape": 1,
+          "nom": "dissimule_villageois",
+          "tick_debut": 0
+        },
+        {
+          "etape": 2,
+          "nom": "suspicion_regard",
+          "tick_debut": 1
+        },
+        {
+          "etape": 3,
+          "nom": "sceau_de_fumigene",
+          "tick_debut": 16
+        },
+        {
+          "etape": 4,
+          "nom": "revelation_tenue_ombre",
+          "tick_debut": 28
+        },
+        {
+          "etape": 5,
+          "nom": "combat_actif",
+          "tick_debut": 42
+        }
+      ]
+    },
+    "transition_phase_boss": {
+      "loop": false,
+      "length_ticks": 30,
+      "invulnerable": true
+    }
+  }
+}

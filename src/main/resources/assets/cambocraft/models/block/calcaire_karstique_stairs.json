@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "cambocraft:block/calcaire_karstique",
+    "side": "cambocraft:block/calcaire_karstique",
+    "top": "cambocraft:block/calcaire_karstique"
+  }
+}

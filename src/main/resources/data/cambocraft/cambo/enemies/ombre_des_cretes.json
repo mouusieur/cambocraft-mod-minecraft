@@ -1,0 +1,23 @@
+{
+  "nom": {
+    "fr": "Ombre des crêtes",
+    "en": "Ridge Shadow"
+  },
+  "categorie": "ninja",
+  "rang": "archonte",
+  "element": "ombre",
+  "pv_base": 900.0,
+  "attaque_base": 104.0,
+  "armure_base": 24.0,
+  "vitesse": 0.34,
+  "xp": 765,
+  "pieces": 126,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_ombre",
+    "transformation_5_etapes",
+    "pas_de_l_ombre",
+    "salve_shuriken"
+  ],
+  "phases": []
+}

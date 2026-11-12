@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 2,
+  "etapes": [
+    {
+      "cible": "maitre_de_quete",
+      "description": {
+        "en": "Gather accounts from the province.",
+        "fr": "Recueillir les témoignages de la province."
+      },
+      "id": "enquete_province",
+      "objectif": "parler",
+      "quantite": 1
+    },
+    {
+      "cible": "le_buffle_d_or",
+      "description": {
+        "en": "Overcome the zone trial (le_buffle_d_or).",
+        "fr": "Surmonter l'épreuve de fin de zone (le_buffle_d_or)."
+      },
+      "id": "epreuve_majeure",
+      "objectif": "vaincre",
+      "quantite": 1
+    }
+  ],
+  "faction": "ly",
+  "niveau_min": 15,
+  "quete_requise": "chapitre_01_les_berges_du_tonle",
+  "recompenses": {
+    "objets": [
+      "cambocraft:corne_du_buffle_d_or"
+    ],
+    "pieces": 80,
+    "pouvoir": "",
+    "reputation": 120,
+    "xp": 2000
+  },
+  "resume": {
+    "en": "Restore the paddy dikes of Ly and appease the Golden Buffalo.",
+    "fr": "Restaurer les diguettes des rizières de Ly et apaiser le Buffle d’Or."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Chapter II — Golden Terraces of Ly",
+    "fr": "Chapitre II — Les Terrasses d’Or de Ly"
+  },
+  "type": "principale"
+}

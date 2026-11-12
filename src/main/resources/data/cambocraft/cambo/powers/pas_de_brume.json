@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Pas de Brume",
+    "en": "Mist Step"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (eau, mobilite) : Pas de Brume. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (eau, mobilite): Mist Step. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "commun",
+  "element": "eau",
+  "type": "mobilite",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 0.0,
+      "soin": 0.0,
+      "portee": 7.0,
+      "duree_ticks": 30,
+      "recharge_ticks": 50,
+      "cout_energie": 12
+    },
+    {
+      "niveau": 2,
+      "degats": 0.0,
+      "soin": 0.0,
+      "portee": 7.56,
+      "duree_ticks": 34,
+      "recharge_ticks": 48,
+      "cout_energie": 12
+    },
+    {
+      "niveau": 3,
+      "degats": 0.0,
+      "soin": 0.0,
+      "portee": 8.12,
+      "duree_ticks": 37,
+      "recharge_ticks": 45,
+      "cout_energie": 12
+    },
+    {
+      "niveau": 4,
+      "degats": 0.0,
+      "soin": 0.0,
+      "portee": 8.68,
+      "duree_ticks": 41,
+      "recharge_ticks": 42,
+      "cout_energie": 12
+    },
+    {
+      "niveau": 5,
+      "degats": 0.0,
+      "soin": 0.0,
+      "portee": 9.24,
+      "duree_ticks": 44,
+      "recharge_ticks": 40,
+      "cout_energie": 12
+    }
+  ],
+  "maitrise": {
+    "seuil": 60,
+    "variante_fr": "Pas de Brume — Éveil du Maître",
+    "variante_en": "Mist Step — Master Awakening",
+    "bonus": 0.18
+  }
+}

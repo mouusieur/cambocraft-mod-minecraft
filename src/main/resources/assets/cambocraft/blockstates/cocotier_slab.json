@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cambocraft:block/cocotier_slab"
+    },
+    "type=double": {
+      "model": "cambocraft:block/cocotier_planks"
+    },
+    "type=top": {
+      "model": "cambocraft:block/cocotier_slab_top"
+    }
+  }
+}

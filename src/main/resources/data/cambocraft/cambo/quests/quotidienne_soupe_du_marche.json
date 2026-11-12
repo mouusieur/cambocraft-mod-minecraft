@@ -1,0 +1,38 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "cambocraft:nom_banh_chok",
+      "description": {
+        "en": "Complete 1x cuisiner (cambocraft:nom_banh_chok).",
+        "fr": "Accomplir 1x cuisiner (cambocraft:nom_banh_chok)."
+      },
+      "id": "etape_unique",
+      "objectif": "cuisiner",
+      "quantite": 1
+    }
+  ],
+  "faction": "tonle",
+  "niveau_min": 1,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:piece_du_lotus"
+    ],
+    "pieces": 25,
+    "pouvoir": "",
+    "reputation": 40,
+    "xp": 400
+  },
+  "resume": {
+    "en": "Quotidienne quest in Tonle province.",
+    "fr": "Quête quotidienne de la province de Tonle."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Market Pot",
+    "fr": "Marmite du Marché"
+  },
+  "type": "quotidienne"
+}

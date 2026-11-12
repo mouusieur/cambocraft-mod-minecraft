@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Éclat de Latérite",
+    "en": "Laterite Shard"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (terre, offensif) : Éclat de Latérite. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (terre, offensif): Laterite Shard. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "commun",
+  "element": "terre",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 8.0,
+      "soin": 0.0,
+      "portee": 5.0,
+      "duree_ticks": 20,
+      "recharge_ticks": 45,
+      "cout_energie": 15
+    },
+    {
+      "niveau": 2,
+      "degats": 9.76,
+      "soin": 0.0,
+      "portee": 5.4,
+      "duree_ticks": 22,
+      "recharge_ticks": 43,
+      "cout_energie": 15
+    },
+    {
+      "niveau": 3,
+      "degats": 11.52,
+      "soin": 0.0,
+      "portee": 5.8,
+      "duree_ticks": 25,
+      "recharge_ticks": 40,
+      "cout_energie": 15
+    },
+    {
+      "niveau": 4,
+      "degats": 13.28,
+      "soin": 0.0,
+      "portee": 6.2,
+      "duree_ticks": 27,
+      "recharge_ticks": 38,
+      "cout_energie": 15
+    },
+    {
+      "niveau": 5,
+      "degats": 15.04,
+      "soin": 0.0,
+      "portee": 6.6,
+      "duree_ticks": 30,
+      "recharge_ticks": 36,
+      "cout_energie": 15
+    }
+  ],
+  "maitrise": {
+    "seuil": 60,
+    "variante_fr": "Éclat de Latérite — Éveil du Maître",
+    "variante_en": "Laterite Shard — Master Awakening",
+    "bonus": 0.18
+  }
+}

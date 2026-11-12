@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "cambocraft:item/epee_du_lotus_sacree"
+  }
+}

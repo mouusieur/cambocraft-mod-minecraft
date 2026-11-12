@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Œil du Cyclone",
+    "en": "Eye of the Cyclone"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (air, controle) : Œil du Cyclone. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (air, controle): Eye of the Cyclone. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "epique",
+  "element": "air",
+  "type": "controle",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 11.5,
+      "soin": 0.0,
+      "portee": 8.5,
+      "duree_ticks": 75,
+      "recharge_ticks": 66,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 2,
+      "degats": 14.03,
+      "soin": 0.0,
+      "portee": 9.18,
+      "duree_ticks": 84,
+      "recharge_ticks": 63,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 3,
+      "degats": 16.56,
+      "soin": 0.0,
+      "portee": 9.86,
+      "duree_ticks": 93,
+      "recharge_ticks": 59,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 4,
+      "degats": 19.09,
+      "soin": 0.0,
+      "portee": 10.54,
+      "duree_ticks": 102,
+      "recharge_ticks": 56,
+      "cout_energie": 28
+    },
+    {
+      "niveau": 5,
+      "degats": 21.62,
+      "soin": 0.0,
+      "portee": 11.22,
+      "duree_ticks": 111,
+      "recharge_ticks": 53,
+      "cout_energie": 28
+    }
+  ],
+  "maitrise": {
+    "seuil": 130,
+    "variante_fr": "Œil du Cyclone — Éveil du Maître",
+    "variante_en": "Eye of the Cyclone — Master Awakening",
+    "bonus": 0.26
+  }
+}

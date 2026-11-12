@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042051,
+    "separation": 12,
+    "spacing": 36,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:pyramide_de_la_renaissance",
+      "weight": 1
+    }
+  ]
+}

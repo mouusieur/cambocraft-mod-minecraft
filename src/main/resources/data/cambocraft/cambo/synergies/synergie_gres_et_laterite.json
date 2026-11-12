@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Forteresse Khmère",
+    "en": "Khmer Fortress"
+  },
+  "pouvoirs": [
+    "pilier_de_gres",
+    "rempart_de_laterite"
+  ],
+  "effet": "bastion_inflexible",
+  "multiplicateur": 1.28,
+  "duree_ticks": 220,
+  "description": {
+    "fr": "Synergie active lorsque pilier_de_gres et rempart_de_laterite sont équipés ensemble : Forteresse Khmère (×1.28).",
+    "en": "Active synergy when pilier_de_gres and rempart_de_laterite are equipped together: Khmer Fortress (×1.28)."
+  }
+}

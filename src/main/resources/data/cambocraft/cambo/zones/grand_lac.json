@@ -1,0 +1,26 @@
+{
+  "biomes": [
+    "cambocraft:grand_lac",
+    "cambocraft:mangrove_et_marais"
+  ],
+  "boss_id": "le_crocodile_des_profondeurs",
+  "boss_requis": "maitre_des_lames_du_clan_ombre",
+  "ennemis": [
+    "pirate_du_lac",
+    "crocodile_des_marais",
+    "lame_ombre",
+    "gardien_englouti"
+  ],
+  "niveau_max": 70,
+  "niveau_min": 50,
+  "nom": {
+    "en": "Great Lake",
+    "fr": "Grand Lac"
+  },
+  "ordre": 4,
+  "teleporteur": {
+    "x": 150,
+    "y": 64,
+    "z": 640
+  }
+}

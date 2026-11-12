@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Cuirasse de Terre Cuite",
+    "en": "Terracotta Cuirass"
+  },
+  "pouvoirs": [
+    "peau_d_argile",
+    "garde_de_cendre"
+  ],
+  "effet": "armure_minerale",
+  "multiplicateur": 1.25,
+  "duree_ticks": 220,
+  "description": {
+    "fr": "Synergie active lorsque peau_d_argile et garde_de_cendre sont équipés ensemble : Cuirasse de Terre Cuite (×1.25).",
+    "en": "Active synergy when peau_d_argile and garde_de_cendre are equipped together: Terracotta Cuirass (×1.25)."
+  }
+}

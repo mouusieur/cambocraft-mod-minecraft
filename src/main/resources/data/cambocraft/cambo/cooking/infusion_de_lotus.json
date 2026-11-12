@@ -1,0 +1,17 @@
+{
+  "buff_amplificateur": 1,
+  "buff_duree_ticks": 4200,
+  "buff_effet": "minecraft:regeneration",
+  "faction": "kompong",
+  "ingredients": [
+    "cambocraft:lotus_brut",
+    "cambocraft:graine_de_lotus",
+    "cambocraft:sucre_de_palme"
+  ],
+  "nom": {
+    "en": "Sacred Lotus Infusion",
+    "fr": "Infusion Sacrée de Lotus"
+  },
+  "palier_min": "honore",
+  "resultat": "cambocraft:infusion_de_lotus"
+}

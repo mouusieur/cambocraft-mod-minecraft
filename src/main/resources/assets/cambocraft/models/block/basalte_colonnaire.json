@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "cambocraft:block/basalte_colonnaire_top",
+    "side": "cambocraft:block/basalte_colonnaire_side"
+  }
+}

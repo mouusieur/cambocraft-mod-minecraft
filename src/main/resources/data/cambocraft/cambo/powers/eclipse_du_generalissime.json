@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Éclipse du Généralissime",
+    "en": "Generalissimo Eclipse"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (ombre, offensif) : Éclipse du Généralissime. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (ombre, offensif): Generalissimo Eclipse. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "legendaire",
+  "element": "ombre",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 28.5,
+      "soin": 0.0,
+      "portee": 9.5,
+      "duree_ticks": 65,
+      "recharge_ticks": 66,
+      "cout_energie": 38
+    },
+    {
+      "niveau": 2,
+      "degats": 34.77,
+      "soin": 0.0,
+      "portee": 10.26,
+      "duree_ticks": 73,
+      "recharge_ticks": 63,
+      "cout_energie": 38
+    },
+    {
+      "niveau": 3,
+      "degats": 41.04,
+      "soin": 0.0,
+      "portee": 11.02,
+      "duree_ticks": 81,
+      "recharge_ticks": 59,
+      "cout_energie": 38
+    },
+    {
+      "niveau": 4,
+      "degats": 47.31,
+      "soin": 0.0,
+      "portee": 11.78,
+      "duree_ticks": 88,
+      "recharge_ticks": 56,
+      "cout_energie": 38
+    },
+    {
+      "niveau": 5,
+      "degats": 53.58,
+      "soin": 0.0,
+      "portee": 12.54,
+      "duree_ticks": 96,
+      "recharge_ticks": 53,
+      "cout_energie": 38
+    }
+  ],
+  "maitrise": {
+    "seuil": 180,
+    "variante_fr": "Éclipse du Généralissime — Éveil du Maître",
+    "variante_en": "Generalissimo Eclipse — Master Awakening",
+    "bonus": 0.3
+  }
+}

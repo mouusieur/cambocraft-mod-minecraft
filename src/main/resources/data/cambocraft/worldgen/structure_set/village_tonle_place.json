@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042055,
+    "separation": 6,
+    "spacing": 20,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:village_tonle_place",
+      "weight": 1
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Lueur d'Encens",
+    "en": "Incense Glow"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (lumiere, soin) : Lueur d'Encens. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (lumiere, soin): Incense Glow. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "commun",
+  "element": "lumiere",
+  "type": "soin",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 0.0,
+      "soin": 5.5,
+      "portee": 4.5,
+      "duree_ticks": 60,
+      "recharge_ticks": 60,
+      "cout_energie": 15
+    },
+    {
+      "niveau": 2,
+      "degats": 0.0,
+      "soin": 6.71,
+      "portee": 4.86,
+      "duree_ticks": 67,
+      "recharge_ticks": 57,
+      "cout_energie": 15
+    },
+    {
+      "niveau": 3,
+      "degats": 0.0,
+      "soin": 7.92,
+      "portee": 5.22,
+      "duree_ticks": 74,
+      "recharge_ticks": 54,
+      "cout_energie": 15
+    },
+    {
+      "niveau": 4,
+      "degats": 0.0,
+      "soin": 9.13,
+      "portee": 5.58,
+      "duree_ticks": 82,
+      "recharge_ticks": 51,
+      "cout_energie": 15
+    },
+    {
+      "niveau": 5,
+      "degats": 0.0,
+      "soin": 10.34,
+      "portee": 5.94,
+      "duree_ticks": 89,
+      "recharge_ticks": 48,
+      "cout_energie": 15
+    }
+  ],
+  "maitrise": {
+    "seuil": 60,
+    "variante_fr": "Lueur d'Encens — Éveil du Maître",
+    "variante_en": "Incense Glow — Master Awakening",
+    "bonus": 0.18
+  }
+}

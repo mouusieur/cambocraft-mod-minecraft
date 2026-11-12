@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cambocraft:block/marbre_blanc_slab"
+    },
+    "type=double": {
+      "model": "cambocraft:block/marbre_blanc"
+    },
+    "type=top": {
+      "model": "cambocraft:block/marbre_blanc_slab_top"
+    }
+  }
+}

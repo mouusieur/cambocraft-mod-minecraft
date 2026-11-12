@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "initie_ombre",
+      "description": {
+        "en": "Complete 1x vaincre (initie_ombre).",
+        "fr": "Accomplir 1x vaincre (initie_ombre)."
+      },
+      "id": "objectif_1",
+      "objectif": "vaincre",
+      "quantite": 1
+    },
+    {
+      "cible": "maitre_d_arene",
+      "description": {
+        "en": "Report back to maitre_d_arene.",
+        "fr": "Rapporter le résultat à maitre_d_arene."
+      },
+      "id": "retour_pnj",
+      "objectif": "parler",
+      "quantite": 1
+    }
+  ],
+  "faction": "srok",
+  "niveau_min": 20,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:bandage_de_soie"
+    ],
+    "pieces": 15,
+    "pouvoir": "",
+    "reputation": 35,
+    "xp": 250
+  },
+  "resume": {
+    "en": "Assist maitre_d_arene in Srok province (vaincre: initie_ombre).",
+    "fr": "Aider maitre_d_arene dans la province de Srok (vaincre : initie_ombre)."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Trail Vigil (I)",
+    "fr": "Vigile des Sentiers (I)"
+  },
+  "type": "secondaire"
+}

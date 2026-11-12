@@ -1,0 +1,110 @@
+{
+  "ambient.tonle_river": {
+    "subtitle": "subtitles.cambocraft.ambient.tonle_river",
+    "sounds": [
+      {
+        "name": "cambocraft:ambient/tonle_river",
+        "stream": true
+      }
+    ]
+  },
+  "ambient.monsoon_rain": {
+    "subtitle": "subtitles.cambocraft.ambient.monsoon_rain",
+    "sounds": [
+      {
+        "name": "cambocraft:ambient/monsoon_rain",
+        "stream": true
+      }
+    ]
+  },
+  "ritual.lotus_portal_open": {
+    "subtitle": "subtitles.cambocraft.ritual.lotus_portal_open",
+    "sounds": [
+      {
+        "name": "cambocraft:ritual/lotus_portal_open",
+        "stream": false
+      }
+    ]
+  },
+  "ritual.rice_bowl_blessing": {
+    "subtitle": "subtitles.cambocraft.ritual.rice_bowl_blessing",
+    "sounds": [
+      {
+        "name": "cambocraft:ritual/rice_bowl_blessing",
+        "stream": false
+      }
+    ]
+  },
+  "ritual.pagoda_bell": {
+    "subtitle": "subtitles.cambocraft.ritual.pagoda_bell",
+    "sounds": [
+      {
+        "name": "cambocraft:ritual/pagoda_bell",
+        "stream": false
+      }
+    ]
+  },
+  "nen.power_cast": {
+    "subtitle": "subtitles.cambocraft.nen.power_cast",
+    "sounds": [
+      {
+        "name": "cambocraft:nen/power_cast",
+        "stream": false
+      }
+    ]
+  },
+  "nen.synergy_resonance": {
+    "subtitle": "subtitles.cambocraft.nen.synergy_resonance",
+    "sounds": [
+      {
+        "name": "cambocraft:nen/synergy_resonance",
+        "stream": false
+      }
+    ]
+  },
+  "combat.shadow_ninja_reveal": {
+    "subtitle": "subtitles.cambocraft.combat.shadow_ninja_reveal",
+    "sounds": [
+      {
+        "name": "cambocraft:combat/shadow_ninja_reveal",
+        "stream": false
+      }
+    ]
+  },
+  "combat.boss_phase_shift": {
+    "subtitle": "subtitles.cambocraft.combat.boss_phase_shift",
+    "sounds": [
+      {
+        "name": "cambocraft:combat/boss_phase_shift",
+        "stream": false
+      }
+    ]
+  },
+  "minigame.sarama_drum": {
+    "subtitle": "subtitles.cambocraft.minigame.sarama_drum",
+    "sounds": [
+      {
+        "name": "cambocraft:minigame/sarama_drum",
+        "stream": false
+      }
+    ]
+  },
+  "minigame.pirogue_drum": {
+    "subtitle": "subtitles.cambocraft.minigame.pirogue_drum",
+    "sounds": [
+      {
+        "name": "cambocraft:minigame/pirogue_drum",
+        "stream": false
+      }
+    ]
+  },
+  "minigame.apsara_chime": {
+    "subtitle": "subtitles.cambocraft.minigame.apsara_chime",
+    "sounds": [
+      {
+        "name": "cambocraft:minigame/apsara_chime",
+        "stream": false
+      }
+    ]
+  }
+}

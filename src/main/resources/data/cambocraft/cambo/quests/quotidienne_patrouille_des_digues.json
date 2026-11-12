@@ -1,0 +1,38 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "initie_ombre",
+      "description": {
+        "en": "Complete 3x vaincre (initie_ombre).",
+        "fr": "Accomplir 3x vaincre (initie_ombre)."
+      },
+      "id": "etape_unique",
+      "objectif": "vaincre",
+      "quantite": 3
+    }
+  ],
+  "faction": "ly",
+  "niveau_min": 1,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:piece_du_lotus"
+    ],
+    "pieces": 25,
+    "pouvoir": "",
+    "reputation": 40,
+    "xp": 400
+  },
+  "resume": {
+    "en": "Quotidienne quest in Ly province.",
+    "fr": "Quête quotidienne de la province de Ly."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Dike Patrol",
+    "fr": "Patrouille des Diguettes"
+  },
+  "type": "quotidienne"
+}

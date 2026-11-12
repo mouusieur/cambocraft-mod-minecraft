@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042028,
+    "separation": 6,
+    "spacing": 18,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:atelier_tisserand_soie",
+      "weight": 1
+    }
+  ]
+}

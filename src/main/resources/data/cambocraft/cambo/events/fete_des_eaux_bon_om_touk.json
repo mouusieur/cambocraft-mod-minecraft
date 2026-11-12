@@ -1,0 +1,24 @@
+{
+  "nom": {
+    "fr": "Fête des Eaux (Bon Om Touk)",
+    "en": "Water Festival (Bon Om Touk)"
+  },
+  "description": {
+    "fr": "Les berges du Tonlé s'illuminent pour célébrer l'inversion du cours des eaux et les régates de pirogues.",
+    "en": "The banks of Tonle light up to celebrate the reversal of the waters and the dugout canoe regattas."
+  },
+  "saison": "saison_douce",
+  "jour_saison": 2,
+  "heure_debut_tick": 1000,
+  "duree_ticks": 14000,
+  "effets": [
+    "vitesse_pirogue_accrue",
+    "lanternes_flottantes",
+    "reputation_tonle_bonus"
+  ],
+  "recompenses": [
+    "cambocraft:piece_du_lotus_argent",
+    "cambocraft:offrande_de_fleurs",
+    "cambocraft:amok"
+  ]
+}

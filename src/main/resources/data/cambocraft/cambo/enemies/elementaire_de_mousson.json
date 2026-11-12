@@ -1,0 +1,20 @@
+{
+  "nom": {
+    "fr": "Élémentaire de mousson",
+    "en": "Monsoon Elemental"
+  },
+  "categorie": "zone",
+  "rang": "maitre_shuriken",
+  "element": "eau",
+  "pv_base": 230.0,
+  "attaque_base": 27.5,
+  "armure_base": 9.5,
+  "vitesse": 0.3,
+  "xp": 340,
+  "pieces": 56,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_eau"
+  ],
+  "phases": []
+}

@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042026,
+    "separation": 4,
+    "spacing": 14,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:riziere_en_terrasse_irriguee",
+      "weight": 1
+    }
+  ]
+}

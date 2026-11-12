@@ -1,0 +1,49 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "maitre_de_quete",
+      "description": {
+        "en": "Speak with Elder Chann in Tonle plaza.",
+        "fr": "Parler à l’Ancien Chann sur la place de Tonlé."
+      },
+      "id": "parler_ancien",
+      "objectif": "parler",
+      "quantite": 1
+    },
+    {
+      "cible": "apprenti_moine",
+      "description": {
+        "en": "Receive the bowl blessing from apprentice monk Kosal.",
+        "fr": "Recevoir la bénédiction du bol auprès de l’apprenti moine Kosal."
+      },
+      "id": "parler_apprenti",
+      "objectif": "parler",
+      "quantite": 1
+    }
+  ],
+  "faction": "tonle",
+  "niveau_min": 1,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:carnet_du_nen",
+      "cambocraft:bol_de_riz_beni"
+    ],
+    "pieces": 25,
+    "pouvoir": "",
+    "reputation": 50,
+    "xp": 150
+  },
+  "resume": {
+    "en": "Greet Elder Chann in Tonle Village, receive your Nen Notebook, and taste a Blessed Rice Bowl with apprentice monk Kosal.",
+    "fr": "Saluer l’Ancien Chann au Village de Tonlé, recevoir votre Carnet du Nen et goûter un Bol de Riz Béni auprès de l’apprenti moine Kosal."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "The First Bowl of Tonle",
+    "fr": "Le Premier Bol du Tonlé"
+  },
+  "type": "intro"
+}

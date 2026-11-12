@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 3,
+  "etapes": [
+    {
+      "cible": "maitre_de_quete",
+      "description": {
+        "en": "Gather accounts from the province.",
+        "fr": "Recueillir les témoignages de la province."
+      },
+      "id": "enquete_province",
+      "objectif": "parler",
+      "quantite": 1
+    },
+    {
+      "cible": "maitre_des_lames_du_clan_ombre",
+      "description": {
+        "en": "Overcome the zone trial (maitre_des_lames_du_clan_ombre).",
+        "fr": "Surmonter l'épreuve de fin de zone (maitre_des_lames_du_clan_ombre)."
+      },
+      "id": "epreuve_majeure",
+      "objectif": "vaincre",
+      "quantite": 1
+    }
+  ],
+  "faction": "srok",
+  "niveau_min": 30,
+  "quete_requise": "chapitre_02_les_terrasses_d_or",
+  "recompenses": {
+    "objets": [
+      "cambocraft:fourreau_du_maitre_des_lames"
+    ],
+    "pieces": 120,
+    "pouvoir": "",
+    "reputation": 120,
+    "xp": 4500
+  },
+  "resume": {
+    "en": "Unmask the Shadow Clan scouts in Srok and face the Blade Master.",
+    "fr": "Démasquer les éclaireurs du clan Ombre à Srok et affronter le Maître des lames."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Chapter III — Whispers in the Bamboo",
+    "fr": "Chapitre III — Murmures dans les Bambous"
+  },
+  "type": "principale"
+}

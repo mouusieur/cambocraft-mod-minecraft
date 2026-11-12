@@ -1,0 +1,25 @@
+{
+  "biomes": [
+    "cambocraft:sanctuaire_de_lotus"
+  ],
+  "boss_id": "le_gardien_de_l_equilibre",
+  "boss_requis": "garuda_de_la_tempete",
+  "ennemis": [
+    "ascete_de_l_epreuve",
+    "lion_sacree_anime",
+    "reflet_du_nen",
+    "gardien_de_cristal"
+  ],
+  "niveau_max": 200,
+  "niveau_min": 185,
+  "nom": {
+    "en": "Lotus Sanctuary",
+    "fr": "Sanctuaire du Lotus"
+  },
+  "ordre": 11,
+  "teleporteur": {
+    "x": 0,
+    "y": 92,
+    "z": 1800
+  }
+}

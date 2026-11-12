@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Jugement des Quatre Visages",
+    "en": "Four Faces Judgment"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (terre, controle) : Jugement des Quatre Visages. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (terre, controle): Four Faces Judgment. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "legendaire",
+  "element": "terre",
+  "type": "controle",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 22.0,
+      "soin": 0.0,
+      "portee": 10.0,
+      "duree_ticks": 100,
+      "recharge_ticks": 76,
+      "cout_energie": 40
+    },
+    {
+      "niveau": 2,
+      "degats": 26.84,
+      "soin": 0.0,
+      "portee": 10.8,
+      "duree_ticks": 112,
+      "recharge_ticks": 72,
+      "cout_energie": 40
+    },
+    {
+      "niveau": 3,
+      "degats": 31.68,
+      "soin": 0.0,
+      "portee": 11.6,
+      "duree_ticks": 124,
+      "recharge_ticks": 68,
+      "cout_energie": 40
+    },
+    {
+      "niveau": 4,
+      "degats": 36.52,
+      "soin": 0.0,
+      "portee": 12.4,
+      "duree_ticks": 136,
+      "recharge_ticks": 65,
+      "cout_energie": 40
+    },
+    {
+      "niveau": 5,
+      "degats": 41.36,
+      "soin": 0.0,
+      "portee": 13.2,
+      "duree_ticks": 148,
+      "recharge_ticks": 61,
+      "cout_energie": 40
+    }
+  ],
+  "maitrise": {
+    "seuil": 180,
+    "variante_fr": "Jugement des Quatre Visages — Éveil du Maître",
+    "variante_en": "Four Faces Judgment — Master Awakening",
+    "bonus": 0.3
+  }
+}

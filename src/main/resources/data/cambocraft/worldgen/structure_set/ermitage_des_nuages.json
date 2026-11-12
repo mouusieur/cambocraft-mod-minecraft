@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042041,
+    "separation": 7,
+    "spacing": 22,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:ermitage_des_nuages",
+      "weight": 1
+    }
+  ]
+}

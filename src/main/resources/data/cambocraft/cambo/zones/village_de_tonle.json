@@ -1,0 +1,26 @@
+{
+  "biomes": [
+    "cambocraft:rizieres_en_terrasses",
+    "cambocraft:riviere_du_tonle"
+  ],
+  "boss_id": "chef_des_bandits_de_la_riviere",
+  "boss_requis": null,
+  "ennemis": [
+    "bandit_de_riviere",
+    "pillard_des_berges",
+    "initie_ombre",
+    "crabe_geant_des_vases"
+  ],
+  "niveau_max": 15,
+  "niveau_min": 1,
+  "nom": {
+    "en": "Tonle Village",
+    "fr": "Village de Tonlé"
+  },
+  "ordre": 1,
+  "teleporteur": {
+    "x": 0,
+    "y": 72,
+    "z": 0
+  }
+}

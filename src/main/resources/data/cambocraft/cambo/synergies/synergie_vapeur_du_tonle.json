@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Vapeur Brûlante du Tonlé",
+    "en": "Scalding Tonle Steam"
+  },
+  "pouvoirs": [
+    "onde_du_tonle",
+    "braise_du_foyer"
+  ],
+  "effet": "nuage_de_vapeur",
+  "multiplicateur": 1.22,
+  "duree_ticks": 160,
+  "description": {
+    "fr": "Synergie active lorsque onde_du_tonle et braise_du_foyer sont équipés ensemble : Vapeur Brûlante du Tonlé (×1.22).",
+    "en": "Active synergy when onde_du_tonle and braise_du_foyer are equipped together: Scalding Tonle Steam (×1.22)."
+  }
+}

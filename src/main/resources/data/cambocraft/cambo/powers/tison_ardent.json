@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Tison Ardent",
+    "en": "Glowing Firebrand"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (feu, utilitaire) : Tison Ardent. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (feu, utilitaire): Glowing Firebrand. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "commun",
+  "element": "feu",
+  "type": "utilitaire",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 3.0,
+      "soin": 0.0,
+      "portee": 5.0,
+      "duree_ticks": 100,
+      "recharge_ticks": 60,
+      "cout_energie": 12
+    },
+    {
+      "niveau": 2,
+      "degats": 3.66,
+      "soin": 0.0,
+      "portee": 5.4,
+      "duree_ticks": 112,
+      "recharge_ticks": 57,
+      "cout_energie": 12
+    },
+    {
+      "niveau": 3,
+      "degats": 4.32,
+      "soin": 0.0,
+      "portee": 5.8,
+      "duree_ticks": 124,
+      "recharge_ticks": 54,
+      "cout_energie": 12
+    },
+    {
+      "niveau": 4,
+      "degats": 4.98,
+      "soin": 0.0,
+      "portee": 6.2,
+      "duree_ticks": 136,
+      "recharge_ticks": 51,
+      "cout_energie": 12
+    },
+    {
+      "niveau": 5,
+      "degats": 5.64,
+      "soin": 0.0,
+      "portee": 6.6,
+      "duree_ticks": 148,
+      "recharge_ticks": 48,
+      "cout_energie": 12
+    }
+  ],
+  "maitrise": {
+    "seuil": 60,
+    "variante_fr": "Tison Ardent — Éveil du Maître",
+    "variante_en": "Glowing Firebrand — Master Awakening",
+    "bonus": 0.18
+  }
+}

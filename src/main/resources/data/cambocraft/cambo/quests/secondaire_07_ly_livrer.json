@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 0,
+  "etapes": [
+    {
+      "cible": "cambocraft:fleur_de_lotus",
+      "description": {
+        "en": "Complete 1x livrer (cambocraft:fleur_de_lotus).",
+        "fr": "Accomplir 1x livrer (cambocraft:fleur_de_lotus)."
+      },
+      "id": "objectif_1",
+      "objectif": "livrer",
+      "quantite": 1
+    },
+    {
+      "cible": "guerisseur",
+      "description": {
+        "en": "Report back to guerisseur.",
+        "fr": "Rapporter le résultat à guerisseur."
+      },
+      "id": "retour_pnj",
+      "objectif": "parler",
+      "quantite": 1
+    }
+  ],
+  "faction": "ly",
+  "niveau_min": 14,
+  "quete_requise": "",
+  "recompenses": {
+    "objets": [
+      "cambocraft:onguent_de_lotus"
+    ],
+    "pieces": 15,
+    "pouvoir": "",
+    "reputation": 35,
+    "xp": 250
+  },
+  "resume": {
+    "en": "Assist guerisseur in Ly province (livrer: cambocraft:fleur_de_lotus).",
+    "fr": "Aider guerisseur dans la province de Ly (livrer : cambocraft:fleur_de_lotus)."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Terrace Remedies (I)",
+    "fr": "Remèdes des Terrasses (I)"
+  },
+  "type": "secondaire"
+}

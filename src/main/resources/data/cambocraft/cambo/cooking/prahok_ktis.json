@@ -1,0 +1,17 @@
+{
+  "buff_amplificateur": 1,
+  "buff_duree_ticks": 3600,
+  "buff_effet": "minecraft:resistance",
+  "faction": "ly",
+  "ingredients": [
+    "cambocraft:pate_de_prahok",
+    "cambocraft:lait_de_coco",
+    "cambocraft:piment_rouge"
+  ],
+  "nom": {
+    "en": "Coconut Prahok Ktis",
+    "fr": "Prahok Ktis au Lait de Coco"
+  },
+  "palier_min": "honore",
+  "resultat": "cambocraft:prahok_ktis"
+}

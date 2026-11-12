@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cambocraft:block/pin_du_cambodge_slab"
+    },
+    "type=double": {
+      "model": "cambocraft:block/pin_du_cambodge_planks"
+    },
+    "type=top": {
+      "model": "cambocraft:block/pin_du_cambodge_slab_top"
+    }
+  }
+}

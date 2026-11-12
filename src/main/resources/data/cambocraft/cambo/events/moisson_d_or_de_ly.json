@@ -1,0 +1,23 @@
+{
+  "nom": {
+    "fr": "Moisson d'Or de Ly",
+    "en": "Golden Harvest of Ly"
+  },
+  "description": {
+    "fr": "Les terrasses de Ly arrivent à maturité : l'abondance de riz apaise les prix dans tout le royaume.",
+    "en": "The terraces of Ly reach maturity: abundant rice lowers prices across the entire realm."
+  },
+  "saison": "mousson",
+  "jour_saison": 6,
+  "heure_debut_tick": 1000,
+  "duree_ticks": 12000,
+  "effets": [
+    "recolte_riz_abondante",
+    "baisse_inflation_riz"
+  ],
+  "recompenses": [
+    "cambocraft:riz_brut",
+    "cambocraft:riz_parfume_jasmin",
+    "cambocraft:bol_de_riz_beni"
+  ]
+}

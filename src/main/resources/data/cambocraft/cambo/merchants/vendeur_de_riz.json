@@ -1,0 +1,55 @@
+{
+  "faction": "tonle",
+  "offres": [
+    {
+      "item": "cambocraft:graine_de_riz",
+      "palier_min": "connu",
+      "prix_base": 3,
+      "quantite": 4,
+      "sensible_au_riz": true
+    },
+    {
+      "item": "cambocraft:riz_brut",
+      "palier_min": "connu",
+      "prix_base": 5,
+      "quantite": 4,
+      "sensible_au_riz": true
+    },
+    {
+      "item": "cambocraft:riz_cuit",
+      "palier_min": "connu",
+      "prix_base": 7,
+      "quantite": 2,
+      "sensible_au_riz": true
+    },
+    {
+      "item": "cambocraft:bol_de_riz",
+      "palier_min": "respecte",
+      "prix_base": 10,
+      "quantite": 1,
+      "sensible_au_riz": true
+    },
+    {
+      "item": "cambocraft:farine_de_riz",
+      "palier_min": "respecte",
+      "prix_base": 8,
+      "quantite": 2,
+      "sensible_au_riz": true
+    },
+    {
+      "item": "cambocraft:sucre_de_palme",
+      "palier_min": "honore",
+      "prix_base": 9,
+      "quantite": 2,
+      "sensible_au_riz": false
+    },
+    {
+      "item": "cambocraft:bol_de_riz_beni",
+      "palier_min": "honore",
+      "prix_base": 45,
+      "quantite": 1,
+      "sensible_au_riz": true
+    }
+  ],
+  "pnj": "vendeur_de_riz"
+}

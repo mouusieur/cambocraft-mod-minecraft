@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Fureur du Naga à Sept Têtes",
+    "en": "Seven-Headed Naga Fury"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (eau, offensif) : Fureur du Naga à Sept Têtes. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (eau, offensif): Seven-Headed Naga Fury. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "legendaire",
+  "element": "eau",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 27.0,
+      "soin": 0.0,
+      "portee": 11.0,
+      "duree_ticks": 70,
+      "recharge_ticks": 68,
+      "cout_energie": 38
+    },
+    {
+      "niveau": 2,
+      "degats": 32.94,
+      "soin": 0.0,
+      "portee": 11.88,
+      "duree_ticks": 78,
+      "recharge_ticks": 65,
+      "cout_energie": 38
+    },
+    {
+      "niveau": 3,
+      "degats": 38.88,
+      "soin": 0.0,
+      "portee": 12.76,
+      "duree_ticks": 87,
+      "recharge_ticks": 61,
+      "cout_energie": 38
+    },
+    {
+      "niveau": 4,
+      "degats": 44.82,
+      "soin": 0.0,
+      "portee": 13.64,
+      "duree_ticks": 95,
+      "recharge_ticks": 58,
+      "cout_energie": 38
+    },
+    {
+      "niveau": 5,
+      "degats": 50.76,
+      "soin": 0.0,
+      "portee": 14.52,
+      "duree_ticks": 104,
+      "recharge_ticks": 54,
+      "cout_energie": 38
+    }
+  ],
+  "maitrise": {
+    "seuil": 180,
+    "variante_fr": "Fureur du Naga à Sept Têtes — Éveil du Maître",
+    "variante_en": "Seven-Headed Naga Fury — Master Awakening",
+    "bonus": 0.3
+  }
+}

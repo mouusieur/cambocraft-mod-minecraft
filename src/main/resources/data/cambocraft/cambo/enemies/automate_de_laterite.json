@@ -1,0 +1,20 @@
+{
+  "nom": {
+    "fr": "Automate de latérite",
+    "en": "Laterite Automaton"
+  },
+  "categorie": "zone",
+  "rang": "archonte",
+  "element": "feu",
+  "pv_base": 820.0,
+  "attaque_base": 86.0,
+  "armure_base": 27.0,
+  "vitesse": 0.34,
+  "xp": 680,
+  "pieces": 112,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_feu"
+  ],
+  "phases": []
+}

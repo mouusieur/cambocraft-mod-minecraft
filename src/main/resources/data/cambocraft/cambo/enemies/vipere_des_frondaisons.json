@@ -1,0 +1,20 @@
+{
+  "nom": {
+    "fr": "Vipère des frondaisons",
+    "en": "Canopy Viper"
+  },
+  "categorie": "zone",
+  "rang": "maitre_shuriken",
+  "element": "vie",
+  "pv_base": 310.0,
+  "attaque_base": 35.0,
+  "armure_base": 11.0,
+  "vitesse": 0.31,
+  "xp": 425,
+  "pieces": 70,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_vie"
+  ],
+  "phases": []
+}

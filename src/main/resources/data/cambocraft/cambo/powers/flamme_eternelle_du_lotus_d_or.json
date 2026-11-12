@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Flamme Éternelle du Lotus d'Or",
+    "en": "Golden Lotus Eternal Flame"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (feu, offensif) : Flamme Éternelle du Lotus d'Or. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (feu, offensif): Golden Lotus Eternal Flame. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "mythique",
+  "element": "feu",
+  "type": "offensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 42.0,
+      "soin": 10.0,
+      "portee": 13.0,
+      "duree_ticks": 110,
+      "recharge_ticks": 80,
+      "cout_energie": 52
+    },
+    {
+      "niveau": 2,
+      "degats": 51.24,
+      "soin": 12.2,
+      "portee": 14.04,
+      "duree_ticks": 123,
+      "recharge_ticks": 76,
+      "cout_energie": 52
+    },
+    {
+      "niveau": 3,
+      "degats": 60.48,
+      "soin": 14.4,
+      "portee": 15.08,
+      "duree_ticks": 136,
+      "recharge_ticks": 72,
+      "cout_energie": 52
+    },
+    {
+      "niveau": 4,
+      "degats": 69.72,
+      "soin": 16.6,
+      "portee": 16.12,
+      "duree_ticks": 150,
+      "recharge_ticks": 68,
+      "cout_energie": 52
+    },
+    {
+      "niveau": 5,
+      "degats": 78.96,
+      "soin": 18.8,
+      "portee": 17.16,
+      "duree_ticks": 163,
+      "recharge_ticks": 64,
+      "cout_energie": 52
+    }
+  ],
+  "maitrise": {
+    "seuil": 240,
+    "variante_fr": "Flamme Éternelle du Lotus d'Or — Éveil du Maître",
+    "variante_en": "Golden Lotus Eternal Flame — Master Awakening",
+    "bonus": 0.35
+  }
+}

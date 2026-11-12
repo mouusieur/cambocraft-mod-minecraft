@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Frappe Fantôme",
+    "en": "Phantom Strike"
+  },
+  "pouvoirs": [
+    "lame_du_crepuscule",
+    "saut_de_l_ombre"
+  ],
+  "effet": "execution_furtive",
+  "multiplicateur": 1.27,
+  "duree_ticks": 160,
+  "description": {
+    "fr": "Synergie active lorsque lame_du_crepuscule et saut_de_l_ombre sont équipés ensemble : Frappe Fantôme (×1.27).",
+    "en": "Active synergy when lame_du_crepuscule and saut_de_l_ombre are equipped together: Phantom Strike (×1.27)."
+  }
+}

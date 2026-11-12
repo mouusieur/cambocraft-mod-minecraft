@@ -1,0 +1,67 @@
+{
+  "nom": {
+    "fr": "Gardien de pierre",
+    "en": "Stone Guardian"
+  },
+  "categorie": "boss",
+  "rang": "seigneur_boss",
+  "element": "terre",
+  "pv_base": 5600.0,
+  "attaque_base": 86.0,
+  "armure_base": 28.0,
+  "vitesse": 0.32,
+  "xp": 48000,
+  "pieces": 1600,
+  "capacites": [
+    "presence_de_boss",
+    "transition_invulnerable",
+    "maitrise_terre"
+  ],
+  "phases": [
+    {
+      "phase": 1,
+      "seuil_pv": 1.0,
+      "nom": {
+        "fr": "Sentinelle du Prasat Sovann",
+        "en": "Prasat Sovann Sentinel"
+      },
+      "mult_attaque": 1.0,
+      "mult_vitesse": 0.95,
+      "mecanique_arene": "dalles_piegees",
+      "capacites": [
+        "marteau_de_gres",
+        "rayon_des_bas_reliefs"
+      ]
+    },
+    {
+      "phase": 2,
+      "seuil_pv": 0.65,
+      "nom": {
+        "fr": "Réveil des lions sacrés",
+        "en": "Sacred Lions Awakening"
+      },
+      "mult_attaque": 1.28,
+      "mult_vitesse": 1.08,
+      "mecanique_arene": "statues_animees",
+      "capacites": [
+        "onde_de_laterite",
+        "bouclier_monolithique"
+      ]
+    },
+    {
+      "phase": 3,
+      "seuil_pv": 0.3,
+      "nom": {
+        "fr": "Cœur ardent du sanctuaire",
+        "en": "Blazing Heart of the Sanctuary"
+      },
+      "mult_attaque": 1.6,
+      "mult_vitesse": 1.2,
+      "mecanique_arene": "effondrement_sacree",
+      "capacites": [
+        "jugement_du_prasat",
+        "pluie_de_piliers"
+      ]
+    }
+  ]
+}

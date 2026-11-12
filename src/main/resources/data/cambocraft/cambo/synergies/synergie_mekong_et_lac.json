@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Marée du Grand Lac",
+    "en": "Great Lake Tide"
+  },
+  "pouvoirs": [
+    "courant_du_mekong",
+    "brume_du_grand_lac"
+  ],
+  "effet": "deferlante_brumeuse",
+  "multiplicateur": 1.26,
+  "duree_ticks": 200,
+  "description": {
+    "fr": "Synergie active lorsque courant_du_mekong et brume_du_grand_lac sont équipés ensemble : Marée du Grand Lac (×1.26).",
+    "en": "Active synergy when courant_du_mekong and brume_du_grand_lac are equipped together: Great Lake Tide (×1.26)."
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 1,
+  "etapes": [
+    {
+      "cible": "maitre_de_quete",
+      "description": {
+        "en": "Gather accounts from the province.",
+        "fr": "Recueillir les témoignages de la province."
+      },
+      "id": "enquete_province",
+      "objectif": "parler",
+      "quantite": 1
+    },
+    {
+      "cible": "chef_des_bandits_de_la_riviere",
+      "description": {
+        "en": "Overcome the zone trial (chef_des_bandits_de_la_riviere).",
+        "fr": "Surmonter l'épreuve de fin de zone (chef_des_bandits_de_la_riviere)."
+      },
+      "id": "epreuve_majeure",
+      "objectif": "vaincre",
+      "quantite": 1
+    }
+  ],
+  "faction": "tonle",
+  "niveau_min": 1,
+  "quete_requise": "intro_premier_bol_du_tonle",
+  "recompenses": {
+    "objets": [
+      "cambocraft:insigne_du_chef_bandit"
+    ],
+    "pieces": 40,
+    "pouvoir": "flamme_du_lotus",
+    "reputation": 120,
+    "xp": 500
+  },
+  "resume": {
+    "en": "Aid the villagers of Tonle and repel the River Bandit Chief.",
+    "fr": "Aider les habitants du Village de Tonlé et repousser le Chef des bandits de la rivière."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Chapter I — Shores of the Tonle",
+    "fr": "Chapitre I — Les Berges du Tonlé"
+  },
+  "type": "principale"
+}

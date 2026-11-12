@@ -1,0 +1,23 @@
+{
+  "key": {
+    "C": {
+      "item": "cambocraft:cristal_de_lotus"
+    },
+    "L": {
+      "item": "cambocraft:lingot_de_lotus"
+    },
+    "P": {
+      "item": "cambocraft:pierre_du_lotus"
+    }
+  },
+  "pattern": [
+    "PLP",
+    "LCL",
+    "PLP"
+  ],
+  "result": {
+    "count": 4,
+    "id": "cambocraft:cadre_du_portail"
+  },
+  "type": "minecraft:crafting_shaped"
+}

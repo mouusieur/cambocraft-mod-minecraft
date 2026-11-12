@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Ancrage des Digues",
+    "en": "Dike Anchor"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (terre, controle) : Ancrage des Digues. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (terre, controle): Dike Anchor. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "commun",
+  "element": "terre",
+  "type": "controle",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 4.0,
+      "soin": 0.0,
+      "portee": 4.5,
+      "duree_ticks": 50,
+      "recharge_ticks": 65,
+      "cout_energie": 15
+    },
+    {
+      "niveau": 2,
+      "degats": 4.88,
+      "soin": 0.0,
+      "portee": 4.86,
+      "duree_ticks": 56,
+      "recharge_ticks": 62,
+      "cout_energie": 15
+    },
+    {
+      "niveau": 3,
+      "degats": 5.76,
+      "soin": 0.0,
+      "portee": 5.22,
+      "duree_ticks": 62,
+      "recharge_ticks": 58,
+      "cout_energie": 15
+    },
+    {
+      "niveau": 4,
+      "degats": 6.64,
+      "soin": 0.0,
+      "portee": 5.58,
+      "duree_ticks": 68,
+      "recharge_ticks": 55,
+      "cout_energie": 15
+    },
+    {
+      "niveau": 5,
+      "degats": 7.52,
+      "soin": 0.0,
+      "portee": 5.94,
+      "duree_ticks": 74,
+      "recharge_ticks": 52,
+      "cout_energie": 15
+    }
+  ],
+  "maitrise": {
+    "seuil": 60,
+    "variante_fr": "Ancrage des Digues — Éveil du Maître",
+    "variante_en": "Dike Anchor — Master Awakening",
+    "bonus": 0.18
+  }
+}

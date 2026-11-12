@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 7,
+  "etapes": [
+    {
+      "cible": "maitre_de_quete",
+      "description": {
+        "en": "Gather accounts from the province.",
+        "fr": "Recueillir les témoignages de la province."
+      },
+      "id": "enquete_province",
+      "objectif": "parler",
+      "quantite": 1
+    },
+    {
+      "cible": "generalissime_du_clan_ombre",
+      "description": {
+        "en": "Overcome the zone trial (generalissime_du_clan_ombre).",
+        "fr": "Surmonter l'épreuve de fin de zone (generalissime_du_clan_ombre)."
+      },
+      "id": "epreuve_majeure",
+      "objectif": "vaincre",
+      "quantite": 1
+    }
+  ],
+  "faction": "srok",
+  "niveau_min": 110,
+  "quete_requise": "chapitre_06_les_pierres_de_prasat_sovann",
+  "recompenses": {
+    "objets": [
+      "cambocraft:masque_du_generalissime"
+    ],
+    "pieces": 280,
+    "pouvoir": "",
+    "reputation": 120,
+    "xp": 24500
+  },
+  "resume": {
+    "en": "Infiltrate the Shadow Fortress and challenge the Generalissimo.",
+    "fr": "Infiltrer la Forteresse Ombre et défier le Généralissime."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Chapter VII — The Moonless Citadel",
+    "fr": "Chapitre VII — La Citadelle sans Lune"
+  },
+  "type": "principale"
+}

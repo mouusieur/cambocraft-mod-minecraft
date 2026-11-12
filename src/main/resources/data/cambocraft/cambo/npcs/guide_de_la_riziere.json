@@ -1,0 +1,38 @@
+{
+  "dialogue_initial": "guide_de_la_riziere",
+  "faction": "ly",
+  "marchand_id": "",
+  "nom": {
+    "en": "Phirun — Terrace Guide",
+    "fr": "Phirun — Guide des Terrasses"
+  },
+  "personnalite": "observateur",
+  "peut_etre_ninja_deguise": true,
+  "role": "guide_de_la_riziere",
+  "routine": [
+    {
+      "activite": "salut_matinal_et_offrande",
+      "debut_tick": 0,
+      "fin_tick": 2500,
+      "lieu": "pagode_ou_foyer"
+    },
+    {
+      "activite": "travail_principal",
+      "debut_tick": 2500,
+      "fin_tick": 9000,
+      "lieu": "atelier_ou_marche"
+    },
+    {
+      "activite": "echanges_et_conseils",
+      "debut_tick": 9000,
+      "fin_tick": 13000,
+      "lieu": "place_du_village"
+    },
+    {
+      "activite": "repos_sous_pilotis",
+      "debut_tick": 13000,
+      "fin_tick": 24000,
+      "lieu": "maison_pilotis"
+    }
+  ]
+}

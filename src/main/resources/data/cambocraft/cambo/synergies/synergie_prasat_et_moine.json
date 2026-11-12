@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Grâce de la Pagode",
+    "en": "Pagoda Grace"
+  },
+  "pouvoirs": [
+    "rayon_du_prasat",
+    "benediction_du_moine"
+  ],
+  "effet": "lumiere_salvatrice",
+  "multiplicateur": 1.26,
+  "duree_ticks": 200,
+  "description": {
+    "fr": "Synergie active lorsque rayon_du_prasat et benediction_du_moine sont équipés ensemble : Grâce de la Pagode (×1.26).",
+    "en": "Active synergy when rayon_du_prasat and benediction_du_moine are equipped together: Pagoda Grace (×1.26)."
+  }
+}

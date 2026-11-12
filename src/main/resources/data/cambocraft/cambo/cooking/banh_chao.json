@@ -1,0 +1,17 @@
+{
+  "buff_amplificateur": 0,
+  "buff_duree_ticks": 2400,
+  "buff_effet": "minecraft:jump_boost",
+  "faction": "ly",
+  "ingredients": [
+    "cambocraft:farine_de_riz",
+    "cambocraft:curcuma_racine",
+    "cambocraft:crevette"
+  ],
+  "nom": {
+    "en": "Golden Turmeric Crepe",
+    "fr": "Crêpe Dorée au Curcuma"
+  },
+  "palier_min": "connu",
+  "resultat": "cambocraft:banh_chao"
+}

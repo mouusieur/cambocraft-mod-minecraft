@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042059,
+    "separation": 4,
+    "spacing": 14,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:chemin_laterite_lanternes",
+      "weight": 1
+    }
+  ]
+}

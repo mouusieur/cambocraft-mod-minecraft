@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Chœur des Apsaras",
+    "en": "Chorus of Apsaras"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (lumiere, soin) : Chœur des Apsaras. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (lumiere, soin): Chorus of Apsaras. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "epique",
+  "element": "lumiere",
+  "type": "soin",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 0.0,
+      "soin": 16.0,
+      "portee": 8.0,
+      "duree_ticks": 110,
+      "recharge_ticks": 74,
+      "cout_energie": 30
+    },
+    {
+      "niveau": 2,
+      "degats": 0.0,
+      "soin": 19.52,
+      "portee": 8.64,
+      "duree_ticks": 123,
+      "recharge_ticks": 70,
+      "cout_energie": 30
+    },
+    {
+      "niveau": 3,
+      "degats": 0.0,
+      "soin": 23.04,
+      "portee": 9.28,
+      "duree_ticks": 136,
+      "recharge_ticks": 67,
+      "cout_energie": 30
+    },
+    {
+      "niveau": 4,
+      "degats": 0.0,
+      "soin": 26.56,
+      "portee": 9.92,
+      "duree_ticks": 150,
+      "recharge_ticks": 63,
+      "cout_energie": 30
+    },
+    {
+      "niveau": 5,
+      "degats": 0.0,
+      "soin": 30.08,
+      "portee": 10.56,
+      "duree_ticks": 163,
+      "recharge_ticks": 59,
+      "cout_energie": 30
+    }
+  ],
+  "maitrise": {
+    "seuil": 130,
+    "variante_fr": "Chœur des Apsaras — Éveil du Maître",
+    "variante_en": "Chorus of Apsaras — Master Awakening",
+    "bonus": 0.26
+  }
+}

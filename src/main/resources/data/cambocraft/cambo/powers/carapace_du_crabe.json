@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Carapace du Crabe",
+    "en": "River Crab Shell"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (eau, defensif) : Carapace du Crabe. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (eau, defensif): River Crab Shell. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "rare",
+  "element": "eau",
+  "type": "defensif",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 2.0,
+      "soin": 6.0,
+      "portee": 3.0,
+      "duree_ticks": 100,
+      "recharge_ticks": 72,
+      "cout_energie": 22
+    },
+    {
+      "niveau": 2,
+      "degats": 2.44,
+      "soin": 7.32,
+      "portee": 3.24,
+      "duree_ticks": 112,
+      "recharge_ticks": 68,
+      "cout_energie": 22
+    },
+    {
+      "niveau": 3,
+      "degats": 2.88,
+      "soin": 8.64,
+      "portee": 3.48,
+      "duree_ticks": 124,
+      "recharge_ticks": 65,
+      "cout_energie": 22
+    },
+    {
+      "niveau": 4,
+      "degats": 3.32,
+      "soin": 9.96,
+      "portee": 3.72,
+      "duree_ticks": 136,
+      "recharge_ticks": 61,
+      "cout_energie": 22
+    },
+    {
+      "niveau": 5,
+      "degats": 3.76,
+      "soin": 11.28,
+      "portee": 3.96,
+      "duree_ticks": 148,
+      "recharge_ticks": 58,
+      "cout_energie": 22
+    }
+  ],
+  "maitrise": {
+    "seuil": 90,
+    "variante_fr": "Carapace du Crabe — Éveil du Maître",
+    "variante_en": "River Crab Shell — Master Awakening",
+    "bonus": 0.22
+  }
+}

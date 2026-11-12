@@ -1,0 +1,23 @@
+{
+  "nom": {
+    "fr": "Poisson-Chat",
+    "en": "Walking Catfish"
+  },
+  "item": "cambocraft:poisson_chat",
+  "rarete": "commun",
+  "poids": 34,
+  "zones": [
+    "riviere",
+    "grand_lac",
+    "mangrove",
+    "riziere"
+  ],
+  "saisons": [
+    "*"
+  ],
+  "nocturne": false,
+  "min_cm": 18,
+  "max_cm": 42,
+  "difficulte": 0.25,
+  "prix": 3
+}

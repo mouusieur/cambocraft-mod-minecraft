@@ -1,0 +1,17 @@
+{
+  "buff_amplificateur": 1,
+  "buff_duree_ticks": 3600,
+  "buff_effet": "minecraft:regeneration",
+  "faction": "tonle",
+  "ingredients": [
+    "cambocraft:poisson_serpent",
+    "cambocraft:lait_de_coco",
+    "cambocraft:pate_de_kroeung_jaune"
+  ],
+  "nom": {
+    "en": "Fish Amok in Coconut Cream",
+    "fr": "Amok de Poisson au Coco"
+  },
+  "palier_min": "respecte",
+  "resultat": "cambocraft:amok"
+}

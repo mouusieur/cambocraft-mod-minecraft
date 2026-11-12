@@ -1,0 +1,67 @@
+{
+  "nom": {
+    "fr": "L'Éveil du Visage",
+    "en": "Awakening of the Face"
+  },
+  "categorie": "boss",
+  "rang": "seigneur_boss",
+  "element": "lumiere",
+  "pv_base": 13200.0,
+  "attaque_base": 156.0,
+  "armure_base": 36.0,
+  "vitesse": 0.32,
+  "xp": 168000,
+  "pieces": 4000,
+  "capacites": [
+    "presence_de_boss",
+    "transition_invulnerable",
+    "maitrise_lumiere"
+  ],
+  "phases": [
+    {
+      "phase": 1,
+      "seuil_pv": 1.0,
+      "nom": {
+        "fr": "Sourire imperturbable du Nord",
+        "en": "Unfaltering Smile of the North"
+      },
+      "mult_attaque": 1.0,
+      "mult_vitesse": 0.95,
+      "mecanique_arene": "rotation_du_labyrinthe",
+      "capacites": [
+        "regard_de_pierre",
+        "sceau_de_silence"
+      ]
+    },
+    {
+      "phase": 2,
+      "seuil_pv": 0.65,
+      "nom": {
+        "fr": "Courroux du Visage du Sud",
+        "en": "Wrath of the Southern Face"
+      },
+      "mult_attaque": 1.32,
+      "mult_vitesse": 1.1,
+      "mecanique_arene": "miroirs_de_lumiere",
+      "capacites": [
+        "faisceau_quadruple",
+        "illusion_des_galeries"
+      ]
+    },
+    {
+      "phase": 3,
+      "seuil_pv": 0.3,
+      "nom": {
+        "fr": "Harmonie des quatre horizons",
+        "en": "Harmony of Four Horizons"
+      },
+      "mult_attaque": 1.66,
+      "mult_vitesse": 1.22,
+      "mecanique_arene": "convergence_astrale",
+      "capacites": [
+        "sentence_millenaire",
+        "lumiere_omnisciente"
+      ]
+    }
+  ]
+}

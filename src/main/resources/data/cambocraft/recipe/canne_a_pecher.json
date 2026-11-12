@@ -1,0 +1,20 @@
+{
+  "key": {
+    "B": {
+      "item": "cambocraft:bambou_brut"
+    },
+    "S": {
+      "item": "cambocraft:fil_de_soie"
+    }
+  },
+  "pattern": [
+    "  B",
+    " BS",
+    "B S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cambocraft:canne_a_pecher"
+  },
+  "type": "minecraft:crafting_shaped"
+}

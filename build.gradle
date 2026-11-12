@@ -1,0 +1,111 @@
+plugins {
+	// Si la version figée n'est plus résolue par maven.fabricmc.net, remplacer par '1.7-SNAPSHOT'.
+	id 'fabric-loom' version "${loom_version}"
+	id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
+
+repositories {
+	// Aucune dépendance hors Fabric : Loom ajoute lui-même les dépôts nécessaires.
+}
+
+loom {
+	// Sépare le code commun (src/main) du code réservé au client (src/client) :
+	// le serveur dédié ne peut pas charger par erreur une classe de rendu.
+	splitEnvironmentSourceSets()
+
+	mods {
+		"cambocraft" {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+
+	runs {
+		// Serveur de GameTests : ./gradlew runGametest
+		gametest {
+			server()
+			name "Game Test"
+			vmArg "-Dfabric-api.gametest"
+			vmArg "-Dfabric-api.gametest.report-file=${project.buildDir}/junit.xml"
+			runDir "build/gametest"
+		}
+	}
+}
+
+// Datagen Fabric : sert à l'export des registres et à leur contrôle (voir docs/TECHNIQUE.md).
+fabricApi {
+	configureDataGeneration()
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
+	// Fabric API : événements, réseau, attachments de données, registres, rendu.
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+	// Module GameTest : réservé au développement, absent du jar public de Fabric API.
+	modImplementation fabricApi.module("fabric-gametest-api-v1", project.fabric_version)
+
+	// Tests unitaires (JUnit 5) du noyau de règles, sans lancer le jeu.
+	testImplementation "net.fabricmc:fabric-loader-junit:${project.loader_version}"
+}
+
+processResources {
+	inputs.property "version", project.version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": project.version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 21
+	it.options.encoding = "UTF-8"
+	// Affiche toutes les erreurs d'un coup au lieu des 100 premières.
+	it.options.compilerArgs += ["-Xmaxerrs", "2000"]
+}
+
+java {
+	withSourcesJar()
+
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
+}
+
+test {
+	useJUnitPlatform()
+	// La simulation de gacha complète (5 000 000 de tirages) est activée par -Pcambocraft.simulation=full
+	systemProperty "cambocraft.simulation", project.findProperty("cambocraft.simulation") ?: "quick"
+	// Les tests lisent les JSON du mod directement dans les sources.
+	systemProperty "cambocraft.data.dir", "${projectDir}/src/main/resources/data/cambocraft"
+	testLogging {
+		events "failed"
+		exceptionFormat "full"
+	}
+}
+
+jar {
+	from("LICENSE") {
+		rename { "${it}_${project.base.archivesName.get()}" }
+	}
+}
+
+publishing {
+	publications {
+		create("mavenJava", MavenPublication) {
+			artifactId = project.archives_base_name
+			from components.java
+		}
+	}
+	repositories {
+	}
+}

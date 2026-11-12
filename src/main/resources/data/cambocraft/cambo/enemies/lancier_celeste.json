@@ -1,0 +1,20 @@
+{
+  "nom": {
+    "fr": "Lancier céleste",
+    "en": "Celestial Lancer"
+  },
+  "categorie": "zone",
+  "rang": "archonte",
+  "element": "air",
+  "pv_base": 1120.0,
+  "attaque_base": 114.0,
+  "armure_base": 28.0,
+  "vitesse": 0.34,
+  "xp": 850,
+  "pieces": 140,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_air"
+  ],
+  "phases": []
+}

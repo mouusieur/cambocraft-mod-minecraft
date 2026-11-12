@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cambocraft:block/teck_slab"
+    },
+    "type=double": {
+      "model": "cambocraft:block/teck_planks"
+    },
+    "type=top": {
+      "model": "cambocraft:block/teck_slab_top"
+    }
+  }
+}

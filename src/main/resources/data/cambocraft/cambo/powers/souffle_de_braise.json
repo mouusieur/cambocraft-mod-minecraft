@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Souffle de Braise",
+    "en": "Cinder Breath"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (feu, controle) : Souffle de Braise. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (feu, controle): Cinder Breath. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "rare",
+  "element": "feu",
+  "type": "controle",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 8.5,
+      "soin": 0.0,
+      "portee": 5.5,
+      "duree_ticks": 60,
+      "recharge_ticks": 58,
+      "cout_energie": 20
+    },
+    {
+      "niveau": 2,
+      "degats": 10.37,
+      "soin": 0.0,
+      "portee": 5.94,
+      "duree_ticks": 67,
+      "recharge_ticks": 55,
+      "cout_energie": 20
+    },
+    {
+      "niveau": 3,
+      "degats": 12.24,
+      "soin": 0.0,
+      "portee": 6.38,
+      "duree_ticks": 74,
+      "recharge_ticks": 52,
+      "cout_energie": 20
+    },
+    {
+      "niveau": 4,
+      "degats": 14.11,
+      "soin": 0.0,
+      "portee": 6.82,
+      "duree_ticks": 82,
+      "recharge_ticks": 49,
+      "cout_energie": 20
+    },
+    {
+      "niveau": 5,
+      "degats": 15.98,
+      "soin": 0.0,
+      "portee": 7.26,
+      "duree_ticks": 89,
+      "recharge_ticks": 46,
+      "cout_energie": 20
+    }
+  ],
+  "maitrise": {
+    "seuil": 90,
+    "variante_fr": "Souffle de Braise — Éveil du Maître",
+    "variante_en": "Cinder Breath — Master Awakening",
+    "bonus": 0.22
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_side",
+  "textures": {
+    "texture": "cambocraft:block/palmier_a_sucre_planks"
+  }
+}

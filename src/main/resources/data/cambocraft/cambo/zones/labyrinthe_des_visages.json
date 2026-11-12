@@ -1,0 +1,26 @@
+{
+  "biomes": [
+    "cambocraft:jungle_en_ruines",
+    "cambocraft:savane_claire"
+  ],
+  "boss_id": "l_eveil_du_visage",
+  "boss_requis": "le_phenix_de_laterite",
+  "ennemis": [
+    "colosse_du_labyrinthe",
+    "illusionniste_de_pierre",
+    "spectre_des_galeries",
+    "gardien_du_seuil"
+  ],
+  "niveau_max": 165,
+  "niveau_min": 150,
+  "nom": {
+    "en": "Labyrinth of Faces",
+    "fr": "Labyrinthe des Visages"
+  },
+  "ordre": 9,
+  "teleporteur": {
+    "x": -1340,
+    "y": 88,
+    "z": -1120
+  }
+}

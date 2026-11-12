@@ -1,0 +1,65 @@
+{
+  "noeud_initial": "accueil",
+  "noeuds": {
+    "accueil": {
+      "choix": [
+        {
+          "action": "",
+          "quete_requise": "",
+          "reponse": {
+            "en": "Tell me about your craft and the current season.",
+            "fr": "Parlez-moi de votre métier et de la saison."
+          },
+          "reputation_min": -10000,
+          "suivant": "conseil"
+        },
+        {
+          "action": "ouvrir_marchand",
+          "quete_requise": "",
+          "reponse": {
+            "en": "Show me the specialties reserved for trusted friends.",
+            "fr": "Montrez-moi vos spécialités réservées aux amis du village."
+          },
+          "reputation_min": 200,
+          "suivant": "confiance"
+        },
+        {
+          "action": "offrande_reputation",
+          "quete_requise": "",
+          "reponse": {
+            "en": "I wish to make amends with the village.",
+            "fr": "Je souhaite faire amende honorable auprès du village."
+          },
+          "reputation_min": -10000,
+          "suivant": "redemption"
+        }
+      ],
+      "texte": {
+        "en": "\"Choumreap sour, traveler. I am Vannak — Bamboo Craftsman. What brings you to Srok province?\"",
+        "fr": "« Choumreap sour, voyageur. Je suis Vannak — Artisan du Bambou. Que cherches-tu dans la province de Srok ? »"
+      }
+    },
+    "confiance": {
+      "choix": [],
+      "texte": {
+        "en": "\"Your word is respected among us. Here is what we keep for those who protect our homes.\"",
+        "fr": "« Ta parole est respectée parmi nous. Voici ce que nous réservons à ceux qui protègent nos foyers. »"
+      }
+    },
+    "conseil": {
+      "choix": [],
+      "texte": {
+        "en": "\"When the monsoon swells the Great Lake, the paddies thrive but the paths grow slick. Prepare your supplies before setting out.\"",
+        "fr": "« Lorsque la mousson gonfle le Grand Lac, les rizières prospèrent mais les sentiers deviennent glissants. Prépare tes provisions avant le départ. »"
+      }
+    },
+    "redemption": {
+      "choix": [],
+      "texte": {
+        "en": "\"A sincere lotus flower offering and helping in the rice fields always restore harmony.\"",
+        "fr": "« Une offrande sincère de fleurs de lotus et l'aide apportée aux rizières apaisent toujours les cœurs. »"
+      }
+    }
+  },
+  "pnj": "vendeur_de_bambou"
+}

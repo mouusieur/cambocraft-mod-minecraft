@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Danse des Sept Ombres",
+    "en": "Seven Shadows Dance"
+  },
+  "pouvoirs": [
+    "lames_jumelles_de_l_ombre",
+    "mirage_du_clan_ombre"
+  ],
+  "effet": "clones_assassins",
+  "multiplicateur": 1.33,
+  "duree_ticks": 200,
+  "description": {
+    "fr": "Synergie active lorsque lames_jumelles_de_l_ombre et mirage_du_clan_ombre sont équipés ensemble : Danse des Sept Ombres (×1.33).",
+    "en": "Active synergy when lames_jumelles_de_l_ombre and mirage_du_clan_ombre are equipped together: Seven Shadows Dance (×1.33)."
+  }
+}

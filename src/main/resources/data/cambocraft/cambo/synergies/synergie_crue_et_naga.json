@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Courroux du Fleuve Sacré",
+    "en": "Sacred River Wrath"
+  },
+  "pouvoirs": [
+    "crue_de_mousson",
+    "tourbillon_du_naga"
+  ],
+  "effet": "maelstrom_du_tonle",
+  "multiplicateur": 1.32,
+  "duree_ticks": 220,
+  "description": {
+    "fr": "Synergie active lorsque crue_de_mousson et tourbillon_du_naga sont équipés ensemble : Courroux du Fleuve Sacré (×1.32).",
+    "en": "Active synergy when crue_de_mousson and tourbillon_du_naga are equipped together: Sacred River Wrath (×1.32)."
+  }
+}

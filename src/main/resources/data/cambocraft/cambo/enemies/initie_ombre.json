@@ -1,0 +1,23 @@
+{
+  "nom": {
+    "fr": "Initié du Clan Ombre",
+    "en": "Shadow Clan Initiate"
+  },
+  "categorie": "ninja",
+  "rang": "initie",
+  "element": "ombre",
+  "pv_base": 88.0,
+  "attaque_base": 12.5,
+  "armure_base": 4.0,
+  "vitesse": 0.28,
+  "xp": 170,
+  "pieces": 28,
+  "capacites": [
+    "attaque_de_base",
+    "affinite_ombre",
+    "transformation_5_etapes",
+    "pas_de_l_ombre",
+    "salve_shuriken"
+  ],
+  "phases": []
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "cambocraft:block/gres_khmer_poli",
+    "side": "cambocraft:block/gres_khmer_poli"
+  }
+}

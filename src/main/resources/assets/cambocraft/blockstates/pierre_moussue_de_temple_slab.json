@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cambocraft:block/pierre_moussue_de_temple_slab"
+    },
+    "type=double": {
+      "model": "cambocraft:block/pierre_moussue_de_temple"
+    },
+    "type=top": {
+      "model": "cambocraft:block/pierre_moussue_de_temple_slab_top"
+    }
+  }
+}

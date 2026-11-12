@@ -1,0 +1,229 @@
+# Catalogue des objets de Cambocraft (hors blocs) — source de vérité du registre.
+#
+# Champs :
+#   id, fr, en    identifiant et noms localisés
+#   max_count     taille de pile (64 par défaut)
+#   food          composant alimentaire (classe utilitaire écrite à la main, voir PLUS_BAS)
+#   rarity        common | uncommon | rare | epic
+#   held          true pour un modèle tenu en main (outils, armes)
+#   class         classe Java à instancier (par défaut Item)
+#   texture       nom de texture (par défaut l'identifiant)
+#
+# Les objets fonctionnels (bol de riz béni, carnet, semences, pièces…) sont décrits ici ;
+# leur comportement est codé dans les paquets craft/, power/, quest/ et documenté.
+
+items:
+  # --- monnaie et composants de base ---
+  - {id: piece_du_lotus, fr: Pièce du Lotus, en: Lotus Coin, max_count: 64, comment: "Monnaie officielle du Cambodge (voir docs/RECETTES.md)."}
+  - {id: graine_de_riz, fr: Graine de Riz, en: Rice Grain}
+  - {id: riz_brut, fr: Riz Brut, en: Raw Rice}
+  - {id: riz_cuit, fr: Riz Cuit, en: Cooked Rice, food: CamboFoods.RICE}
+  - {id: bol_de_riz, fr: Bol de Riz, en: Bowl of Rice, max_count: 16}
+  - {id: bol_de_riz_beni, fr: Bol de Riz Béni, en: Blessed Bowl of Rice, max_count: 1, rarity: rare, comment: "Clé du portail du Cambodge : posé au centre du cadre de pierre du lotus."}
+  - {id: carnet_du_nen, fr: Carnet du Nen, en: Nen Notebook, max_count: 1, rarity: uncommon, comment: "Consigne tous les pouvoirs obtenus ; s'ouvre avec la touche K."}
+  - {id: pierre_du_lotus_brute, fr: Éclat de Pierre du Lotus, en: Raw Lotus Shard}
+  - {id: lotus_brut, fr: Lotus Brut, en: Raw Lotus}
+  - {id: fil_de_soie, fr: Fil de Soie, en: Silk Thread}
+  - {id: cocon_de_soie, fr: Cocon de Soie, en: Silk Cocoon}
+  - {id: tissu_de_soie, fr: Tissu de Soie, en: Silk Cloth}
+  - {id: bambou_brut, fr: Bambou Brut, en: Raw Bamboo}
+  - {id: resine, fr: Résine, en: Resin}
+  - {id: charbon_de_bois, fr: Charbon de Bois, en: Charcoal}
+  - {id: argile_brute, fr: Argile Brute, en: Raw Clay}
+  - {id: brique_d_argile, fr: Brique d'Argile, en: Clay Brick}
+  - {id: poudre_de_lotus, fr: Poudre de Lotus, en: Lotus Powder, rarity: uncommon, comment: "Ingrédient de fusion et de renforcement des pouvoirs."}
+  # --- nourriture ---
+  - {id: amok, fr: Amok, en: Amok, max_count: 16, food: CamboFoods.AMOK, comment: "Curry khmer au poisson, à la citronnelle et au lait de coco."}
+  - {id: nom_banh_chok, fr: Nom Banh Chok, en: Nom Banh Chok, max_count: 16, food: CamboFoods.NOM_BANH_CHOK}
+  - {id: bai_sach_chrouk, fr: Bai Sach Chrouk, en: Bai Sach Chrouk, max_count: 16, food: CamboFoods.BAI_SACH_CHROUK}
+  - {id: num_pang, fr: Num Pang, en: Num Pang, max_count: 16, food: CamboFoods.NUM_PANG}
+  - {id: riz_gluant, fr: Riz Gluant, en: Sticky Rice, max_count: 16, food: CamboFoods.STICKY_RICE}
+  - {id: dessert_au_coco, fr: Dessert au Coco, en: Coconut Dessert, max_count: 16, food: CamboFoods.COCONUT_DESSERT}
+  - {id: the_glace, fr: Thé Glacé, en: Iced Tea, max_count: 16, food: CamboFoods.ICED_TEA}
+  - {id: poisson_grille, fr: Poisson Grillé, en: Grilled Fish, max_count: 16, food: CamboFoods.GRILLED_FISH}
+  - {id: nouilles_de_riz, fr: Nouilles de Riz, en: Rice Noodles, max_count: 16}
+  - {id: lait_de_coco, fr: Lait de Coco, en: Coconut Milk, max_count: 16}
+  - {id: citronnelle_coupee, fr: Citronnelle Coupée, en: Chopped Lemongrass}
+  - {id: piment_rouge, fr: Piment Rouge, en: Red Chili}
+  - {id: crevette, fr: Crevette, en: Shrimp, food: CamboFoods.SHRIMP}
+  # --- matériaux de forge et d'artisanat ---
+  - {id: lingot_de_lotus, fr: Lingot de Lotus, en: Lotus Ingot, rarity: uncommon}
+  - {id: epee_khmer, fr: Épée Khmère, en: Khmer Sword, max_count: 1, held: true, class: com.cambocraft.craft.CamboWeaponItem, attack: 6.0, speed: -2.2}
+  - {id: pique_en_bambou, fr: Pique en Bambou, en: Bamboo Spear, max_count: 1, held: true, class: com.cambocraft.craft.CamboWeaponItem, attack: 6.0, speed: -2.2}
+  - {id: fleche_en_bambou, fr: Flèche en Bambou, en: Bamboo Arrow, max_count: 64}
+  - {id: bouclier_de_rotin, fr: Bouclier de Rotin, en: Rattan Shield, max_count: 1, held: true}
+  - {id: bandage_de_soie, fr: Bandage de Soie, en: Silk Bandage, max_count: 16, factory: "s -> new com.cambocraft.craft.CamboHealingItem(s, 4.0F, 200)"}
+  - {id: onguent_de_lotus, fr: Onguent de Lotus, en: Lotus Salve, max_count: 8, rarity: uncommon, factory: "s -> new com.cambocraft.craft.CamboHealingItem(s, 8.0F, 400)"}
+  - {id: encens_beni, fr: Encens Béni, en: Blessed Incense, max_count: 16, rarity: uncommon}
+  # --- outils de métier ---
+  - {id: maillet_de_sculpteur, fr: Maillet de Sculpteur, en: Sculptor's Mallet, max_count: 1, held: true}
+  - {id: ciseau_de_sculpteur, fr: Ciseau de Sculpteur, en: Sculptor's Chisel, max_count: 1, held: true}
+  - {id: canne_a_pecher, fr: Canne à Pêcher, en: Fishing Rod, max_count: 1, held: true, class: com.cambocraft.fishing.CamboFishingRodItem}
+  - {id: filet_de_peche, fr: Filet de Pêche, en: Fishing Net, max_count: 1}
+  - {id: houe_de_riz, fr: Houe de Riz, en: Rice Hoe, max_count: 1, held: true}
+  - {id: faucille, fr: Faucille, en: Sickle, max_count: 1, held: true, class: com.cambocraft.craft.CamboWeaponItem, attack: 6.0, speed: -2.2}
+  # --- pêche ---
+  - {id: poisson_chat, fr: Poisson-Chat, en: Walking Catfish, food: CamboFoods.RAW_FISH}
+  - {id: poisson_tilapia, fr: Tilapia, en: Tilapia, food: CamboFoods.RAW_FISH}
+  - {id: poisson_serpent, fr: Poisson-Serpent, en: Snakehead, food: CamboFoods.RAW_FISH}
+  - {id: carpe_geante, fr: Carpe Géante, en: Giant Carp, food: CamboFoods.RAW_FISH, rarity: uncommon}
+  - {id: poisson_combattant, fr: Poisson Combattant, en: Betta}
+  - {id: crevette_de_riviere, fr: Crevette de Rivière, en: River Shrimp, food: CamboFoods.SHRIMP}
+  - {id: crabe_de_riziaire, fr: Crabe de Rizière, en: Paddy Crab, food: CamboFoods.SHRIMP}
+  - {id: anguille, fr: Anguille, en: Eel, food: CamboFoods.RAW_FISH}
+  - {id: poisson_lune, fr: Poisson-Lune, en: Moonfish, rarity: rare}
+  - {id: raie_d_eau_douce, fr: Raie d'Eau Douce, en: Freshwater Ray, rarity: rare}
+  - {id: crocodile_dore, fr: Crocodile Doré, en: Golden Crocodile, rarity: epic}
+  - {id: poisson_de_lotus, fr: Poisson de Lotus, en: Lotus Fish, rarity: rare, food: CamboFoods.RAW_FISH}
+  - {id: silure_geant, fr: Silure Géant, en: Giant Catfish, rarity: rare, food: CamboFoods.RAW_FISH}
+  - {id: poisson_d_argent, fr: Poisson d'Argent, en: Silver Fish, food: CamboFoods.RAW_FISH}
+  - {id: poisson_arc_en_ciel, fr: Poisson Arc-en-Ciel, en: Rainbow Fish, food: CamboFoods.RAW_FISH}
+  - {id: grenouille_de_riziaire, fr: Grenouille de Rizière, en: Paddy Frog, food: CamboFoods.SHRIMP}
+  # --- graines et cultures ---
+  - {id: graine_de_piment, fr: Graine de Piment, en: Chili Seed}
+  - {id: graine_d_aubergine, fr: Graine d'Aubergine, en: Eggplant Seed}
+  - {id: graine_de_concombre, fr: Graine de Concombre, en: Cucumber Seed}
+  - {id: bouture_de_citronnelle, fr: Bouture de Citronnelle, en: Lemongrass Cutting}
+  - {id: pousse_de_teck, fr: Pousse de Teck, en: Teak Sapling}
+  - {id: pousse_de_kapokier, fr: Pousse de Kapokier, en: Kapok Sapling}
+  - {id: pousse_de_cocotier, fr: Pousse de Cocotier, en: Coconut Sapling}
+  - {id: pousse_de_manguier, fr: Pousse de Manguier, en: Mango Sapling}
+  - {id: pousse_de_jacquier, fr: Pousse de Jacquier, en: Jackfruit Sapling}
+  - {id: rhizome_de_lotus, fr: Rhizome de Lotus, en: Lotus Rhizome}
+  # --- minéraux et trophées ---
+  - {id: ecaille_de_naga, fr: Écaille de Naga, en: Naga Scale, rarity: rare, comment: "Trophée : le naga est un protecteur, jamais un ennemi à caricaturer."}
+  - {id: plume_de_garuda, fr: Plume de Garuda, en: Garuda Feather, rarity: rare}
+  - {id: coeur_du_lotus, fr: Cœur du Lotus, en: Heart of the Lotus, max_count: 1, rarity: epic}
+  - {id: essence_d_ombre, fr: Essence d'Ombre, en: Shadow Essence, rarity: uncommon}
+  - {id: cle_de_prasat, fr: Clé de Prasat, en: Prasat Key, max_count: 1, rarity: uncommon}
+  - {id: carte_de_la_renaissance, fr: Carte de la Renaissance, en: Renaissance Map, max_count: 1, rarity: epic}
+  - {id: parchemin_de_quete, fr: Parchemin de Quête, en: Quest Scroll, max_count: 1}
+  - {id: journal_de_voyage, fr: Journal de Voyage, en: Travel Journal, max_count: 1}
+  - {id: offrande_de_fleurs, fr: Offrande de Fleurs, en: Flower Offering, max_count: 16}
+  - {id: bol_d_offrande, fr: Bol d'Offrande, en: Offering Bowl, max_count: 1}
+  - {id: medaillon_de_faction, fr: Médaillon de Faction, en: Faction Medallion, max_count: 1}
+  - {id: pierre_de_teleportation, fr: Pierre de Téléportation, en: Teleport Stone, max_count: 16, rarity: uncommon}
+  - {id: sceau_d_ombre, fr: Sceau d'Ombre, en: Shadow Seal, max_count: 1, rarity: rare}
+  - {id: lanterne_de_brume, fr: Lanterne de Brume, en: Mist Lantern, max_count: 1, rarity: uncommon}
+  - {id: tambour_de_guerre, fr: Tambour de Guerre, en: War Drum, max_count: 1}
+  - {id: masque_de_pradal, fr: Masque de Pradal Serey, en: Pradal Serey Mask, max_count: 1, rarity: uncommon}
+  # --- monnaie et bourses supplémentaires ---
+  - {id: piece_du_lotus_argent, fr: Pièce du Lotus d'Argent, en: Silver Lotus Coin, max_count: 64, rarity: uncommon}
+  - {id: piece_du_lotus_or, fr: Pièce du Lotus d'Or, en: Gold Lotus Coin, max_count: 64, rarity: rare}
+  - {id: bourse_de_soie, fr: Bourse de Soie, en: Silk Coin Pouch, max_count: 1, rarity: uncommon}
+  - {id: lingot_d_or_khmer, fr: Lingot d'Or Khmer, en: Khmer Gold Ingot, rarity: rare}
+  # --- cuisine khmère et boissons (buffs temporaires débloqués par réputation) ---
+  - {id: lok_lak, fr: Lok Lak au Poivre de Kampot, en: Kampot Pepper Lok Lak, max_count: 16, food: CamboFoods.AMOK}
+  - {id: kuy_teav, fr: Soupe Kuy Teav, en: Kuy Teav Noodle Soup, max_count: 16, food: CamboFoods.NOM_BANH_CHOK}
+  - {id: samlor_korko, fr: Samlor Korko, en: Samlor Korko Soup, max_count: 16, food: CamboFoods.AMOK}
+  - {id: samlor_machu, fr: Soupe Aigre Samlor Machu, en: Samlor Machu Sour Soup, max_count: 16, food: CamboFoods.NOM_BANH_CHOK}
+  - {id: prahok_ktis, fr: Prahok Ktis au Lait de Coco, en: Prahok Ktis Dip, max_count: 16, food: CamboFoods.BAI_SACH_CHROUK}
+  - {id: pleah_sach_ko, fr: Salade Citronnée de Bœuf, en: Lime Beef Salad, max_count: 16, food: CamboFoods.BAI_SACH_CHROUK}
+  - {id: banh_chao, fr: Crêpe Khmère Banh Chao, en: Banh Chao Crispy Crepe, max_count: 16, food: CamboFoods.NUM_PANG}
+  - {id: kralan, fr: Riz Gluant en Bambou Kralan, en: Kralan Bamboo Sticky Rice, max_count: 16, food: CamboFoods.STICKY_RICE}
+  - {id: num_ansorm, fr: Gâteau de Riz Num Ansorm, en: Num Ansorm Rice Cake, max_count: 16, food: CamboFoods.STICKY_RICE}
+  - {id: num_kom, fr: Pyramide Sucrée Num Kom, en: Num Kom Sweet Rice Cake, max_count: 16, food: CamboFoods.COCONUT_DESSERT}
+  - {id: num_chak_kchan, fr: Gâteau Vapeur Num Chak Kchan, en: Steamed Layer Cake, max_count: 16, food: CamboFoods.COCONUT_DESSERT}
+  - {id: brochette_de_poisson, fr: Brochette de Poisson à la Citronnelle, en: Lemongrass Fish Skewer, max_count: 16, food: CamboFoods.GRILLED_FISH}
+  - {id: brochette_de_boeuf, fr: Brochette de Bœuf Mariné, en: Marinated Beef Skewer, max_count: 16, food: CamboFoods.BAI_SACH_CHROUK}
+  - {id: crabe_au_poivre_vert, fr: Crabe au Poivre Vert, en: Green Pepper Crab, max_count: 16, food: CamboFoods.AMOK, rarity: uncommon}
+  - {id: salade_de_papaye, fr: Salade de Papaye Verte Bok Lahong, en: Green Papaya Salad, max_count: 16, food: CamboFoods.NOM_BANH_CHOK}
+  - {id: soupe_de_bambou, fr: Soupe de Pousses de Bambou, en: Bamboo Shoot Soup, max_count: 16, food: CamboFoods.RICE}
+  - {id: jus_de_canne_a_sucre, fr: Jus de Canne à Sucre, en: Sugarcane Juice, max_count: 16, food: CamboFoods.ICED_TEA}
+  - {id: jus_de_coco_frais, fr: Eau de Coco Fraîche, en: Fresh Coconut Water, max_count: 16, food: CamboFoods.ICED_TEA}
+  - {id: infusion_de_lotus, fr: Infusion de Pétales de Lotus, en: Lotus Petal Infusion, max_count: 16, food: CamboFoods.ICED_TEA, rarity: uncommon}
+  - {id: infusion_de_citronnelle, fr: Infusion de Citronnelle, en: Lemongrass Tea, max_count: 16, food: CamboFoods.ICED_TEA}
+  # --- ingrédients culinaires et agricoles ---
+  - {id: pate_de_prahok, fr: Pâte de Poisson Prahok, en: Prahok Fish Paste}
+  - {id: pate_de_kroeung_jaune, fr: Pâte d'Épices Kroeung Jaune, en: Yellow Kroeung Paste}
+  - {id: pate_de_kroeung_vert, fr: Pâte d'Épices Kroeung Vert, en: Green Kroeung Paste}
+  - {id: pate_de_kroeung_rouge, fr: Pâte d'Épices Kroeung Rouge, en: Red Kroeung Paste}
+  - {id: poivre_noir_de_kampot, fr: Poivre Noir de Kampot, en: Kampot Black Pepper}
+  - {id: poivre_rouge_de_kampot, fr: Poivre Rouge de Kampot, en: Kampot Red Pepper, rarity: uncommon}
+  - {id: poivre_vert_frais, fr: Grappe de Poivre Vert, en: Fresh Green Peppercorn}
+  - {id: sucre_de_palme, fr: Sucre de Palme, en: Palm Sugar}
+  - {id: galanga_racine, fr: Racine de Galanga, en: Galangal Root}
+  - {id: curcuma_racine, fr: Racine de Curcuma, en: Turmeric Root}
+  - {id: combava_zeste, fr: Combava, en: Kaffir Lime}
+  - {id: tamarin_gousse, fr: Gousse de Tamarin, en: Tamarind Pod}
+  - {id: ail_grille, fr: Ail Grillé, en: Roasted Garlic}
+  - {id: noix_de_coco, fr: Noix de Coco, en: Coconut, food: CamboFoods.RICE}
+  - {id: mangue_mure, fr: Mangue Mûre, en: Ripe Mango, food: CamboFoods.COCONUT_DESSERT}
+  - {id: mangue_verte, fr: Mangue Verte, en: Green Mango, food: CamboFoods.RICE}
+  - {id: jacque_quartier, fr: Quartier de Jacque, en: Jackfruit Slice, food: CamboFoods.COCONUT_DESSERT}
+  - {id: banane_plantain, fr: Banane Plantain, en: Plantain Banana, food: CamboFoods.RICE}
+  - {id: papaye_verte, fr: Papaye Verte, en: Green Papaya, food: CamboFoods.RICE}
+  - {id: pousse_de_bambou_comestible, fr: Pousse de Bambou Comestible, en: Edible Bamboo Shoot, food: CamboFoods.RICE}
+  - {id: farine_de_riz, fr: Farine de Riz, en: Rice Flour}
+  - {id: graine_de_lotus, fr: Graine de Lotus, en: Lotus Seed, food: CamboFoods.RICE}
+  # --- chaîne de la soie et sculpture sur pierre ---
+  - {id: feuille_de_murier, fr: Feuille de Mûrier, en: Mulberry Leaf}
+  - {id: ver_a_soie, fr: Ver à Soie, en: Silkworm}
+  - {id: echeveau_de_soie_ecrue, fr: Écheveau de Soie Écrue, en: Raw Silk Skein}
+  - {id: soie_teinte_or, fr: Soie Teinte Or, en: Gold Dyed Silk, rarity: uncommon}
+  - {id: soie_teinte_pourpre, fr: Soie Teinte Pourpre, en: Crimson Dyed Silk, rarity: uncommon}
+  - {id: soie_teinte_indigo, fr: Soie Teinte Indigo, en: Indigo Dyed Silk, rarity: uncommon}
+  - {id: soie_teinte_emeraude, fr: Soie Teinte Émeraude, en: Emerald Dyed Silk, rarity: uncommon}
+  - {id: krama_traditionnel, fr: Krama Traditionnel, en: Traditional Krama, max_count: 1}
+  - {id: krama_de_soie_doree, fr: Krama de Soie Dorée, en: Golden Silk Krama, max_count: 1, rarity: rare}
+  - {id: bloc_de_gres_brut, fr: Bloc de Grès à Sculpter, en: Uncarved Sandstone Block}
+  - {id: statuette_de_naga, fr: Statuette de Naga, en: Naga Figurine, max_count: 16, rarity: uncommon}
+  - {id: statuette_d_apsara, fr: Statuette d'Apsara, en: Apsara Figurine, max_count: 16, rarity: uncommon}
+  # --- armes et forge (+1 à +5) ---
+  - {id: dague_khmer, fr: Dague Khmère, en: Khmer Dagger, max_count: 1, held: true, class: com.cambocraft.craft.CamboWeaponItem, attack: 4.5, speed: -1.6}
+  - {id: sabre_de_garde_royal, fr: Sabre de la Garde Royale, en: Royal Guard Saber, max_count: 1, held: true, rarity: rare, class: com.cambocraft.craft.CamboWeaponItem, attack: 7.5, speed: -2.2}
+  - {id: lance_de_prasat, fr: Lance de Prasat, en: Prasat Spear, max_count: 1, held: true, rarity: uncommon, class: com.cambocraft.craft.CamboWeaponItem, attack: 7.0, speed: -2.5}
+  - {id: hallebarde_de_garuda, fr: Hallebarde de Garuda, en: Garuda Halberd, max_count: 1, held: true, rarity: rare, class: com.cambocraft.craft.CamboWeaponItem, attack: 8.5, speed: -2.7}
+  - {id: baton_de_moine_en_teck, fr: Bâton de Moine en Teck, en: Teak Monk Staff, max_count: 1, held: true, class: com.cambocraft.craft.CamboWeaponItem, attack: 5.0, speed: -2.0}
+  - {id: arc_composite_en_bambou, fr: Arc Composite en Bambou, en: Composite Bamboo Bow, max_count: 1, held: true}
+  - {id: arbalete_de_rotin, fr: Arbalète de Rotin, en: Rattan Crossbow, max_count: 1, held: true}
+  - {id: kunai_d_ombre, fr: Kunaï du Clan Ombre, en: Shadow Clan Kunai, max_count: 16, held: true, class: com.cambocraft.craft.CamboWeaponItem, attack: 5.5, speed: -1.5}
+  - {id: shuriken_d_ombre, fr: Shuriken du Clan Ombre, en: Shadow Clan Shuriken, max_count: 64}
+  - {id: lame_courbe_d_ombre, fr: Lame Courbe du Clan Ombre, en: Shadow Curved Blade, max_count: 1, held: true, rarity: rare, class: com.cambocraft.craft.CamboWeaponItem, attack: 8.0, speed: -2.1}
+  - {id: masse_de_laterite, fr: Masse de Latérite, en: Laterite Mace, max_count: 1, held: true, class: com.cambocraft.craft.CamboWeaponItem, attack: 9.0, speed: -3.0}
+  - {id: epee_du_lotus_sacree, fr: Épée du Lotus, en: Lotus Blade, max_count: 1, held: true, rarity: epic, fireproof: true, class: com.cambocraft.craft.CamboWeaponItem, attack: 9.5, speed: -2.2}
+  - {id: gants_de_pradal_serey, fr: Bandages de Pradal Serey, en: Pradal Serey Handwraps, max_count: 1, held: true, class: com.cambocraft.craft.CamboWeaponItem, attack: 5.0, speed: -1.2}
+  - {id: pierre_d_affutage, fr: Pierre d'Affûtage, en: Whetstone}
+  - {id: cristal_de_forge_mineur, fr: Cristal de Forge Mineur, en: Minor Forge Crystal, rarity: uncommon}
+  - {id: cristal_de_forge_majeur, fr: Cristal de Forge Majeur, en: Major Forge Crystal, rarity: rare}
+  - {id: cristal_de_forge_parfait, fr: Cristal de Forge Parfait, en: Flawless Forge Crystal, rarity: epic}
+  - {id: lingot_d_acier_trempe, fr: Lingot d'Acier Trempé, en: Tempered Steel Ingot, rarity: uncommon}
+  # --- outils et pêche avancée ---
+  - {id: pioche_de_lotus, fr: Pioche de Lotus, en: Lotus Pickaxe, max_count: 1, held: true, rarity: uncommon}
+  - {id: hache_de_teck, fr: Hache de Teck, en: Teak Axe, max_count: 1, held: true}
+  - {id: pelle_de_riziaire, fr: Pelle de Rizière, en: Paddy Shovel, max_count: 1, held: true}
+  - {id: ciseaux_a_soie, fr: Ciseaux à Soie, en: Silk Shears, max_count: 1, held: true}
+  - {id: canne_a_pecher_en_bambou_renforce, fr: Canne en Bambou Renforcé, en: Reinforced Bamboo Rod, max_count: 1, held: true, rarity: uncommon, class: com.cambocraft.fishing.CamboFishingRodItem}
+  - {id: canne_a_pecher_du_maitre, fr: Canne du Maître Pêcheur, en: Master Angler's Rod, max_count: 1, held: true, rarity: rare, class: com.cambocraft.fishing.CamboFishingRodItem}
+  - {id: appat_de_riz_fermente, fr: Appât de Riz Fermenté, en: Fermented Rice Bait}
+  - {id: appat_de_crevette_doree, fr: Appât de Crevette Dorée, en: Golden Shrimp Bait, rarity: uncommon}
+  # --- armures (3 ensembles complets) ---
+  - {id: casque_de_rotin, fr: Casque de Rotin, en: Rattan Helmet, max_count: 1}
+  - {id: plastron_de_rotin, fr: Plastron de Rotin, en: Rattan Chestplate, max_count: 1}
+  - {id: jambieres_de_rotin, fr: Jambières de Rotin, en: Rattan Leggings, max_count: 1}
+  - {id: bottes_de_rotin, fr: Bottes de Rotin, en: Rattan Boots, max_count: 1}
+  - {id: couronne_de_soie_et_lotus, fr: Couronne de Soie et Lotus, en: Silk and Lotus Circlet, max_count: 1, rarity: rare}
+  - {id: tunique_de_soie_et_lotus, fr: Tunique de Soie et Lotus, en: Silk and Lotus Tunic, max_count: 1, rarity: rare}
+  - {id: sampot_de_soie_et_lotus, fr: Sampot de Soie et Lotus, en: Silk and Lotus Sampot, max_count: 1, rarity: rare}
+  - {id: sandales_de_soie_et_lotus, fr: Sandales de Soie et Lotus, en: Silk and Lotus Sandals, max_count: 1, rarity: rare}
+  - {id: heaume_de_prasat, fr: Heaume de Prasat, en: Prasat Helm, max_count: 1, rarity: epic}
+  - {id: cuirasse_de_prasat, fr: Cuirasse de Prasat, en: Prasat Cuirass, max_count: 1, rarity: epic}
+  - {id: greves_de_prasat, fr: Grèves de Prasat, en: Prasat Greaves, max_count: 1, rarity: epic}
+  - {id: solerets_de_prasat, fr: Solerets de Prasat, en: Prasat Sabatons, max_count: 1, rarity: epic}
+  # --- reliques des 12 boss et objets de quête / compagnons ---
+  - {id: insigne_du_chef_bandit, fr: Insigne du Chef des Bandits, en: River Bandit Chief Insignia, max_count: 1, rarity: uncommon}
+  - {id: corne_du_buffle_d_or, fr: Corne du Buffle d'Or, en: Golden Buffalo Horn, max_count: 1, rarity: rare}
+  - {id: fourreau_du_maitre_des_lames, fr: Fourreau du Maître des Lames, en: Blade Master Scabbard, max_count: 1, rarity: rare}
+  - {id: croc_du_crocodile_des_profondeurs, fr: Croc du Crocodile des Profondeurs, en: Deep Crocodile Fang, max_count: 1, rarity: rare}
+  - {id: ecaille_du_serpent_sylvestre, fr: Écaille du Serpent de la Forêt, en: Forest Serpent Scale, max_count: 1, rarity: rare}
+  - {id: coeur_du_gardien_de_pierre, fr: Cœur du Gardien de Pierre, en: Stone Guardian Core, max_count: 1, rarity: rare}
+  - {id: masque_du_generalissime, fr: Masque du Généralissime, en: Generalissimo Mask, max_count: 1, rarity: epic}
+  - {id: plume_ardente_du_phenix, fr: Plume Ardente du Phénix de Latérite, en: Laterite Phoenix Plume, max_count: 1, rarity: epic}
+  - {id: fragment_du_visage_eveille, fr: Fragment de l'Éveil du Visage, en: Awakened Face Shard, max_count: 1, rarity: epic}
+  - {id: serre_du_garuda_de_tempete, fr: Serre du Garuda de la Tempête, en: Storm Garuda Talon, max_count: 1, rarity: epic}
+  - {id: sceau_du_gardien_de_l_equilibre, fr: Sceau du Gardien de l'Équilibre, en: Guardian of Balance Seal, max_count: 1, rarity: epic, fireproof: true}
+  - {id: cristal_de_l_ombre_premiere, fr: Cristal de l'Ombre Première, en: Primal Shadow Crystal, max_count: 1, rarity: epic, fireproof: true}
+  - {id: bol_du_maitre_du_nen, fr: Bol d'Argile du Maître du Nen, en: Nen Master's Clay Bowl, max_count: 1, rarity: epic, fireproof: true, comment: "Récompense de La Leçon du Bol."}
+  - {id: perle_d_esprit_neak_ta, fr: Perle d'Esprit Neak Ta, en: Neak Ta Spirit Pearl, max_count: 1, rarity: rare}
+  - {id: corne_d_appel_du_buffle, fr: Corne d'Appel du Buffle d'Eau, en: Water Buffalo Calling Horn, max_count: 1, rarity: uncommon}
+  - {id: pagaie_de_course, fr: Pagaie de Course en Teck, en: Teak Racing Paddle, max_count: 1, held: true, rarity: uncommon}

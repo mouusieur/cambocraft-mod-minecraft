@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Poings d'Acier Rouge",
+    "en": "Red Steel Fists"
+  },
+  "pouvoirs": [
+    "flamme_de_forge",
+    "ardeur_du_pradal"
+  ],
+  "effet": "frappe_incandescente",
+  "multiplicateur": 1.28,
+  "duree_ticks": 180,
+  "description": {
+    "fr": "Synergie active lorsque flamme_de_forge et ardeur_du_pradal sont équipés ensemble : Poings d'Acier Rouge (×1.28).",
+    "en": "Active synergy when flamme_de_forge and ardeur_du_pradal are equipped together: Red Steel Fists (×1.28)."
+  }
+}

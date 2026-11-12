@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "salt": 1042012,
+    "separation": 7,
+    "spacing": 22,
+    "type": "minecraft:random_spread"
+  },
+  "structures": [
+    {
+      "structure": "cambocraft:chaussee_naga_longue",
+      "weight": 1
+    }
+  ]
+}

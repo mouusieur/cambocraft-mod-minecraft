@@ -1,0 +1,26 @@
+{
+  "biomes": [
+    "cambocraft:plateau_de_laterite",
+    "cambocraft:pinedes_seches"
+  ],
+  "boss_id": "generalissime_du_clan_ombre",
+  "boss_requis": "gardien_de_pierre",
+  "ennemis": [
+    "ombre_silencieuse",
+    "executeur_d_ardoise",
+    "maitre_shuriken",
+    "garde_noir_de_la_citadelle"
+  ],
+  "niveau_max": 130,
+  "niveau_min": 110,
+  "nom": {
+    "en": "Shadow Fortress",
+    "fr": "Forteresse Ombre"
+  },
+  "ordre": 7,
+  "teleporteur": {
+    "x": -960,
+    "y": 96,
+    "z": 780
+  }
+}

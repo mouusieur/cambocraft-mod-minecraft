@@ -1,0 +1,67 @@
+{
+  "nom": {
+    "fr": "Chef des bandits de la rivière",
+    "en": "River Bandit Chief"
+  },
+  "categorie": "boss",
+  "rang": "seigneur_boss",
+  "element": "eau",
+  "pv_base": 420.0,
+  "attaque_base": 16.0,
+  "armure_base": 6.0,
+  "vitesse": 0.32,
+  "xp": 1200,
+  "pieces": 180,
+  "capacites": [
+    "presence_de_boss",
+    "transition_invulnerable",
+    "maitrise_eau"
+  ],
+  "phases": [
+    {
+      "phase": 1,
+      "seuil_pv": 1.0,
+      "nom": {
+        "fr": "Embuscade sur l'embarcadère",
+        "en": "Pier Ambush"
+      },
+      "mult_attaque": 1.0,
+      "mult_vitesse": 1.0,
+      "mecanique_arene": "pluie_de_filets",
+      "capacites": [
+        "entaille_du_sabre",
+        "filet_de_peche_leste"
+      ]
+    },
+    {
+      "phase": 2,
+      "seuil_pv": 0.65,
+      "nom": {
+        "fr": "Appel des pillards du Tonlé",
+        "en": "Call of Tonle Raiders"
+      },
+      "mult_attaque": 1.22,
+      "mult_vitesse": 1.1,
+      "mecanique_arene": "renforts_des_berges",
+      "capacites": [
+        "tourbillon_de_rames",
+        "renfort_bandits"
+      ]
+    },
+    {
+      "phase": 3,
+      "seuil_pv": 0.3,
+      "nom": {
+        "fr": "Désespoir du flibustier",
+        "en": "Buccaneer Despair"
+      },
+      "mult_attaque": 1.48,
+      "mult_vitesse": 1.22,
+      "mecanique_arene": "vagues_du_fleuve",
+      "capacites": [
+        "fureur_des_berges",
+        "charge_de_pirogue"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "cambocraft:item/sabre_de_garde_royal"
+  }
+}

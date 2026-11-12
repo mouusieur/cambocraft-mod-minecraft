@@ -1,0 +1,17 @@
+{
+  "buff_amplificateur": 1,
+  "buff_duree_ticks": 4800,
+  "buff_effet": "minecraft:health_boost",
+  "faction": "kompong",
+  "ingredients": [
+    "cambocraft:riz_gluant",
+    "cambocraft:banane_plantain",
+    "cambocraft:lait_de_coco"
+  ],
+  "nom": {
+    "en": "Festive Num Ansorm Cake",
+    "fr": "Gâteau de Fête Num Ansorm"
+  },
+  "palier_min": "honore",
+  "resultat": "cambocraft:num_ansorm"
+}

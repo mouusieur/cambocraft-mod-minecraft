@@ -1,0 +1,48 @@
+{
+  "branches": [],
+  "chapitre": 11,
+  "etapes": [
+    {
+      "cible": "maitre_de_quete",
+      "description": {
+        "en": "Gather accounts from the province.",
+        "fr": "Recueillir les témoignages de la province."
+      },
+      "id": "enquete_province",
+      "objectif": "parler",
+      "quantite": 1
+    },
+    {
+      "cible": "le_gardien_de_l_equilibre",
+      "description": {
+        "en": "Overcome the zone trial (le_gardien_de_l_equilibre).",
+        "fr": "Surmonter l'épreuve de fin de zone (le_gardien_de_l_equilibre)."
+      },
+      "id": "epreuve_majeure",
+      "objectif": "vaincre",
+      "quantite": 1
+    }
+  ],
+  "faction": "kompong",
+  "niveau_min": 185,
+  "quete_requise": "chapitre_10_au_dessus_de_la_mousson",
+  "recompenses": {
+    "objets": [
+      "cambocraft:sceau_du_gardien_de_l_equilibre"
+    ],
+    "pieces": 440,
+    "pouvoir": "",
+    "reputation": 120,
+    "xp": 60500
+  },
+  "resume": {
+    "en": "Gather the relics at the Lotus Sanctuary and overcome the Guardian of Balance.",
+    "fr": "Rassembler les reliques au Sanctuaire du Lotus et triompher du Gardien de l’Équilibre."
+  },
+  "saison_requise": "*",
+  "titre": {
+    "en": "Chapter XI — Threshold of the Lotus Sanctuary",
+    "fr": "Chapitre XI — Le Seuil du Sanctuaire du Lotus"
+  },
+  "type": "principale"
+}

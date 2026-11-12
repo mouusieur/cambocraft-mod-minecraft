@@ -1,0 +1,17 @@
+{
+  "nom": {
+    "fr": "Voltige des Cimes",
+    "en": "Canopy Vault"
+  },
+  "pouvoirs": [
+    "rafale_des_falaises",
+    "elan_du_gibbon"
+  ],
+  "effet": "impulsion_celeste",
+  "multiplicateur": 1.25,
+  "duree_ticks": 180,
+  "description": {
+    "fr": "Synergie active lorsque rafale_des_falaises et elan_du_gibbon sont équipés ensemble : Voltige des Cimes (×1.25).",
+    "en": "Active synergy when rafale_des_falaises and elan_du_gibbon are equipped together: Canopy Vault (×1.25)."
+  }
+}

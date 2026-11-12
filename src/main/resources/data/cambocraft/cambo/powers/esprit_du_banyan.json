@@ -1,0 +1,66 @@
+{
+  "nom": {
+    "fr": "Esprit du Banyan",
+    "en": "Banyan Spirit"
+  },
+  "description": {
+    "fr": "Pouvoir spirituel du Nen (vie, invocation) : Esprit du Banyan. Évolue du niveau 1 au niveau 5 et débloque sa Maîtrise par la pratique.",
+    "en": "Spiritual Nen power (vie, invocation): Banyan Spirit. Scales from level 1 to 5 and unlocks Mastery through practice."
+  },
+  "rarete": "rare",
+  "element": "vie",
+  "type": "invocation",
+  "niveaux": [
+    {
+      "niveau": 1,
+      "degats": 8.0,
+      "soin": 4.5,
+      "portee": 6.5,
+      "duree_ticks": 100,
+      "recharge_ticks": 76,
+      "cout_energie": 24
+    },
+    {
+      "niveau": 2,
+      "degats": 9.76,
+      "soin": 5.49,
+      "portee": 7.02,
+      "duree_ticks": 112,
+      "recharge_ticks": 72,
+      "cout_energie": 24
+    },
+    {
+      "niveau": 3,
+      "degats": 11.52,
+      "soin": 6.48,
+      "portee": 7.54,
+      "duree_ticks": 124,
+      "recharge_ticks": 68,
+      "cout_energie": 24
+    },
+    {
+      "niveau": 4,
+      "degats": 13.28,
+      "soin": 7.47,
+      "portee": 8.06,
+      "duree_ticks": 136,
+      "recharge_ticks": 65,
+      "cout_energie": 24
+    },
+    {
+      "niveau": 5,
+      "degats": 15.04,
+      "soin": 8.46,
+      "portee": 8.58,
+      "duree_ticks": 148,
+      "recharge_ticks": 61,
+      "cout_energie": 24
+    }
+  ],
+  "maitrise": {
+    "seuil": 90,
+    "variante_fr": "Esprit du Banyan — Éveil du Maître",
+    "variante_en": "Banyan Spirit — Master Awakening",
+    "bonus": 0.22
+  }
+}
