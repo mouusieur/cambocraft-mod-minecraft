@@ -258,3 +258,6 @@ add Stats :: public static final net.minecraft.util.Identifier INTERACT_WITH_FUR
 interface NamedScreenHandlerFactory
 add NamedScreenHandlerFactory :: default net.minecraft.screen.ScreenHandler createMenu(int p0, net.minecraft.entity.player.PlayerInventory p1, net.minecraft.entity.player.PlayerEntity p2) { throw new RuntimeException(); }
 add NamedScreenHandlerFactory :: default net.minecraft.text.Text getDisplayName() { throw new RuntimeException(); }
+
+# --- AbstractFurnaceBlock : codec et fabrique de block-entity (abstracts depuis 1.20.5) ---
+add AbstractFurnaceBlock :: public net.minecraft.block.entity.BlockEntity createBlockEntity(net.minecraft.util.math.BlockPos p0, net.minecraft.block.BlockState p1) { throw new RuntimeException(); }
