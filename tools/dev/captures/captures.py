@@ -140,19 +140,31 @@ def scene_interieur():
 
 def scene_vegetation():
     c = []
-    # Rizieres en terrasses : trois gradins de boue, riz sur les bords, eau devant.
+    # Trois terrasses de riziere. Chaque terrasse est un socle plein (jamais une dalle
+    # flottante vue par-dessous) surmonte de boue et de riz, avec un bassin d'irrigation
+    # clos de toutes parts : sans rebord, l'eau s'ecoule dans le vide en cascade.
     for i, niveau in enumerate((Y, Y + 2, Y + 4)):
-        z0 = i * 6 - 6
-        c += [f"fill -12 {niveau} {z0} 12 {niveau} {z0 + 4} cambocraft:boue_de_riziaire",
-              f"fill -12 {niveau+1} {z0} 12 {niveau+1} {z0} cambocraft:riz_sauvage",
-              f"fill -12 {niveau+1} {z0+4} 12 {niveau+1} {z0+4} cambocraft:riz_empile",
-              f"fill -12 {niveau} {z0+5} 12 {niveau} {z0+5} water"]
-    c += [bloc(-6, Y + 7, 8, "lotus_rose"), bloc(-4, Y + 7, 8, "lotus_blanc"),
-          bloc(2, Y + 7, 8, "fleur_de_lotus"), bloc(4, Y + 7, 8, "feuille_de_lotus")]
+        z0 = i * 9 - 9
+        c += [f"fill -12 {Y-6} {z0} 12 {niveau-1} {z0+8} cambocraft:laterite"]
+        c += [f"fill -12 {niveau} {z0} 12 {niveau} {z0+4} cambocraft:boue_de_riziaire"]
+        c += [f"fill -12 {niveau+1} {z0} 12 {niveau+1} {z0} cambocraft:riz_sauvage",
+              f"fill -12 {niveau+1} {z0+4} 12 {niveau+1} {z0+4} cambocraft:riz_empile"]
+        # Bassin : eau au niveau de la terrasse, bordee de boue sur les quatre cotes.
+        c += [f"fill -11 {niveau} {z0+5} 11 {niveau} {z0+7} water",
+              f"fill -12 {niveau} {z0+5} -12 {niveau} {z0+8} cambocraft:boue_de_riziaire",
+              f"fill 12 {niveau} {z0+5} 12 {niveau} {z0+8} cambocraft:boue_de_riziaire",
+              f"fill -12 {niveau} {z0+8} 12 {niveau} {z0+8} cambocraft:boue_de_riziaire"]
+        # Fleurs aquatiques a la surface du bassin.
+        c += [bloc(-6, niveau + 1, z0 + 6, "lotus_rose"),
+              bloc(-3, niveau + 1, z0 + 6, "lotus_blanc"),
+              bloc(4, niveau + 1, z0 + 6, "feuille_de_lotus"),
+              bloc(7, niveau + 1, z0 + 6, "fleur_de_lotus")]
+    # Bande de laterite et vegetaux de berge.
+    c += [f"fill -12 {Y-6} 17 12 {Y+4} 17 cambocraft:laterite"]
     for x in range(-12, 13, 3):
-        c += [bloc(x, Y + 7, 12, "paille_de_riz" if x % 2 == 0 else "orchidee_khmer")]
-    c += [bloc(-10, Y + 7, -8, "paletuvier_sapling"), bloc(10, Y + 7, -8, "palmier_a_sucre_sapling")]
-    c += [f"fill -12 {Y+6} -9 12 {Y+6} -9 cambocraft:laterite"]
+        c += [bloc(x, Y + 5, 18, "paille_de_riz" if x % 2 == 0 else "orchidee_khmer")]
+    c += [bloc(-10, Y + 5, 19, "paletuvier_sapling"),
+          bloc(10, Y + 5, 19, "palmier_a_sucre_sapling")]
     return c
 
 
@@ -160,10 +172,12 @@ SCENES = {
     # nom : (constructeur, position du joueur, rotation (yaw, pitch), nom de fichier)
     # Les scenes sont baties sur le studio flottant a Y=200 : la camera se place
     # a Y+4 environ, en spectateur (aucune chute possible).
-    "portail": (scene_portail, (0.5, Y + 4.0, 13.0), (180.0, 12.0), "portail-du-lotus"),
+    "portail": (scene_portail, (0.5, Y + 4.0, 12.0), (180.0, 12.0), "portail-du-lotus"),
     "cite": (scene_cite, (0.5, Y + 6.0, 20.0), (180.0, 10.0), "cite-khmere"),
-    "interieur": (scene_interieur, (0.5, Y + 5.5, 22.0), (180.0, 14.0), "atelier"),
-    "vegetation": (scene_vegetation, (0.5, Y + 11.0, 23.0), (180.0, 22.0), "rizieres"),
+    # Camera a l'interieur de l'atelier (murs en z=+-8) : on cadre les etablis,
+    # et non la facade depuis l'exterieur.
+    "interieur": (scene_interieur, (0.5, Y + 3.5, 6.0), (180.0, 8.0), "atelier"),
+    "vegetation": (scene_vegetation, (0.5, Y + 8.0, 24.0), (180.0, 14.0), "rizieres"),
 }
 
 
@@ -311,7 +325,7 @@ def ecrire_options(repertoire):
     options = {
         "version": "3955",
         "guiScale": "2",
-        "fov": "0.5",
+        "fov": "70.0",   # 0.5 etait ecrete a 30 deg : cadrage teleobjectif
         "renderDistance": "10",
         "graphicsMode": "1",
         "ao": "2",
