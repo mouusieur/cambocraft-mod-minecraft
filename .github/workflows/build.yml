@@ -292,20 +292,27 @@ jobs:
           done
           if grep -q "Done (" journal.txt; then
             echo "Serveur pret, envoi des commandes de verification."
-            # La dimension du mod existe-t-elle, et genere-t-elle ?
-            echo "execute in cambocraft:cambodia run setworldspawn 0 100 0" >&3
+            # 1. La dimension du mod existe-t-elle ? (forceload force la generation)
+            echo "execute in cambocraft:cambodia run forceload add -32 -32 32 32" >&3
+            sleep 12
+            # 2. Un bloc du mod peut-il etre pose dans cette dimension ?
+            echo "execute in cambocraft:cambodia run setblock 0 110 0 cambocraft:pierre_du_lotus" >&3
             sleep 4
-            echo "execute in cambocraft:cambodia run setblock 0 99 0 cambocraft:pierre_du_lotus" >&3
-            sleep 3
-            echo "execute in cambocraft:cambodia run locate biome cambocraft:rizieres_en_terrasses" >&3
+            echo "execute in cambocraft:cambodia run setblock 1 110 0 cambocraft:lotus_rose" >&3
             sleep 4
-            # Les objets du mod sont-ils enregistres ?
-            echo "give @a cambocraft:bol_de_riz_beni" >&3
-            sleep 2
+            # 3. Un objet du mod est-il enregistre ? (summon d'un item porteur)
+            echo 'summon minecraft:item 0 111 0 {Item:{id:"cambocraft:bol_de_riz_beni",count:1}}' >&3
+            sleep 4
             echo "data get entity @e[type=item,limit=1] Item" >&3
+            sleep 3
+            # 4. Le biome du mod se genere-t-il ?
+            echo "execute in cambocraft:cambodia run locate biome cambocraft:grand_lac" >&3
+            sleep 5
+            # 5. Les recettes du mod sont-elles chargees ?
+            echo "recipe give @a cambocraft:*" >&3
             sleep 2
             echo "stop" >&3
-            sleep 8
+            sleep 10
           else
             echo "Le serveur n'a pas demarre dans le delai imparti."
             echo "stop" >&3
