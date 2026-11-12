@@ -479,47 +479,9 @@ def main() -> int:
     # --- verification des systemes : entites et commande /cambocraft ---
     # Le bloc d'or de la sanite doit disparaitre, sinon il reapparait dans les scenes.
     commande(f"execute in cambocraft:cambodia run fill -2 {Y} -2 2 {Y} 2 air")
-
-    print("== verification des systemes (entites + commandes) ==")
-    commande(f"execute in cambocraft:cambodia run fill -5 {Y} 0 5 {Y} 10 cambocraft:pierre_du_lotus_polie")
-    # Les entites doivent naitre SUR le plateau (y = Y+1), pas en dessous : une entite
-    # apparue dans le vide tombe et sort du champ.
-    # Une entite a la fois : le rendu du gardien (zombie agrandi) ou celui de l'artisan
-    # peut faire tomber le contexte OpenGL logiciel, et on ne saurait pas lequel.
-    commande(f"execute in cambocraft:cambodia run summon cambocraft:artisan 2 {Y+1} 6")
-    time.sleep(4)
-    commande(f"execute in cambocraft:cambodia run tp @a 0 {Y+4} 14 180 6")
-    time.sleep(8)
-    if capture_ecran(os.path.join(args.sortie, "entite-artisan.png")):
-        print("   capture : entite-artisan.png")
-    commande("execute in cambocraft:cambodia run kill @e[type=cambocraft:artisan]")
-
-    commande(f"execute in cambocraft:cambodia run summon cambocraft:gardien -2 {Y+1} 6")
-    time.sleep(4)
-    if capture_ecran(os.path.join(args.sortie, "entite-gardien.png")):
-        print("   capture : entite-gardien.png")
-    for sous in ("statut", "boss", "carnet"):
-        commande(f"cambocraft {sous}")
-    time.sleep(3)
-    commande(f"execute in cambocraft:cambodia run tp @a 0 {Y+4} 14 180 6")
-    time.sleep(8)
-    for _ in range(20):
-        with sortie_client.verrou:
-            derniers = " ".join(sortie_client.lignes[-5:])
-        if "Loading terrain" not in derniers:
-            break
-        time.sleep(3)
-    if capture_ecran(os.path.join(args.sortie, "entites.png")):
-        print("   capture : entites.png")
-    with sortie_serveur.verrou:
-        interessantes = [l for l in sortie_serveur.lignes
-                         if any(m in l.lower() for m in
-                                ("artisan", "gardien", "summon", "unknown", "no such", "entity"))]
-    print("   DIAG-ENTITES (" + str(len(interessantes)) + " lignes)")
-    for ligne in interessantes[-12:]:
-        print("   DIAG> " + ligne[:200])
-    commande("execute in cambocraft:cambodia run kill @e[type=cambocraft:artisan]")
-    commande("execute in cambocraft:cambodia run kill @e[type=cambocraft:gardien]")
+    # Verification des entites et des commandes : DÉSACTIVÉE temporairement pour isoler
+    # la cause des captures noires (isolation bissection).
+    print("== verification des systemes : desactivee (isolation) ==")
 
     captures = []
     for nom in [s.strip() for s in args.scenes.split(",") if s.strip()]:
