@@ -121,12 +121,25 @@ jobs:
                       descs.append(utf8.get(desc_i, ""))
               return classes, descs
 
+          # Ces classes ne sont pas obfusquées dans Minecraft (pas de nom intermédiaire) :
+          # elles gardent leur nom Yarn en production. Liste figée pour 1.21.1.
+          NON_OBFUSQUEES = {
+              "net/minecraft/server/MinecraftServer",
+              "net/minecraft/server/Main",
+              "net/minecraft/client/main/Main",
+              "net/minecraft/client/ClientBrandRetriever",
+              "net/minecraft/data/Main",
+              "net/minecraft/obfuscate/DontObfuscate",
+              "net/minecraft/util/profiling/jfr/event/ChunkGenerationEvent",
+              "net/minecraft/util/profiling/jfr/event/NetworkSummaryEvent",
+              "net/minecraft/util/profiling/jfr/event/ServerTickTimeEvent",
+          }
           inter = named = 0
           exemples = []
           for c in classes:
               noms, descs = constantes(z.read(c))
               for ref in noms:
-                  if not ref.startswith("net/minecraft/"):
+                  if not ref.startswith("net/minecraft/") or ref in NON_OBFUSQUEES:
                       continue
                   if re.search(r"class_\d+|field_\d+|method_\d+", ref):
                       inter += 1
@@ -135,6 +148,8 @@ jobs:
                       if len(exemples) < 8: exemples.append(f"{c} : CONSTANT_Class {ref}")
               for d in descs:
                   for ref in re.findall(r"net/minecraft/[A-Za-z0-9_/$]+", d):
+                      if ref in NON_OBFUSQUEES:
+                          continue
                       if re.search(r"class_\d+", ref):
                           inter += 1
                       elif re.match(r"net/minecraft/[a-z]", ref):
