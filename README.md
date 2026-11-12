@@ -44,6 +44,28 @@ Le fichier `build/libs/cambocraft-1.0.0.jar` est le mod complet : 128 classes re
 intermédiaire, 1 393 fichiers d'assets et 1 047 fichiers de données. Il se dépose tel quel dans
 `mods/`.
 
+### Vérifié en jeu, pas seulement compilé
+
+Le jar publié est testé automatiquement en démarrant un **vrai serveur Minecraft 1.21.1 + Fabric
+Loader** : le mod s'initialise, la dimension `cambocraft:cambodia` génère ses chunks, et des
+commandes en jeu confirment le contenu :
+
+```text
+Loading 43 mods: … - cambocraft 1.0.0
+Cambocraft : initialisation du contenu de base
+Cambocraft : 220 blocs, 199 objets et 15 biomes initialisés
+Done (6.290s)! For help, type "help"
+Marked 25 chunks in cambocraft:cambodia from [-2, -2] to [2, 2] to be force loaded
+Changed the block at 0, 110, 0            # cambocraft:pierre_du_lotus
+Changed the block at 1, 110, 0            # cambocraft:lotus_rose
+Summoned new Blessed Bowl of Rice         # cambocraft:bol_de_riz_beni
+The nearest cambocraft:grand_lac is at [-352, 66, 0] (320 blocks away)
+```
+
+Ce test a d'ailleurs révélé puis corrigé un défaut réel : un ordre de features contradictoire
+entre trois biomes provoquait `Feature order cycle found` et cassait la génération de **tous** les
+chunks de la dimension. Voir `docs/TECHNIQUE.md`, section « Chaîne de compilation Fabric/Loom ».
+
 ### Environnement de test
 
 | Élément | Version |
