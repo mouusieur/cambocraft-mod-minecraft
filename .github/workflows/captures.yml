@@ -160,7 +160,7 @@ jobs:
               --client "$RUNNER_TEMP/client" \
               --serveur "$RUNNER_TEMP/serveur" \
               --sortie captures \
-              --scenes "${{ github.event.inputs.scenes || 'portail,cite' }}" \
+              --scenes "${{ github.event.inputs.scenes || 'portail,cite,interieur,vegetation' }}" \
               --largeur 1280 --hauteur 720 2>&1 | tee captures/journal.txt
           ls -la captures/
 

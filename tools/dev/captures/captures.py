@@ -162,8 +162,8 @@ SCENES = {
     # a Y+4 environ, en spectateur (aucune chute possible).
     "portail": (scene_portail, (0.5, Y + 4.0, 13.0), (180.0, 12.0), "portail-du-lotus"),
     "cite": (scene_cite, (0.5, Y + 6.0, 20.0), (180.0, 10.0), "cite-khmere"),
-    "interieur": (scene_interieur, (0.5, Y + 4.0, 7.0), (180.0, 8.0), "atelier"),
-    "vegetation": (scene_vegetation, (0.5, Y + 9.0, 18.0), (180.0, 16.0), "rizieres"),
+    "interieur": (scene_interieur, (0.5, Y + 5.5, 22.0), (180.0, 14.0), "atelier"),
+    "vegetation": (scene_vegetation, (0.5, Y + 11.0, 23.0), (180.0, 22.0), "rizieres"),
 }
 
 
