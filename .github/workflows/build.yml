@@ -259,6 +259,7 @@ jobs:
           java -jar ../fabric-installer.jar server -mcversion 1.21.1 -downloadMinecraft -dir . || exit 1
           echo "eula=true" > eula.txt
           # Fabric API est indispensable : on récupère la version déclarée dans gradle.properties.
+          mkdir -p mods
           API=$(grep '^fabric_version=' ../gradle.properties | cut -d= -f2 | cut -d+ -f1)
           echo "Fabric API = $API"
           URL="https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/$API+1.21.1/fabric-api-$API+1.21.1.jar"
