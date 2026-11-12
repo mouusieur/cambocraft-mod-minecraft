@@ -392,6 +392,11 @@ def main() -> int:
         serveur.kill()
         return 1
     print("== joueur connecte ==")
+    # Le client affiche « Loading terrain... » tant que le monde n'est pas pret :
+    # capturer a ce moment-la donne un ecran flou ou noir.
+    time.sleep(25)
+
+    print("== joueur connecte ==")
     time.sleep(10)
 
     commande("gamemode creative @a")
@@ -411,7 +416,14 @@ def main() -> int:
     with sortie_serveur.verrou:
         for ligne in sortie_serveur.lignes[avant:]:
             print("   SERVEUR> " + ligne)
-    time.sleep(3)
+    time.sleep(10)
+    for _ in range(20):
+        # On attend que le client ait fini de charger (plus de "Loading terrain").
+        with sortie_client.verrou:
+            derniers = " ".join(sortie_client.lignes[-5:])
+        if "Loading terrain" not in derniers:
+            break
+        time.sleep(3)
     if capture_ecran(os.path.join(args.sortie, "sanite.png")):
         print("   capture : sanite.png")
     commande("execute in cambocraft:cambodia run data get entity Cambocraft Pos")
@@ -451,6 +463,8 @@ def main() -> int:
                 if "entity data" in ligne or "Pos" in ligne:
                     print("   " + ligne)
         time.sleep(2)
+        # On laisse au client le temps de recevoir et de mailler les chunks.
+        time.sleep(8)
         cible = os.path.join(args.sortie, fichier + ".png")
         if capture_ecran(cible):
             captures.append(cible)
