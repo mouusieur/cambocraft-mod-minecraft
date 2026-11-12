@@ -37,16 +37,23 @@ public final class Registrar {
         return register(Registries.BLOCK, path, new Block(settings));
     }
 
-    /** Bloc associé à son objet d'inventaire (la très grande majorité des blocs). */
-    public static Block blockWithItem(String path, AbstractBlock.Settings settings, Item.Settings itemSettings) {
-        return blockWithItem(path, new Block(settings), itemSettings);
-    }
-
-    /** Variante pour les blocs à constructeur spécifique (dalles, escaliers, murets, barrières). */
+    /**
+     * Variante pour les blocs à constructeur spécifique (dalles, escaliers, murets, barrières,
+     * piliers à axe…).
+     *
+     * <p>Elle est déclarée <b>avant</b> la surcharge {@code (String, Settings, Item.Settings)} :
+     * les deux acceptent trois arguments, et le compilateur doit d'abord essayer la forme
+     * générique — sinon {@code new PillarBlock(settings)} est rejeté.</p>
+     */
     public static <B extends Block> B blockWithItem(String path, B block, Item.Settings itemSettings) {
         register(Registries.BLOCK, path, block);
         register(Registries.ITEM, path, new BlockItem(block, itemSettings));
         return block;
+    }
+
+    /** Bloc associé à son objet d'inventaire (la très grande majorité des blocs). */
+    public static Block blockWithItem(String path, AbstractBlock.Settings settings, Item.Settings itemSettings) {
+        return blockWithItem(path, new Block(settings), itemSettings);
     }
 
     /** Objet simple. */

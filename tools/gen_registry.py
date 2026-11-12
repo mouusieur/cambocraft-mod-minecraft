@@ -349,6 +349,16 @@ class Generateur:
         elif m == 'carpet':
             ligne.append('    public static final Block %s = Registrar.blockWithItem("%s", new CarpetBlock(%s), new Item.Settings());'
                          % (const, path, reglages))
+        elif m == 'cube_column' or bloc.axis:
+            # Un bloc a axe DOIT etre un PillarBlock : sinon la propriete `axis` declaree
+            # dans le blockstate n'existe pas et Minecraft rejette toutes les variantes
+            # (textures invisibles / modele manquant).
+            if bloc.item:
+                ligne.append('    public static final Block %s = Registrar.blockWithItem("%s", new PillarBlock(%s), new Item.Settings());'
+                             % (const, path, reglages))
+            else:
+                ligne.append('    public static final Block %s = Registrar.block("%s", new PillarBlock(%s));'
+                             % (const, path, reglages))
         else:
             if bloc.item:
                 ligne.append('    public static final Block %s = Registrar.blockWithItem("%s", %s, new Item.Settings());'
@@ -366,6 +376,7 @@ class Generateur:
 import java.util.List;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.PillarBlock;
 import net.minecraft.block.CarpetBlock;
 import net.minecraft.block.FenceBlock;
 import net.minecraft.block.FenceGateBlock;

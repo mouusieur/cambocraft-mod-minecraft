@@ -36,6 +36,13 @@ YARN_DIR = os.environ.get('CAMBO_YARN_DIR', '/home/user/refs/yarn')
 OUT = os.environ.get('CAMBO_STUB_OUT', '/home/user/toolchain/build/stubs-src')
 
 PRIM = {'V': 'void', 'Z': 'boolean', 'B': 'byte', 'C': 'char', 'S': 'short', 'I': 'int', 'J': 'long', 'F': 'float', 'D': 'double'}
+# Sous-classes de Block dont Yarn ne declare pas le constructeur (il est herite ou
+# non enumere). Sans cette liste, le controle hors ligne echouerait sur des faux negatifs.
+BLOCS_A_CONSTRUCTEUR = {
+    'net/minecraft/block/PillarBlock',
+    'net/minecraft/block/Block',
+}
+
 ENUM_RESERVED = set('valueOf values equals hashCode name ordinal compareTo finalize clone getDeclaringClass'.split())
 KEYWORDS = set('abstract assert boolean break byte case catch char class const continue default do double else enum extends final finally float for goto if implements import instanceof int interface long native new package private protected public return short static strictfp super switch synchronized this throw throws transient try void volatile while var record'.split())
 
@@ -329,6 +336,15 @@ class Gen:
                     out.append('%s%s %s %s(%s) %s' % (ip, 'static' if is_static else 'default', rty, mname, pstr, body))
                 else:
                     out.append('%spublic %s%s %s(%s) %s' % (ip, 'static ' if is_static else '', rty, mname, pstr, body))
+            # Yarn n'enumere pas les constructeurs herites : on ajoute ceux que les
+            # sous-classes de Block utilisent couramment (ex. PillarBlock(Settings)).
+            sous_classe_de_bloc = (
+                'net/minecraft/class_2248' in m.supers.get(name, [])
+                or name in BLOCS_A_CONSTRUCTEUR
+            )
+            if kind == 'class' and sous_classe_de_bloc:
+                if (name, '<init>') not in m.sig:
+                    out.append('%spublic %s(net.minecraft.block.AbstractBlock.Settings p0) { }' % (ip, simple))
             if kind == 'class' and not has_noarg_ctor:
                 out.append('%spublic %s() { }' % (ip, simple))
             for (cn, mn), decls in m.sig.items():

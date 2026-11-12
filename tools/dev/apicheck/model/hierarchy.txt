@@ -35,6 +35,7 @@ super Item : -, ItemConvertible
 super ToolItem : Item
 super SwordItem : ToolItem
 super MiningToolItem : ToolItem
+super PillarBlock : Block
 super SlabBlock : Block
 super StairsBlock : Block
 super WallBlock : Block
