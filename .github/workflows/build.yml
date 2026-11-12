@@ -250,6 +250,7 @@ jobs:
         id: prep
         continue-on-error: true
         run: |
+          exec > >(tee -a prep.log) 2>&1
           set -x
           # URL de l'installeur Fabric (toujours la dernière version stable).
           curl -fsSL -o fabric-installer.jar https://maven.fabricmc.net/net/fabricmc/fabric-installer/1.0.1/fabric-installer-1.0.1.jar || exit 1
@@ -313,7 +314,7 @@ jobs:
           python3 - <<'PY'
           import json, os, subprocess
           parts = []
-          for p in ("serveur/journal.txt", "serveur_resultat.txt"):
+          for p in ("prep.log", "serveur/journal.txt", "serveur_resultat.txt"):
               if os.path.exists(p):
                   parts.append("=== " + p + " ===\n" + open(p, encoding="utf-8", errors="replace").read())
           text = "\n".join(parts) or "(pas de journal serveur)"
