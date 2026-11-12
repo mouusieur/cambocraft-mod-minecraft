@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
-"""Lance un vrai client Minecraft avec Cambocraft et capture de veritables ecrans.
+"""Capture de veritables ecrans du mod avec un vrai client Minecraft.
 
-Le client est demarre sans launcher officiel (voir client.py), en mode hors-ligne,
-avec un rendu logiciel (Mesa/llvmpipe). Un monde mono-joueur est cree, les scenes sont
-construites par commandes, puis des captures sont prises via la touche F2 de Minecraft.
+Architecture :
+  1. un serveur dedie Fabric 1.21.1 charge Cambocraft (il genere la dimension) ;
+  2. le client Minecraft demarre sous Xvfb et se connecte directement au serveur
+     (--quickPlayMultiplayer), sans passer par les menus ;
+  3. les scenes sont construites par commandes envoyees a la console du serveur ;
+  4. les captures sont declenchees par la vraie touche F2 (xdotool), et recuperees
+     dans le dossier screenshots du client.
 
-Usage : python3 captures.py --client <dir> --jar <mod.jar> --sortie <dir>
-        [--scenes portail,cite,interieur,vegetation] [--largeur 1280] [--hauteur 720]
+Usage :
+  python3 captures.py --client <dir> --serveur <dir> --sortie <dir>
+                      [--scenes portail,cite,interieur,vegetation]
 """
 
 from __future__ import annotations
@@ -20,8 +25,14 @@ import subprocess
 import threading
 import time
 
+PORT = 25565
+MOTIF_PRET_SERVEUR = re.compile(r'Done \([0-9.]+s\)!')
+MOTIF_CAPTURE = re.compile(r'Saved screenshot as (\S+)')
+MOTIF_CONNEXION = re.compile(r'joined the game')
+
+
 # ---------------------------------------------------------------------------
-# Construction des scenes (commandes envoyees au serveur integre)
+# Scenes
 # ---------------------------------------------------------------------------
 
 
@@ -34,42 +45,38 @@ def cube(x0, y0, z0, x1, y1, z1, nom):
 
 
 def scene_portail():
-    """Le Portail du Lotus complet : socle, anneau 3x3, cadre, coeur, jardins, piliers."""
     c = []
     c += cube(-9, 59, -9, 9, 59, 9, "pierre_du_lotus_polie")
-    c += [f"fill -10 59 -10 10 59 -10 cambocraft:pierre_du_lotus_sculptee",
-          f"fill -10 59 10 10 59 10 cambocraft:pierre_du_lotus_sculptee",
-          f"fill -10 59 -10 -10 59 10 cambocraft:pierre_du_lotus_sculptee",
-          f"fill 10 59 -10 10 59 10 cambocraft:pierre_du_lotus_sculptee"]
-    # anneau horizontal 3x3 + coeur
+    for cote in (
+        f"fill -10 59 -10 10 59 -10 cambocraft:pierre_du_lotus_sculptee",
+        f"fill -10 59 10 10 59 10 cambocraft:pierre_du_lotus_sculptee",
+        f"fill -10 59 -10 -10 59 10 cambocraft:pierre_du_lotus_sculptee",
+        f"fill 10 59 -10 10 59 10 cambocraft:pierre_du_lotus_sculptee",
+    ):
+        c += [cote]
     for dx in (-1, 0, 1):
         for dz in (-1, 0, 1):
             c += [bloc(dx, 60, dz, "cadre_du_portail")]
     c += [bloc(0, 60, 0, "coeur_du_portail")]
-    # quatre piliers de lotus surmontes d'un cristal
     for dx, dz in ((-3, -3), (3, -3), (-3, 3), (3, 3)):
         c += [f"fill {dx} 60 {dz} {dx} 63 {dz} cambocraft:pilier_de_lotus"]
         c += [bloc(dx, 64, dz, "cristal_de_lotus")]
-    # jardins de lotus
     for dx, dz in ((0, -4), (0, 4), (-4, 0), (4, 0), (-5, -5), (5, 5), (-5, 5), (5, -5)):
         c += [bloc(dx, 60, dz, "lotus_rose" if (dx + dz) % 2 == 0 else "lotus_blanc")]
     for dx in range(-7, 8, 2):
         c += [bloc(dx, 60, 7, "fleur_d_hibiscus")]
     c += [bloc(0, 64, -6, "lanterne_de_bambou"), bloc(0, 64, 6, "lanterne_de_bambou")]
-    c += [bloc(-6, 60, -6, "teleporteur_de_lotus"), bloc(6, 60, 6, "autel"),
-          bloc(-6, 61, -6, "socle_d_offrande")]
+    c += [bloc(-6, 60, -6, "teleporteur_de_lotus"), bloc(6, 60, 6, "autel")]
     return c
 
 
 def scene_cite():
-    """Une place khmere : prasat central, piliers, toit de chaume, marche, tambour, lions."""
     c = []
     c += cube(-14, 59, -14, 14, 59, 14, "pierre_du_lotus_polie")
     c += cube(-15, 59, -15, 15, 59, -15, "gres_khmer_poli")
     c += cube(-15, 59, 15, 15, 59, 15, "gres_khmer_poli")
     c += cube(-15, 59, -15, -15, 59, 15, "gres_khmer_poli")
     c += cube(15, 59, -15, 15, 59, 15, "gres_khmer_poli")
-    # prasat a sept niveaux
     for etage in range(7):
         d = 8 - etage
         c += cube(-d, 60 + etage * 2, -d, d, 60 + etage * 2, d, "brique_de_temple")
@@ -78,7 +85,6 @@ def scene_cite():
     for dx, dz in ((-11, -11), (11, -11), (-11, 11), (11, 11)):
         c += [f"fill {dx} 60 {dz} {dx} 66 {dz} cambocraft:pilier_de_lotus"]
         c += [bloc(dx, 67, dz, "encens")]
-    # etals de marche et toit de chaume
     c += [f"fill -9 66 9 -3 66 13 cambocraft:toit_de_chaume",
           f"fill -9 65 9 -9 65 13 cambocraft:toit_de_chaume",
           f"fill -3 65 9 -3 65 13 cambocraft:toit_de_chaume"]
@@ -96,7 +102,6 @@ def scene_cite():
 
 
 def scene_interieur():
-    """Un atelier : metier a tisser, cuve de soie, forge, four, poterie, vitraux."""
     c = []
     c += cube(-8, 59, -8, 8, 59, 8, "teck_planks")
     c += [f"fill -8 60 -8 8 64 -8 cambocraft:brique_de_temple",
@@ -122,7 +127,6 @@ def scene_interieur():
 
 
 def scene_vegetation():
-    """Rizieres en terrasses : riz a differents stades, eau, lotus, fleurs, arbres."""
     c = []
     for i, niveau in enumerate((59, 61, 63)):
         z0 = i * 6 - 6
@@ -140,214 +144,222 @@ def scene_vegetation():
 
 
 SCENES = {
-    "portail": (scene_portail, (0, 62.5, 15), (0.0, 12.0), "portail-du-lotus"),
+    # nom : (constructeur, position du joueur, rotation (yaw, pitch), nom de fichier)
+    "portail": (scene_portail, (0, 62.2, 15), (0.0, 14.0), "portail-du-lotus"),
     "cite": (scene_cite, (0, 65.0, 24), (0.0, 16.0), "cite-khmere"),
-    "interieur": (scene_interieur, (0, 62.0, 6), (0.0, 8.0), "atelier"),
+    "interieur": (scene_interieur, (0, 62.0, 6), (0.0, 6.0), "atelier"),
     "vegetation": (scene_vegetation, (0, 67.0, 18), (0.0, 18.0), "rizieres"),
 }
 
-MOTIF_PRET = re.compile(r"Done \([0-9.]+s\)!")
+
+# ---------------------------------------------------------------------------
 
 
-class Client:
-    """Pilote un client Minecraft : demarrage, commandes, captures."""
+class Flux:
+    """Lit la sortie d'un processus ligne par ligne, dans un fil."""
 
-    def __init__(self, args):
-        self.args = args
-        self.capture_dir = os.path.join(args.client, "screenshots")
-        os.makedirs(self.capture_dir, exist_ok=True)
-        self.proc = None
+    def __init__(self, proc, prefixe):
+        self.proc = proc
+        self.prefixe = prefixe
         self.lignes = []
         self.verrou = threading.Lock()
-        self.fil = None
-        self.pret = threading.Event()
-
-    def demarrer(self):
-        infos = json.load(open(os.path.join(self.args.client, "infos.json"), encoding="utf-8"))
-        classpath = open(os.path.join(self.args.client, "classpath.txt"), encoding="utf-8").read().strip()
-        cmd = [
-            "java",
-            f"-Xmx{self.args.memoire}",
-            "-Djava.library.path=" + infos["natives"],
-            "-Dorg.lwjgl.librarypath=" + infos["natives"],
-            "-Dfile.encoding=UTF-8",
-            "-Dfabric.debug.disableClassPathIsolation=true",
-            "-cp", classpath,
-            infos["main_class"],
-            "--username", "Cambocraft",
-            "--uuid", "00000000000040008000000000000001",
-            "--accessToken", "0",
-            "--version", infos["version"],
-            "--gameDir", self.args.client,
-            "--assetsDir", os.path.join(self.args.client, "assets"),
-            "--assetIndex", infos["asset_index"],
-            "--width", str(self.args.largeur),
-            "--height", str(self.args.hauteur),
-            "--userType", "legacy",
-        ]
-        self.proc = subprocess.Popen(
-            cmd,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            stdin=subprocess.PIPE,
-            bufsize=0,
-            cwd=self.args.client,
-        )
-        self.fil = threading.Thread(target=self.lire, daemon=True)
+        self.fil = threading.Thread(target=self._lire, daemon=True)
         self.fil.start()
 
-    def lire(self):
+    def _lire(self):
         tampon = b""
         while True:
             bloc = self.proc.stdout.read(4096)
             if not bloc:
-                break
+                return
             tampon += bloc
             while b"\n" in tampon:
                 ligne, tampon = tampon.split(b"\n", 1)
                 texte = ligne.decode("utf-8", "replace").rstrip()
                 with self.verrou:
                     self.lignes.append(texte)
-                if MOTIF_PRET.search(texte):
-                    self.pret.set()
+                    if len(self.lignes) > 4000:
+                        del self.lignes[:2000]
 
-    def dire(self, commande):
-        self.proc.stdin.write((commande + "\n").encode("utf-8"))
-        self.proc.stdin.flush()
-
-    def attendre(self, condition, delai=90.0, description=""):
+    def attendre(self, motif, delai, description=""):
         fin = time.time() + delai
+        vues = 0
         while time.time() < fin:
             with self.verrou:
-                if any(condition(l) for l in self.lignes):
-                    return True
-            time.sleep(0.4)
+                nouvelles = self.lignes[vues:]
+                for ligne in nouvelles:
+                    if motif.search(ligne):
+                        return ligne
+                vues = len(self.lignes)
+            time.sleep(0.30)
         print(f"   [delai depasse] {description}")
-        return False
-
-    def photographier(self, nom):
-        self.dire("screenshot")
-        if not self.attendre(lambda l: "Saved screenshot" in l, 60, f"capture {nom}"):
-            return None
-        with self.verrou:
-            for ligne in reversed(self.lignes):
-                if "Saved screenshot" in ligne:
-                    chemin = ligne.split("as ", 1)[-1].strip()
-                    self.lignes.remove(ligne)
-                    break
-            else:
-                chemin = None
-        if chemin and os.path.exists(chemin):
-            cible = os.path.join(self.args.sortie, nom + ".png")
-            shutil.copy(chemin, cible)
-            return cible
         return None
 
-    def arreter(self):
-        try:
-            self.dire("stop")
-        except Exception:
-            pass
-        for _ in range(40):
-            if self.proc.poll() is not None:
-                return
-            time.sleep(0.5)
-        self.proc.kill()
+
+def demarrer_serveur(repertoire):
+    """Demarrage du serveur dedie avec une entree standard exploitable."""
+    cmd = ["java", "-Xmx2G", "-jar", "fabric-server-launch.jar", "nogui"]
+    return subprocess.Popen(
+        cmd, cwd=repertoire, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+        stdin=subprocess.PIPE, bufsize=0,
+    )
+
+
+def demarrer_client(repertoire, largeur, hauteur, adresse):
+    infos = json.load(open(os.path.join(repertoire, "infos.json"), encoding="utf-8"))
+    classpath = open(os.path.join(repertoire, "classpath.txt"), encoding="utf-8").read().strip()
+    cmd = [
+        "java", "-Xmx2G",
+        "-Djava.library.path=" + infos["natives"],
+        "-Dorg.lwjgl.librarypath=" + infos["natives"],
+        "-Dfile.encoding=UTF-8",
+        "-cp", classpath, infos["main_class"],
+        "--username", "Cambocraft",
+        "--uuid", "00000000000040008000000000000001",
+        "--accessToken", "0",
+        "--version", infos["version"],
+        "--gameDir", repertoire,
+        "--assetsDir", os.path.join(repertoire, "assets"),
+        "--assetIndex", infos["asset_index"],
+        "--width", str(largeur), "--height", str(hauteur),
+        "--userType", "legacy",
+        "--quickPlayMultiplayer", adresse,
+    ]
+    return subprocess.Popen(
+        cmd, cwd=repertoire, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+        stdin=subprocess.DEVNULL, bufsize=0,
+    )
+
+
+def ecrire_options(repertoire):
+    """Options ecrites avant le lancement : HUD masque, FOV large, qualite maximale."""
+    options = {
+        "version": "3955",
+        "guiScale": "2",
+        "fov": "0.5",
+        "renderDistance": "10",
+        "graphicsMode": "1",
+        "ao": "2",
+        "particles": "0",
+        "clouds": "true",
+        "bobView": "false",
+        "hideGui": "true",
+        "gamma": "1.0",
+        "soundCategory_master": "0.0",
+        "narrator": "0",
+        "pauseOnLostFocus": "false",
+        "fullscreen": "false",
+    }
+    with open(os.path.join(repertoire, "options.txt"), "w", encoding="utf-8") as fichier:
+        for cle, valeur in options.items():
+            fichier.write(f"{cle}:{valeur}\n")
+
+
+def touche_f2():
+    """Envoie la vraie touche F2 (capture d'ecran) au client sous Xvfb."""
+    subprocess.run(["xdotool", "key", "--clearmodifiers", "F2"], check=False,
+                   env=os.environ.copy(), timeout=30)
 
 
 def main() -> int:
     analyseur = argparse.ArgumentParser()
     analyseur.add_argument("--client", required=True)
-    analyseur.add_argument("--jar", required=True)
+    analyseur.add_argument("--serveur", required=True)
     analyseur.add_argument("--sortie", required=True)
     analyseur.add_argument("--scenes", default="portail")
     analyseur.add_argument("--largeur", type=int, default=1280)
     analyseur.add_argument("--hauteur", type=int, default=720)
-    analyseur.add_argument("--memoire", default="2G")
-    analyseur.add_argument("--minutes", type=float, default=20.0)
     args = analyseur.parse_args()
     os.makedirs(args.sortie, exist_ok=True)
+    ecrire_options(args.client)
 
-    mods = os.path.join(args.client, "mods")
-    print("== mods installes ==")
-    for nom in sorted(os.listdir(mods)) if os.path.isdir(mods) else []:
-        print("   " + nom)
-
-    # Options ecrites avant le lancement : FOV large, HUD discret, qualite maximale
-    # compatible avec le rendu logiciel.
-    with open(os.path.join(args.client, "options.txt"), "w", encoding="utf-8") as options:
-        options.write(
-            "version:3955\n"
-            f"guiScale:2\n"
-            "fov:0.5\n"
-            "renderDistance:8\n"
-            "graphicsMode:1\n"          # fancy
-            "ao:2\n"                    # occlusion ambiante maximale
-            "particles:0\n"             # toutes les particules
-            "clouds:true\n"
-            "bobView:false\n"
-            "hideGui:true\n"            # captures sans HUD
-            "gamma:1.0\n"
-            "soundCategory_master:0.0\n"
-            "narrator:0\n"
-        )
-
-    client = Client(args)
-    print("== demarrage du client ==")
-    client.demarrer()
-
-    if not client.pret.wait(timeout=args.minutes * 60):
-        print("!! Le monde n'a jamais ete pret. Dernieres lignes :")
-        with client.verrou:
-            for ligne in client.lignes[-80:]:
-                print("   " + ligne)
-        client.arreter()
-        with open(os.path.join(args.sortie, "journal-client.txt"), "w", encoding="utf-8") as f:
-            f.write("\n".join(client.lignes))
+    print("== demarrage du serveur dedie ==")
+    serveur = demarrer_serveur(args.serveur)
+    sortie_serveur = Flux(serveur, "serveur")
+    if not sortie_serveur.attendre(MOTIF_PRET_SERVEUR, 420, "serveur pret"):
+        print("!! Le serveur n'a pas demarre.")
+        for ligne in sortie_serveur.lignes[-60:]:
+            print("   " + ligne)
+        serveur.kill()
         return 1
-    print("== monde pret ==")
-    time.sleep(5)
+    print("== serveur pret ==")
 
-    for commande in (
-        "gamerule doDaylightCycle false",
-        "gamerule doWeatherCycle false",
-        "gamerule doMobSpawning false",
-        "gamerule sendCommandFeedback false",
-        "time set 6000",
-        "weather clear",
-        "gamemode creative @a",
-    ):
-        client.dire(commande)
-        time.sleep(0.4)
+    def commande(texte):
+        serveur.stdin.write((texte + "\n").encode("utf-8"))
+        serveur.stdin.flush()
 
-    resultats = []
+    commande("gamerule doDaylightCycle false")
+    commande("gamerule doWeatherCycle false")
+    commande("gamerule doMobSpawning false")
+    commande("gamerule sendCommandFeedback false")
+    commande("time set 6000")
+    commande("weather clear")
+    commande("difficulty peaceful")
+    time.sleep(1)
+
+    print("== demarrage du client (connexion automatique) ==")
+    client = demarrer_client(args.client, args.largeur, args.hauteur, f"127.0.0.1:{PORT}")
+    sortie_client = Flux(client, "client")
+    if not sortie_serveur.attendre(MOTIF_CONNEXION, 600, "arrivee du joueur"):
+        print("!! Le joueur ne s'est jamais connecte.")
+        for ligne in sortie_client.lignes[-60:]:
+            print("   " + ligne)
+        client.kill()
+        serveur.kill()
+        return 1
+    print("== joueur connecte ==")
+    time.sleep(8)
+
+    commande("gamemode creative @a")
+    commande("execute in cambocraft:cambodia run forceload add -64 -64 64 64")
+    time.sleep(4)
+
+    captures = []
     for nom in [s.strip() for s in args.scenes.split(",") if s.strip()]:
         if nom not in SCENES:
             print(f"   scene inconnue : {nom}")
             continue
         constructeur, position, rotation, fichier = SCENES[nom]
         print(f"== scene {nom} ({fichier}) ==")
-        client.dire("execute in cambocraft:cambodia run forceload add -48 -48 48 48")
+        for cmd in constructeur():
+            commande(f"execute in cambocraft:cambodia run {cmd}")
         time.sleep(3)
-        for commande in constructeur():
-            client.dire(f"execute in cambocraft:cambodia run {commande}")
-        time.sleep(2)
         x, y, z = position
-        client.dire(f"execute in cambocraft:cambodia run tp @a {x} {y} {z} {rotation[0]} {rotation[1]}")
-        time.sleep(4)
-        chemin = client.photographier(fichier)
-        if chemin:
-            resultats.append(chemin)
-            print(f"   capture : {chemin}")
+        commande(f"execute in cambocraft:cambodia run tp @a {x} {y} {z} {rotation[0]} {rotation[1]}")
+        time.sleep(6)
 
-    client.arreter()
+        avant = len(sortie_client.lignes)
+        touche_f2()
+        ligne = sortie_client.attendre(MOTIF_CAPTURE, 90, f"capture {nom}")
+        if not ligne:
+            continue
+        chemin_relatif = MOTIF_CAPTURE.search(ligne).group(1)
+        source = os.path.join(args.client, "screenshots", os.path.basename(chemin_relatif))
+        if os.path.exists(source):
+            cible = os.path.join(args.sortie, fichier + ".png")
+            shutil.copy(source, cible)
+            captures.append(cible)
+            print(f"   capture : {cible}")
+        else:
+            print(f"   fichier introuvable : {source}")
+
+    print("== arret ==")
+    commande("stop")
+    time.sleep(6)
+    if serveur.poll() is None:
+        serveur.kill()
+    if client.poll() is None:
+        client.kill()
+
+    with open(os.path.join(args.sortie, "journal-serveur.txt"), "w", encoding="utf-8") as fichier:
+        fichier.write("\n".join(sortie_serveur.lignes))
+    with open(os.path.join(args.sortie, "journal-client.txt"), "w", encoding="utf-8") as fichier:
+        fichier.write("\n".join(sortie_client.lignes))
 
     print("== fin ==")
-    for chemin in resultats:
+    for chemin in captures:
         print("   " + chemin)
-    with open(os.path.join(args.sortie, "journal-client.txt"), "w", encoding="utf-8") as f:
-        f.write("\n".join(client.lignes))
-    return 0 if resultats else 1
+    return 0 if captures else 1
 
 
 if __name__ == "__main__":

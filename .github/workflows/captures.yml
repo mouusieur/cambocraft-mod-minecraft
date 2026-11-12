@@ -51,7 +51,22 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq xvfb libgl1-mesa-dri libglx-mesa0 mesa-utils \
-            libxi6 libxrandr2 libxcursor1 libxinerama1 libxxf86vm1 libglfw3
+            libxi6 libxrandr2 libxcursor1 libxinerama1 libxxf86vm1 libglfw3 xdotool libopenal1
+
+      - name: Préparer le serveur dédié
+        run: |
+          mkdir -p "$RUNNER_TEMP/serveur"
+          cd "$RUNNER_TEMP/serveur"
+          curl -fsSL -o installer.jar https://maven.fabricmc.net/net/fabricmc/fabric-installer/1.0.1/fabric-installer-1.0.1.jar
+          java -jar installer.jar server -mcversion 1.21.1 -downloadMinecraft -dir .
+          echo "eula=true" > eula.txt
+          printf 'online-mode=false\nlevel-type=minecraft\\:normal\nspawn-protection=0\nmax-tick-time=-1\nsync-chunk-writes=false\n' > server.properties
+          mkdir -p mods
+          cp "$GITHUB_WORKSPACE/build/libs/cambocraft-1.0.0.jar" mods/
+          API=$(grep '^fabric_version=' "$GITHUB_WORKSPACE/gradle.properties" | cut -d= -f2 | cut -d+ -f1)
+          curl -fsSL -o mods/fabric-api.jar \
+            "https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/$API+1.21.1/fabric-api-$API+1.21.1.jar"
+          ls -la mods/
 
       - name: Préparer le client Minecraft
         run: |
@@ -116,6 +131,8 @@ jobs:
         continue-on-error: true
         env:
           LIBGL_ALWAYS_SOFTWARE: "1"
+          ALSOFT_DRIVERS: "null"
+          SDL_AUDIODRIVER: dummy
           GALLIUM_DRIVER: llvmpipe
           MESA_GL_VERSION_OVERRIDE: "4.6"
           __GL_SYNC_TO_VBLANK: "0"
@@ -124,7 +141,7 @@ jobs:
           xvfb-run -a -s "-screen 0 1280x720x24 +extension GLX +render -noreset" \
             python3 tools/dev/captures/captures.py \
               --client "$RUNNER_TEMP/client" \
-              --jar build/libs/cambocraft-1.0.0.jar \
+              --serveur "$RUNNER_TEMP/serveur" \
               --sortie captures \
               --scenes "${{ github.event.inputs.scenes || 'portail' }}" \
               --largeur 1280 --hauteur 720 2>&1 | tee captures/journal.txt
