@@ -172,10 +172,29 @@ jobs:
           subprocess.run(["gh", "api", "-X", "POST",
                           "repos/" + os.environ["GITHUB_REPOSITORY"] + "/check-runs",
                           "--input", "corps.json"], check=False)
+          # Les images sont republiees dans un second check run, une par check,
+          # car l'API tronque le texte a 65 535 octets : une capture 1280x720 en PNG
+          # depasse ce seuil. On les decoupe donc en morceaux lisibles par l'API.
           for i, f in enumerate(fichiers):
               donnees = base64.b64encode(open(f, "rb").read()).decode()
-              json.dump({"fichier": os.path.basename(f), "base64": donnees},
-                        open(f"captures/image-{i}.json", "w"))
+              nom = os.path.basename(f)
+              for j in range(0, len(donnees), 60000):
+                  corps = {
+                      "name": f"capture-{nom}-{j // 60000:03d}",
+                      "head_sha": os.environ["GITHUB_SHA"],
+                      "status": "completed",
+                      "conclusion": "neutral",
+                      "output": {
+                          "title": f"{nom} (partie {j // 60000 + 1})",
+                          "summary": f"{nom} | {len(donnees)} caracteres base64",
+                          "text": donnees[j:j + 60000],
+                      },
+                  }
+                  open("morceau.json", "w", encoding="utf-8").write(json.dumps(corps))
+                  subprocess.run(["gh", "api", "-X", "POST",
+                                  "repos/" + os.environ["GITHUB_REPOSITORY"] + "/check-runs",
+                                  "--input", "morceau.json"], check=False)
+              print(f"   {nom} : {len(donnees)} caracteres publies en morceaux")
           print("images encodees :", len(fichiers))
           PY
 
