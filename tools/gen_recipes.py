@@ -131,9 +131,15 @@ def recette(ident: str, champs: dict):
 
     if cat == "nourriture":
         # Plat cuisiné : riz cuit + un ingrédient de la région (prahok, poisson, coco).
-        accompagne = ("prahok" if "prahok" in ident else
-                      "poisson" if ("amok" in ident or "samlor" in ident) else
-                      "lotus_brut")
+        # Tous les identifiants doivent exister dans items.yml : `poisson` et `prahok`
+        # n'y figurent pas, ce qui produisait des recettes injouables (erreur de parsing
+        # du registre d'objets au demarrage, visible dans les journaux de capture).
+        if "prahok" in ident or "amok" in ident or "samlor" in ident:
+            accompagne = "riz_brut"
+        elif "banh" in ident or "num_pang" in ident:
+            accompagne = "graine_de_riz"
+        else:
+            accompagne = "lotus_brut"
         return sans_forme(ident, [objet("riz_cuit"), objet(accompagne)])
     if cat == "monnaie":
         return forme(ident, ["GGG", "GLG", "GGG"],
