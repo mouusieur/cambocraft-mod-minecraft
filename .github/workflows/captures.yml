@@ -16,7 +16,9 @@ on:
     paths:
       - "tools/dev/captures/**"
       - ".github/workflows/captures.yml"
-      - "src/main/java/com/cambocraft/client/**"
+      - "src/main/java/**"
+      - "src/client/java/**"
+      - "tools/gen_*.py"
       - "src/main/resources/assets/cambocraft/models/**"
 
 permissions:

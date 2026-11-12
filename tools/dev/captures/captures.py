@@ -476,6 +476,26 @@ def main() -> int:
     commande("execute in cambocraft:cambodia run data get entity Cambocraft Pos")
     time.sleep(2)
 
+    # --- verification des systemes : entites et commande /cambocraft ---
+    print("== verification des systemes (entites + commandes) ==")
+    commande("execute in cambocraft:cambodia run summon cambocraft:artisan 2 210 6")
+    commande("execute in cambocraft:cambodia run summon cambocraft:gardien -2 210 6")
+    for sous in ("statut", "boss", "carnet"):
+        commande(f"cambocraft {sous}")
+    time.sleep(3)
+    commande(f"execute in cambocraft:cambodia run tp @a 0 {Y+3} 14 180 6")
+    time.sleep(6)
+    for _ in range(20):
+        with sortie_client.verrou:
+            derniers = " ".join(sortie_client.lignes[-5:])
+        if "Loading terrain" not in derniers:
+            break
+        time.sleep(3)
+    if capture_ecran(os.path.join(args.sortie, "entites.png")):
+        print("   capture : entites.png")
+    commande("execute in cambocraft:cambodia run kill @e[type=cambocraft:artisan]")
+    commande("execute in cambocraft:cambodia run kill @e[type=cambocraft:gardien]")
+
     captures = []
     for nom in [s.strip() for s in args.scenes.split(",") if s.strip()]:
         if nom not in SCENES:
