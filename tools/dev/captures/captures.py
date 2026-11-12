@@ -484,8 +484,20 @@ def main() -> int:
     commande(f"execute in cambocraft:cambodia run fill -5 {Y} 0 5 {Y} 10 cambocraft:pierre_du_lotus_polie")
     # Les entites doivent naitre SUR le plateau (y = Y+1), pas en dessous : une entite
     # apparue dans le vide tombe et sort du champ.
+    # Une entite a la fois : le rendu du gardien (zombie agrandi) ou celui de l'artisan
+    # peut faire tomber le contexte OpenGL logiciel, et on ne saurait pas lequel.
     commande(f"execute in cambocraft:cambodia run summon cambocraft:artisan 2 {Y+1} 6")
+    time.sleep(4)
+    commande(f"execute in cambocraft:cambodia run tp @a 0 {Y+4} 14 180 6")
+    time.sleep(8)
+    if capture_ecran(os.path.join(args.sortie, "entite-artisan.png")):
+        print("   capture : entite-artisan.png")
+    commande("execute in cambocraft:cambodia run kill @e[type=cambocraft:artisan]")
+
     commande(f"execute in cambocraft:cambodia run summon cambocraft:gardien -2 {Y+1} 6")
+    time.sleep(4)
+    if capture_ecran(os.path.join(args.sortie, "entite-gardien.png")):
+        print("   capture : entite-gardien.png")
     for sous in ("statut", "boss", "carnet"):
         commande(f"cambocraft {sous}")
     time.sleep(3)
