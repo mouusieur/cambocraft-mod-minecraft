@@ -297,9 +297,18 @@ def generer_features_et_biomes():
             ],
         })
 
+    # Ordre canonique unique des features de l'etape « vegetal ».
+    # Minecraft exige que l'ordre des features soit identique dans TOUS les biomes :
+    # deux biomes qui listent les memes features dans un ordre different provoquent
+    # « Feature order cycle found » a la generation des chunks (crash du monde).
+    ORDRE_VEGETAL = (
+        [f'cambocraft:{a}' for a in sorted(ARBRES)]
+        + [f'cambocraft:{fl}' for fl in sorted(FLORES)]
+    )
     for b in BIOMES:
         ident, temp, humid, _, _, _, sky, fog, water, grass, foliage, _, _, arbres, flores = b
-        vegetal = [f'cambocraft:{a}' for a in arbres] + [f'cambocraft:{fl}' for fl in flores]
+        voulu = {f'cambocraft:{a}' for a in arbres} | {f'cambocraft:{fl}' for fl in flores}
+        vegetal = [f for f in ORDRE_VEGETAL if f in voulu]
         ecrire_json(os.path.join(DATA, 'worldgen', 'biome', ident + '.json'), {
             'has_precipitation': humid >= 0.40,
             'temperature': temp,

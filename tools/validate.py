@@ -196,6 +196,41 @@ def main():
     if nb_biomes < 14:
         erreurs.append(f"seuil §4.2 non atteint : {nb_biomes} biomes (< 14)")
 
+    # 7 bis. Ordre des features identique dans tous les biomes.
+    # Minecraft construit un graphe d'ordre global : deux biomes qui listent les memes
+    # features dans un ordre different provoquent « Feature order cycle found » et la
+    # generation des chunks echoue (monde casse). On reconstruit le graphe et on
+    # cherche un cycle.
+    import itertools
+    from collections import defaultdict
+    contraintes = defaultdict(set)
+    for fn in sorted(os.listdir(biomes_dir)) if os.path.isdir(biomes_dir) else []:
+        if not fn.endswith('.json'):
+            continue
+        with open(os.path.join(biomes_dir, fn), encoding='utf-8') as fh:
+            biome = json.load(fh)
+        for etape in biome.get('features', []):
+            for a, b in itertools.combinations(etape, 2):
+                contraintes[a].add(b)
+    couleur = {}
+    cycle = []
+
+    def _dfs(noeud, pile):
+        couleur[noeud] = 1
+        for voisin in contraintes.get(noeud, ()):
+            if couleur.get(voisin, 0) == 1:
+                cycle.extend(pile[pile.index(voisin):] + [voisin])
+                return True
+            if couleur.get(voisin, 0) == 0 and _dfs(voisin, pile + [voisin]):
+                return True
+        couleur[noeud] = 2
+        return False
+
+    for noeud in sorted(contraintes):
+        if couleur.get(noeud, 0) == 0 and _dfs(noeud, [noeud]):
+            erreurs.append("cycle d'ordre des features entre biomes : " + " -> ".join(cycle))
+            break
+
     struct_json_dir = os.path.join(DATA, 'worldgen', 'structure')
     nb_familles_struct = len([f for f in os.listdir(struct_json_dir) if f.endswith('.json')]) if os.path.isdir(struct_json_dir) else 0
     if nb_familles_struct < 60:

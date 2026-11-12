@@ -27,11 +27,11 @@
     [],
     [],
     [
-      "cambocraft:arbre_teck",
-      "cambocraft:arbre_manguier",
       "cambocraft:arbre_jacquier",
-      "cambocraft:flore_orchidee",
-      "cambocraft:flore_fougere"
+      "cambocraft:arbre_manguier",
+      "cambocraft:arbre_teck",
+      "cambocraft:flore_fougere",
+      "cambocraft:flore_orchidee"
     ],
     []
   ],
