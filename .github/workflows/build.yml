@@ -132,14 +132,14 @@ jobs:
                       inter += 1
                   elif re.match(r"net/minecraft/[a-z]", ref):
                       named += 1
-                      if len(exemples) < 5: exemples.append(ref)
+                      if len(exemples) < 8: exemples.append(f"{c} : CONSTANT_Class {ref}")
               for d in descs:
                   for ref in re.findall(r"net/minecraft/[A-Za-z0-9_/$]+", d):
                       if re.search(r"class_\d+", ref):
                           inter += 1
                       elif re.match(r"net/minecraft/[a-z]", ref):
                           named += 1
-                          if len(exemples) < 5: exemples.append(ref)
+                          if len(exemples) < 8: exemples.append(f"{c} : descripteur {d}")
           print(f"Références intermédiaires : {inter} | références Yarn non remappées : {named}")
           if exemples: print("  exemples non remappés :", exemples)
           version_majeure = struct.unpack(">H", z.read(classes[0])[6:8])[0]
