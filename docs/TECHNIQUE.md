@@ -92,3 +92,42 @@ Deux jobs s'exécutent à chaque `push` :
 Le journal complet de chaque job est republié dans un *check run* (`cambocraft-build-log`,
 `cambocraft-serveur-test`), lisible via l'API GitHub même quand les artefacts de logs sont
 inaccessibles.
+
+### Résultats du test d'intégration en jeu
+
+Le job `serveur` démarre un vrai serveur Fabric 1.21.1 avec le jar publié, puis envoie des
+commandes sur `stdin`. Relevé d'exécution :
+
+| Vérification | Commande | Résultat observé |
+| --- | --- | --- |
+| Chargement du mod | — | `Loading 43 mods: … - cambocraft 1.0.0` |
+| Initialisation | — | `Cambocraft : initialisation du contenu de base` |
+| Enregistrement | — | `Cambocraft : 220 blocs, 199 objets et 15 biomes initialisés` |
+| Données JSON | — | `Données : 347 fichier(s) chargé(s), 0 erreur(s)` |
+| Sous-systèmes | — | 16 poissons, 16 PNJ, 8 marchands, 16 recettes, 12 zones, 85 quêtes, 84 pouvoirs, 34 synergies, 56 ennemis (12 boss) |
+| Serveur prêt | — | `Done (9.457s)! For help, type "help"` |
+| Dimension | `execute in cambocraft:cambodia run forceload add -32 -32 32 32` | `Marked 25 chunks in cambocraft:cambodia` |
+| Bloc du mod | `… setblock 0 110 0 cambocraft:pierre_du_lotus` | `Changed the block at 0, 110, 0` |
+| Bloc du mod | `… setblock 1 110 0 cambocraft:lotus_rose` | `Changed the block at 1, 110, 0` |
+| Objet + traduction | `… summon minecraft:item … cambocraft:bol_de_riz_beni` | `Summoned new Blessed Bowl of Rice` |
+| Biome | `… locate biome cambocraft:grand_lac` | `The nearest cambocraft:grand_lac is at [-1536, 91, 416]` |
+| Sauvegarde | `stop` | `All chunks are saved` pour `cambodia` |
+
+Le `fabric.mod.json` du jar publié porte bien `version = 1.0.0` (variable `${version}` expansée
+par Loom) : plus aucun avertissement de version au démarrage.
+
+### Défaut corrigé grâce à ce test
+
+La première exécution a levé `java.lang.IllegalStateException: Feature order cycle found`
+pendant la génération des chunks de `cambocraft:cambodia` :
+
+```
+Feature order cycle found, involved sources:
+  [cambocraft:mangrove_et_marais, cambocraft:plaine_inondable]
+```
+
+Cause : `flore_lotus` et `flore_riz_sauvage` étaient listés dans des ordres opposés selon le
+biome. Minecraft exige un ordre de features identique dans **tous** les biomes. Correction :
+l'ordre de l'étape végétale est désormais dérivé d'une liste canonique dans
+`tools/gen_worldgen.py`, et `tools/validate.py` reconstruit le graphe d'ordre et échoue sur tout
+cycle. Sans ce test, le joueur aurait découvert un monde vide dès le premier chunk.

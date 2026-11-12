@@ -84,3 +84,16 @@ Toutes les évolutions notables du mod sont consignées par phase de développem
   le lien direct et la procédure d'installation (Fabric Loader 0.16.14+, Fabric API 0.116.18).
 - **Documentation** : `docs/TECHNIQUE.md` gagne la section « Chaîne de compilation
   Fabric/Loom (production) » décrivant commands, contenu du jar et jobs CI.
+
+### Correctif découvert par le test en jeu
+
+- **`Feature order cycle found`** : `flore_lotus` et `flore_riz_sauvage` étaient listés dans des
+  ordres opposés dans `mangrove_et_marais`, `plaine_inondable` et `rizieres_en_terrasses`, ce qui
+  faisait échouer la génération de **tous** les chunks de `cambocraft:cambodia`
+  (`IllegalStateException: Feature order cycle found`). L'ordre est maintenant dérivé d'une liste
+  canonique dans `tools/gen_worldgen.py`, et `tools/validate.py` détecte tout cycle d'ordre de
+  features (testé : le contrôle échoue si l'ancien ordre est réintroduit).
+- **Vérifications en jeu réussies** après correctif : dimension forcée à 25 chunks
+  (`forceload`), `setblock` de `cambocraft:pierre_du_lotus` et `cambocraft:lotus_rose`,
+  `summon` d'un `cambocraft:bol_de_riz_beni` (affiché « Blessed Bowl of Rice »),
+  `locate biome cambocraft:grand_lac`, puis arrêt propre avec sauvegarde de la dimension.
