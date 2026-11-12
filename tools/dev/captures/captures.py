@@ -180,7 +180,7 @@ SCENES = {
     # Les scenes sont baties sur le studio flottant a Y=200 : la camera se place
     # a Y+4 environ, en spectateur (aucune chute possible).
     "portail": (scene_portail, (0.5, Y + 4.0, 12.0), (180.0, 12.0), "portail-du-lotus"),
-    "cite": (scene_cite, (0.5, Y + 6.0, 20.0), (180.0, 10.0), "cite-khmere"),
+    "cite": (scene_cite, (0.5, Y + 5.0, 25.0), (180.0, 14.0), "cite-khmere"),
     # Camera a l'interieur de l'atelier (murs en z=+-8) : on cadre les etablis,
     # et non la facade depuis l'exterieur.
     "interieur": (scene_interieur, (0.5, Y + 3.0, 4.5), (180.0, 10.0), "atelier"),
@@ -483,10 +483,13 @@ def main() -> int:
             continue
         constructeur, position, rotation, fichier = SCENES[nom]
         print(f"== scene {nom} ({fichier}) ==")
-        # Nettoyage du studio : la scene precedente doit disparaitre. /fill est limite
-        # a 32 768 blocs par commande : 65x6x65 = 25 350 blocs par tranche.
-        for y0 in range(Y - 2, Y + 32, 6):
+        # Nettoyage du studio : la scene precedente doit disparaitre ET le terrain naturel
+        # (qui monte jusqu'a y=319) laissait des blocs flottants au-dessus de la scene.
+        # /fill est limite a 32 768 blocs par commande : 65x6x65 = 25 350 blocs par tranche.
+        for y0 in range(Y - 2, Y + 30, 6):
             commande(f"execute in cambocraft:cambodia run fill -32 {y0} -32 32 {y0 + 5} 32 air")
+        for y0 in range(Y + 30, 320, 6):
+            commande(f"execute in cambocraft:cambodia run fill -24 {y0} -24 24 {y0 + 5} 24 air")
         time.sleep(3)
         for cmd in constructeur():
             commande(f"execute in cambocraft:cambodia run {cmd}")
