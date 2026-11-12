@@ -301,15 +301,15 @@ jobs:
             echo "execute in cambocraft:cambodia run setblock 1 110 0 cambocraft:lotus_rose" >&3
             sleep 4
             # 3. Un objet du mod est-il enregistre ? (summon d'un item porteur)
-            echo 'summon minecraft:item 0 111 0 {Item:{id:"cambocraft:bol_de_riz_beni",count:1}}' >&3
+            echo 'execute in cambocraft:cambodia run summon minecraft:item 0 111 0 {Item:{id:"cambocraft:bol_de_riz_beni",count:1}}' >&3
             sleep 4
-            echo "data get entity @e[type=item,limit=1] Item" >&3
+            echo "execute in cambocraft:cambodia run data get entity @e[type=item,limit=1] Item" >&3
             sleep 3
             # 4. Le biome du mod se genere-t-il ?
             echo "execute in cambocraft:cambodia run locate biome cambocraft:grand_lac" >&3
             sleep 5
-            # 5. Les recettes du mod sont-elles chargees ?
-            echo "recipe give @a cambocraft:*" >&3
+            # 5. Une recette du mod est-elle connue du serveur ?
+            echo "recipe give @a cambocraft:bol_de_riz_beni" >&3
             sleep 2
             echo "stop" >&3
             sleep 10
