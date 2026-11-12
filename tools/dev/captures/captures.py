@@ -477,6 +477,9 @@ def main() -> int:
     time.sleep(2)
 
     # --- verification des systemes : entites et commande /cambocraft ---
+    # Le bloc d'or de la sanite doit disparaitre, sinon il reapparait dans les scenes.
+    commande(f"execute in cambocraft:cambodia run fill -2 {Y} -2 2 {Y} 2 air")
+
     print("== verification des systemes (entites + commandes) ==")
     commande(f"execute in cambocraft:cambodia run fill -5 {Y} 0 5 {Y} 10 cambocraft:pierre_du_lotus_polie")
     # Les entites doivent naitre SUR le plateau (y = Y+1), pas en dessous : une entite
@@ -496,6 +499,13 @@ def main() -> int:
         time.sleep(3)
     if capture_ecran(os.path.join(args.sortie, "entites.png")):
         print("   capture : entites.png")
+    with sortie_serveur.verrou:
+        interessantes = [l for l in sortie_serveur.lignes
+                         if any(m in l.lower() for m in
+                                ("artisan", "gardien", "summon", "unknown", "no such", "entity"))]
+    print("   DIAG-ENTITES (" + str(len(interessantes)) + " lignes)")
+    for ligne in interessantes[-12:]:
+        print("   DIAG> " + ligne[:200])
     commande("execute in cambocraft:cambodia run kill @e[type=cambocraft:artisan]")
     commande("execute in cambocraft:cambodia run kill @e[type=cambocraft:gardien]")
 
@@ -557,6 +567,13 @@ def main() -> int:
     print("== fin ==")
     for chemin in captures:
         print("   " + chemin)
+    # Diagnostic des entites en TOUTE FIN : la fin de la sortie survit a la troncature
+    # des check runs (le milieu est coupe a 65 535 caracteres).
+    with sortie_serveur.verrou:
+        interessantes = [l for l in sortie_serveur.lignes
+                         if any(m in l.lower() for m in ("artisan", "gardien", "summon", "unknown"))]
+    for ligne in interessantes[-10:]:
+        print("   FIN-DIAG> " + ligne[:180])
     return 0 if captures else 1
 
 
