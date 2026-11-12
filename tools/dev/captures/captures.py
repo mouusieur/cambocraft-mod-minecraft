@@ -273,6 +273,25 @@ def main() -> int:
     for nom in sorted(os.listdir(mods)) if os.path.isdir(mods) else []:
         print("   " + nom)
 
+    # Options ecrites avant le lancement : FOV large, HUD discret, qualite maximale
+    # compatible avec le rendu logiciel.
+    with open(os.path.join(args.client, "options.txt"), "w", encoding="utf-8") as options:
+        options.write(
+            "version:3955\n"
+            f"guiScale:2\n"
+            "fov:0.5\n"
+            "renderDistance:8\n"
+            "graphicsMode:1\n"          # fancy
+            "ao:2\n"                    # occlusion ambiante maximale
+            "particles:0\n"             # toutes les particules
+            "clouds:true\n"
+            "bobView:false\n"
+            "hideGui:true\n"            # captures sans HUD
+            "gamma:1.0\n"
+            "soundCategory_master:0.0\n"
+            "narrator:0\n"
+        )
+
     client = Client(args)
     print("== demarrage du client ==")
     client.demarrer()
