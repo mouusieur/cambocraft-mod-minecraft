@@ -403,9 +403,15 @@ def main() -> int:
 
     # --- verification de sanite : un bloc d'or de 3x3, camera dessus, regard vers le bas ---
     print("== verification de sanite du rendu ==")
+    avant = len(sortie_serveur.lignes)
     commande("execute in cambocraft:cambodia run fill -2 70 -2 2 70 2 minecraft:gold_block")
     commande("execute in cambocraft:cambodia run tp @a 0 76 0 0 85")
-    time.sleep(6)
+    commande("execute in cambocraft:cambodia run data get entity Cambocraft Pos")
+    time.sleep(5)
+    with sortie_serveur.verrou:
+        for ligne in sortie_serveur.lignes[avant:]:
+            print("   SERVEUR> " + ligne)
+    time.sleep(3)
     if capture_ecran(os.path.join(args.sortie, "sanite.png")):
         print("   capture : sanite.png")
     commande("execute in cambocraft:cambodia run data get entity Cambocraft Pos")
