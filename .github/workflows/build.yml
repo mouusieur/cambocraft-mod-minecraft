@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: write
+  checks: write
 
 jobs:
   build:
@@ -33,9 +34,45 @@ jobs:
           restore-keys: gradle-
 
       - name: Compiler le mod
-        run: ./gradlew build --stacktrace --no-daemon
+        id: gradle
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          ./gradlew build --stacktrace --no-daemon --console=plain 2>&1 | tee "$RUNNER_TEMP/gradle.log"
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Publier le journal de compilation (check run)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ steps.gradle.outputs.code }}
+        run: |
+          python3 - <<'PY'
+          import json, os, subprocess
+          log = os.path.join(os.environ["RUNNER_TEMP"], "gradle.log")
+          text = open(log, encoding="utf-8", errors="replace").read() if os.path.exists(log) else "(aucun journal)"
+          text = text[-55000:]
+          ok = os.environ.get("RESULT", "0") == "0"
+          body = {
+              "name": "cambocraft-build-log",
+              "head_sha": os.environ["GITHUB_SHA"],
+              "status": "completed",
+              "conclusion": "success" if ok else "failure",
+              "output": {
+                  "title": "Journal Gradle" + ("" if ok else " — échec"),
+                  "summary": "Bras de compilation du mod Cambocraft.",
+                  "text": "```\n" + text + "\n```",
+              },
+          }
+          open("body.json", "w", encoding="utf-8").write(json.dumps(body))
+          subprocess.run(["gh", "api", "-X", "POST",
+                          "repos/" + os.environ["GITHUB_REPOSITORY"] + "/check-runs",
+                          "--input", "body.json"], check=False)
+          PY
 
       - name: Publier le .jar
+        if: steps.gradle.outputs.code == '0'
         uses: actions/upload-artifact@v4
         with:
           name: cambocraft-jar
