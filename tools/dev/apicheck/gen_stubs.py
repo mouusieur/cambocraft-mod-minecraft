@@ -43,6 +43,24 @@ BLOCS_A_CONSTRUCTEUR = {
     'net/minecraft/block/Block',
 }
 
+# Methodes statiques que Yarn ne marque pas `static` (il n'indique pas ce modificateur).
+# Sans cette table, le controle hors ligne rejette un appel correct.
+METHODES_STATIQUES = {
+    'net/minecraft/client/render/RenderLayer': {
+        'getSolid', 'getCutout', 'getCutoutMipped', 'getTranslucent', 'getTranslucentMovingBlock',
+        'getTripwire', 'getEntitySolid', 'getEntityCutout', 'getEntityCutoutNoCull',
+        'getEntityCutoutNoCullZOffset', 'getItemEntityTranslucentCull', 'getEntityTranslucentCull',
+        'getEntityTranslucent', 'getEntitySmoothCutout', 'getBeaconBeam', 'getEntityDecal',
+        'getEntityNoOutline', 'getEntityShadow', 'getEntityAlpha', 'getEyes', 'getEnergySwirl',
+        'getArmorCutoutNoCull', 'getDirectEntityGlint', 'getEntityGlint', 'getItemEntityGlint',
+        'getEntityGlintDirect', 'getDragonRays', 'getDragonRaysDepth', 'getCrumbling', 'getText',
+        'getTextSeeThrough', 'getTextIntensity', 'getTextIntensitySeeThrough',
+        'getTextPolygonOffset', 'getTextIntensityPolygonOffset', 'getLightning', 'getWaterMask',
+        'getLeash', 'getLineStrip', 'getDebugLineStrip', 'getDebugQuads', 'getEndPortal',
+        'getDragonExplosionAlpha', 'getEntityTranslucentEmissive',
+    },
+}
+
 ENUM_RESERVED = set('valueOf values equals hashCode name ordinal compareTo finalize clone getDeclaringClass'.split())
 KEYWORDS = set('abstract assert boolean break byte case catch char class const continue default do double else enum extends final finally float for goto if implements import instanceof int interface long native new package private protected public return short static strictfp super switch synchronized this throw throws transient try void volatile while var record'.split())
 
@@ -330,6 +348,7 @@ class Gen:
                 is_static = bool(args) and min(args) == 0 and len(ps) > 0
                 if (name, mname) in m.static: is_static = True
                 if (name, mname) in m.instance: is_static = False
+                if mname in METHODES_STATIQUES.get(name, ()): is_static = True
                 rty = rt + '[]' * rarr
                 body = '{ throw new RuntimeException(); }'
                 if kind == 'interface':
