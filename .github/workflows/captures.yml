@@ -67,20 +67,48 @@ jobs:
           cd "$RUNNER_TEMP/client"
           curl -fsSL -o installer.jar https://maven.fabricmc.net/net/fabricmc/fabric-installer/1.0.1/fabric-installer-1.0.1.jar
           java -jar installer.jar client -mcversion 1.21.1 -dir . -noprofile
+          echo "--- arborescence des versions ---"
+          find versions -maxdepth 2 -name "*.json" | head
+          echo "--- bibliotheques fabric ---"
+          find libraries/net/fabricmc -name "*.jar" | head -20
+
+      - name: Assembler le classpath Fabric
+        run: |
           python3 - <<'PY'
-          import glob, json, os
+          import glob, json, os, re
           d = os.environ["RUNNER_TEMP"] + "/client"
+          # L'installeur ecrit un profil de lancement : on lit ses bibliotheques.
+          profils = [p for p in glob.glob(d + "/versions/*/*.json") if "1.21.1" in p]
+          print("profils :", profils)
+          jars = []
+          for p in profils:
+              data = json.load(open(p, encoding="utf-8"))
+              for lib in data.get("libraries", []):
+                  nom = lib.get("name", "")
+                  # ex. net.fabricmc:intermediary:1.21.1 -> libraries/net/fabricmc/intermediary/1.21.1/intermediary-1.21.1.jar
+                  groupe, artefact, version = nom.split(":")[:3]
+                  chemin = os.path.join(d, "libraries", groupe.replace(".", "/"), artefact, version,
+                                        f"{artefact}-{version}.jar")
+                  if os.path.exists(chemin):
+                      jars.append(chemin)
+                  else:
+                      trouve = glob.glob(os.path.join(d, "libraries", groupe.replace(".", "/"), artefact, version, "*.jar"))
+                      jars.extend(trouve)
+          print("jars fabric resolus :", len(jars))
+          for j in jars: print("   ", os.path.relpath(j, d))
           base = open(d + "/classpath.txt", encoding="utf-8").read().strip().split(":")
-          fabric = glob.glob(d + "/libraries/net/fabricmc/**/*.jar", recursive=True)
-          libs = [p for p in fabric if os.path.basename(p).startswith(
-              ("fabric-loader", "sponge-mixin", "asm", "intermediary", "mixinextras", "tiny-mappings-parser"))]
           client_jar = d + "/client.jar"
           reste = [p for p in base if not p.endswith("client.jar")]
-          open(d + "/classpath.txt", "w", encoding="utf-8").write(":".join(libs + reste + [client_jar]))
+          # Les bibliotheques Fabric doivent preceder le jar client.
+          final = jars + reste + [client_jar]
+          open(d + "/classpath.txt", "w", encoding="utf-8").write(":".join(final))
           infos = json.load(open(d + "/infos.json", encoding="utf-8"))
           infos["main_class"] = "net.fabricmc.loader.impl.launch.knot.KnotClient"
           json.dump(infos, open(d + "/infos.json", "w", encoding="utf-8"), indent=2)
-          print("classes fabric :", [os.path.basename(p) for p in libs])
+          # Verification : ASM et Mixin doivent etre la.
+          for attendu in ("asm-", "sponge-mixin", "fabric-loader", "intermediary"):
+              present = any(attendu in os.path.basename(p) for p in final)
+              print(f"   {attendu:16s} : {'OK' if present else 'MANQUANT'}")
           PY
 
       - name: Capturer les écrans
