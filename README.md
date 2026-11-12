@@ -2,6 +2,15 @@
 
 **Cambocraft** est un mod d'aventure, d'exploration et de maîtrise spirituelle pour **Minecraft 1.21.1 (Fabric, Java 21)** qui ouvre les portes de la dimension **`cambocraft:cambodia`**, un monde vivant inspiré des paysages, de l'architecture khmère et des traditions culturelles du Cambodge.
 
+> ### 📥 Télécharger et jouer
+> **[Télécharger `cambocraft-1.0.0.jar`](https://github.com/mouusieur/cambocraft-mod-minecraft/releases/latest/download/cambocraft-1.0.0.jar)** (~1,2 Mo) — version compilée, prête à l'emploi.
+>
+> 1. Installe **Fabric Loader 0.16.14** (ou plus récent) pour **Minecraft 1.21.1**.
+> 2. Place `cambocraft-1.0.0.jar` **et** [Fabric API 0.116.18+1.21.1](https://modrinth.com/mod/fabric-api/versions?g=1.21.1) dans le dossier `mods/` de ton instance.
+> 3. Lance le jeu en profil Fabric, puis cherche un **Portail du Lotus** : il s'ouvre avec un *Bol de Riz Béni*.
+>
+> Le jar est reconstruit et vérifié automatiquement à chaque `push` par GitHub Actions, puis publié dans [Releases](https://github.com/mouusieur/cambocraft-mod-minecraft/releases).
+
 ---
 
 ## Points forts du contenu livré
@@ -16,21 +25,33 @@
 
 ---
 
-## Vérification rapide et compilation
+## Compiler depuis les sources
 
 ```bash
-# 1. Valider les 1 889 fichiers JSON, 128 NBT, 360 PNG, 12 OGG et 478 clés FR/EN
-python3 tools/validate.py
-
-# 2. Compiler les 124 classes Java 21 contre les stubs Yarn 1.21.1 et lancer les 10 suites de tests
-bash tools/dev/apicheck/check.sh
-
-# 3. Lancer la simulation Monte-Carlo du Gacha (5 000 000 de tirages sans pity + 5 000 000 avec pity)
-python3 tools/sim_gacha.py
-
-# 4. Build Gradle/Loom standard (dans un environnement connecté à maven.fabricmc.net)
+# Build standard Fabric/Loom : produit build/libs/cambocraft-1.0.0.jar
 ./gradlew build
+
+# Tests du noyau de règles (aucune dépendance à Minecraft au moment de l'exécution)
+./gradlew camboTest
+
+# Contrôles hors ligne (aucun accès réseau requis)
+python3 tools/validate.py                    # 1 889 JSON, 128 NBT, 360 PNG, 12 OGG, 478 clés FR/EN
+bash tools/dev/apicheck/check.sh             # compile 124 classes contre les stubs Yarn 1.21.1
+python3 tools/sim_gacha.py                   # simulation Monte-Carlo du gacha
 ```
+
+Le fichier `build/libs/cambocraft-1.0.0.jar` est le mod complet : 128 classes remappées en
+intermédiaire, 1 393 fichiers d'assets et 1 047 fichiers de données. Il se dépose tel quel dans
+`mods/`.
+
+### Environnement de test
+
+| Élément | Version |
+| --- | --- |
+| Minecraft | 1.21.1 |
+| Fabric Loader | 0.16.14 (minimum `>=0.16.0`) |
+| Fabric API | 0.116.18+1.21.1 |
+| Java | 21 |
 
 ---
 
