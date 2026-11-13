@@ -8,8 +8,10 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.client.util.ScreenshotRecorder;
 
 /**
@@ -17,59 +19,53 @@ import net.minecraft.client.util.ScreenshotRecorder;
  *
  * <p>Dans la CI (client OpenGL logiciel sous Xvfb, sans gestionnaire de fenêtres),
  * les appuis de touche sont peu fiables : le focus clavier suit le pointeur et se
- * perd après les clics de menu. Plutôt que de simuler F2, on surveille un fichier
+ * perd après les clics de menu. On surveille donc un fichier
  * {@code <repertoire de jeu>/capture.demande} : dès qu'il apparaît, le client écrit
- * une capture de son framebuffer dans le fichier indiqué (ou {@value #DEFAUT}).
- * La demande est supprimée, ce qui vaut acquittement.</p>
+ * une capture de son framebuffer sous le nom indiqué, puis supprime la demande.</p>
  *
- * <p>Le mécanisme est inerte en jeu normal : sans fichier de demande, il ne fait
- * qu'un test d'existence par tick (une fraction de milliseconde).</p>
+ * <p>Le déclenchement se fait dans le callback de rendu du HUD, <b>après</b> le dessin
+ * de la scène : la lire pendant un tick ramènerait un framebuffer vide (image noire).</p>
  */
 @Environment(EnvType.CLIENT)
 public final class CapturesAutomatiques {
     private static final String DEMANDE = "capture.demande";
     private static final String JOURNAL = "captures-journal.txt";
-    private static final String DEFAUT = "capture-active.png";
-    private static final int DELAI_MINIMAL = 10;
-    private static final int BATTEMENT = 200;
+    private static final int BATTEMENT = 400;
 
     private static Path repertoire;
-    private static int tics;
+    private static long images;
 
     private CapturesAutomatiques() {}
 
     public static void enregistrer() {
-        ClientTickEvents.END_CLIENT_TICK.register(CapturesAutomatiques::tick);
+        HudRenderCallback.EVENT.register(CapturesAutomatiques::apresRendu);
     }
 
-    private static void tick(MinecraftClient client) {
-        tics++;
-        if (client.runDirectory == null) {
+    private static void apresRendu(DrawContext contexte, RenderTickCounter compteur) {
+        MinecraftClient client = MinecraftClient.getInstance();
+        if (client == null || client.runDirectory == null) {
             return;
         }
         if (repertoire == null) {
             repertoire = client.runDirectory.toPath();
             journal("arme ; repertoire=" + repertoire);
         }
-        if (tics % BATTEMENT == 0) {
-            journal("battement tic " + tics + " ; fps " + client.getCurrentFps());
-        }
-        // On laisse passer quelques tics : au demarrage le framebuffer n'est pas pret.
-        if (tics < DELAI_MINIMAL) {
-            return;
+        images++;
+        if (images % BATTEMENT == 0) {
+            journal("rendu #" + images + " ; fps " + client.getCurrentFps());
         }
         Path demande = repertoire.resolve(DEMANDE);
         if (!Files.exists(demande)) {
             return;
         }
-        String nom = DEFAUT;
+        String nom = "capture-" + System.currentTimeMillis() + ".png";
         try {
             String contenu = Files.readString(demande, StandardCharsets.UTF_8).trim();
             if (!contenu.isEmpty()) {
                 // Nom simple uniquement : pas de chemin, pas de remontee de repertoire.
-                nom = contenu.replaceAll("[^A-Za-z0-9._-]", "").replace("..", "");
-                if (nom.isEmpty()) {
-                    nom = DEFAUT;
+                String propre = contenu.replaceAll("[^A-Za-z0-9._-]", "");
+                if (!propre.isEmpty()) {
+                    nom = propre;
                 }
             }
             Files.deleteIfExists(demande);
@@ -77,10 +73,8 @@ public final class CapturesAutomatiques {
             journal("demande illisible : " + e.getMessage());
             return;
         }
-        journal("demande vue au tic " + tics + " -> " + nom);
+        journal("capture demandee : " + nom);
         try {
-            // Le message de retour dit si l'ecriture a reussi : on le journalise tel quel,
-            // sans quoi un echec silencieux ressemble a un succes.
             ScreenshotRecorder.saveScreenshot(
                     client.runDirectory, nom, client.getFramebuffer(),
                     texte -> journal("resultat : " + texte));

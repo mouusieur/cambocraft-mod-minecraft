@@ -303,8 +303,8 @@ def ecrire_servers_dat(repertoire):
         fichier.write(racine)
 
 
-def client_vivant(repertoire_client, delai=25):
-    """Vrai si le mod a ecrit dans son journal recemment (le client tique encore)."""
+def client_vivant(repertoire_client, delai=40):
+    """Vrai si le mod a ecrit dans son journal recemment (le client rend encore)."""
     chemin = os.path.join(repertoire_client, "captures-journal.txt")
     if not os.path.exists(chemin):
         return False
