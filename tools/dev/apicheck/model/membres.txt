@@ -230,6 +230,9 @@ add HoverEvent.Action :: public static final HoverEvent.Action SHOW_TEXT = null;
 add HoverEvent.Action :: public static final HoverEvent.Action SHOW_ITEM = null;
 
 # --- EntityType : `create(World)` renvoie le type generique, pas `Entity` ---
+# Les constantes vanilla (WOLF, ...) vivent dans une classe anonyme de EntityType, absente
+# des mappings : on les declare ici avec le bon type generique.
+add EntityType :: public static final net.minecraft.entity.EntityType<net.minecraft.entity.passive.WolfEntity> WOLF = null;
 sig EntityType create :: public T create(net.minecraft.world.World p0) { throw new RuntimeException(); }
 # --- World : l'apparition d'entite est declaree sur World ---
 add World :: public boolean spawnEntity(net.minecraft.entity.Entity p0) { throw new RuntimeException(); }
@@ -416,13 +419,11 @@ add HitResult.Type :: public static final HitResult.Type MISS = null;
 add HitResult.Type :: public static final HitResult.Type BLOCK = null;
 add HitResult.Type :: public static final HitResult.Type ENTITY = null;
 
-# --- harceleurs invoqués : constructeur et apprivoisement ---
+# --- harceleurs invoqués : persistance, ciblage ---
 add Entity :: public void setPersistent() { }
-
-# --- harceleurs invoqués : constructeur, persistance, ciblage ---
-sig WolfEntity <init> :: public WolfEntity(net.minecraft.world.World p0) { }
-add Entity :: public void setPersistent() { }
-add LivingEntity :: public boolean isUndead() { return false; }
+add LivingEntity :: public boolean hasInvertedHealingAndHarm() { return false; }
+# En 1.21.1 le constructeur public de WolfEntity prend un EntityType : il n'y a pas de
+# `new WolfEntity(World)`. Le seul chemin est `EntityType.WOLF.create(World)`.
 add LivingEntity :: public boolean isAlive() { return false; }
 add LivingEntity :: public boolean isDead() { return false; }
 add SoundCategory :: public static final net.minecraft.sound.SoundCategory PLAYERS = null;

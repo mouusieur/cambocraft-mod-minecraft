@@ -3,11 +3,12 @@ package com.cambocraft.power;
 import com.cambocraft.combat.CombatEngine;
 import com.cambocraft.util.Effects;
 import java.util.List;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.passive.WolfEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.Registries;
@@ -355,7 +356,12 @@ public final class PowerEffects {
             double angle = (Math.PI * 2.0 / nombre) * i;
             double x = c.joueur.getX() + Math.cos(angle) * 1.8;
             double z = c.joueur.getZ() + Math.sin(angle) * 1.8;
-            WolfEntity allie = new WolfEntity(c.monde);
+            // `EntityType.create(World)` construit l'entité avec son type réel : c'est le seul
+            // constructeur utilisable, `new WolfEntity(World)` n'existe pas en 1.21.1.
+            WolfEntity allie = EntityType.WOLF.create(c.monde);
+            if (allie == null) {
+                continue;
+            }
             allie.refreshPositionAndAngles(x, c.joueur.getY(), z, c.joueur.getYaw(), 0.0f);
             allie.setOwner(c.joueur);
             allie.setTamed(true, true);
@@ -466,7 +472,9 @@ public final class PowerEffects {
         if (cible instanceof com.cambocraft.entity.ArtisanEntity) {
             return PowerElement.VIE;
         }
-        return cible.isUndead() ? PowerElement.OMBRE : PowerElement.TERRE;
+        // En 1.21.1, « mort-vivant » se lit `hasInvertedHealingAndHarm()` : soigner un
+        // squelette le blesse, et c'est exactement la population concernée.
+        return cible.hasInvertedHealingAndHarm() ? PowerElement.OMBRE : PowerElement.TERRE;
     }
 
     private static void appliquer(Contexte c, LivingEntity cible, String effet, int duree, int amplification) {
