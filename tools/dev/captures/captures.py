@@ -547,6 +547,26 @@ def main() -> int:
             print("   capture : entites.png")
         commande("execute in cambocraft:cambodia run kill @e[type=cambocraft:artisan]")
         commande("execute in cambocraft:cambodia run kill @e[type=cambocraft:gardien]")
+
+    # --- verification de l'interface : table, carnet et HUD, en jeu ---
+    # Le HUD est masque dans les options des captures de paysage : on le reactive
+    # (F1) pour la derniere etape, sinon l'interface n'apparait pas a l'ecran.
+    print("== verification de l'interface (HUD, carnet, table) ==")
+    appuyer("F1")
+    time.sleep(2)
+    if capture_ecran(os.path.join(args.sortie, "hud.png")):
+        print("   capture : hud.png")
+    commande("cambocraft carnet")
+    time.sleep(4)
+    if capture_ecran(os.path.join(args.sortie, "carnet.png")):
+        print("   capture : carnet.png")
+    appuyer("Escape")
+    time.sleep(2)
+    commande("cambocraft table")
+    time.sleep(4)
+    if capture_ecran(os.path.join(args.sortie, "table.png")):
+        print("   capture : table.png")
+    appuyer("Escape")
     client.kill()
 
     print("== arret ==")
