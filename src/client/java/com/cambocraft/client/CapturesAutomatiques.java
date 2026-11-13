@@ -32,6 +32,8 @@ public final class CapturesAutomatiques {
     private static final String DEMANDE = "capture.demande";
     private static final String JOURNAL = "captures-journal.txt";
     private static final int BATTEMENT = 400;
+    /** Dossier de sortie, relatif au repertoire de jeu : chemin deterministe. */
+    private static final String SORTIE = "captures-auto";
 
     private static Path repertoire;
     private static long images;
@@ -88,12 +90,36 @@ public final class CapturesAutomatiques {
             return;
         }
         journal("capture demandee (" + origine + ") : " + nom);
+        final String fichier = nom;
         try {
             ScreenshotRecorder.saveScreenshot(
                     client.runDirectory, nom, client.getFramebuffer(),
-                    texte -> journal("resultat : " + texte));
+                    texte -> publier(fichier));
         } catch (RuntimeException e) {
             journal("echec de la capture : " + e);
+        }
+    }
+
+    /**
+     * Deplace l'image produite vers {@code <repertoire de jeu>/captures-auto/}.
+     *
+     * <p>ScreenshotRecorder ecrit dans {@code screenshots/} et n'annonce son chemin que
+     * dans un message d'interface : plutot que de le reconstruire ou de l'analyser,
+     * on publie l'image sous un chemin fixe et connu de l'automatisation.</p>
+     */
+    private static void publier(String fichier) {
+        Path source = repertoire.resolve("screenshots").resolve(fichier);
+        Path cible = repertoire.resolve(SORTIE).resolve(fichier);
+        try {
+            Files.createDirectories(cible.getParent());
+            if (Files.exists(source)) {
+                Files.move(source, cible, java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+                journal("image publiee : " + cible);
+            } else {
+                journal("image annoncee introuvable : " + source);
+            }
+        } catch (IOException e) {
+            journal("publication impossible : " + e.getMessage());
         }
     }
 

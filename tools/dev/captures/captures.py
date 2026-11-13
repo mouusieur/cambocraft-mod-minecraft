@@ -405,45 +405,38 @@ def _chemin_annonce(lignes):
 def capture_ecran(destination, repertoire_client=None):
     """Capture ce que le joueur voit reellement.
 
-    Deux problemes se cumulent dans la CI : `import -window root` ne lit que du noir
-    sur un rendu OpenGL logiciel (X n'a pas la copie du framebuffer), et les appuis
-    de touche se perdent sous Xvfb faute de gestionnaire de fenetres.
-
-    On demande donc la capture au mod lui-meme (voir CapturesAutomatiques.java) :
-    il ecrit le fichier demande et annonce son chemin absolu dans son journal.
-    On lit ce chemin plutot que de le reconstruire, ce qui evite toute supposition
-    sur le repertoire reel des captures.
+    `import -window root` ne lit que du noir sur un rendu OpenGL logiciel, et les
+    appuis de touche se perdent sous Xvfb faute de gestionnaire de fenetres. On
+    demande donc la capture au mod (voir CapturesAutomatiques.java) : il publie
+    l'image sous `<repertoire de jeu>/captures-auto/<nom>`, chemin fixe.
     """
     if repertoire_client is None:
         return _capture_x(destination)
 
-    for tentative in range(4):
+    dossier = os.path.join(repertoire_client, "captures-auto")
+    for tentative in range(5):
         nom = "capture-%d-%d.png" % (int(time.time() * 1000), tentative)
-        demande = os.path.join(repertoire_client, "capture.demande")
-        avant = len(_lignes_journal(repertoire_client))
+        attendu = os.path.join(dossier, nom)
         try:
-            with open(demande, "w", encoding="utf-8") as fichier:
+            with open(os.path.join(repertoire_client, "capture.demande"), "w",
+                      encoding="utf-8") as fichier:
                 fichier.write(nom)
         except OSError as e:
             print("   demande de capture impossible :", e)
             break
         fin_attente = time.time() + 30
         while time.time() < fin_attente:
-            lignes = _lignes_journal(repertoire_client)
-            chemin = _chemin_annonce(lignes[avant:])
-            if chemin and os.path.exists(chemin) and os.path.getsize(chemin) > 0:
-                if _image_noire(chemin):
-                    # Framebuffer pas encore dessine : on retire et on redemande.
+            if os.path.exists(attendu):
+                taille = os.path.getsize(attendu)
+                if taille > 5000:
+                    shutil.copyfile(attendu, destination)
+                    return True
+                if taille > 0:
+                    # Image noire : le framebuffer n'etait pas pret, on redemande.
                     print("   image noire, nouvelle demande")
-                    try:
-                        os.remove(chemin)
-                    except OSError:
-                        pass
                     break
-                shutil.copyfile(chemin, destination)
-                return True
             time.sleep(0.5)
-        for ligne in _lignes_journal(repertoire_client)[-3:]:
+        for ligne in _lignes_journal(repertoire_client)[-2:]:
             print(f"   [capture] MOD> {ligne}")
     print("   la capture pilotee par fichier n'a rien produit, repli sur l'ecran X")
     return _capture_x(destination)
