@@ -2,8 +2,10 @@ package com.cambocraft.client;
 
 import com.cambocraft.util.Log;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -26,6 +28,7 @@ import net.minecraft.client.util.ScreenshotRecorder;
 @Environment(EnvType.CLIENT)
 public final class CapturesAutomatiques {
     private static final String DEMANDE = "capture.demande";
+    private static final String JOURNAL = "captures-journal.txt";
     private static final int DELAI_MINIMAL = 10;
 
     private static Path repertoire;
@@ -39,36 +42,48 @@ public final class CapturesAutomatiques {
 
     private static void tick(MinecraftClient client) {
         tics++;
-        // On laisse passer quelques tics : au demarrage le framebuffer n'est pas pret.
-        if (tics < DELAI_MINIMAL || client.runDirectory == null) {
+        if (client.runDirectory == null) {
             return;
         }
         if (repertoire == null) {
             repertoire = client.runDirectory.toPath();
+            journal("arme ; repertoire=" + repertoire);
+        }
+        // On laisse passer quelques tics : au demarrage le framebuffer n'est pas pret.
+        if (tics < DELAI_MINIMAL) {
+            return;
         }
         Path demande = repertoire.resolve(DEMANDE);
         if (!Files.exists(demande)) {
             return;
         }
-        // Une capture juste apres un changement de scene peut tomber sur une image
-        // encore vide : on laisse un delai d'un demi-seconde avant de declencher.
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            return;
-        }
         try {
             Files.deleteIfExists(demande);
         } catch (IOException e) {
-            Log.info("Capture automatique : demande illisible (" + e.getMessage() + ")");
+            journal("demande illisible : " + e.getMessage());
             return;
         }
-        Log.info("Capture automatique : declenchement");
-        // Le consomateur recoit le message de confirmation vanilla : on journalise
-        // simplement qu'une image a ete ecrite, le contenu du message n'est pas utile.
-        ScreenshotRecorder.saveScreenshot(
-                client.runDirectory, client.getFramebuffer(),
-                texte -> Log.info("Capture automatique : image ecrite"));
+        journal("demande vue au tic " + tics);
+        try {
+            ScreenshotRecorder.saveScreenshot(
+                    client.runDirectory, client.getFramebuffer(),
+                    texte -> journal("image ecrite"));
+        } catch (RuntimeException e) {
+            journal("echec de la capture : " + e);
+        }
+    }
+
+    /** Journal fichier : la sortie standard du client n'est pas lisible depuis la CI. */
+    private static void journal(String ligne) {
+        Log.info("Captures automatiques : " + ligne);
+        if (repertoire == null) {
+            return;
+        }
+        try {
+            Files.writeString(repertoire.resolve(JOURNAL), ligne + "\n", StandardCharsets.UTF_8,
+                    StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            Log.info("Captures automatiques : journal indisponible (" + e.getMessage() + ")");
+        }
     }
 }

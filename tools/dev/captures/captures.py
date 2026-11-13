@@ -303,6 +303,18 @@ def ecrire_servers_dat(repertoire):
         fichier.write(racine)
 
 
+def _journal_mod(repertoire_client, contexte):
+    """Affiche le journal ecrit par le mod : indispensable pour diagnostiquer la CI."""
+    chemin = os.path.join(repertoire_client, "captures-journal.txt")
+    if not os.path.exists(chemin):
+        print(f"   [{contexte}] le mod n'a pas encore ecrit de journal (mecanisme absent ?)")
+        return
+    with open(chemin, encoding="utf-8", errors="replace") as fichier:
+        lignes = [ligne.rstrip() for ligne in fichier if ligne.strip()]
+    for ligne in lignes[-3:]:
+        print(f"   [{contexte}] MOD> {ligne}")
+
+
 def _attendre_capture(dossier, avant, delai):
     """Attend qu'un NOUVEAU fichier de capture apparaisse et soit completement ecrit."""
     fin = time.time() + delai
@@ -344,13 +356,15 @@ def capture_ecran(destination, repertoire_client=None):
         dossier = os.path.join(repertoire_client, "screenshots")
         avant = set(os.listdir(dossier)) if os.path.isdir(dossier) else set()
         demande = os.path.join(repertoire_client, "capture.demande")
-        for _ in range(4):
+        for tentative in range(3):
             try:
                 open(demande, "w", encoding="utf-8").close()
             except OSError as e:
                 print("   demande de capture impossible :", e)
                 break
-            produit = _attendre_capture(dossier, avant, 15.0)
+            produit = _attendre_capture(dossier, avant, 12.0)
+            if not produit:
+                _journal_mod(repertoire_client, f"tentative {tentative + 1}")
             if produit:
                 shutil.copyfile(produit, destination)
                 return os.path.getsize(destination) > 0
