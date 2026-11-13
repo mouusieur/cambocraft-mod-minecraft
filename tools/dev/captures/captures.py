@@ -340,13 +340,15 @@ def capture_ecran(destination, repertoire_client=None):
         avant = set(os.listdir(dossier)) if os.path.isdir(dossier) else set()
         # Un rendu logiciel met plusieurs secondes a produire une image, et l'appui
         # peut se perdre si le focus vient d'etre rendu : on reessaie plusieurs fois.
-        for essai in range(6):
+        # Rendu logiciel : apres les /fill de scene, le client remaille des milliers
+        # de chunks et peut rester plusieurs dizaines de secondes sans traiter l'entree.
+        for essai in range(10):
             appuyer("F2")
-            produit = _attendre_capture(dossier, avant, 4.0)
+            produit = _attendre_capture(dossier, avant, 12.0)
             if produit:
                 shutil.copyfile(produit, destination)
                 return os.path.getsize(destination) > 0
-            time.sleep(1.0)
+            time.sleep(2.0)
         existants = sorted(os.listdir(dossier)) if os.path.isdir(dossier) else []
         print("   la capture interne du client n'a rien produit"
               f" (essai {essai + 1}, {len(existants)} fichier(s) dans {dossier})")
@@ -573,7 +575,7 @@ def main() -> int:
         commande(f"execute in cambocraft:cambodia run tp @a {x} {y} {z} {rotation[0]} {rotation[1]}")
         # Vol en creatif maintenu : double saut simule par l'API de vol.
         commande(f"execute in cambocraft:cambodia run tp @a {x} {y} {z} {rotation[0]} {rotation[1]}")
-        time.sleep(6)
+        time.sleep(20)
 
         # Diagnostic : position et dimension reelles du joueur.
         avant_diag = len(sortie_serveur.lignes)
@@ -585,7 +587,7 @@ def main() -> int:
                     print("   " + ligne)
         time.sleep(2)
         # On laisse au client le temps de recevoir et de mailler les chunks.
-        time.sleep(8)
+        time.sleep(20)
         cible = os.path.join(args.sortie, fichier + ".png")
         if capture_ecran(cible, args.client):
             captures.append(cible)
