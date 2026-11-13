@@ -429,7 +429,7 @@ def capture_ecran(destination, repertoire_client=None):
             if os.path.exists(attendu):
                 taille = os.path.getsize(attendu)
                 if taille > 5000:
-                    shutil.copyfile(attendu, destination)
+                    _publier(attendu, destination)
                     return True
                 if taille > 0:
                     # Image noire : le framebuffer n'etait pas pret, on redemande.
@@ -439,7 +439,28 @@ def capture_ecran(destination, repertoire_client=None):
         for ligne in _lignes_journal(repertoire_client)[-2:]:
             print(f"   [capture] MOD> {ligne}")
     print("   la capture pilotee par fichier n'a rien produit, repli sur l'ecran X")
+    # Le repli X est noir en rendu logiciel : on ne l'utilise que si la destination
+    # n'existe pas encore, pour ne jamais ecraser une capture valide.
+    if os.path.exists(destination):
+        print(f"   {os.path.basename(destination)} conservee (capture precedente)")
+        return True
     return _capture_x(destination)
+
+
+def _publier(source, destination):
+    """Copie l'image en refusant d'ecraser une capture valide par une image noire.
+
+    Une scene mal cadree ne doit pas detruire la capture deja versionnee : si la
+    nouvelle image est uniformement noire, l'ancienne est conservee.
+    """
+    try:
+        if _image_noire(source):
+            print(f"   image noire ignoree, {os.path.basename(destination)} conservee")
+            return False
+    except OSError:
+        return False
+    shutil.copyfile(source, destination)
+    return True
 
 
 def _capture_x(destination):
