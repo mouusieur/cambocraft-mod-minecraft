@@ -369,40 +369,43 @@ def capture_ecran(destination, repertoire_client=None):
 
     Deux problemes se cumulent dans la CI : `import -window root` ne lit que du noir
     sur un rendu OpenGL logiciel (X n'a pas la copie du framebuffer), et les appuis
-    de touche se perdent sous Xvfb faute de gestionnaire de fenetres (le focus suit
-    le pointeur, que les clics de menu deportent).
+    de touche se perdent sous Xvfb faute de gestionnaire de fenetres.
 
     On demande donc la capture au mod lui-meme : le client surveille le fichier
-    `capture.demande` (voir CapturesAutomatiques.java) et ecrit l'image dans
-    `screenshots/`. Aucune entree clavier n'est necessaire. Si le fichier n'apparait
-    pas (mod absent d'une ancienne version), on retombe sur F2 puis sur l'ecran X.
+    `capture.demande` (voir CapturesAutomatiques.java) et ecrit l'image sous un nom
+    fixe dans son repertoire de jeu. Aucune entree clavier n'est necessaire, et aucun
+    parcours de dossier : on attend precisement le fichier demande.
     """
-    if repertoire_client is not None:
-        dossier = os.path.join(repertoire_client, "screenshots")
-        avant = set(os.listdir(dossier)) if os.path.isdir(dossier) else set()
-        demande = os.path.join(repertoire_client, "capture.demande")
-        for tentative in range(3):
-            try:
-                open(demande, "w", encoding="utf-8").close()
-            except OSError as e:
-                print("   demande de capture impossible :", e)
-                break
-            produit = _attendre_capture(dossier, avant, 12.0)
-            if not produit:
-                _journal_mod(repertoire_client, f"tentative {tentative + 1}")
-            if produit:
-                shutil.copyfile(produit, destination)
-                return os.path.getsize(destination) > 0
-        print("   la capture pilotee par fichier n'a rien produit, repli sur F2")
-        for _ in range(3):
-            appuyer("F2")
-            produit = _attendre_capture(dossier, avant, 10.0)
-            if produit:
-                shutil.copyfile(produit, destination)
-                return os.path.getsize(destination) > 0
-        print("   repli sur la copie de l'ecran X")
-        return capture_ecran(destination, None)
+    if repertoire_client is None:
+        return _capture_x(destination)
 
+    nom = "capture-%d.png" % int(time.time() * 1000)
+    demande = os.path.join(repertoire_client, "capture.demande")
+    attendu = os.path.join(repertoire_client, nom)
+    for _ in range(4):
+        try:
+            with open(demande, "w", encoding="utf-8") as fichier:
+                fichier.write(nom)
+        except OSError as e:
+            print("   demande de capture impossible :", e)
+            break
+        fin_attente = time.time() + 25
+        while time.time() < fin_attente:
+            if os.path.exists(attendu) and os.path.getsize(attendu) > 0:
+                shutil.copyfile(attendu, destination)
+                try:
+                    os.remove(attendu)
+                except OSError:
+                    pass
+                return os.path.getsize(destination) > 0
+            time.sleep(0.5)
+        _journal_mod(repertoire_client, "capture")
+    print("   la capture pilotee par fichier n'a rien produit, repli sur l'ecran X")
+    return _capture_x(destination)
+
+
+def _capture_x(destination):
+    """Copie de l'ecran X : ne fonctionne pas en rendu logiciel, ultime recours."""
     resultat = subprocess.run(
         ["import", "-window", "root", destination],
         capture_output=True, timeout=60,

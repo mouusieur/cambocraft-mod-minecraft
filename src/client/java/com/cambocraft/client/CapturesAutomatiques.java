@@ -18,9 +18,9 @@ import net.minecraft.client.util.ScreenshotRecorder;
  * <p>Dans la CI (client OpenGL logiciel sous Xvfb, sans gestionnaire de fenêtres),
  * les appuis de touche sont peu fiables : le focus clavier suit le pointeur et se
  * perd après les clics de menu. Plutôt que de simuler F2, on surveille un fichier
- * {@code <repertoire de jeu>/capture.demande} : dès qu'il apparaît, le client prend
- * lui-même une capture de son framebuffer et l'écrit dans {@code screenshots/}.
- * Le fichier est ensuite supprimé, ce qui vaut acquittement.</p>
+ * {@code <repertoire de jeu>/capture.demande} : dès qu'il apparaît, le client écrit
+ * une capture de son framebuffer dans le fichier indiqué (ou {@value #DEFAUT}).
+ * La demande est supprimée, ce qui vaut acquittement.</p>
  *
  * <p>Le mécanisme est inerte en jeu normal : sans fichier de demande, il ne fait
  * qu'un test d'existence par tick (une fraction de milliseconde).</p>
@@ -29,8 +29,9 @@ import net.minecraft.client.util.ScreenshotRecorder;
 public final class CapturesAutomatiques {
     private static final String DEMANDE = "capture.demande";
     private static final String JOURNAL = "captures-journal.txt";
+    private static final String DEFAUT = "capture-active.png";
     private static final int DELAI_MINIMAL = 10;
-    private static final int BATTEMENT = 100;
+    private static final int BATTEMENT = 200;
 
     private static Path repertoire;
     private static int tics;
@@ -50,11 +51,10 @@ public final class CapturesAutomatiques {
             repertoire = client.runDirectory.toPath();
             journal("arme ; repertoire=" + repertoire);
         }
-        // On laisse passer quelques tics : au demarrage le framebuffer n'est pas pret.
         if (tics % BATTEMENT == 0) {
-            journal("battement tic " + tics + " ; fps " + client.getCurrentFps()
-                    + " ; demande=" + Files.exists(repertoire.resolve(DEMANDE)));
+            journal("battement tic " + tics + " ; fps " + client.getCurrentFps());
         }
+        // On laisse passer quelques tics : au demarrage le framebuffer n'est pas pret.
         if (tics < DELAI_MINIMAL) {
             return;
         }
@@ -62,17 +62,28 @@ public final class CapturesAutomatiques {
         if (!Files.exists(demande)) {
             return;
         }
+        String nom = DEFAUT;
         try {
+            String contenu = Files.readString(demande, StandardCharsets.UTF_8).trim();
+            if (!contenu.isEmpty()) {
+                // Nom simple uniquement : pas de chemin, pas de remontee de repertoire.
+                nom = contenu.replaceAll("[^A-Za-z0-9._-]", "").replace("..", "");
+                if (nom.isEmpty()) {
+                    nom = DEFAUT;
+                }
+            }
             Files.deleteIfExists(demande);
         } catch (IOException e) {
             journal("demande illisible : " + e.getMessage());
             return;
         }
-        journal("demande vue au tic " + tics);
+        journal("demande vue au tic " + tics + " -> " + nom);
         try {
+            // Le message de retour dit si l'ecriture a reussi : on le journalise tel quel,
+            // sans quoi un echec silencieux ressemble a un succes.
             ScreenshotRecorder.saveScreenshot(
-                    client.runDirectory, client.getFramebuffer(),
-                    texte -> journal("image ecrite"));
+                    client.runDirectory, nom, client.getFramebuffer(),
+                    texte -> journal("resultat : " + texte));
         } catch (RuntimeException e) {
             journal("echec de la capture : " + e);
         }
