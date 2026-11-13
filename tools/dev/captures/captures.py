@@ -364,6 +364,31 @@ def _attendre_capture(dossier, avant, delai):
     return None
 
 
+def _lignes_journal(repertoire_client):
+    chemin = os.path.join(repertoire_client, "captures-journal.txt")
+    if not os.path.exists(chemin):
+        return []
+    with open(chemin, encoding="utf-8", errors="replace") as fichier:
+        return [ligne.rstrip() for ligne in fichier]
+
+
+def _chemin_annonce(lignes):
+    """Extrait le chemin absolu que le mod annonce apres une capture reussie.
+
+    ScreenshotRecorder renvoie un message « screenshot.success » contenant le
+    chemin complet (clickEvent). C'est la seule source fiable : le nom passe en
+    parametre peut etre transforme, et le repertoire depend de gameDir.
+    """
+    for ligne in reversed(lignes):
+        marqueur = "value='"
+        if "screenshot.success" in ligne and marqueur in ligne:
+            debut = ligne.index(marqueur) + len(marqueur)
+            fin = ligne.find("'", debut)
+            if fin > debut:
+                return ligne[debut:fin]
+    return None
+
+
 def capture_ecran(destination, repertoire_client=None):
     """Capture ce que le joueur voit reellement.
 
@@ -371,36 +396,34 @@ def capture_ecran(destination, repertoire_client=None):
     sur un rendu OpenGL logiciel (X n'a pas la copie du framebuffer), et les appuis
     de touche se perdent sous Xvfb faute de gestionnaire de fenetres.
 
-    On demande donc la capture au mod lui-meme : le client surveille le fichier
-    `capture.demande` (voir CapturesAutomatiques.java) et ecrit l'image sous un nom
-    fixe dans son repertoire de jeu. Aucune entree clavier n'est necessaire, et aucun
-    parcours de dossier : on attend precisement le fichier demande.
+    On demande donc la capture au mod lui-meme (voir CapturesAutomatiques.java) :
+    il ecrit le fichier demande et annonce son chemin absolu dans son journal.
+    On lit ce chemin plutot que de le reconstruire, ce qui evite toute supposition
+    sur le repertoire reel des captures.
     """
     if repertoire_client is None:
         return _capture_x(destination)
 
-    nom = "capture-%d.png" % int(time.time() * 1000)
-    demande = os.path.join(repertoire_client, "capture.demande")
-    # ScreenshotRecorder ecrit toujours dans <repertoire de jeu>/screenshots/.
-    attendu = os.path.join(repertoire_client, "screenshots", nom)
-    for _ in range(4):
+    for tentative in range(4):
+        nom = "capture-%d-%d.png" % (int(time.time() * 1000), tentative)
+        demande = os.path.join(repertoire_client, "capture.demande")
+        avant = len(_lignes_journal(repertoire_client))
         try:
             with open(demande, "w", encoding="utf-8") as fichier:
                 fichier.write(nom)
         except OSError as e:
             print("   demande de capture impossible :", e)
             break
-        fin_attente = time.time() + 25
+        fin_attente = time.time() + 30
         while time.time() < fin_attente:
-            if os.path.exists(attendu) and os.path.getsize(attendu) > 0:
-                shutil.copyfile(attendu, destination)
-                try:
-                    os.remove(attendu)
-                except OSError:
-                    pass
-                return os.path.getsize(destination) > 0
+            lignes = _lignes_journal(repertoire_client)
+            chemin = _chemin_annonce(lignes[avant:])
+            if chemin and os.path.exists(chemin) and os.path.getsize(chemin) > 0:
+                shutil.copyfile(chemin, destination)
+                return True
             time.sleep(0.5)
-        _journal_mod(repertoire_client, "capture")
+        for ligne in _lignes_journal(repertoire_client)[-3:]:
+            print(f"   [capture] MOD> {ligne}")
     print("   la capture pilotee par fichier n'a rien produit, repli sur l'ecran X")
     return _capture_x(destination)
 
@@ -680,6 +703,8 @@ def main() -> int:
     # Le HUD est masque dans les options des captures de paysage : on le reactive
     # (F1) pour la derniere etape, sinon l'interface n'apparait pas a l'ecran.
     print("== verification de l'interface (HUD, carnet, table) ==")
+    commande(f"execute in cambocraft:cambodia run tp @a 0 {Y+6} 18 180 8")
+    time.sleep(15)
     # Le HUD a ete masque dans options.txt (hideGui) pour les captures de paysage.
     appuyer("F1")
     time.sleep(3)
