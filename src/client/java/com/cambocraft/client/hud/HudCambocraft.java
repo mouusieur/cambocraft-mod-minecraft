@@ -27,7 +27,7 @@ public final class HudCambocraft {
         Log.info("Cambocraft Client : HUD du Nen branché");
     }
 
-    private static void rendre(DrawContext contexte, float delta) {
+    private static void rendre(DrawContext contexte, net.minecraft.client.render.RenderTickCounter compteur) {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client == null || client.player == null || client.options.hudHidden) {
             return;
