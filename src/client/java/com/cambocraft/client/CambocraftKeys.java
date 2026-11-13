@@ -64,14 +64,35 @@ public final class CambocraftKeys {
             ClientNetworking.ouvrirTableKhmere();
         }
         while (pouvoir1.wasPressed()) {
-            ClientNetworking.envoyerActivation(0);
+            lancerEmplacement(0);
         }
         while (pouvoir2.wasPressed()) {
-            ClientNetworking.envoyerActivation(1);
+            lancerEmplacement(1);
         }
         while (pouvoir3.wasPressed()) {
-            ClientNetworking.envoyerActivation(2);
+            lancerEmplacement(2);
         }
+    }
+
+    /**
+     * Lance l'emplacement actif donné : un paquet C2S vers le serveur, qui exécute le pouvoir.
+     *
+     * <p>Point d'entrée unique, partagé par les touches V/B/N et par le déclencheur de
+     * l'automatisation ({@link ActivationAutomatique}) : les deux empruntent donc exactement
+     * le même chemin, et une activation automatisée prouve le chemin clavier.</p>
+     */
+    public static void lancerEmplacement(int emplacement) {
+        if (emplacement < 0 || emplacement >= 3) {
+            return;
+        }
+        ClientNetworking.envoyerActivation(emplacement);
+    }
+
+    /** Résumé lisible de l'état client des pouvoirs, pour les journaux de la CI. */
+    public static String etatPouvoirs() {
+        return "emplacements=" + ClientNetworking.emplacements()
+                + " énergie=" + ClientNetworking.energie() + "/" + ClientNetworking.energieMax()
+                + " pouvoirs=" + ClientNetworking.pouvoirs().size();
     }
 
     public static KeyBinding carnet() {

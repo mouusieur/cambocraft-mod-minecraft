@@ -32,9 +32,10 @@ public final class CambocraftClient implements ClientModInitializer {
         // Réseau client : miroir de l'état serveur, puis raccourcis clavier des trois écrans.
         ClientNetworking.enregistrerRecepteurs();
         CambocraftKeys.enregistrer();
-        // Captures pilotees par fichier : indispensable dans la CI sans gestionnaire de
-        // fenetres, ou les appuis de touche se perdent.
+        // Captures et pouvoirs pilotes par fichier : indispensable dans la CI sans
+        // gestionnaire de fenetres, ou les appuis de touche se perdent.
         CapturesAutomatiques.enregistrer();
+        ActivationAutomatique.enregistrer();
         com.cambocraft.client.hud.HudCambocraft.enregistrer();
         Log.info("Cambocraft Client : HUD du Nen, Carnet, suivi de quêtes et accessibilité initialisés");
     }

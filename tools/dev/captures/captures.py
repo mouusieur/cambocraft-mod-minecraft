@@ -740,6 +740,38 @@ def main() -> int:
     print("== verification de l'interface (HUD, carnet, table) ==")
     commande(f"execute in cambocraft:cambodia run tp @a 0 {Y+6} 18 180 8")
     time.sleep(15)
+
+    # --- preuve en jeu : un pouvoir lance par une TOUCHE, pas par une commande ---
+    # On ne peut pas faire confiance aux appuis de touche sous Xvfb (le focus se perd).
+    # Le mod offre donc un declencheur par fichier qui emprunte exactement le chemin
+    # d'une touche : CambocraftKeys.lancerEmplacement -> paquet C2S -> PowerEffects.
+    # Ce qui est prouve ici est le chemin reseau + execution serveur ; l'appui clavier
+    # lui-meme n'est pas prouve par ce test (il l'est par le meme point d'entree).
+    print("== preuve en jeu : pouvoir declenche par le chemin clavier ==")
+    avant_pouvoir = len(sortie_serveur.lignes)
+    with open(os.path.join(args.client, "pouvoirs-journal.txt"), "w", encoding="utf-8") as f:
+        f.write("")
+    commande("cambocraft donner_pouvoir tison_ardent")
+    time.sleep(4)
+    avant_pouvoir = len(sortie_serveur.lignes)
+    with open(os.path.join(args.client, "pouvoir.demande"), "w", encoding="utf-8") as f:
+        f.write("0")
+    time.sleep(8)
+    declenche = sortie_serveur.attendre(re.compile(r"Pouvoir lanc"), 40, "pouvoir lance")
+    with sortie_serveur.verrou:
+        for ligne in sortie_serveur.lignes[avant_pouvoir:]:
+            if "Pouvoir" in ligne or "pouvoir" in ligne:
+                print("   SERVEUR> " + ligne[:200])
+    journal_pouvoirs = os.path.join(args.client, "pouvoirs-journal.txt")
+    if os.path.exists(journal_pouvoirs):
+        with open(journal_pouvoirs, encoding="utf-8", errors="replace") as f:
+            for ligne in [l.rstrip() for l in f if l.strip()][-5:]:
+                print("   MOD> " + ligne[:200])
+        shutil.copyfile(journal_pouvoirs, os.path.join(args.sortie, "pouvoirs-journal.txt"))
+    print("   resultat : " + ("pouvoir execute cote serveur" if declenche
+                              else "AUCUNE ligne 'Pouvoir lance' : non prouve"))
+    if capture_ecran(os.path.join(args.sortie, "pouvoir.png"), args.client):
+        print("   capture : pouvoir.png")
     # Le HUD a ete masque dans options.txt (hideGui) pour les captures de paysage.
     appuyer("F1")
     time.sleep(3)
