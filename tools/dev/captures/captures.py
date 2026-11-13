@@ -303,6 +303,30 @@ def ecrire_servers_dat(repertoire):
         fichier.write(racine)
 
 
+def _attendre_capture(dossier, avant, delai):
+    """Attend qu'un NOUVEAU fichier de capture apparaisse et soit completement ecrit."""
+    fin = time.time() + delai
+    while time.time() < fin:
+        if os.path.isdir(dossier):
+            nouveaux = sorted(set(os.listdir(dossier)) - avant)
+            if nouveaux:
+                produit = os.path.join(dossier, nouveaux[-1])
+                precedente = -1
+                for _ in range(20):
+                    try:
+                        actuelle = os.path.getsize(produit)
+                    except OSError:
+                        break
+                    if actuelle == precedente and actuelle > 0:
+                        return produit
+                    precedente = actuelle
+                    time.sleep(0.3)
+                if os.path.exists(produit) and os.path.getsize(produit) > 0:
+                    return produit
+        time.sleep(0.5)
+    return None
+
+
 def capture_ecran(destination, repertoire_client=None):
     """Capture ce que le joueur voit reellement.
 
@@ -314,23 +338,18 @@ def capture_ecran(destination, repertoire_client=None):
     if repertoire_client is not None:
         dossier = os.path.join(repertoire_client, "screenshots")
         avant = set(os.listdir(dossier)) if os.path.isdir(dossier) else set()
-        appuyer("F2")
-        time.sleep(2)
-        if os.path.isdir(dossier):
-            nouveaux = sorted(set(os.listdir(dossier)) - avant)
-            if nouveaux:
-                produit = os.path.join(dossier, nouveaux[-1])
-                # Un fichier encore en cours d'ecriture serait tronque.
-                taille = -1
-                for _ in range(20):
-                    actuelle = os.path.getsize(produit)
-                    if actuelle == taille and actuelle > 0:
-                        break
-                    taille = actuelle
-                    time.sleep(0.3)
+        # Un rendu logiciel met plusieurs secondes a produire une image, et l'appui
+        # peut se perdre si le focus vient d'etre rendu : on reessaie plusieurs fois.
+        for essai in range(6):
+            appuyer("F2")
+            produit = _attendre_capture(dossier, avant, 4.0)
+            if produit:
                 shutil.copyfile(produit, destination)
                 return os.path.getsize(destination) > 0
-        print("   la capture interne du client n'a rien produit")
+            time.sleep(1.0)
+        existants = sorted(os.listdir(dossier)) if os.path.isdir(dossier) else []
+        print("   la capture interne du client n'a rien produit"
+              f" (essai {essai + 1}, {len(existants)} fichier(s) dans {dossier})")
         return False
 
     resultat = subprocess.run(
@@ -345,14 +364,38 @@ def capture_ecran(destination, repertoire_client=None):
 
 def cliquer(x, y, double=False):
     """Clique a des coordonnees physiques de la fenetre X."""
+    focaliser_client()
     subprocess.run(["xdotool", "mousemove", str(x), str(y)], capture_output=True, timeout=30)
     time.sleep(0.3)
     subprocess.run(["xdotool", "click", "--repeat", "2" if double else "1", "--delay", "120", "1"],
                    capture_output=True, timeout=30)
 
 
+def focaliser_client():
+    """Force le focus clavier sur la fenetre du client.
+
+    Sous Xvfb il n'y a aucun gestionnaire de fenetres : la politique de focus
+    reste « PointerRoot », donc une touche part a la fenetre sous le pointeur.
+    Apres les clics de menu le pointeur peut se retrouver hors de la fenetre et
+    les appuis suivants (F2) n'atteignent plus le jeu. On pose donc le focus
+    explicitement avant chaque combinaison.
+    """
+    resultat = subprocess.run(
+        ["xdotool", "search", "--onlyvisible", "--class", "Minecraft"],
+        capture_output=True, timeout=30, text=True,
+    )
+    identifiants = [i for i in resultat.stdout.split() if i.strip()]
+    if not identifiants:
+        return False
+    for commande in (["windowfocus", "--sync", identifiants[-1]],
+                     ["mousemove", "--window", identifiants[-1], "640", "360"]):
+        subprocess.run(["xdotool", *commande], capture_output=True, timeout=30)
+    return True
+
+
 def appuyer(*touches):
     for combinaison in touches:
+        focaliser_client()
         subprocess.run(["xdotool", "key", "--clearmodifiers", combinaison],
                        capture_output=True, timeout=30)
 
