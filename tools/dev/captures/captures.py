@@ -303,6 +303,31 @@ def ecrire_servers_dat(repertoire):
         fichier.write(racine)
 
 
+def client_vivant(repertoire_client, delai=25):
+    """Vrai si le mod a ecrit dans son journal recemment (le client tique encore)."""
+    chemin = os.path.join(repertoire_client, "captures-journal.txt")
+    if not os.path.exists(chemin):
+        return False
+    return time.time() - os.path.getmtime(chemin) < delai
+
+
+def relancer_si_fige(client, repertoire_client, largeur, hauteur):
+    """Relance le client quand llvmpipe l'a fige.
+
+    Le rendu logiciel met parfois plusieurs minutes a remailler une scene ; le
+    client cesse alors de tiquer et n'ecrit plus son journal. Un redemarrage
+    (reconnexion automatique) est bien plus rapide que d'attendre.
+    """
+    if client_vivant(repertoire_client):
+        return client, False
+    print("   le client ne repond plus : redemarrage")
+    client.kill()
+    time.sleep(4)
+    nouveau = demarrer_client(repertoire_client, largeur, hauteur, f"127.0.0.1:{PORT}")
+    Flux(nouveau, "client")
+    return nouveau, True
+
+
 def _journal_mod(repertoire_client, contexte):
     """Affiche le journal ecrit par le mod : indispensable pour diagnostiquer la CI."""
     chemin = os.path.join(repertoire_client, "captures-journal.txt")
@@ -424,11 +449,14 @@ def ecrire_options(repertoire):
         "version": "3955",
         "guiScale": "2",
         "fov": "70.0",   # 0.5 etait ecrete a 30 deg : cadrage teleobjectif
-        "renderDistance": "10",
+        "renderDistance": "6",
         "graphicsMode": "1",
+        "mipmapLevels": "2",
+        "entityShadows": "false",
+        "renderClouds": "false",
         "ao": "2",
         "particles": "0",
-        "clouds": "true",
+        "clouds": "false",
         "bobView": "false",
         "hideGui": "true",
         "gamma": "1.0",
@@ -574,6 +602,16 @@ def main() -> int:
             continue
         constructeur, position, rotation, fichier = SCENES[nom]
         print(f"== scene {nom} ({fichier}) ==")
+        # Le rendu logiciel peut figer le client en pleine scene : on le relance
+        # avant de construire, puis on reconstruit la scene sur le client neuf.
+        client, relance = relancer_si_fige(
+            client, args.client, args.largeur, args.hauteur)
+        if relance:
+            sortie_client = Flux(client, "client")
+            if not sortie_serveur.attendre(MOTIF_CONNEXION, 150, "reconnexion apres relance"):
+                print("   reconnexion impossible : scene ignoree")
+                continue
+            time.sleep(20)
         # Nettoyage du studio : la scene precedente doit disparaitre ET le terrain naturel
         # (qui monte jusqu'a y=319) laissait des blocs flottants au-dessus de la scene.
         # /fill est limite a 32 768 blocs par commande : 65x6x65 = 25 350 blocs par tranche.
@@ -589,8 +627,6 @@ def main() -> int:
         # Aucune plateforme de secours : le joueur est en spectateur, il ne tombe pas,
         # et une plateforme au premier plan gachait le cadrage.
         commande(f"execute in cambocraft:cambodia run tp @a {x} {y} {z} {rotation[0]} {rotation[1]}")
-        # Vol en creatif maintenu : double saut simule par l'API de vol.
-        commande(f"execute in cambocraft:cambodia run tp @a {x} {y} {z} {rotation[0]} {rotation[1]}")
         time.sleep(20)
 
         # Diagnostic : position et dimension reelles du joueur.
@@ -601,9 +637,8 @@ def main() -> int:
             for ligne in sortie_serveur.lignes[avant_diag:]:
                 if "entity data" in ligne or "Pos" in ligne:
                     print("   " + ligne)
-        time.sleep(2)
         # On laisse au client le temps de recevoir et de mailler les chunks.
-        time.sleep(20)
+        time.sleep(12)
         cible = os.path.join(args.sortie, fichier + ".png")
         if capture_ecran(cible, args.client):
             captures.append(cible)
