@@ -381,7 +381,8 @@ def capture_ecran(destination, repertoire_client=None):
 
     nom = "capture-%d.png" % int(time.time() * 1000)
     demande = os.path.join(repertoire_client, "capture.demande")
-    attendu = os.path.join(repertoire_client, nom)
+    # ScreenshotRecorder ecrit toujours dans <repertoire de jeu>/screenshots/.
+    attendu = os.path.join(repertoire_client, "screenshots", nom)
     for _ in range(4):
         try:
             with open(demande, "w", encoding="utf-8") as fichier:
