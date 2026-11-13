@@ -303,8 +303,36 @@ def ecrire_servers_dat(repertoire):
         fichier.write(racine)
 
 
-def capture_ecran(destination):
-    """Capture l'ecran X courant (ce que le joueur voit reellement)."""
+def capture_ecran(destination, repertoire_client=None):
+    """Capture ce que le joueur voit reellement.
+
+    Sur un rendu OpenGL logiciel (llvmpipe, CI sans GPU), `import -window root`
+    ne recupere que du noir : X n'a pas la copie du framebuffer. On demande donc
+    la capture au client lui-meme (touche F2), qui lit son propre framebuffer,
+    puis on deplace le fichier produit vers la destination voulue.
+    """
+    if repertoire_client is not None:
+        dossier = os.path.join(repertoire_client, "screenshots")
+        avant = set(os.listdir(dossier)) if os.path.isdir(dossier) else set()
+        appuyer("F2")
+        time.sleep(2)
+        if os.path.isdir(dossier):
+            nouveaux = sorted(set(os.listdir(dossier)) - avant)
+            if nouveaux:
+                produit = os.path.join(dossier, nouveaux[-1])
+                # Un fichier encore en cours d'ecriture serait tronque.
+                taille = -1
+                for _ in range(20):
+                    actuelle = os.path.getsize(produit)
+                    if actuelle == taille and actuelle > 0:
+                        break
+                    taille = actuelle
+                    time.sleep(0.3)
+                shutil.copyfile(produit, destination)
+                return os.path.getsize(destination) > 0
+        print("   la capture interne du client n'a rien produit")
+        return False
+
     resultat = subprocess.run(
         ["import", "-window", "root", destination],
         capture_output=True, timeout=60,
@@ -413,21 +441,21 @@ def main() -> int:
         print("   quickPlay sans effet : connexion par l'interface")
         appuyer("Escape", "Escape")
         time.sleep(3)
-        capture_ecran(os.path.join(args.sortie, "00-ecran-titre.png"))
+        capture_ecran(os.path.join(args.sortie, "00-ecran-titre.png"), args.client)
         # Bouton « Multijoueur » : x = 320 logique, y = 90 + 48 + 24 = 162 logique.
         cliquer(args.largeur // 2, int(args.hauteur * 162 / 360))
         time.sleep(4)
-        capture_ecran(os.path.join(args.sortie, "01-multijoueur.png"))
+        capture_ecran(os.path.join(args.sortie, "01-multijoueur.png"), args.client)
         # Premiere entree de la liste de serveurs, puis bouton « Rejoindre ».
         cliquer(args.largeur // 2, int(args.hauteur * 60 / 360))
         time.sleep(1)
-        capture_ecran(os.path.join(args.sortie, "02-serveur-selectionne.png"))
+        capture_ecran(os.path.join(args.sortie, "02-serveur-selectionne.png"), args.client)
         cliquer(int(args.largeur * 241 / 640), int(args.hauteur * 342 / 360))
         connecte = bool(sortie_serveur.attendre(MOTIF_CONNEXION, 120, "joueur (interface)"))
     if not connecte:
         print("!! Le joueur ne s'est jamais connecte. Capture de l'ecran courant :")
         os.makedirs(args.sortie, exist_ok=True)
-        capture_ecran(os.path.join(args.sortie, "00-ecran-titre.png"))
+        capture_ecran(os.path.join(args.sortie, "00-ecran-titre.png"), args.client)
         with open(os.path.join(args.sortie, "journal-client.txt"), "w", encoding="utf-8") as f:
             f.write("\n".join(sortie_client.lignes))
         with open(os.path.join(args.sortie, "journal-serveur.txt"), "w", encoding="utf-8") as f:
@@ -473,7 +501,7 @@ def main() -> int:
         if "Loading terrain" not in derniers:
             break
         time.sleep(3)
-    if capture_ecran(os.path.join(args.sortie, "sanite.png")):
+    if capture_ecran(os.path.join(args.sortie, "sanite.png"), args.client):
         print("   capture : sanite.png")
     commande("execute in cambocraft:cambodia run data get entity Cambocraft Pos")
     time.sleep(2)
@@ -516,7 +544,7 @@ def main() -> int:
         # On laisse au client le temps de recevoir et de mailler les chunks.
         time.sleep(8)
         cible = os.path.join(args.sortie, fichier + ".png")
-        if capture_ecran(cible):
+        if capture_ecran(cible, args.client):
             captures.append(cible)
             print(f"   capture : {cible}")
 
@@ -543,7 +571,7 @@ def main() -> int:
         time.sleep(4)
         commande(f"execute in cambocraft:cambodia run tp @a 0 {Y+4} 14 180 6")
         time.sleep(10)
-        if capture_ecran(os.path.join(args.sortie, "entites.png")):
+        if capture_ecran(os.path.join(args.sortie, "entites.png"), args.client):
             print("   capture : entites.png")
         commande("execute in cambocraft:cambodia run kill @e[type=cambocraft:artisan]")
         commande("execute in cambocraft:cambodia run kill @e[type=cambocraft:gardien]")
@@ -554,17 +582,17 @@ def main() -> int:
     print("== verification de l'interface (HUD, carnet, table) ==")
     appuyer("F1")
     time.sleep(2)
-    if capture_ecran(os.path.join(args.sortie, "hud.png")):
+    if capture_ecran(os.path.join(args.sortie, "hud.png"), args.client):
         print("   capture : hud.png")
     commande("cambocraft carnet")
     time.sleep(4)
-    if capture_ecran(os.path.join(args.sortie, "carnet.png")):
+    if capture_ecran(os.path.join(args.sortie, "carnet.png"), args.client):
         print("   capture : carnet.png")
     appuyer("Escape")
     time.sleep(2)
     commande("cambocraft table")
     time.sleep(4)
-    if capture_ecran(os.path.join(args.sortie, "table.png")):
+    if capture_ecran(os.path.join(args.sortie, "table.png"), args.client):
         print("   capture : table.png")
     appuyer("Escape")
     client.kill()
