@@ -757,8 +757,10 @@ def main() -> int:
     with open(os.path.join(args.client, "pouvoirs-journal.txt"), "w", encoding="utf-8") as f:
         f.write("")
     # `donner_pouvoir` vise le joueur de la source : lancee depuis la console, la
-    # commande echoue (« No player was found »). Il faut donc nommer le joueur.
-    commande("execute as Cambocraft run cambocraft donner_pouvoir tison_ardent")
+    # commande echoue (« No player was found »). Il faut donc nommer le joueur — et le
+    # nom peut differer de `--username` si le client rejoue une session anterieure.
+    # `@a` couvre les deux cas.
+    commande("execute as @a run cambocraft donner_pouvoir tison_ardent")
     time.sleep(4)
     with sortie_serveur.verrou:
         for ligne in sortie_serveur.lignes[-12:]:
@@ -839,6 +841,15 @@ def main() -> int:
     for ligne in interessantes[-10:]:
         print("   FIN-DIAG> " + ligne[:180])
     print("   FIN-POUVOIR> " + resultat_pouvoir)
+    # Diagnostic compact en une seule ligne : la fin de sortie est la seule zone qui
+    # survit a la troncature du resume des check runs.
+    with sortie_serveur.verrou:
+        recentes = [l for l in sortie_serveur.lignes
+                    if any(m in l for m in ("Pouvoir donne", "Pouvoir lanc", "Pouvoir inconnu",
+                                            "No player", "joined the game", "left the game",
+                                            "Pouvoir ", "pouvoir "))]
+    for ligne in recentes[-6:]:
+        print("   FIN-TRACE> " + ligne[:150])
     return 0 if captures else 1
 
 

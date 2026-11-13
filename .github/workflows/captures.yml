@@ -171,6 +171,10 @@ jobs:
           cat "$RUNNER_TEMP/client/captures-journal.txt" 2>/dev/null | tail -40 || echo "(absent)"
           echo "--- captures produites ---"
           ls -la captures/ | head -20
+          echo "--- journal des pouvoirs (mod) ---"
+          cat captures/pouvoirs-journal.txt 2>/dev/null | tail -20 || echo "(absent)"
+          echo "--- traces du pouvoir dans le journal du serveur ---"
+          grep -aE "Pouvoir|pouvoir|joined the game|left the game" captures/journal-serveur.txt 2>/dev/null | tail -15 || echo "(absent)"
 
       - name: Publier les captures (check run)
         if: always()
