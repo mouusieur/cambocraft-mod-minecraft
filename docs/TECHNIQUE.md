@@ -150,6 +150,10 @@ Minecraft 1.21.1 + Fabric** lancé sans GPU, dans `.github/workflows/captures.ym
 | Caméra sans avant-bras | `gamemode spectator` | en créatif, le bras du joueur masque le coin bas-droit |
 | Interface masquée | `hideGui:true`, `tutorialStep:none` | l'encart « Move with WASD » reste affiché plusieurs minutes |
 | Récupération des PNG | check runs `capture-<fichier>-NNN` en base64 (morceaux de 60 000 car.) | les artefacts d'Actions sont inaccessibles à l'API ; le texte d'un check run est limité à 65 535 caractères |
+| Prise de vue elle-même | fichier `capture.demande` surveillé par `CapturesAutomatiques` (client) | sous Xvfb il n'y a **aucun gestionnaire de fenêtres** : le focus clavier suit le pointeur et se perd après un clic de menu, donc `xdotool key F2` ne passe qu'une fois. `import -window root` ne lit que du **noir** sur un framebuffer OpenGL logiciel |
+| Framebuffer prêt | déclenchement depuis `HudRenderCallback`, après le dessin de la scène | déclencher pendant un tick ramène une image **noire** (250 octets) : la scène n'est pas encore dessinée |
+| Chemin de l'image | le mod déplace le PNG vers `captures-auto/` | `ScreenshotRecorder` n'annonce son chemin que dans un message d'interface, et écrit toujours dans `screenshots/` |
+| Client figé | relance automatique si le journal du mod n'avance plus | llvmpipe cesse de tiquer après quelques milliers d'images sur une scène chargée (distance de rendu ramenée à 6) |
 
 Régénération : `tools/dev/captures/` contient `captures.py` (scènes et prise de vue),
 `client.py` (client Fabric sans launcher), `illustrations.py` (bandeau et galerie) et un `Makefile`
