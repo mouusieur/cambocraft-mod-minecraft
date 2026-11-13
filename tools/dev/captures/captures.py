@@ -748,7 +748,12 @@ def main() -> int:
     # Ce qui est prouve ici est le chemin reseau + execution serveur ; l'appui clavier
     # lui-meme n'est pas prouve par ce test (il l'est par le meme point d'entree).
     print("== preuve en jeu : pouvoir declenche par le chemin clavier ==")
-    avant_pouvoir = len(sortie_serveur.lignes)
+    # Le mode spectateur est pratique pour les captures mais empeche l'activation :
+    # un pouvoir se lance en survie ou en creatif. On repasse le joueur en creatif.
+    commande("gamemode creative @a")
+    time.sleep(2)
+    # L'energie du Carnet se recharge de 4 points par seconde : inutile de l'attendre
+    # si le cout depasse ce que le joueur possede au demarrage.
     with open(os.path.join(args.client, "pouvoirs-journal.txt"), "w", encoding="utf-8") as f:
         f.write("")
     commande("cambocraft donner_pouvoir tison_ardent")
@@ -756,8 +761,13 @@ def main() -> int:
     avant_pouvoir = len(sortie_serveur.lignes)
     with open(os.path.join(args.client, "pouvoir.demande"), "w", encoding="utf-8") as f:
         f.write("0")
-    time.sleep(8)
-    declenche = sortie_serveur.attendre(re.compile(r"Pouvoir lanc"), 40, "pouvoir lance")
+    declenche = sortie_serveur.attendre(re.compile(r"Pouvoir lanc"), 60, "pouvoir lance")
+    if not declenche:
+        # Une deuxieme demande ne coute rien : les refus (recharge, cadence) sont
+        # journalises par le serveur et restent la seule facon de diagnostiquer.
+        with open(os.path.join(args.client, "pouvoir.demande"), "w", encoding="utf-8") as f:
+            f.write("0")
+        declenche = sortie_serveur.attendre(re.compile(r"Pouvoir lanc"), 60, "pouvoir lance (2e essai)")
     with sortie_serveur.verrou:
         for ligne in sortie_serveur.lignes[avant_pouvoir:]:
             if "Pouvoir" in ligne or "pouvoir" in ligne:
@@ -768,8 +778,11 @@ def main() -> int:
             for ligne in [l.rstrip() for l in f if l.strip()][-5:]:
                 print("   MOD> " + ligne[:200])
         shutil.copyfile(journal_pouvoirs, os.path.join(args.sortie, "pouvoirs-journal.txt"))
-    print("   resultat : " + ("pouvoir execute cote serveur" if declenche
-                              else "AUCUNE ligne 'Pouvoir lance' : non prouve"))
+    # Ce diagnostic est repete en toute fin de sortie (voir plus bas) : le milieu de la
+    # sortie est tronque dans le resume des check runs.
+    resultat_pouvoir = ("pouvoir execute cote serveur" if declenche
+                        else "AUCUNE ligne 'Pouvoir lance' : non prouve")
+    print("   resultat : " + resultat_pouvoir)
     if capture_ecran(os.path.join(args.sortie, "pouvoir.png"), args.client):
         print("   capture : pouvoir.png")
     # Le HUD a ete masque dans options.txt (hideGui) pour les captures de paysage.
@@ -813,6 +826,7 @@ def main() -> int:
                          if any(m in l.lower() for m in ("artisan", "gardien", "summon", "unknown"))]
     for ligne in interessantes[-10:]:
         print("   FIN-DIAG> " + ligne[:180])
+    print("   FIN-POUVOIR> " + resultat_pouvoir)
     return 0 if captures else 1
 
 
