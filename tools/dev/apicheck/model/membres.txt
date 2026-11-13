@@ -410,3 +410,37 @@ add ModelTransform :: public static net.minecraft.client.model.ModelTransform of
 add EntityModel :: public void setAngles(net.minecraft.entity.Entity p0, float p1, float p2, float p3, float p4, float p5) { throw new RuntimeException(); }
 add EntityModel :: public void render(net.minecraft.client.util.math.MatrixStack p0, net.minecraft.client.render.VertexConsumer p1, int p2, int p3, int p4) { throw new RuntimeException(); }
 add EntityType.Builder :: public net.minecraft.entity.EntityType build() { throw new RuntimeException(); }
+
+# --- résultats de raycast : constantes de l'énumération (Yarn ne mappe pas les champs d'enum) ---
+add HitResult.Type :: public static final HitResult.Type MISS = null;
+add HitResult.Type :: public static final HitResult.Type BLOCK = null;
+add HitResult.Type :: public static final HitResult.Type ENTITY = null;
+
+# --- harceleurs invoqués : constructeur et apprivoisement ---
+add Entity :: public void setPersistent() { }
+
+# --- harceleurs invoqués : constructeur, persistance, ciblage ---
+sig WolfEntity <init> :: public WolfEntity(net.minecraft.world.World p0) { }
+add Entity :: public void setPersistent() { }
+add LivingEntity :: public boolean isUndead() { return false; }
+add LivingEntity :: public boolean isAlive() { return false; }
+add LivingEntity :: public boolean isDead() { return false; }
+add SoundCategory :: public static final net.minecraft.sound.SoundCategory PLAYERS = null;
+add SoundCategory :: public static final net.minecraft.sound.SoundCategory HOSTILE = null;
+add SoundCategory :: public static final net.minecraft.sound.SoundCategory AMBIENT = null;
+add ParticleTypes :: public static final net.minecraft.particle.ParticleEffect END_ROD = null;
+add ParticleTypes :: public static final net.minecraft.particle.ParticleEffect FLAME = null;
+add ParticleTypes :: public static final net.minecraft.particle.ParticleEffect SPLASH = null;
+add ParticleTypes :: public static final net.minecraft.particle.ParticleEffect CLOUD = null;
+add ParticleTypes :: public static final net.minecraft.particle.ParticleEffect CRIT = null;
+add ParticleTypes :: public static final net.minecraft.particle.ParticleEffect SQUID_INK = null;
+add ParticleTypes :: public static final net.minecraft.particle.ParticleEffect HAPPY_VILLAGER = null;
+add ParticleTypes :: public static final net.minecraft.particle.ParticleEffect PORTAL = null;
+add ParticleTypes :: public static final net.minecraft.particle.ParticleEffect SOUL = null;
+add ParticleTypes :: public static final net.minecraft.particle.ParticleEffect ELECTRIC_SPARK = null;
+add ParticleTypes :: public static final net.minecraft.particle.ParticleEffect ENCHANTED_HIT = null;
+add ParticleTypes :: public static final net.minecraft.particle.ParticleEffect WITCH = null;
+add ParticleTypes :: public static final net.minecraft.particle.ParticleEffect HEART = null;
+add ParticleTypes :: public static final net.minecraft.particle.ParticleEffect LAVA = null;
+add ParticleTypes :: public static final net.minecraft.particle.ParticleEffect DRIPPING_WATER = null;
+add ParticleTypes :: public static final net.minecraft.particle.ParticleEffect GUST = null;

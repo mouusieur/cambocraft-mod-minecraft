@@ -35,7 +35,11 @@ public final class TestMain {
                 new Cas("combat & pouvoirs : 84 pouvoirs, 34 synergies, gacha pity, 12 boss et Nuit des Ombres", CombatAndPowerTests::bestiaireBossPouvoirsEtGacha),
                 new Cas("compagnons, mini-jeux, réseau & client : Neak Ta, Pradal Serey, pirogues, C2S et HUD", Phase7SystemsTests::compagnonsMiniJeuxReseauEtClient),
                 new Cas("persistance, réseau & progression : aller-retour NBT, réputation, Renaissance, codecs", com.cambocraft.server.Phase10SystemsTests::persistanceReseauEtProgression),
-                new Cas("saisons & boss : adressage par identifiant et 12 rencontres", com.cambocraft.server.Phase10SystemsTests::saisonDesQuetes));
+                new Cas("saisons & boss : adressage par identifiant et 12 rencontres", com.cambocraft.server.Phase10SystemsTests::saisonDesQuetes),
+                new Cas("pouvoirs I : chaque pouvoir a une mise en scène et une forme distincte", com.cambocraft.power.Phase11PowersTests::chaquePouvoirAUnEffet),
+                new Cas("pouvoirs II : signatures élémentaires et effets persistants", com.cambocraft.power.Phase11PowersTests::signaturesElementaires),
+                new Cas("pouvoirs III : repli par archétype et registres d'effets", com.cambocraft.power.Phase11PowersTests::repliParArchetype),
+                new Cas("pouvoirs IV : registres de zones et d'invocations", com.cambocraft.power.Phase11PowersTests::registresEffets));
     }
 
     public static void main(String[] args) {

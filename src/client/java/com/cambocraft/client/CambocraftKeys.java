@@ -21,6 +21,10 @@ public final class CambocraftKeys {
     private static KeyBinding carnet;
     private static KeyBinding journal;
     private static KeyBinding table;
+    /** Les trois emplacements actifs du Carnet du Nen, lancés par les touches 1, 2 et 3 du Nen. */
+    private static KeyBinding pouvoir1;
+    private static KeyBinding pouvoir2;
+    private static KeyBinding pouvoir3;
 
     private CambocraftKeys() {}
 
@@ -33,8 +37,17 @@ public final class CambocraftKeys {
         table = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key.cambocraft.table", InputUtil.Type.KEYSYM, InputUtil.GLFW_KEY_K, CATEGORIE));
 
+        // Touches d'activation des pouvoirs. Elles sont volontairement distinctes des 1-2-3
+        // vanilla (barre d'objets) : « V », « B » et « N » n'entrent en conflit avec rien.
+        pouvoir1 = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                "key.cambocraft.pouvoir1", InputUtil.Type.KEYSYM, InputUtil.GLFW_KEY_V, CATEGORIE));
+        pouvoir2 = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                "key.cambocraft.pouvoir2", InputUtil.Type.KEYSYM, InputUtil.GLFW_KEY_B, CATEGORIE));
+        pouvoir3 = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                "key.cambocraft.pouvoir3", InputUtil.Type.KEYSYM, InputUtil.GLFW_KEY_N, CATEGORIE));
+
         ClientTickEvents.END_CLIENT_TICK.register(CambocraftKeys::aChaqueTick);
-        Log.info("Cambocraft Client : raccourcis C (Carnet), J (journal), K (table khmère)");
+        Log.info("Cambocraft Client : C (Carnet), J (journal), K (table), V/B/N (pouvoirs 1-3)");
     }
 
     private static void aChaqueTick(MinecraftClient client) {
@@ -50,6 +63,15 @@ public final class CambocraftKeys {
         while (table.wasPressed()) {
             ClientNetworking.ouvrirTableKhmere();
         }
+        while (pouvoir1.wasPressed()) {
+            ClientNetworking.envoyerActivation(0);
+        }
+        while (pouvoir2.wasPressed()) {
+            ClientNetworking.envoyerActivation(1);
+        }
+        while (pouvoir3.wasPressed()) {
+            ClientNetworking.envoyerActivation(2);
+        }
     }
 
     public static KeyBinding carnet() {
@@ -62,5 +84,17 @@ public final class CambocraftKeys {
 
     public static KeyBinding table() {
         return table;
+    }
+
+    public static KeyBinding pouvoir1() {
+        return pouvoir1;
+    }
+
+    public static KeyBinding pouvoir2() {
+        return pouvoir2;
+    }
+
+    public static KeyBinding pouvoir3() {
+        return pouvoir3;
     }
 }

@@ -5,6 +5,7 @@ import com.cambocraft.ecology.Seasons;
 import com.cambocraft.ecology.WorldAtmosphere;
 import com.cambocraft.npc.Faction;
 import com.cambocraft.power.NenNotebook;
+import com.cambocraft.power.PowerDefinition;
 import com.cambocraft.server.CamboPlayerData;
 import com.cambocraft.util.Log;
 import java.util.ArrayList;
@@ -96,7 +97,21 @@ public final class CamboNetworking {
             return;
         }
         String pouvoir = donnees.carnet().pouvoirEquipe(requete.slot());
-        joueur.sendMessage(Text.translatable("cambocraft.pouvoir.active", String.valueOf(pouvoir)), true);
+        // Le pouvoir ne se contente pas d'un message : il agit. On récupère son palier et sa
+        // Maîtrise pour que les dégâts, la portée et le bonus soient ceux du Carnet du joueur.
+        PowerDefinition def = com.cambocraft.power.PowerRegistry.get(pouvoir);
+        if (def == null) {
+            refuser(joueur, ServerPacketValidator.ValidationStatus.REFUSE_POUVOIR_NON_POSSEDE);
+            return;
+        }
+        var progression = donnees.carnet().progression(pouvoir);
+        int niveau = progression != null ? progression.niveau() : 1;
+        boolean maitrise = progression != null && progression.maitriseDebloquee();
+        var resultat = com.cambocraft.power.PowerEffects.executer(joueur, def,
+                def.statsPourNiveau(niveau), maitrise);
+        Log.info("Pouvoir lancé : " + resultat.resume());
+        joueur.sendMessage(Text.translatable("cambocraft.pouvoir.active",
+                def.nom().fr() + " — " + resultat.forme().name().toLowerCase(java.util.Locale.ROOT)), true);
         synchroniserProfil(joueur, donnees);
     }
 

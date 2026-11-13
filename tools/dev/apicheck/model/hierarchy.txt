@@ -16,6 +16,7 @@ super AnimalEntity : PassiveEntity
 super VillagerEntity : PassiveEntity
 super MerchantEntity : -
 super TameableEntity : PassiveEntity
+super WolfEntity : TameableEntity
 super ProjectileEntity : Entity
 super PersistentProjectileEntity : ProjectileEntity
 super ItemEntity : Entity
@@ -50,6 +51,12 @@ super BlockState : AbstractBlock.AbstractBlockState
 super AbstractBlock.AbstractBlockState : State
 super net/minecraft/state/property/Property : -
 super net/minecraft/state/property/BooleanProperty : net/minecraft/state/property/Property
+super HitResult : -
+super BlockHitResult : HitResult
+super ParticleEffect : -
+super SimpleParticleType : ParticleType
+super SoundCategory : -
+super SoundEvent : -
 super BlockSoundGroup : -
 super MapColor : -
 super WoodType : -

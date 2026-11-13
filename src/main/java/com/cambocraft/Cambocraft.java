@@ -4,6 +4,7 @@ import com.cambocraft.combat.CombatRegistry;
 import com.cambocraft.command.CamboCommand;
 import com.cambocraft.entity.CamboEntities;
 import com.cambocraft.game.GachaService;
+import com.cambocraft.game.PowerService;
 import com.cambocraft.game.ProgressionService;
 import com.cambocraft.game.SpawnNaturel;
 import com.cambocraft.craft.CookingRegistry;
@@ -67,6 +68,7 @@ public class Cambocraft implements ModInitializer {
         GachaService.init();
         ProgressionService.init();
         SpawnNaturel.init();
+        PowerService.init();
         // Commandes : surface de jeu et de diagnostic de tous les sous-systèmes.
         CommandRegistrationCallback.EVENT.register((dispatcher, registre, environnement) ->
                 CamboCommand.register(dispatcher));
