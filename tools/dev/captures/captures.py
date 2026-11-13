@@ -756,8 +756,14 @@ def main() -> int:
     # si le cout depasse ce que le joueur possede au demarrage.
     with open(os.path.join(args.client, "pouvoirs-journal.txt"), "w", encoding="utf-8") as f:
         f.write("")
-    commande("cambocraft donner_pouvoir tison_ardent")
+    # `donner_pouvoir` vise le joueur de la source : lancee depuis la console, la
+    # commande echoue (« No player was found »). Il faut donc nommer le joueur.
+    commande("execute as Cambocraft run cambocraft donner_pouvoir tison_ardent")
     time.sleep(4)
+    with sortie_serveur.verrou:
+        for ligne in sortie_serveur.lignes[-12:]:
+            if "Pouvoir" in ligne or "player" in ligne.lower():
+                print("   SERVEUR> " + ligne[:200])
     avant_pouvoir = len(sortie_serveur.lignes)
     with open(os.path.join(args.client, "pouvoir.demande"), "w", encoding="utf-8") as f:
         f.write("0")
@@ -768,6 +774,12 @@ def main() -> int:
         with open(os.path.join(args.client, "pouvoir.demande"), "w", encoding="utf-8") as f:
             f.write("0")
         declenche = sortie_serveur.attendre(re.compile(r"Pouvoir lanc"), 60, "pouvoir lance (2e essai)")
+    if not declenche:
+        # Etat du joueur vu du serveur : sans lui, un echec ne dit pas s'il vient du
+        # client (fichier non lu), du reseau (paquet refuse) ou des preconditions.
+        commande("cambocraft carnet")
+        commande("execute in cambocraft:cambodia run data get entity Cambocraft Pos")
+        time.sleep(3)
     with sortie_serveur.verrou:
         for ligne in sortie_serveur.lignes[avant_pouvoir:]:
             if "Pouvoir" in ligne or "pouvoir" in ligne:
