@@ -30,6 +30,7 @@ public final class CapturesAutomatiques {
     private static final String DEMANDE = "capture.demande";
     private static final String JOURNAL = "captures-journal.txt";
     private static final int DELAI_MINIMAL = 10;
+    private static final int BATTEMENT = 100;
 
     private static Path repertoire;
     private static int tics;
@@ -50,6 +51,10 @@ public final class CapturesAutomatiques {
             journal("arme ; repertoire=" + repertoire);
         }
         // On laisse passer quelques tics : au demarrage le framebuffer n'est pas pret.
+        if (tics % BATTEMENT == 0) {
+            journal("battement tic " + tics + " ; fps " + client.getCurrentFps()
+                    + " ; demande=" + Files.exists(repertoire.resolve(DEMANDE)));
+        }
         if (tics < DELAI_MINIMAL) {
             return;
         }

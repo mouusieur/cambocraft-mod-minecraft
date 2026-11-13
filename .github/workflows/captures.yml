@@ -165,6 +165,12 @@ jobs:
               --scenes "${{ github.event.inputs.scenes || 'portail,cite,interieur,vegetation' }}" \
               --largeur 1280 --hauteur 720 2>&1 | tee captures/journal.txt
           ls -la captures/
+          # Diagnostic : la sortie standard du client n'est pas accessible depuis
+          # l'agent, on la publie donc dans le resume de l'etape.
+          echo "--- journal du declencheur de capture (mod) ---"
+          cat "$RUNNER_TEMP/client/captures-journal.txt" 2>/dev/null | tail -40 || echo "(absent)"
+          echo "--- captures produites ---"
+          ls -la captures/ | head -20
 
       - name: Publier les captures (check run)
         if: always()
