@@ -35,13 +35,13 @@ public final class GachaService {
         Log.info("Cambocraft : Bol de Riz Béni branché sur le tirage du Nen");
     }
 
-    private static TypedActionResult<Object> surUtilisation(PlayerEntity joueur, World monde, Hand main) {
+    private static TypedActionResult<ItemStack> surUtilisation(PlayerEntity joueur, World monde, Hand main) {
         ItemStack pile = joueur.getStackInHand(main);
         if (pile == null || pile.getItem() != CamboItems.BOL_DE_RIZ_BENI || monde.isClient) {
-            return TypedActionResult.pass(null);
+            return TypedActionResult.pass(pile);
         }
         if (!(joueur instanceof ServerPlayerEntity serveur)) {
-            return TypedActionResult.pass(null);
+            return TypedActionResult.pass(pile);
         }
         CamboPlayerData donnees = CamboPlayerData.pour(serveur);
         RiceBowlGacha.GachaRollResult resultat = RiceBowlGacha.degusterBolDeRizBeni(
