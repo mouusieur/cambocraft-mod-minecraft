@@ -65,9 +65,20 @@ Entités : `/summon cambocraft:artisan` (PNJ, clic droit = dialogue) et
 
 > **État de jouabilité.** Les systèmes de *données* (85 quêtes, 84 pouvoirs, 16 PNJ, 12 boss,
 > 16 plats, 195 recettes) sont chargés, branchés sur des commandes et une entité existe pour les
-> PNJ comme pour les boss. Les interfaces graphiques dédiées (écran de Carnet, table d'artisanat
-> khmère, journal de quêtes plein écran) restent à écrire : elles passent aujourd'hui par le chat
-> natif et les commandes.
+> PNJ comme pour les boss.
+>
+> **Les 84 pouvoirs agissent réellement.** Chaque pouvoir est classé dans l'une des 16 formes
+> mécaniques du moteur (`projectile`, `cône`, `nova`, `zone persistante`, `corps à corps`, `rayon`,
+> `téléportation`, `élan`, `bouclier`, `soin`, `régénération`, `entrave`, `peur`, `invocation`,
+> `passif`, `révélation`) : dégâts calculés par `CombatEngine` (affinité élémentaire, armure,
+> maîtrise), effets de statut propres à l'élément, particules et sons. Les zones persistantes
+> frappent à chaque tick, les invocations sont de vrais alliés temporaires, les 5 passifs
+> s'appliquent en permanence. En jeu : **V**, **B**, **N** lancent les trois emplacements actifs du
+> Carnet (paquet C2S → `PowerEffects.executer`), et l'énergie se régénère à 4 points par seconde.
+>
+> **Reste à écrire.** Les interfaces graphiques dédiées (écran de Carnet, table d'artisanat
+> khmère, journal de quêtes plein écran) : elles passent aujourd'hui par le chat natif et les
+> commandes.
 
 ---
 
