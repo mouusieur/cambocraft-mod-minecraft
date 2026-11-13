@@ -330,29 +330,39 @@ def _attendre_capture(dossier, avant, delai):
 def capture_ecran(destination, repertoire_client=None):
     """Capture ce que le joueur voit reellement.
 
-    Sur un rendu OpenGL logiciel (llvmpipe, CI sans GPU), `import -window root`
-    ne recupere que du noir : X n'a pas la copie du framebuffer. On demande donc
-    la capture au client lui-meme (touche F2), qui lit son propre framebuffer,
-    puis on deplace le fichier produit vers la destination voulue.
+    Deux problemes se cumulent dans la CI : `import -window root` ne lit que du noir
+    sur un rendu OpenGL logiciel (X n'a pas la copie du framebuffer), et les appuis
+    de touche se perdent sous Xvfb faute de gestionnaire de fenetres (le focus suit
+    le pointeur, que les clics de menu deportent).
+
+    On demande donc la capture au mod lui-meme : le client surveille le fichier
+    `capture.demande` (voir CapturesAutomatiques.java) et ecrit l'image dans
+    `screenshots/`. Aucune entree clavier n'est necessaire. Si le fichier n'apparait
+    pas (mod absent d'une ancienne version), on retombe sur F2 puis sur l'ecran X.
     """
     if repertoire_client is not None:
         dossier = os.path.join(repertoire_client, "screenshots")
         avant = set(os.listdir(dossier)) if os.path.isdir(dossier) else set()
-        # Un rendu logiciel met plusieurs secondes a produire une image, et l'appui
-        # peut se perdre si le focus vient d'etre rendu : on reessaie plusieurs fois.
-        # Rendu logiciel : apres les /fill de scene, le client remaille des milliers
-        # de chunks et peut rester plusieurs dizaines de secondes sans traiter l'entree.
-        for essai in range(10):
-            appuyer("F2")
-            produit = _attendre_capture(dossier, avant, 12.0)
+        demande = os.path.join(repertoire_client, "capture.demande")
+        for _ in range(4):
+            try:
+                open(demande, "w", encoding="utf-8").close()
+            except OSError as e:
+                print("   demande de capture impossible :", e)
+                break
+            produit = _attendre_capture(dossier, avant, 15.0)
             if produit:
                 shutil.copyfile(produit, destination)
                 return os.path.getsize(destination) > 0
-            time.sleep(2.0)
-        existants = sorted(os.listdir(dossier)) if os.path.isdir(dossier) else []
-        print("   la capture interne du client n'a rien produit"
-              f" (essai {essai + 1}, {len(existants)} fichier(s) dans {dossier})")
-        return False
+        print("   la capture pilotee par fichier n'a rien produit, repli sur F2")
+        for _ in range(3):
+            appuyer("F2")
+            produit = _attendre_capture(dossier, avant, 10.0)
+            if produit:
+                shutil.copyfile(produit, destination)
+                return os.path.getsize(destination) > 0
+        print("   repli sur la copie de l'ecran X")
+        return capture_ecran(destination, None)
 
     resultat = subprocess.run(
         ["import", "-window", "root", destination],
@@ -374,25 +384,17 @@ def cliquer(x, y, double=False):
 
 
 def focaliser_client():
-    """Force le focus clavier sur la fenetre du client.
+    """Ramene le pointeur au centre de l'ecran, sur la fenetre du jeu.
 
     Sous Xvfb il n'y a aucun gestionnaire de fenetres : la politique de focus
-    reste « PointerRoot », donc une touche part a la fenetre sous le pointeur.
-    Apres les clics de menu le pointeur peut se retrouver hors de la fenetre et
-    les appuis suivants (F2) n'atteignent plus le jeu. On pose donc le focus
-    explicitement avant chaque combinaison.
+    reste « PointerRoot », donc le clavier va a la fenetre sous le pointeur.
+    Inutile (et nuisible) de forcer le focus par fenetre : `xdotool windowfocus`
+    peut designer une autre fenetre X que celle du jeu et lui voler le clavier.
+    Apres les clics de menu, le pointeur peut sortir de la fenetre ; le recentrer
+    suffit a rendre les appuis suivants (F2) au jeu.
     """
-    resultat = subprocess.run(
-        ["xdotool", "search", "--onlyvisible", "--class", "Minecraft"],
-        capture_output=True, timeout=30, text=True,
-    )
-    identifiants = [i for i in resultat.stdout.split() if i.strip()]
-    if not identifiants:
-        return False
-    for commande in (["windowfocus", "--sync", identifiants[-1]],
-                     ["mousemove", "--window", identifiants[-1], "640", "360"]):
-        subprocess.run(["xdotool", *commande], capture_output=True, timeout=30)
-    return True
+    subprocess.run(["xdotool", "mousemove", "640", "360"],
+                   capture_output=True, timeout=30)
 
 
 def appuyer(*touches):
@@ -625,8 +627,9 @@ def main() -> int:
     # Le HUD est masque dans les options des captures de paysage : on le reactive
     # (F1) pour la derniere etape, sinon l'interface n'apparait pas a l'ecran.
     print("== verification de l'interface (HUD, carnet, table) ==")
+    # Le HUD a ete masque dans options.txt (hideGui) pour les captures de paysage.
     appuyer("F1")
-    time.sleep(2)
+    time.sleep(3)
     if capture_ecran(os.path.join(args.sortie, "hud.png"), args.client):
         print("   capture : hud.png")
     commande("cambocraft carnet")
