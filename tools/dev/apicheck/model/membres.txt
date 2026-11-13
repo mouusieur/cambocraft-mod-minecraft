@@ -261,23 +261,61 @@ add NamedScreenHandlerFactory :: default net.minecraft.text.Text getDisplayName(
 # --- AbstractFurnaceBlock : codec et fabrique de block-entity (abstracts depuis 1.20.5) ---
 add AbstractFurnaceBlock :: public net.minecraft.block.entity.BlockEntity createBlockEntity(net.minecraft.util.math.BlockPos p0, net.minecraft.block.BlockState p1) { throw new RuntimeException(); }
 
-# --- NBT : les surcharges put existent mais Yarn ne les enumere pas toutes ---
-add NbtCompound :: public net.minecraft.nbt.NbtElement put(java.lang.String p0, net.minecraft.nbt.NbtElement p1) { throw new RuntimeException(); }
-add NbtCompound :: public void putString(java.lang.String p0, java.lang.String p1) { }
-add NbtCompound :: public void putInt(java.lang.String p0, int p1) { }
-add NbtCompound :: public void putLong(java.lang.String p0, long p1) { }
-add NbtCompound :: public void putBoolean(java.lang.String p0, boolean p1) { }
-add NbtCompound :: public java.lang.String getString(java.lang.String p0) { throw new RuntimeException(); }
-add NbtCompound :: public int getInt(java.lang.String p0) { throw new RuntimeException(); }
-add NbtCompound :: public long getLong(java.lang.String p0) { throw new RuntimeException(); }
-add NbtCompound :: public net.minecraft.nbt.NbtCompound getCompound(java.lang.String p0) { throw new RuntimeException(); }
-add NbtCompound :: public net.minecraft.nbt.NbtList getList(java.lang.String p0, int p1) { throw new RuntimeException(); }
-add NbtCompound :: public boolean contains(java.lang.String p0) { throw new RuntimeException(); }
-add NbtList :: public boolean add(net.minecraft.nbt.NbtElement p0) { throw new RuntimeException(); }
-add NbtList :: public int size() { throw new RuntimeException(); }
-add NbtList :: public net.minecraft.nbt.NbtCompound getCompound(int p0) { throw new RuntimeException(); }
-add NbtList :: public java.lang.String getString(int p0) { throw new RuntimeException(); }
-add NbtString :: public static net.minecraft.nbt.NbtString of(java.lang.String p0) { throw new RuntimeException(); }
+# --- NBT : Yarn emet des surcharges qui masquent celles ajoutees ensuite ; on les neutralise d'abord ---
+drop NbtCompound putInt
+drop NbtCompound putString
+drop NbtCompound putLong
+drop NbtCompound putFloat
+drop NbtCompound putDouble
+drop NbtCompound putBoolean
+drop NbtCompound getInt
+drop NbtCompound getString
+drop NbtCompound getLong
+drop NbtCompound getBoolean
+drop NbtCompound getCompound
+drop NbtCompound getList
+drop NbtCompound contains
+drop NbtCompound put
+drop NbtCompound getKeys
+drop NbtCompound getSize
+drop NbtCompound remove
+drop NbtList add
+drop NbtList size
+drop NbtList get
+drop NbtList getCompound
+drop NbtList getString
+drop NbtList getInt
+drop NbtString of
+
+# --- NBT : implementation fonctionnelle pour que les tests exercent la vraie serialisation ---
+# Yarn decrit les champs et les signatures, pas le corps des methodes : on les fournit ici.
+add NbtCompound :: private java.util.Map table() { if (this.entries == null) this.entries = new java.util.LinkedHashMap(); return this.entries; }
+add NbtCompound :: public net.minecraft.nbt.NbtElement put(java.lang.String p0, net.minecraft.nbt.NbtElement p1) { this.table().put(p0, p1); return p1; }
+add NbtCompound :: public void putString(java.lang.String p0, java.lang.String p1) { this.table().put(p0, net.minecraft.nbt.NbtString.of(p1)); }
+add NbtCompound :: public void putInt(java.lang.String p0, int p1) { this.table().put(p0, java.lang.Integer.valueOf(p1)); }
+add NbtCompound :: public void putLong(java.lang.String p0, long p1) { this.table().put(p0, java.lang.Long.valueOf(p1)); }
+add NbtCompound :: public void putFloat(java.lang.String p0, float p1) { this.table().put(p0, java.lang.Float.valueOf(p1)); }
+add NbtCompound :: public void putDouble(java.lang.String p0, double p1) { this.table().put(p0, java.lang.Double.valueOf(p1)); }
+add NbtCompound :: public void putBoolean(java.lang.String p0, boolean p1) { this.table().put(p0, java.lang.Boolean.valueOf(p1)); }
+add NbtCompound :: public java.lang.String getString(java.lang.String p0) { Object v = this.table().get(p0); return v instanceof net.minecraft.nbt.NbtString n ? n.value : (v == null ? "" : v.toString()); }
+add NbtCompound :: public int getInt(java.lang.String p0) { Object v = this.table().get(p0); if (v instanceof java.lang.Number n) return n.intValue(); if (v instanceof net.minecraft.nbt.NbtString n2) return java.lang.Integer.parseInt(n2.value); return 0; }
+add NbtCompound :: public long getLong(java.lang.String p0) { Object v = this.table().get(p0); return v instanceof java.lang.Number n ? n.longValue() : 0L; }
+add NbtCompound :: public boolean getBoolean(java.lang.String p0) { Object v = this.table().get(p0); return v instanceof java.lang.Boolean b && b.booleanValue(); }
+add NbtCompound :: public net.minecraft.nbt.NbtCompound getCompound(java.lang.String p0) { Object v = this.table().get(p0); return v instanceof net.minecraft.nbt.NbtCompound c ? c : new net.minecraft.nbt.NbtCompound(); }
+add NbtCompound :: public net.minecraft.nbt.NbtList getList(java.lang.String p0, int p1) { Object v = this.table().get(p0); return v instanceof net.minecraft.nbt.NbtList l ? l : new net.minecraft.nbt.NbtList(); }
+add NbtCompound :: public boolean contains(java.lang.String p0) { return this.table().containsKey(p0); }
+add NbtCompound :: public java.util.Set getKeys() { return new java.util.LinkedHashSet(this.table().keySet()); }
+add NbtCompound :: public int getSize() { return this.table().size(); }
+add NbtCompound :: public void remove(java.lang.String p0) { this.table().remove(p0); }
+add NbtList :: private java.util.List liste() { if (this.value == null) this.value = new java.util.ArrayList(); return this.value; }
+add NbtList :: public boolean add(net.minecraft.nbt.NbtElement p0) { return this.liste().add(p0); }
+add NbtList :: public int size() { return this.liste().size(); }
+add NbtList :: public java.lang.Object get(int p0) { return this.liste().get(p0); }
+add NbtList :: public net.minecraft.nbt.NbtCompound getCompound(int p0) { Object v = this.liste().get(p0); return v instanceof net.minecraft.nbt.NbtCompound c ? c : new net.minecraft.nbt.NbtCompound(); }
+add NbtList :: public java.lang.String getString(int p0) { Object v = this.liste().get(p0); return v instanceof net.minecraft.nbt.NbtString s ? s.value : ""; }
+add NbtList :: public int getInt(int p0) { Object v = this.liste().get(p0); return v instanceof java.lang.Number n ? n.intValue() : 0; }
+sig NbtString <init> :: public NbtString(java.lang.String p0) { this.value = p0; }
+add NbtString :: public static net.minecraft.nbt.NbtString of(java.lang.String p0) { return new net.minecraft.nbt.NbtString(p0); }
 add PersistentState :: public net.minecraft.nbt.NbtCompound writeNbt(net.minecraft.nbt.NbtCompound p0, net.minecraft.registry.RegistryWrapper.WrapperLookup p1) { throw new RuntimeException(); }
 add PersistentState.Type :: public Type(java.util.function.Supplier<net.minecraft.world.PersistentState> p0, java.util.function.BiFunction<net.minecraft.nbt.NbtCompound, net.minecraft.registry.RegistryWrapper.WrapperLookup, net.minecraft.world.PersistentState> p1, java.util.function.Supplier p2) { }
 

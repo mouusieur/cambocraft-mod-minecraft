@@ -33,7 +33,9 @@ public final class TestMain {
                 new Cas("pnj & artisanat : 16 PNJ, dialogues, marchands, cuisine, soie et forge", NpcAndCraftTests::pnjReputationEtArtisanat),
                 new Cas("progression & quêtes : courbe 1-200, 12 zones, 85 quêtes et 3 fins", QuestAndProgressionTests::progressionZonesEtQuetes),
                 new Cas("combat & pouvoirs : 84 pouvoirs, 34 synergies, gacha pity, 12 boss et Nuit des Ombres", CombatAndPowerTests::bestiaireBossPouvoirsEtGacha),
-                new Cas("compagnons, mini-jeux, réseau & client : Neak Ta, Pradal Serey, pirogues, C2S et HUD", Phase7SystemsTests::compagnonsMiniJeuxReseauEtClient));
+                new Cas("compagnons, mini-jeux, réseau & client : Neak Ta, Pradal Serey, pirogues, C2S et HUD", Phase7SystemsTests::compagnonsMiniJeuxReseauEtClient),
+                new Cas("persistance, réseau & progression : aller-retour NBT, réputation, Renaissance, codecs", com.cambocraft.server.Phase10SystemsTests::persistanceReseauEtProgression),
+                new Cas("saisons & boss : adressage par identifiant et 12 rencontres", com.cambocraft.server.Phase10SystemsTests::saisonDesQuetes));
     }
 
     public static void main(String[] args) {
