@@ -409,3 +409,4 @@ add ModelTransform :: public static net.minecraft.client.model.ModelTransform of
 add ModelTransform :: public static net.minecraft.client.model.ModelTransform of(float p0, float p1, float p2, float p3, float p4, float p5) { throw new RuntimeException(); }
 add EntityModel :: public void setAngles(net.minecraft.entity.Entity p0, float p1, float p2, float p3, float p4, float p5) { throw new RuntimeException(); }
 add EntityModel :: public void render(net.minecraft.client.util.math.MatrixStack p0, net.minecraft.client.render.VertexConsumer p1, int p2, int p3, int p4) { throw new RuntimeException(); }
+add EntityType.Builder :: public net.minecraft.entity.EntityType build() { throw new RuntimeException(); }

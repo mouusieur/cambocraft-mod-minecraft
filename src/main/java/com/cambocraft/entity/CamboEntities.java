@@ -16,17 +16,23 @@ import net.minecraft.registry.Registry;
  * pour rester chargeables sans mixin ni modèle 3D dédié.</p>
  */
 public final class CamboEntities {
+    // On construit SANS identifiant : `build(String)` de vanilla interroge le DataFixer
+    // avec l'identifiant du mod, qui n'y est évidemment pas déclaré, et journalise alors
+    // « No data fixer registered for artisan » en ERROR à chaque démarrage. Fabric expose
+    // `build()` sans argument, qui transmet null et saute cette recherche ; le registre
+    // attribue de toute façon l'identifiant réel (`cambocraft:artisan`) à l'enregistrement.
+
     /** PNJ marchand : rendu avec le modèle villageois vanilla, teinté par biome. */
     public static final EntityType<ArtisanEntity> ARTISAN = EntityType.Builder
             .create(ArtisanEntity::new, SpawnGroup.CREATURE)
             .dimensions(0.6f, 1.95f)
-            .build("artisan");
+            .build();
 
     /** Gardien de boss : grande créature hostile, pilotée par {@link BossGuardianEntity}. */
     public static final EntityType<BossGuardianEntity> GARDIEN = EntityType.Builder
             .create(BossGuardianEntity::new, SpawnGroup.MONSTER)
             .dimensions(1.4f, 3.2f)
-            .build("gardien");
+            .build();
 
     private CamboEntities() {}
 
