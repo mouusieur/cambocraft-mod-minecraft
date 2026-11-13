@@ -364,6 +364,19 @@ def _attendre_capture(dossier, avant, delai):
     return None
 
 
+def _image_noire(chemin):
+    """Vrai si l'image est uniformement noire (framebuffer pas encore dessine).
+
+    Un PNG noir de 1280x720 ne pese que quelques centaines d'octets : c'est un
+    signal fiable et bien moins couteux que de decoder l'image.
+    """
+    try:
+        taille = os.path.getsize(chemin)
+    except OSError:
+        return True
+    return taille < 5000
+
+
 def _lignes_journal(repertoire_client):
     chemin = os.path.join(repertoire_client, "captures-journal.txt")
     if not os.path.exists(chemin):
@@ -419,6 +432,14 @@ def capture_ecran(destination, repertoire_client=None):
             lignes = _lignes_journal(repertoire_client)
             chemin = _chemin_annonce(lignes[avant:])
             if chemin and os.path.exists(chemin) and os.path.getsize(chemin) > 0:
+                if _image_noire(chemin):
+                    # Framebuffer pas encore dessine : on retire et on redemande.
+                    print("   image noire, nouvelle demande")
+                    try:
+                        os.remove(chemin)
+                    except OSError:
+                        pass
+                    break
                 shutil.copyfile(chemin, destination)
                 return True
             time.sleep(0.5)

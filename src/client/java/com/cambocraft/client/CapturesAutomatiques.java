@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
@@ -38,7 +39,16 @@ public final class CapturesAutomatiques {
     private CapturesAutomatiques() {}
 
     public static void enregistrer() {
+        // Deux chemins valent mieux qu'un : le rendu du HUD n'est pas toujours appele
+        // (ecran de chargement, interface masquee), alors que le tick continue.
         HudRenderCallback.EVENT.register(CapturesAutomatiques::apresRendu);
+        ClientTickEvents.END_CLIENT_TICK.register(CapturesAutomatiques::finDeTick);
+    }
+
+    private static void finDeTick(MinecraftClient client) {
+        if (client != null && client.runDirectory != null) {
+            traiter(client, "tick");
+        }
     }
 
     private static void apresRendu(DrawContext contexte, RenderTickCounter compteur) {
@@ -46,13 +56,17 @@ public final class CapturesAutomatiques {
         if (client == null || client.runDirectory == null) {
             return;
         }
-        if (repertoire == null) {
-            repertoire = client.runDirectory.toPath();
-            journal("arme ; repertoire=" + repertoire);
-        }
         images++;
         if (images % BATTEMENT == 0) {
             journal("rendu #" + images + " ; fps " + client.getCurrentFps());
+        }
+        traiter(client, "rendu");
+    }
+
+    private static void traiter(MinecraftClient client, String origine) {
+        if (repertoire == null) {
+            repertoire = client.runDirectory.toPath();
+            journal("arme ; repertoire=" + repertoire);
         }
         Path demande = repertoire.resolve(DEMANDE);
         if (!Files.exists(demande)) {
@@ -73,7 +87,7 @@ public final class CapturesAutomatiques {
             journal("demande illisible : " + e.getMessage());
             return;
         }
-        journal("capture demandee : " + nom);
+        journal("capture demandee (" + origine + ") : " + nom);
         try {
             ScreenshotRecorder.saveScreenshot(
                     client.runDirectory, nom, client.getFramebuffer(),
