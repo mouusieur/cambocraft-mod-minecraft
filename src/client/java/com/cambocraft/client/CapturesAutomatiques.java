@@ -31,7 +31,10 @@ import net.minecraft.client.util.ScreenshotRecorder;
 public final class CapturesAutomatiques {
     private static final String DEMANDE = "capture.demande";
     private static final String JOURNAL = "captures-journal.txt";
-    private static final int BATTEMENT = 400;
+    // Battement de journal : a 10-20 fps (rendu logiciel), 400 images font 20 a 40 s de
+    // silence, ce qui fait passer un client vivant pour fige. 120 images donnent un
+    // battement de 6 a 12 s, assez fin pour distinguer les deux cas.
+    private static final int BATTEMENT = 120;
     /** Dossier de sortie, relatif au repertoire de jeu : chemin deterministe. */
     private static final String SORTIE = "captures-auto";
 

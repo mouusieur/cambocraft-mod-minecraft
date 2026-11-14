@@ -581,8 +581,10 @@ def preuve_pouvoir(commande, sortie_serveur, args, client, largeur, hauteur, sor
     # Un client fige ne peut pas envoyer de paquet. On le constate au lieu de relancer :
     # un client relance sous llvmpipe se reconnecte mal (joined puis left deux secondes
     # plus tard), ce qui ne prouverait rien et coute trois minutes.
-    if not client_vivant(args.client, delai=30):
-        print("   client fige (journal muet depuis > 30 s) : preuve non tentee")
+    # Le battement du journal est de 120 images : a 10 fps cela fait 12 s de silence
+    # meme quand le client va bien. 90 s de marge evitent de conclure a tort.
+    if not client_vivant(args.client, delai=90):
+        print("   client fige (journal muet depuis > 90 s) : preuve non tentee")
         return client, "client fige : preuve non tentee"
     # Le mode spectateur est pratique pour les captures mais empeche l'activation :
     # un pouvoir se lance en survie ou en creatif. On repasse le joueur en creatif.
@@ -732,11 +734,6 @@ def main() -> int:
 
     print("== joueur connecte ==")
     time.sleep(10)
-    # Preuve en jeu AVANT tout redemarrage : c'est le seul moment ou la session est
-    # etablie de facon fiable. Le client relance par la suite se reconnecte mal sous
-    # llvmpipe (joined puis left deux secondes plus tard).
-    client, resultat_pouvoir = preuve_pouvoir(
-        commande, sortie_serveur, args, client, args.largeur, args.hauteur, sortie_client)
 
     # Mode spectateur : en creatif, le bras du joueur (texture de peau orange)
     # occupe le coin bas-droit de chaque capture. En spectateur il disparait.
@@ -770,6 +767,10 @@ def main() -> int:
         time.sleep(3)
     if capture_ecran(os.path.join(args.sortie, "sanite.png"), args.client):
         print("   capture : sanite.png")
+    # Preuve en jeu ici : le monde est charge (la capture vient d'aboutir) et le client
+    # n'a pas encore ete relance pour les scenes.
+    client, resultat_pouvoir = preuve_pouvoir(
+        commande, sortie_serveur, args, client, args.largeur, args.hauteur, sortie_client)
     commande("execute in cambocraft:cambodia run data get entity Cambocraft Pos")
     time.sleep(2)
 
