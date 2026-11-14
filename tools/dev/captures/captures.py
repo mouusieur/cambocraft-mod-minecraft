@@ -328,12 +328,16 @@ def client_vivant(repertoire_client, delai=40):
     return time.time() - os.path.getmtime(chemin) < delai
 
 
-def relancer_si_fige(client, repertoire_client, largeur, hauteur):
+def relancer_si_fige(client, repertoire_client, largeur, hauteur, relances=()):
     """Relance le client quand llvmpipe l'a fige.
 
     Le rendu logiciel met parfois plusieurs minutes a remailler une scene ; le
     client cesse alors de tiquer et n'ecrit plus son journal. Un redemarrage
     (reconnexion automatique) est bien plus rapide que d'attendre.
+
+    `relances` est une liste mutable ou le nombre de relances est cumule : la preuve
+    en jeu s'en sert pour attendre que le client soit effectivement reveille, et pas
+    seulement redemarre une fois.
     """
     if client_vivant(repertoire_client):
         return client, False
@@ -577,13 +581,29 @@ def preuve_pouvoir(commande, sortie_serveur, args, client, largeur, hauteur, sor
     # Un client fige ne peut pas envoyer de paquet : c'est deja arrive avant la preuve
     # (le journal du mod s'arrete net). On le relance au lieu de conclure a tort que le
     # pouvoir ne marche pas.
-    client, relance = relancer_si_fige(client, args.client, largeur, hauteur)
-    if relance:
+    # Le rendu logiciel gele souvent pendant le chargement du monde : un seul
+    # redemarrage ne suffit pas. On relance jusqu'a obtenir un client vivant ET
+    # reconnecte, en bornant le nombre d'essais.
+    vivant = False
+    for essai in range(3):
+        with sortie_serveur.verrou:
+            marque_avant_relance = len(sortie_serveur.lignes)
+        client, relance = relancer_si_fige(client, args.client, largeur, hauteur)
+        if not relance:
+            vivant = True
+            break
+        print(f"   reveil {essai + 1}/3 : attente de la reconnexion")
         sortie_client = Flux(client, "client")
-        if not sortie_serveur.attendre(MOTIF_CONNEXION, 150, "reconnexion avant la preuve"):
-            print("   reconnexion impossible : preuve non tentee")
-            return client, "client fige, reconnexion impossible : preuve non tentee"
+        # Meme piege que plus bas : l'historique contient deja des `joined the game`.
+        if not sortie_serveur.attendre_apres(MOTIF_CONNEXION, marque_avant_relance, 180,
+                                            "reconnexion apres reveil"):
+            print("   reconnexion impossible apres reveil")
+            continue
         time.sleep(25)
+        vivant = client_vivant(args.client, delai=20)
+    if not vivant:
+        print("   client injoignable apres 3 reveils : preuve non tentee")
+        return client, "client injoignable : preuve non tentee"
     # Le mode spectateur est pratique pour les captures mais empeche l'activation :
     # un pouvoir se lance en survie ou en creatif. On repasse le joueur en creatif.
     commande("gamemode creative @a")
@@ -600,8 +620,11 @@ def preuve_pouvoir(commande, sortie_serveur, args, client, largeur, hauteur, sor
     # reponse dit exactement ce qu'on veut savoir, contrairement a `joined the game`
     # qui peut venir d'une session precedente.
     reponse = sortie_serveur.attendre_apres(MOTIF_LISTE, debut_verif, 20, "liste des joueurs")
-    if reponse is None or "players online: " in reponse and reponse.rstrip().endswith(":"):
-        print("   aucun joueur connecte : preuve en jeu non tentee")
+    # La reponse est « There are 0 of a max of 20 players online: » — sans espace final
+    # quand la liste est vide, d'ou la lecture du nombre plutot qu'une sous-chaine.
+    nombre = re.search(r"There are (\d+) of", reponse or "")
+    if nombre is None or int(nombre.group(1)) == 0:
+        print("   aucun joueur connecte : preuve en jeu non tentee (" + str(reponse) + ")")
         return client, "aucun joueur connecte : preuve non tentee"
     # L'energie du Carnet se recharge de 4 points par seconde : inutile de l'attendre
     # si le cout depasse ce que le joueur possede au demarrage.
