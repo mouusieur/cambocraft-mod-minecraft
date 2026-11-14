@@ -29,6 +29,8 @@ PORT = 25565
 MOTIF_PRET_SERVEUR = re.compile(r'Done \([0-9.]+s\)!')
 MOTIF_CAPTURE = re.compile(r'Saved screenshot as (\S+)')
 MOTIF_CONNEXION = re.compile(r'joined the game')
+# Reponse de /list : « There are 1 of a max of 20 players online: Cambocraft ».
+MOTIF_LISTE = re.compile(r'players online:')
 
 
 # ---------------------------------------------------------------------------
@@ -216,6 +218,21 @@ class Flux:
                     self.lignes.append(texte)
                     if len(self.lignes) > 4000:
                         del self.lignes[:2000]
+
+    def attendre_apres(self, motif, depart, delai, description=""):
+        """Comme `attendre`, mais en ignorant les lignes anterieures a `depart`."""
+        fin = time.time() + delai
+        vues = max(0, depart)
+        while time.time() < fin:
+            with self.verrou:
+                nouvelles = self.lignes[vues:]
+                for ligne in nouvelles:
+                    if motif.search(ligne):
+                        return ligne
+                vues = len(self.lignes)
+            time.sleep(0.30)
+        print(f"   [delai depasse] {description}")
+        return None
 
     def attendre(self, motif, delai, description=""):
         fin = time.time() + delai
@@ -544,7 +561,7 @@ def touche_f2():
                    env=os.environ.copy(), timeout=30)
 
 
-def preuve_pouvoir(commande, sortie_serveur, args):
+def preuve_pouvoir(commande, sortie_serveur, args, client, largeur, hauteur, sortie_client):
     """Declenche un pouvoir par le chemin des touches et renvoie le resultat.
 
     On ne peut pas faire confiance aux appuis de touche sous Xvfb (le focus se perd).
@@ -557,15 +574,35 @@ def preuve_pouvoir(commande, sortie_serveur, args):
     chance d'aboutir et doit le dire clairement.
     """
     print("== preuve en jeu : pouvoir declenche par le chemin clavier ==")
+    # Un client fige ne peut pas envoyer de paquet : c'est deja arrive avant la preuve
+    # (le journal du mod s'arrete net). On le relance au lieu de conclure a tort que le
+    # pouvoir ne marche pas.
+    client, relance = relancer_si_fige(client, args.client, largeur, hauteur)
+    if relance:
+        sortie_client = Flux(client, "client")
+        if not sortie_serveur.attendre(MOTIF_CONNEXION, 150, "reconnexion avant la preuve"):
+            print("   reconnexion impossible : preuve non tentee")
+            return client, "client fige, reconnexion impossible : preuve non tentee"
+        time.sleep(25)
     # Le mode spectateur est pratique pour les captures mais empeche l'activation :
     # un pouvoir se lance en survie ou en creatif. On repasse le joueur en creatif.
     commande("gamemode creative @a")
     time.sleep(2)
     # Sans joueur connecte, toute la preuve est vaine : on le dit au lieu de decouvrir
     # l'echec trois minutes plus tard, quand le client a ete relance.
-    if not sortie_serveur.attendre(MOTIF_CONNEXION, 15, "joueur connecte avant la preuve"):
+    # On ne regarde QUE les lignes posterieures : `sortie_serveur.lignes` contient tout
+    # l'historique, et un `joined the game` d'une session precedente ferait croire a tort
+    # que le joueur est la.
+    with sortie_serveur.verrou:
+        debut_verif = len(sortie_serveur.lignes)
+    commande("list")
+    # `list` repond « There are 0 of a max of 20 players online: » : la ligne de
+    # reponse dit exactement ce qu'on veut savoir, contrairement a `joined the game`
+    # qui peut venir d'une session precedente.
+    reponse = sortie_serveur.attendre_apres(MOTIF_LISTE, debut_verif, 20, "liste des joueurs")
+    if reponse is None or "players online: " in reponse and reponse.rstrip().endswith(":"):
         print("   aucun joueur connecte : preuve en jeu non tentee")
-        return "aucun joueur connecte : preuve non tentee"
+        return client, "aucun joueur connecte : preuve non tentee"
     # L'energie du Carnet se recharge de 4 points par seconde : inutile de l'attendre
     # si le cout depasse ce que le joueur possede au demarrage.
     with open(os.path.join(args.client, "pouvoirs-journal.txt"), "w", encoding="utf-8") as f:
@@ -613,7 +650,8 @@ def preuve_pouvoir(commande, sortie_serveur, args):
     print("   resultat : " + resultat)
     if capture_ecran(os.path.join(args.sortie, "pouvoir.png"), args.client):
         print("   capture : pouvoir.png")
-    return resultat
+    # Le client a pu etre relance : l'appelant doit continuer avec cette instance.
+    return client, resultat
 
 
 def main() -> int:
@@ -728,7 +766,8 @@ def main() -> int:
         print("   capture : sanite.png")
     # Preuve en jeu tant que la session est fraiche : le client sera relance ensuite
     # pour les scenes, et chaque relance peut le laisser deconnecte.
-    resultat_pouvoir = preuve_pouvoir(commande, sortie_serveur, args)
+    client, resultat_pouvoir = preuve_pouvoir(
+        commande, sortie_serveur, args, client, args.largeur, args.hauteur, sortie_client)
     commande("execute in cambocraft:cambodia run data get entity Cambocraft Pos")
     time.sleep(2)
 
