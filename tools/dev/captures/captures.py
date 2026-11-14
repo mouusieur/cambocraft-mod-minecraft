@@ -578,41 +578,19 @@ def preuve_pouvoir(commande, sortie_serveur, args, client, largeur, hauteur, sor
     chance d'aboutir et doit le dire clairement.
     """
     print("== preuve en jeu : pouvoir declenche par le chemin clavier ==")
-    # Un client fige ne peut pas envoyer de paquet : c'est deja arrive avant la preuve
-    # (le journal du mod s'arrete net). On le relance au lieu de conclure a tort que le
-    # pouvoir ne marche pas.
-    # Le rendu logiciel gele souvent pendant le chargement du monde : un seul
-    # redemarrage ne suffit pas. On relance jusqu'a obtenir un client vivant ET
-    # reconnecte, en bornant le nombre d'essais.
-    vivant = False
-    for essai in range(3):
-        with sortie_serveur.verrou:
-            marque_avant_relance = len(sortie_serveur.lignes)
-        client, relance = relancer_si_fige(client, args.client, largeur, hauteur)
-        if not relance:
-            vivant = True
-            break
-        print(f"   reveil {essai + 1}/3 : attente de la reconnexion")
-        sortie_client = Flux(client, "client")
-        # Meme piege que plus bas : l'historique contient deja des `joined the game`.
-        if not sortie_serveur.attendre_apres(MOTIF_CONNEXION, marque_avant_relance, 180,
-                                            "reconnexion apres reveil"):
-            print("   reconnexion impossible apres reveil")
-            continue
-        time.sleep(25)
-        vivant = client_vivant(args.client, delai=20)
-    if not vivant:
-        print("   client injoignable apres 3 reveils : preuve non tentee")
-        return client, "client injoignable : preuve non tentee"
+    # Un client fige ne peut pas envoyer de paquet. On le constate au lieu de relancer :
+    # un client relance sous llvmpipe se reconnecte mal (joined puis left deux secondes
+    # plus tard), ce qui ne prouverait rien et coute trois minutes.
+    if not client_vivant(args.client, delai=30):
+        print("   client fige (journal muet depuis > 30 s) : preuve non tentee")
+        return client, "client fige : preuve non tentee"
     # Le mode spectateur est pratique pour les captures mais empeche l'activation :
     # un pouvoir se lance en survie ou en creatif. On repasse le joueur en creatif.
     commande("gamemode creative @a")
     time.sleep(2)
-    # Sans joueur connecte, toute la preuve est vaine : on le dit au lieu de decouvrir
-    # l'echec trois minutes plus tard, quand le client a ete relance.
-    # On ne regarde QUE les lignes posterieures : `sortie_serveur.lignes` contient tout
-    # l'historique, et un `joined the game` d'une session precedente ferait croire a tort
-    # que le joueur est la.
+    # Sans joueur connecte, toute la preuve est vaine : on le dit tout de suite. On ne
+    # regarde QUE les lignes posterieures a la question, car `sortie_serveur.lignes`
+    # contient tout l'historique des sessions precedentes.
     with sortie_serveur.verrou:
         debut_verif = len(sortie_serveur.lignes)
     commande("list")
@@ -754,6 +732,11 @@ def main() -> int:
 
     print("== joueur connecte ==")
     time.sleep(10)
+    # Preuve en jeu AVANT tout redemarrage : c'est le seul moment ou la session est
+    # etablie de facon fiable. Le client relance par la suite se reconnecte mal sous
+    # llvmpipe (joined puis left deux secondes plus tard).
+    client, resultat_pouvoir = preuve_pouvoir(
+        commande, sortie_serveur, args, client, args.largeur, args.hauteur, sortie_client)
 
     # Mode spectateur : en creatif, le bras du joueur (texture de peau orange)
     # occupe le coin bas-droit de chaque capture. En spectateur il disparait.
@@ -787,10 +770,6 @@ def main() -> int:
         time.sleep(3)
     if capture_ecran(os.path.join(args.sortie, "sanite.png"), args.client):
         print("   capture : sanite.png")
-    # Preuve en jeu tant que la session est fraiche : le client sera relance ensuite
-    # pour les scenes, et chaque relance peut le laisser deconnecte.
-    client, resultat_pouvoir = preuve_pouvoir(
-        commande, sortie_serveur, args, client, args.largeur, args.hauteur, sortie_client)
     commande("execute in cambocraft:cambodia run data get entity Cambocraft Pos")
     time.sleep(2)
 
