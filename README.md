@@ -67,6 +67,8 @@ Entités : `/summon cambocraft:artisan` (PNJ, clic droit = dialogue) et
 > 16 plats, 195 recettes) sont chargés, branchés sur des commandes et une entité existe pour les
 > PNJ comme pour les boss.
 >
+> ![Pouvoir lancé en jeu](captures/pouvoir.png)
+>
 > **Les 84 pouvoirs agissent réellement.** Chaque pouvoir est classé dans l'une des 16 formes
 > mécaniques du moteur (`projectile`, `cône`, `nova`, `zone persistante`, `corps à corps`, `rayon`,
 > `téléportation`, `élan`, `bouclier`, `soin`, `régénération`, `entrave`, `peur`, `invocation`,

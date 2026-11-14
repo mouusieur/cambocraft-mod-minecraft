@@ -14,6 +14,7 @@ référence visuelle pour la documentation et sont **régénérées**, pas retou
 | `cite-khmere.png` | cité khmère (scène `cite`) |
 | `atelier.png` | atelier d'artisan (scène `interieur`) |
 | `rizieres.png` | rizières et végétation (scène `vegetation`) |
+| `pouvoir.png` | pouvoir lancé en jeu : `Tison Ardent` (projectile), HUD à 88/100 d'énergie après le coût |
 
 Les captures d'interface (HUD, carnet du Nen, table de craft) et la vue des entités
 sont produites par la même passe mais **ne sont pas versionnées** : sous rendu
